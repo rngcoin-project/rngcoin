@@ -1,6 +1,9 @@
 *.tar.gz
 
-*.pro.user
+contrib
+doc
+src
+test
 
 *.exe
 src/litecoin
