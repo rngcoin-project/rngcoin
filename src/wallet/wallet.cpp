@@ -2557,6 +2557,8 @@ bool CWallet::SignTransaction(CMutableTransaction &tx)
 
 bool CWallet::FundTransaction(CMutableTransaction& tx, CAmount& nFeeRet, int& nChangePosInOut, std::string& strFailReason, bool lockUnspents, const std::set<int>& setSubtractFeeFromOutputs, CCoinControl coinControl)
 {
+    return false;
+    /*
     std::vector<CRecipient> vecSend;
 
     // Turn the txout set into a CRecipient vector
@@ -2603,7 +2605,7 @@ bool CWallet::FundTransaction(CMutableTransaction& tx, CAmount& nFeeRet, int& nC
             }
         }
     }
-
+    */
 
     return true;
 }
@@ -2620,7 +2622,7 @@ static CFeeRate GetDiscardRate(const CBlockPolicyEstimator& estimator)
 }
 
 bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend, CWalletTx& wtxNew, CReserveKey& reservekey, CAmount& nFeeRet,
-                                int& nChangePosInOut, std::string& strFailReason, const CCoinControl& coin_control, bool sign)
+                                int& nChangePosInOut, std::string& strFailReason, std::string strTxComment, const CCoinControl& coin_control, bool sign)
 {
     CAmount nValue = 0;
     int nChangePosRequest = nChangePosInOut;
@@ -2646,6 +2648,11 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend, CWalletT
     wtxNew.fTimeReceivedIsTxTime = true;
     wtxNew.BindWallet(this);
     CMutableTransaction txNew;
+    
+    // transaction comment
+    txNew.strTxComment = strTxComment;
+    if (txNew.strTxComment.length() > CTransaction::MAX_TX_COMMENT_LEN)
+        txNew.strTxComment.resize(CTransaction::MAX_TX_COMMENT_LEN);
 
     // Discourage fee sniping.
     //
@@ -2810,6 +2817,24 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend, CWalletT
                     }
                 } else {
                     nChangePosInOut = -1;
+
+                    // FLORINTODO
+                    // Add OP_RETURN vout containing transaction comment hash
+                    // 1000 byte penalty for "dust" output
+                    if (txNew.strTxComment.length() > 0)
+                    {
+                        uint256 msghash = Hash(txNew.strTxComment.begin(), txNew.strTxComment.end());
+                        std::vector<unsigned char> opdata;
+                        opdata.insert(opdata.end(), (unsigned char)'F');
+                        opdata.insert(opdata.end(), (unsigned char)'L');
+                        opdata.insert(opdata.end(), (unsigned char)'O');
+                        opdata.insert(opdata.end(), (unsigned char)'M');
+                        opdata.insert(opdata.end(), msghash.begin(), msghash.end());
+                        CScript scrout = CScript() << OP_RETURN << opdata;
+                        CTxOut txmsgTxOut(0, scrout);
+                        txNew.vout.push_back(txmsgTxOut);
+                        ///nBytesPenalty += 1000;
+                    }
                 }
 
                 // Fill vin

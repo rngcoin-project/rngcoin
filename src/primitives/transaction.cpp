@@ -55,7 +55,12 @@ std::string CTxOut::ToString() const
 }
 
 CMutableTransaction::CMutableTransaction() : nVersion(CTransaction::CURRENT_VERSION), nLockTime(0) {}
-CMutableTransaction::CMutableTransaction(const CTransaction& tx) : nVersion(tx.nVersion), vin(tx.vin), vout(tx.vout), nLockTime(tx.nLockTime) {}
+CMutableTransaction::CMutableTransaction(const CTransaction& tx) :
+    nVersion(tx.nVersion),
+    vin(tx.vin),
+    vout(tx.vout),
+    strTxComment(tx.strTxComment),
+    nLockTime(tx.nLockTime) {}
 
 uint256 CMutableTransaction::GetHash() const
 {
@@ -76,9 +81,29 @@ uint256 CTransaction::GetWitnessHash() const
 }
 
 /* For backward compatibility, the hash is initialized to 0. TODO: remove the need for this default constructor entirely. */
-CTransaction::CTransaction() : nVersion(CTransaction::CURRENT_VERSION), vin(), vout(), nLockTime(0), hash() {}
-CTransaction::CTransaction(const CMutableTransaction &tx) : nVersion(tx.nVersion), vin(tx.vin), vout(tx.vout), nLockTime(tx.nLockTime), hash(ComputeHash()) {}
-CTransaction::CTransaction(CMutableTransaction &&tx) : nVersion(tx.nVersion), vin(std::move(tx.vin)), vout(std::move(tx.vout)), nLockTime(tx.nLockTime), hash(ComputeHash()) {}
+CTransaction::CTransaction() :
+    nVersion(CTransaction::CURRENT_VERSION),
+    vin(),
+    vout(),
+    nLockTime(0),
+    strTxComment(),
+    hash() {}
+
+CTransaction::CTransaction(const CMutableTransaction &tx) :
+    nVersion(tx.nVersion),
+    vin(tx.vin),
+    vout(tx.vout),
+    nLockTime(tx.nLockTime),
+    strTxComment(tx.strTxComment),
+    hash(ComputeHash()) {}
+
+CTransaction::CTransaction(CMutableTransaction &&tx) :
+    nVersion(tx.nVersion),
+    vin(std::move(tx.vin)),
+    vout(std::move(tx.vout)),
+    nLockTime(tx.nLockTime),
+    strTxComment(tx.strTxComment),
+    hash(ComputeHash()) {}
 
 CAmount CTransaction::GetValueOut() const
 {
@@ -99,12 +124,14 @@ unsigned int CTransaction::GetTotalSize() const
 std::string CTransaction::ToString() const
 {
     std::string str;
-    str += strprintf("CTransaction(hash=%s, ver=%d, vin.size=%u, vout.size=%u, nLockTime=%u)\n",
+    str += strprintf("CTransaction(hash=%s, ver=%d, vin.size=%u, vout.size=%u, nLockTime=%u, strTxComment=%s)\n",
         GetHash().ToString().substr(0,10),
         nVersion,
         vin.size(),
-        vout.size(),
-        nLockTime);
+        vout.size(),        
+        nLockTime,
+        strTxComment.substr(0, 30).c_str());
+
     for (const auto& tx_in : vin)
         str += "    " + tx_in.ToString() + "\n";
     for (const auto& tx_in : vin)
