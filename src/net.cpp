@@ -2543,8 +2543,12 @@ size_t CConnman::GetNodeCount(NumConnections flags)
 
     int nNum = 0;
     for(std::vector<CNode*>::const_iterator it = vNodes.begin(); it != vNodes.end(); ++it)
+    {
         if (flags & ((*it)->fInbound ? CONNECTIONS_IN : CONNECTIONS_OUT))
+        {
             nNum++;
+        }
+    }
 
     return nNum;
 }

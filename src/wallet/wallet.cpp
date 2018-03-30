@@ -2818,7 +2818,6 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend, CWalletT
                 } else {
                     nChangePosInOut = -1;
 
-                    // FLORINTODO
                     // Add OP_RETURN vout containing transaction comment hash
                     // 1000 byte penalty for "dust" output
                     if (txNew.strTxComment.length() > 0)
@@ -2833,7 +2832,7 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend, CWalletT
                         CScript scrout = CScript() << OP_RETURN << opdata;
                         CTxOut txmsgTxOut(0, scrout);
                         txNew.vout.push_back(txmsgTxOut);
-                        ///nBytesPenalty += 1000;
+                        nFeeRet += nChange;
                     }
                 }
 
