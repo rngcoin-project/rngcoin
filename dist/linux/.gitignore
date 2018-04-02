@@ -1,5 +1,6 @@
 *.tar.gz
 
+datadirs
 contrib
 doc
 src

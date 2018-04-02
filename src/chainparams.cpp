@@ -44,7 +44,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
     txNew.vin[0].scriptSig = CScript() << 486604799 << CScriptNum(4) << std::vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
     txNew.vout[0].nValue = genesisReward;
     txNew.vout[0].scriptPubKey = genesisOutputScript;
-    txNew.strTxComment = "Hello World!";
+    txNew.strTxComment = "RNGCoin first tx-comment";
 
     CBlock genesis;
     genesis.nTime    = nTime;
@@ -70,7 +70,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
  */
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-    const char* pszTimestamp = "NY Times 05/Oct/2011 Steve Jobs, Apple’s Visionary, Dies at 56";
+    const char* pszTimestamp = "RNGCoin 2018 April 1";
     const CScript genesisOutputScript = CScript() << ParseHex("040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
@@ -96,18 +96,18 @@ class CMainParams : public CChainParams {
 public:
     CMainParams() {
         strNetworkID = "main";
-        consensus.nSubsidyHalvingInterval = 840000;
+        consensus.nSubsidyHalvingInterval = 2880000;
         consensus.BIP34Height = 0;
-        consensus.BIP34Hash = uint256S("fa09d204a83a768ed5a7c8d441fa62f2043abf420cff1226c7b4329aeb9d51cf");
-        consensus.BIP65Height = 0; // bab3041e8977e0dc3eeff63fe707b92bde1dd449d8efafb248c27c8264cc311a
-        consensus.BIP66Height = 0; // 7aceee012833fa8952f8835d8b1b3ae233cd6ab08fdb27a771d2bd7bdc491894
+        consensus.BIP34Hash = uint256S("4c944e3572b18fa5dfc4c3ddc727a72257f019b789f024bde87ee93a71b4a053");
+        consensus.BIP65Height = 0;
+        consensus.BIP66Height = 0;
         consensus.powLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
-        consensus.nPowTargetTimespan = 3.5 * 24 * 60 * 60; // 3.5 days
-        consensus.nPowTargetSpacing = 2.5 * 60;
+        consensus.nPowTargetTimespan = 30 * 60; // 30 minutes
+        consensus.nPowTargetSpacing = 50; // 50 seconds
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
-        consensus.nRuleChangeActivationThreshold = 6048; // 75% of 8064
-        consensus.nMinerConfirmationWindow = 8064; // nPowTargetTimespan / nPowTargetSpacing * 4
+        consensus.nRuleChangeActivationThreshold = 108; // 75% of 144
+        consensus.nMinerConfirmationWindow = 144; // nPowTargetTimespan / nPowTargetSpacing * 4
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1230767999; // December 31, 2008
@@ -123,7 +123,7 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 1517356801; // January 31st, 2018
 
         // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = uint256S("0x00000000000000000000000000000000000000000000002ebcfe2dd9eff82666");
+        consensus.nMinimumChainWork = uint256S("0x00");
 
         // By default assume that the signatures in ancestors of this block are valid.
         consensus.defaultAssumeValid = uint256S("0x59c9b9d3fec105bdc716d84caa7579503d5b05b73618d0bf2d5fa639f780a011"); //1353397
@@ -137,35 +137,15 @@ public:
         pchMessageStart[1] = 0xc0;
         pchMessageStart[2] = 0xb6;
         pchMessageStart[3] = 0xdb;
-        nDefaultPort = 9333;
+        nDefaultPort = 9342;
         nPruneAfterHeight = 100000;
 
-        genesis = CreateGenesisBlock(1522089505, 2341088, 0x1e0ffff0, 1, 50 * COIN);
+        genesis = CreateGenesisBlock(1522089505, 1023350, 0x1e0ffff0, 1, 1 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x790dbfa90d620a6b3c53d6f9732ad3b35204ff0149292c261354fb0ed30cb805"));
-        assert(genesis.hashMerkleRoot == uint256S("0xe9b3d8400a2fa412ef7b4888c6fb2bff3f007f018f2fde31163c088507a4051a"));
 
-//        for (int i = 0;; ++i)
-//        {
-//            genesis.nNonce = i;
-
-//            if (i % 50000 == 0)
-//            {
-//                std::cout << "Mining... " << i << std::endl;
-//            }
-//            if (_CheckProofOfWork(genesis.GetPoWHash(), genesis.nBits, consensus))
-//            {
-//                std::cout << i << std::endl;
-//                throw std::runtime_error("Exiting program");
-//            }
-//        }
-
-        // Note that of those with the service bits flag, most only support a subset of possible options
-        ///vSeeds.emplace_back("seed-a.rngcoin.loshan.co.uk", true);
-        ///vSeeds.emplace_back("dnsseed.thrasher.io", true);
-        ///vSeeds.emplace_back("dnsseed.rngcointools.com", true);
-        ///vSeeds.emplace_back("dnsseed.rngcoinpool.org", true);
-        ///vSeeds.emplace_back("dnsseed.koin-project.com", false);
+        assert(consensus.hashGenesisBlock == uint256S("4c944e3572b18fa5dfc4c3ddc727a72257f019b789f024bde87ee93a71b4a053"));
+        assert(genesis.hashMerkleRoot == uint256S("120df67a8a0da6051224b7b7c9409356465c1e6cbf47768452d18b7022e61eaf"));
+        assert(consensus.hashGenesisBlock == consensus.BIP34Hash);
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,60);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,5);
@@ -174,7 +154,8 @@ public:
         base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x88, 0xB2, 0x1E};
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x88, 0xAD, 0xE4};
 
-        ///vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_main, pnSeed6_main + ARRAYLEN(pnSeed6_main));
+        vSeeds.clear();
+        vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_main, pnSeed6_main + ARRAYLEN(pnSeed6_main));
 
         fDefaultConsistencyChecks = false;
         fRequireStandard = true;
@@ -182,7 +163,7 @@ public:
 
         checkpointData = (CCheckpointData) {
             {
-                { 0, uint256S("0x790dbfa90d620a6b3c53d6f9732ad3b35204ff0149292c261354fb0ed30cb805") }
+                { 0, uint256S("4c944e3572b18fa5dfc4c3ddc727a72257f019b789f024bde87ee93a71b4a053") }
             }
         };
 
@@ -248,10 +229,6 @@ public:
 
         vFixedSeeds.clear();
         vSeeds.clear();
-        // nodes with support for servicebits filtering should be at the top
-        ///vSeeds.emplace_back("testnet-seed.rngcointools.com", true);
-        ///vSeeds.emplace_back("seed-b.rngcoin.loshan.co.uk", true);
-        ///vSeeds.emplace_back("dnsseed-testnet.thrasher.io", true);
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,111);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,196);

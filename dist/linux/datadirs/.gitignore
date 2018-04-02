@@ -1,9 +1,0 @@
-# Ignore everything
-*
-
-# But not these files...
-!.gitignore
-!start.sh
-!clean.sh
-!rngcoin.main.conf
-!rngcoin.sub.conf
