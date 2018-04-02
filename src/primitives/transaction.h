@@ -13,6 +13,7 @@
 #include "uint256.h"
 
 static const int SERIALIZE_TRANSACTION_NO_WITNESS = 0x40000000;
+static const int32_t NO_TXCOMMENT_TX_VERSION = 2;
 
 /** An outpoint - a combination of a transaction hash and an index n into its vout */
 class COutPoint
@@ -217,9 +218,6 @@ inline void UnserializeTransaction(TxType& tx, Stream& s) {
         s >> tx.vout;
     }
 
-    // Unserialize txComment
-    s >> tx.strTxComment;
-
     if ((flags & 1) && fAllowWitness) {
         /* The witness flag is present, and we support witnesses. */
         flags ^= 1;
@@ -232,6 +230,11 @@ inline void UnserializeTransaction(TxType& tx, Stream& s) {
         throw std::ios_base::failure("Unknown transaction optional data");
     }
     s >> tx.nLockTime;
+
+    if (tx.nVersion > NO_TXCOMMENT_TX_VERSION)
+    {
+        s >> tx.strTxComment;
+    }
 }
 
 template<typename Stream, typename TxType>
@@ -255,7 +258,6 @@ inline void SerializeTransaction(const TxType& tx, Stream& s) {
     }
     s << tx.vin;
     s << tx.vout;
-    s << tx.strTxComment;
 
     if (flags & 1) {
         for (size_t i = 0; i < tx.vin.size(); i++) {
@@ -263,6 +265,11 @@ inline void SerializeTransaction(const TxType& tx, Stream& s) {
         }
     }
     s << tx.nLockTime;
+
+    if (tx.nVersion > NO_TXCOMMENT_TX_VERSION)
+    {
+        s << tx.strTxComment;
+    }
 }
 
 
@@ -273,7 +280,7 @@ class CTransaction
 {
 public:
     // Default transaction version.
-    static const int32_t CURRENT_VERSION=2;
+    static const int32_t CURRENT_VERSION = 3;
 
     static const int32_t MAX_TX_COMMENT_LEN = 528;
 
@@ -281,7 +288,7 @@ public:
     // adapting relay policy by bumping MAX_STANDARD_VERSION, and then later date
     // bumping the default CURRENT_VERSION at which point both CURRENT_VERSION and
     // MAX_STANDARD_VERSION will be equal.
-    static const int32_t MAX_STANDARD_VERSION=2;
+    static const int32_t MAX_STANDARD_VERSION = 3;
 
     // The local variables are made const to prevent unintended modification
     // without updating the cached hash value. However, CTransaction is not

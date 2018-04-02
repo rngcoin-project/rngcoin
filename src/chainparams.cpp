@@ -70,7 +70,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
  */
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-    const char* pszTimestamp = "RNGCoin 2018 April 1";
+    const char* pszTimestamp = "RNGCoin 2018 April 9";
     const CScript genesisOutputScript = CScript() << ParseHex("040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
@@ -96,18 +96,18 @@ class CMainParams : public CChainParams {
 public:
     CMainParams() {
         strNetworkID = "main";
-        consensus.nSubsidyHalvingInterval = 2880000;
-        consensus.BIP34Height = 0;
-        consensus.BIP34Hash = uint256S("4c944e3572b18fa5dfc4c3ddc727a72257f019b789f024bde87ee93a71b4a053");
+        consensus.nSubsidyHalvingInterval = 2100000;
+        consensus.BIP34Height = std::numeric_limits<int>::max();
+        consensus.BIP34Hash = uint256S("0x01");
         consensus.BIP65Height = 0;
         consensus.BIP66Height = 0;
-        consensus.powLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
-        consensus.nPowTargetTimespan = 30 * 60; // 30 minutes
+        consensus.powLimit = uint256S("00ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+        consensus.nPowTargetTimespan = 10 * 50; // 10 blocks
         consensus.nPowTargetSpacing = 50; // 50 seconds
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
-        consensus.nRuleChangeActivationThreshold = 108; // 75% of 144
-        consensus.nMinerConfirmationWindow = 144; // nPowTargetTimespan / nPowTargetSpacing * 4
+        consensus.nMinerConfirmationWindow = consensus.nPowTargetTimespan / consensus.nPowTargetSpacing * 4;
+        consensus.nRuleChangeActivationThreshold = (int) (0.75 * consensus.nMinerConfirmationWindow);
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1230767999; // December 31, 2008
@@ -140,12 +140,29 @@ public:
         nDefaultPort = 9342;
         nPruneAfterHeight = 100000;
 
-        genesis = CreateGenesisBlock(1522089505, 1023350, 0x1e0ffff0, 1, 1 * COIN);
+        genesis = CreateGenesisBlock(1523299417, 587892, 0x1e0ffff0, 1, 1 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
 
-        assert(consensus.hashGenesisBlock == uint256S("4c944e3572b18fa5dfc4c3ddc727a72257f019b789f024bde87ee93a71b4a053"));
-        assert(genesis.hashMerkleRoot == uint256S("120df67a8a0da6051224b7b7c9409356465c1e6cbf47768452d18b7022e61eaf"));
-        assert(consensus.hashGenesisBlock == consensus.BIP34Hash);
+        ///for (genesis.nNonce = 0; ; ++genesis.nNonce)
+        ///{
+        ///    consensus.hashGenesisBlock = genesis.GetPoWHash();
+
+        ///    if (genesis.nNonce % 30000 == 0)
+        ///    {
+        ///        std::cout << genesis.nNonce << std::endl;
+        ///    }
+
+        ///    if (_CheckProofOfWork(consensus.hashGenesisBlock, genesis.nBits, consensus))
+        ///    {
+        ///        std::cout << "Hash: " << genesis.GetHash().ToString() << std::endl;
+        ///        std::cout << "Merkle: " << genesis.hashMerkleRoot.ToString() << std::endl;
+        ///        std::cout << "Nonce: " << genesis.nNonce << std::endl;
+        ///        throw std::runtime_error("Done");
+        ///    }
+        ///}
+
+        assert(consensus.hashGenesisBlock == uint256S("fece999377b46ddfa0986d3fc97a624c72ed7c9eb66050ab6ae007e17bdd322b"));
+        assert(genesis.hashMerkleRoot == uint256S("0b205b2a6b657f763ffb2fd66b2c0b3491e517f05d41c50a56bd041a19ffcba4"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,60);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,5);
@@ -163,7 +180,7 @@ public:
 
         checkpointData = (CCheckpointData) {
             {
-                { 0, uint256S("4c944e3572b18fa5dfc4c3ddc727a72257f019b789f024bde87ee93a71b4a053") }
+                { 0, uint256S("fece999377b46ddfa0986d3fc97a624c72ed7c9eb66050ab6ae007e17bdd322b") }
             }
         };
 
