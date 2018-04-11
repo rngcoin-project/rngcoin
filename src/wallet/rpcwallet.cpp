@@ -31,6 +31,8 @@
 
 #include <univalue.h>
 
+#include "random.h"
+
 static const std::string WALLET_ENDPOINT_BASE = "/wallet/";
 
 CWallet *GetWalletForJSONRPCRequest(const JSONRPCRequest& request)
@@ -171,6 +173,21 @@ UniValue getnewaddress(const JSONRPCRequest& request)
     return CBitcoinAddress(keyID).ToString();
 }
 
+UniValue getrandomnumber(const JSONRPCRequest& request)
+{
+    CWallet * const pwallet = GetWalletForJSONRPCRequest(request);
+
+    if (request.fHelp || request.params.size() > 1)
+        throw std::runtime_error(
+                "Some error. Method getrandomnumber. Returns random number."
+        );
+
+    CPubKey newKey;
+    pwallet->GetNewRandomNumber(newKey);
+    CKeyID keyID = newKey.GetID();
+
+    return keyID.ToString();
+}
 
 CBitcoinAddress GetAccountAddress(CWallet* const pwallet, std::string strAccount, bool bForceNew=false)
 {
@@ -3228,6 +3245,7 @@ static const CRPCCommand commands[] =
     { "wallet",             "walletpassphrasechange",   &walletpassphrasechange,   true,   {"oldpassphrase","newpassphrase"} },
     { "wallet",             "walletpassphrase",         &walletpassphrase,         true,   {"passphrase","timeout"} },
     { "wallet",             "removeprunedfunds",        &removeprunedfunds,        true,   {"txid"} },
+    { "wallet",             "getrandomnumber",          &getrandomnumber,          true,   {"account"} },
 
     { "generating",         "generate",                 &generate,                 true,   {"nblocks","maxtries"} },
 };
