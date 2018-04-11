@@ -2650,9 +2650,12 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend, CWalletT
     CMutableTransaction txNew;
     
     // transaction comment
-    txNew.strTxComment = strTxComment;
-    if (txNew.strTxComment.length() > CTransaction::MAX_TX_COMMENT_LEN)
-        txNew.strTxComment.resize(CTransaction::MAX_TX_COMMENT_LEN);
+    txNew.txComment.Set(strTxComment);
+    if (txNew.txComment.GetCompressed().length() > CTransaction::MAX_TX_COMMENT_LEN)
+    {
+        strFailReason = _("Transaction comment exceeds max size");
+        return false;
+    }
 
     // Discourage fee sniping.
     //
@@ -2820,9 +2823,10 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend, CWalletT
 
                     // Add OP_RETURN vout containing transaction comment hash
                     // 1000 byte penalty for "dust" output
-                    if (txNew.strTxComment.length() > 0)
+                    if (txNew.txComment.Get().length() > 0)
                     {
-                        uint256 msghash = Hash(txNew.strTxComment.begin(), txNew.strTxComment.end());
+                        const auto& strTxComment = txNew.txComment.Get();
+                        uint256 msghash = Hash(strTxComment.begin(), strTxComment.end());
                         std::vector<unsigned char> opdata;
                         opdata.insert(opdata.end(), (unsigned char)'F');
                         opdata.insert(opdata.end(), (unsigned char)'L');

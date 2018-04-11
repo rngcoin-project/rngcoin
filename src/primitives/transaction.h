@@ -11,9 +11,87 @@
 #include "script/script.h"
 #include "serialize.h"
 #include "uint256.h"
+#include "util.h"
 
 static const int SERIALIZE_TRANSACTION_NO_WITNESS = 0x40000000;
 static const int32_t NO_TXCOMMENT_TX_VERSION = 2;
+
+/** Compressed string **/
+class TxComment
+{
+public:
+    TxComment()
+    {
+    }
+
+    TxComment(const TxComment &txComment) :
+        compressed(txComment.GetCompressed()),
+        uncompressed(txComment.Get())
+    {
+    }
+
+    TxComment(const std::string &s)
+    {
+        Set(s);
+    }
+
+    const std::string& Get() const
+    {
+        return uncompressed;
+    }
+
+    const std::string& GetCompressed() const
+    {
+        return compressed;
+    }
+
+    void Set(const std::string &s)
+    {
+        compressed = Compression::compress_string(s);
+        uncompressed = s;
+    }
+
+    void SetCompressed(const std::string &s)
+    {
+        compressed = s;
+        uncompressed = Compression::decompress_string(s);
+    }
+
+    void clear()
+    {
+        compressed.clear();
+    }
+
+    template<class Stream>
+    void serialize(Stream &s, bool compress) const
+    {
+        s << compress;
+        s << (compress ? compressed : uncompressed);
+    }
+
+    template<class Stream>
+    void unserialize(Stream &s)
+    {
+        bool isCompressed;
+        s >> isCompressed;
+
+        std::string txComment;
+        s >> txComment;
+
+        if (isCompressed)
+        {
+            SetCompressed(txComment);
+        }
+        else
+        {
+            Set(txComment);
+        }
+    }
+
+private:
+    std::string compressed;
+    std::string uncompressed;
+};
 
 /** An outpoint - a combination of a transaction hash and an index n into its vout */
 class COutPoint
@@ -202,7 +280,7 @@ inline void UnserializeTransaction(TxType& tx, Stream& s) {
     unsigned char flags = 0;
     tx.vin.clear();
     tx.vout.clear();
-    tx.strTxComment.clear();
+    tx.txComment.clear();
 
     /* Try to read the vin. In case the dummy is there, this will be read as an empty vector. */
     s >> tx.vin;
@@ -233,7 +311,7 @@ inline void UnserializeTransaction(TxType& tx, Stream& s) {
 
     if (tx.nVersion > NO_TXCOMMENT_TX_VERSION)
     {
-        s >> tx.strTxComment;
+        tx.txComment.unserialize(s);
     }
 }
 
@@ -268,7 +346,7 @@ inline void SerializeTransaction(const TxType& tx, Stream& s) {
 
     if (tx.nVersion > NO_TXCOMMENT_TX_VERSION)
     {
-        s << tx.strTxComment;
+        tx.txComment.serialize(s, true);
     }
 }
 
@@ -299,7 +377,7 @@ public:
     const std::vector<CTxIn> vin;
     const std::vector<CTxOut> vout;
     const uint32_t nLockTime;
-    const std::string strTxComment;
+    const TxComment txComment;
 
 private:
     /** Memory only. */
@@ -382,7 +460,7 @@ struct CMutableTransaction
     int32_t nVersion;
     std::vector<CTxIn> vin;
     std::vector<CTxOut> vout;
-    std::string strTxComment;
+    TxComment txComment;
     uint32_t nLockTime;
 
     CMutableTransaction();

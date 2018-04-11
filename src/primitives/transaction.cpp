@@ -59,7 +59,7 @@ CMutableTransaction::CMutableTransaction(const CTransaction& tx) :
     nVersion(tx.nVersion),
     vin(tx.vin),
     vout(tx.vout),
-    strTxComment(tx.strTxComment),
+    txComment(tx.txComment),
     nLockTime(tx.nLockTime) {}
 
 uint256 CMutableTransaction::GetHash() const
@@ -86,7 +86,7 @@ CTransaction::CTransaction() :
     vin(),
     vout(),
     nLockTime(0),
-    strTxComment(),
+    txComment(),
     hash() {}
 
 CTransaction::CTransaction(const CMutableTransaction &tx) :
@@ -94,7 +94,7 @@ CTransaction::CTransaction(const CMutableTransaction &tx) :
     vin(tx.vin),
     vout(tx.vout),
     nLockTime(tx.nLockTime),
-    strTxComment(tx.strTxComment),
+    txComment(tx.txComment),
     hash(ComputeHash()) {}
 
 CTransaction::CTransaction(CMutableTransaction &&tx) :
@@ -102,7 +102,7 @@ CTransaction::CTransaction(CMutableTransaction &&tx) :
     vin(std::move(tx.vin)),
     vout(std::move(tx.vout)),
     nLockTime(tx.nLockTime),
-    strTxComment(tx.strTxComment),
+    txComment(tx.txComment),
     hash(ComputeHash()) {}
 
 CAmount CTransaction::GetValueOut() const
@@ -130,7 +130,7 @@ std::string CTransaction::ToString() const
         vin.size(),
         vout.size(),        
         nLockTime,
-        strTxComment.substr(0, 30).c_str());
+        txComment.Get().substr(0, 30).c_str());
 
     for (const auto& tx_in : vin)
         str += "    " + tx_in.ToString() + "\n";

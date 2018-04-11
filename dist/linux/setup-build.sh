@@ -1,2 +1,2 @@
 #!/bin/sh
-../../configure --with-gui=qt5 --with-debug --disable-tests 
+../../configure --with-gui=qt5 --with-debug --disable-tests --disable-bench
