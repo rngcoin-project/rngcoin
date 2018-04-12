@@ -16,25 +16,6 @@
 #include "arith_uint256.h"
 #include "chainparamsseeds.h"
 
-bool _CheckProofOfWork(uint256 hash, unsigned int nBits, const Consensus::Params& params)
-{
-    bool fNegative;
-    bool fOverflow;
-    arith_uint256 bnTarget;
-
-    bnTarget.SetCompact(nBits, &fNegative, &fOverflow);
-
-    // Check range
-    if (fNegative || bnTarget == 0 || fOverflow || bnTarget > UintToArith256(params.powLimit))
-        return false;
-
-    // Check proof of work matches claimed amount
-    if (UintToArith256(hash) > bnTarget)
-        return false;
-
-    return true;
-}
-
 static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesisOutputScript, uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
     CMutableTransaction txNew;
@@ -141,24 +122,6 @@ public:
 
         genesis = CreateGenesisBlock(1523299417, 587892, 0x1e0ffff0, 1, 1 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-
-        ///for (genesis.nNonce = 0; ; ++genesis.nNonce)
-        ///{
-        ///    consensus.hashGenesisBlock = genesis.GetPoWHash();
-
-        ///    if (genesis.nNonce % 30000 == 0)
-        ///    {
-        ///        std::cout << genesis.nNonce << std::endl;
-        ///    }
-
-        ///    if (_CheckProofOfWork(consensus.hashGenesisBlock, genesis.nBits, consensus))
-        ///    {
-        ///        std::cout << "Hash: " << genesis.GetHash().ToString() << std::endl;
-        ///        std::cout << "Merkle: " << genesis.hashMerkleRoot.ToString() << std::endl;
-        ///        std::cout << "Nonce: " << genesis.nNonce << std::endl;
-        ///        throw std::runtime_error("Done");
-        ///    }
-        ///}
 
         assert(consensus.hashGenesisBlock == uint256S("fece999377b46ddfa0986d3fc97a624c72ed7c9eb66050ab6ae007e17bdd322b"));
         assert(genesis.hashMerkleRoot == uint256S("0b205b2a6b657f763ffb2fd66b2c0b3491e517f05d41c50a56bd041a19ffcba4"));
