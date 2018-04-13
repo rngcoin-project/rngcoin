@@ -2730,10 +2730,11 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend, CWalletT
             size_t change_prototype_size = GetSerializeSize(change_prototype_txout, SER_DISK, 0);
 
             CFeeRate discard_rate = GetDiscardRate(::feeEstimator);
-            nFeeRet = 0;
+
+            nFeeRet = TX_COMMENT_BYTE_PRICE * txNew.txComment.GetCompressed().length();
             bool pick_new_inputs = true;
             CAmount nValueIn = 0;
-            // Start with no fee and loop until there is enough fee
+            // Start with txComment fee and loop until there is enough fee
             while (true)
             {
                 nChangePosInOut = nChangePosRequest;
@@ -2820,24 +2821,6 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend, CWalletT
                     }
                 } else {
                     nChangePosInOut = -1;
-
-                    // Add OP_RETURN vout containing transaction comment hash
-                    // 1000 byte penalty for "dust" output
-                    if (txNew.txComment.Get().length() > 0)
-                    {
-                        const auto& strTxComment = txNew.txComment.Get();
-                        uint256 msghash = Hash(strTxComment.begin(), strTxComment.end());
-                        std::vector<unsigned char> opdata;
-                        opdata.insert(opdata.end(), (unsigned char)'F');
-                        opdata.insert(opdata.end(), (unsigned char)'L');
-                        opdata.insert(opdata.end(), (unsigned char)'O');
-                        opdata.insert(opdata.end(), (unsigned char)'M');
-                        opdata.insert(opdata.end(), msghash.begin(), msghash.end());
-                        CScript scrout = CScript() << OP_RETURN << opdata;
-                        CTxOut txmsgTxOut(0, scrout);
-                        txNew.vout.push_back(txmsgTxOut);
-                        nFeeRet += nChange;
-                    }
                 }
 
                 // Fill vin
