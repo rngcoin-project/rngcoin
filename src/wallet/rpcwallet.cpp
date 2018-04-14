@@ -474,10 +474,7 @@ UniValue sendtoaddress(const JSONRPCRequest& request)
     std::string txcomment;
     if (request.params.size() > 4 && !request.params[4].isNull() && !request.params[4].get_str().empty())
     {
-        unsigned int TxCommentMaxLen = CTransaction::MAX_TX_COMMENT_LEN;
         txcomment = request.params[4].get_str();
-        if (txcomment.length() > TxCommentMaxLen)
-            txcomment.resize(TxCommentMaxLen);
     }
 
     bool fSubtractFeeFromAmount = false;
@@ -926,10 +923,7 @@ UniValue sendfrom(const JSONRPCRequest& request)
     std::string txcomment;
     if (request.params.size() > 6 && !request.params[6].isNull() && !request.params[6].get_str().empty())
     {
-        unsigned int TxCommentMaxLen = CTransaction::MAX_TX_COMMENT_LEN;
         txcomment = request.params[6].get_str();
-        if (txcomment.length() > TxCommentMaxLen)
-            txcomment.resize(TxCommentMaxLen);
     }
 
     EnsureWalletIsUnlocked(pwallet);

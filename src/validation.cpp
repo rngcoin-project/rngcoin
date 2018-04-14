@@ -642,6 +642,12 @@ static bool AcceptToMemoryPoolWorker(const CChainParams& chainparams, CTxMemPool
             return state.DoS(0, false, REJECT_INSUFFICIENTFEE, "min relay fee not met");
         }
 
+        // Check for txComment fees
+        const CAmount minTxCommentFee = ((CAmount) TX_COMMENT_BYTE_PRICE) * tx.txComment.GetCompressed().length();
+        if (nModifiedFees < minTxCommentFee) {
+            return state.DoS(0, false, REJECT_INSUFFICIENTFEE, "txcomment fee not met");
+        }
+
         if (nAbsurdFee && nFees > nAbsurdFee)
             return state.Invalid(false,
                 REJECT_HIGHFEE, "absurdly-high-fee",
