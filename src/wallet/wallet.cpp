@@ -3454,6 +3454,22 @@ bool CWallet::GetKeyFromPool(CPubKey& result, bool internal)
     return true;
 }
 
+bool CWallet::GetNewRandomNumber(CPubKey& result)
+{
+    bool fCompressed = CanSupportFeature(FEATURE_COMPRPUBKEY); // default to compressed public keys if we want 0.6.0 wallets
+
+    CKey secret;
+
+    // use HD key derivation if HD was enabled during wallet creation
+    secret.MakeNewKey(fCompressed);
+
+    CPubKey pubkey = secret.GetPubKey();
+
+    result = pubkey;
+
+    return true;
+}
+
 static int64_t GetOldestKeyTimeInPool(const std::set<int64_t>& setKeyPool, CWalletDB& walletdb) {
     if (setKeyPool.empty()) {
         return GetTime();
