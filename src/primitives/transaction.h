@@ -15,24 +15,24 @@
 
 static const int SERIALIZE_TRANSACTION_NO_WITNESS = 0x40000000;
 static const int32_t NO_TXCOMMENT_TX_VERSION = 2;
+static const int32_t COMPRESSALL_TX_VERSION = 3;
+static const int32_t CURRENT_TX_VERSION = 4;
 
 /** Compressed string **/
-class TxComment
+class CTxComment
 {
 public:
-    TxComment()
+
+    CTxComment(int32_t version = CURRENT_TX_VERSION) :
+        nVersion(version)
     {
     }
 
-    TxComment(const TxComment &txComment) :
+    CTxComment(const CTxComment &txComment) :
         compressed(txComment.GetCompressed()),
-        uncompressed(txComment.Get())
+        uncompressed(txComment.Get()),
+        nVersion(txComment.nVersion)
     {
-    }
-
-    TxComment(const std::string &s)
-    {
-        Set(s);
     }
 
     const std::string& Get() const
@@ -57,20 +57,21 @@ public:
         uncompressed = Compression::decompress_string(s);
     }
 
-    void clear()
+    int GetSerializedLength() const
     {
-        compressed.clear();
+        return ShouldCompress(uncompressed) ? compressed.length() : uncompressed.length();
     }
 
     template<class Stream>
-    void serialize(Stream &s, bool compress) const
+    void Serialize(Stream &s) const
     {
-        s << compress;
-        s << (compress ? compressed : uncompressed);
+        const bool isCompressed = ShouldCompress(uncompressed);
+        s << isCompressed;
+        s << (isCompressed ? compressed : uncompressed);
     }
 
     template<class Stream>
-    void unserialize(Stream &s)
+    void Unserialize(Stream &s)
     {
         bool isCompressed;
         s >> isCompressed;
@@ -91,6 +92,17 @@ public:
 private:
     std::string compressed;
     std::string uncompressed;
+    int32_t nVersion;
+
+    bool ShouldCompress(const std::string &str) const
+    {
+        if (nVersion == COMPRESSALL_TX_VERSION)
+        {
+            return true;
+        }
+
+        return str.length() > 52;
+    }
 };
 
 /** An outpoint - a combination of a transaction hash and an index n into its vout */
@@ -277,10 +289,11 @@ inline void UnserializeTransaction(TxType& tx, Stream& s) {
     const bool fAllowWitness = !(s.GetVersion() & SERIALIZE_TRANSACTION_NO_WITNESS);
 
     s >> tx.nVersion;
+    tx.txComment = CTxComment(tx.nVersion);
+
     unsigned char flags = 0;
     tx.vin.clear();
     tx.vout.clear();
-    tx.txComment.clear();
 
     /* Try to read the vin. In case the dummy is there, this will be read as an empty vector. */
     s >> tx.vin;
@@ -311,7 +324,7 @@ inline void UnserializeTransaction(TxType& tx, Stream& s) {
 
     if (tx.nVersion > NO_TXCOMMENT_TX_VERSION)
     {
-        tx.txComment.unserialize(s);
+        tx.txComment.Unserialize(s);
     }
 }
 
@@ -346,7 +359,7 @@ inline void SerializeTransaction(const TxType& tx, Stream& s) {
 
     if (tx.nVersion > NO_TXCOMMENT_TX_VERSION)
     {
-        tx.txComment.serialize(s, true);
+        tx.txComment.Serialize(s);
     }
 }
 
@@ -358,15 +371,15 @@ class CTransaction
 {
 public:
     // Default transaction version.
-    static const int32_t CURRENT_VERSION = 3;
-
+    static const int32_t CURRENT_VERSION = CURRENT_TX_VERSION;
     static const int32_t MAX_TX_COMMENT_LEN = 528;
 
     // Changing the default transaction version requires a two step process: first
     // adapting relay policy by bumping MAX_STANDARD_VERSION, and then later date
     // bumping the default CURRENT_VERSION at which point both CURRENT_VERSION and
     // MAX_STANDARD_VERSION will be equal.
-    static const int32_t MAX_STANDARD_VERSION = 3;
+    static const int32_t MAX_STANDARD_VERSION = 4;
+
 
     // The local variables are made const to prevent unintended modification
     // without updating the cached hash value. However, CTransaction is not
@@ -377,7 +390,7 @@ public:
     const std::vector<CTxIn> vin;
     const std::vector<CTxOut> vout;
     const uint32_t nLockTime;
-    const TxComment txComment;
+    const CTxComment txComment;
 
 private:
     /** Memory only. */
@@ -460,7 +473,7 @@ struct CMutableTransaction
     int32_t nVersion;
     std::vector<CTxIn> vin;
     std::vector<CTxOut> vout;
-    TxComment txComment;
+    CTxComment txComment;
     uint32_t nLockTime;
 
     CMutableTransaction();
