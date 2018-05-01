@@ -15,23 +15,20 @@
 
 static const int SERIALIZE_TRANSACTION_NO_WITNESS = 0x40000000;
 static const int32_t NO_TXCOMMENT_TX_VERSION = 2;
-static const int32_t COMPRESSALL_TX_VERSION = 3;
-static const int32_t CURRENT_TX_VERSION = 4;
+static const int32_t CURRENT_TX_VERSION = 3;
 
 /** Compressed string **/
 class CTxComment
 {
 public:
 
-    CTxComment(int32_t version = CURRENT_TX_VERSION) :
-        nVersion(version)
+    CTxComment()
     {
     }
 
     CTxComment(const CTxComment &txComment) :
         compressed(txComment.GetCompressed()),
-        uncompressed(txComment.Get()),
-        nVersion(txComment.nVersion)
+        uncompressed(txComment.Get())
     {
     }
 
@@ -92,15 +89,9 @@ public:
 private:
     std::string compressed;
     std::string uncompressed;
-    int32_t nVersion;
 
-    bool ShouldCompress(const std::string &str) const
+    inline bool ShouldCompress(const std::string &str) const
     {
-        if (nVersion == COMPRESSALL_TX_VERSION)
-        {
-            return true;
-        }
-
         return str.length() > 52;
     }
 };
@@ -289,7 +280,7 @@ inline void UnserializeTransaction(TxType& tx, Stream& s) {
     const bool fAllowWitness = !(s.GetVersion() & SERIALIZE_TRANSACTION_NO_WITNESS);
 
     s >> tx.nVersion;
-    tx.txComment = CTxComment(tx.nVersion);
+    tx.txComment = CTxComment();
 
     unsigned char flags = 0;
     tx.vin.clear();
