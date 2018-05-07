@@ -88,6 +88,7 @@ enum class FeeReason {
     FALLBACK,
     REQUIRED,
     MAXTXFEE,
+    TXCOMMENT
 };
 
 std::string StringForFeeReason(FeeReason reason);

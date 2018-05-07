@@ -2558,8 +2558,6 @@ bool CWallet::SignTransaction(CMutableTransaction &tx)
 
 bool CWallet::FundTransaction(CMutableTransaction& tx, CAmount& nFeeRet, int& nChangePosInOut, std::string& strFailReason, bool lockUnspents, const std::set<int>& setSubtractFeeFromOutputs, CCoinControl coinControl)
 {
-    return false;
-    /*
     std::vector<CRecipient> vecSend;
 
     // Turn the txout set into a CRecipient vector
@@ -2577,7 +2575,7 @@ bool CWallet::FundTransaction(CMutableTransaction& tx, CAmount& nFeeRet, int& nC
 
     CReserveKey reservekey(this);
     CWalletTx wtx;
-    if (!CreateTransaction(vecSend, wtx, reservekey, nFeeRet, nChangePosInOut, strFailReason, coinControl, false)) {
+    if (!CreateTransaction(vecSend, wtx, reservekey, nFeeRet, nChangePosInOut, strFailReason, tx.txComment.Get(), coinControl, false)) {
         return false;
     }
 
@@ -2606,7 +2604,6 @@ bool CWallet::FundTransaction(CMutableTransaction& tx, CAmount& nFeeRet, int& nC
             }
         }
     }
-    */
 
     return true;
 }
@@ -3106,7 +3103,8 @@ CAmount CWallet::GetMinimumFee(unsigned int nTxBytes, const CCoinControl& coin_c
 
     if (fee_needed < TX_COMMENT_BYTE_PRICE * txCommentLength)
     {
-        fee_needed += TX_COMMENT_BYTE_PRICE * txCommentLength;
+        fee_needed = TX_COMMENT_BYTE_PRICE * txCommentLength;
+        if (feeCalc) feeCalc->reason = FeeReason::TXCOMMENT;
     }
 
     // prevent user from paying a fee below minRelayTxFee or minTxFee
@@ -3123,9 +3121,6 @@ CAmount CWallet::GetMinimumFee(unsigned int nTxBytes, const CCoinControl& coin_c
 
     return fee_needed;
 }
-
-
-
 
 DBErrors CWallet::LoadWallet(bool& fFirstRunRet)
 {
