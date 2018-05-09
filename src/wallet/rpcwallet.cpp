@@ -179,7 +179,8 @@ UniValue getrandomnumber(const JSONRPCRequest& request)
 
     if (request.fHelp || request.params.size() > 1)
         throw std::runtime_error(
-                "Some error. Method getrandomnumber. Returns random number."
+                "getrandomnumber\n"
+                "\nReturns a random number.\n"
         );
 
     CPubKey newKey;
