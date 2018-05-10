@@ -2575,7 +2575,7 @@ bool CWallet::FundTransaction(CMutableTransaction& tx, CAmount& nFeeRet, int& nC
 
     CReserveKey reservekey(this);
     CWalletTx wtx;
-    if (!CreateTransaction(vecSend, wtx, reservekey, nFeeRet, nChangePosInOut, strFailReason, tx.txComment.Get(), coinControl, false)) {
+    if (!CreateTransaction(vecSend, wtx, reservekey, nFeeRet, nChangePosInOut, strFailReason, tx.txComment.get(), coinControl, false)) {
         return false;
     }
 
@@ -2648,9 +2648,9 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend, CWalletT
     CMutableTransaction txNew;
     
     // transaction comment
-    txNew.txComment.Set(strTxComment);
-    std::cout << txNew.txComment.GetSerializedLength() << std::endl;
-    if (txNew.txComment.GetSerializedLength() > CTransaction::MAX_TX_COMMENT_LEN)
+    txNew.txComment.set(strTxComment);
+    std::cout << txNew.txComment.getSerializedLength() << std::endl;
+    if (txNew.txComment.getSerializedLength() > CTransaction::MAX_TX_COMMENT_LEN)
     {
         strFailReason = _("Transaction comment exceeds max size");
         return false;
@@ -2851,7 +2851,7 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend, CWalletT
                     vin.scriptWitness.SetNull();
                 }
 
-                nFeeNeeded = GetMinimumFee(nBytes, coin_control, ::mempool, ::feeEstimator, &feeCalc, txNew.txComment.GetSerializedLength());
+                nFeeNeeded = GetMinimumFee(nBytes, coin_control, ::mempool, ::feeEstimator, &feeCalc, txNew.txComment.getSerializedLength());
 
                 // If we made it here and we aren't even able to meet the relay fee on the next pass, give up
                 // because we must be at the maximum allowed fee.
@@ -2874,7 +2874,7 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend, CWalletT
                     // change output. Only try this once.
                     if (nChangePosInOut == -1 && nSubtractFeeFromAmount == 0 && pick_new_inputs) {
                         unsigned int tx_size_with_change = nBytes + change_prototype_size + 2; // Add 2 as a buffer in case increasing # of outputs changes compact size
-                        CAmount fee_needed_with_change = GetMinimumFee(tx_size_with_change, coin_control, ::mempool, ::feeEstimator, nullptr, txNew.txComment.GetSerializedLength());
+                        CAmount fee_needed_with_change = GetMinimumFee(tx_size_with_change, coin_control, ::mempool, ::feeEstimator, nullptr, txNew.txComment.getSerializedLength());
                         CAmount minimum_value_for_change = GetDustThreshold(change_prototype_txout, discard_rate);
                         if (nFeeRet >= fee_needed_with_change + minimum_value_for_change) {
                             pick_new_inputs = false;

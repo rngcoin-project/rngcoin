@@ -27,48 +27,53 @@ public:
     }
 
     CTxComment(const CTxComment &txComment) :
-        compressed(txComment.GetCompressed()),
-        uncompressed(txComment.Get())
+        _compressed(txComment.getCompressed()),
+        _uncompressed(txComment.get())
     {
     }
 
-    const std::string& Get() const
+    const std::string& get() const
     {
-        return uncompressed;
+        return _uncompressed;
     }
 
-    const std::string& GetCompressed() const
+    const std::string& getCompressed() const
     {
-        return compressed;
+        return _compressed;
     }
 
-    void Set(const std::string &s)
+    void set(const std::string &s)
     {
-        compressed = Compression::compress_string(s);
-        uncompressed = s;
+        _compressed = Compression::compress_string(s);
+        _uncompressed = s;
     }
 
-    void SetCompressed(const std::string &s)
+    void setCompressed(const std::string &s)
     {
-        compressed = s;
-        uncompressed = Compression::decompress_string(s);
+        _compressed = s;
+        _uncompressed = Compression::decompress_string(s);
     }
 
-    int GetSerializedLength() const
+    int getSerializedLength() const
     {
-        return ShouldCompress(uncompressed) ? compressed.length() : uncompressed.length();
+        return ShouldCompress(_uncompressed) ? _compressed.length() : _uncompressed.length();
+    }
+
+    bool empty() const
+    {
+        return _uncompressed.empty();
     }
 
     template<class Stream>
-    void Serialize(Stream &s) const
+    void serialize(Stream &s) const
     {
-        const bool isCompressed = ShouldCompress(uncompressed);
+        const bool isCompressed = ShouldCompress(_uncompressed);
         s << isCompressed;
-        s << (isCompressed ? compressed : uncompressed);
+        s << (isCompressed ? _compressed : _uncompressed);
     }
 
     template<class Stream>
-    void Unserialize(Stream &s)
+    void unserialize(Stream &s)
     {
         bool isCompressed;
         s >> isCompressed;
@@ -78,17 +83,17 @@ public:
 
         if (isCompressed)
         {
-            SetCompressed(txComment);
+            setCompressed(txComment);
         }
         else
         {
-            Set(txComment);
+            set(txComment);
         }
     }
 
 private:
-    std::string compressed;
-    std::string uncompressed;
+    std::string _compressed;
+    std::string _uncompressed;
 
     inline bool ShouldCompress(const std::string &str) const
     {
@@ -315,7 +320,7 @@ inline void UnserializeTransaction(TxType& tx, Stream& s) {
 
     if (tx.nVersion > NO_TXCOMMENT_TX_VERSION)
     {
-        tx.txComment.Unserialize(s);
+        tx.txComment.unserialize(s);
     }
 }
 
@@ -350,7 +355,7 @@ inline void SerializeTransaction(const TxType& tx, Stream& s) {
 
     if (tx.nVersion > NO_TXCOMMENT_TX_VERSION)
     {
-        tx.txComment.Serialize(s);
+        tx.txComment.serialize(s);
     }
 }
 
@@ -464,8 +469,8 @@ struct CMutableTransaction
     int32_t nVersion;
     std::vector<CTxIn> vin;
     std::vector<CTxOut> vout;
-    CTxComment txComment;
     uint32_t nLockTime;
+    CTxComment txComment;
 
     CMutableTransaction();
     CMutableTransaction(const CTransaction& tx);

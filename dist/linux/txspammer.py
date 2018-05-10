@@ -16,11 +16,11 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('address',
                                  type=str,
-                                 help='Destination address')
+                                 help='Destination address in double quotes')
     parser.add_argument('--amount',
-                                 type=str,
-                                 default=0.1,
-                                 help='Destination address')
+                                 type=float,
+                                 default=0.01,
+                                 help='Amount to send')
     parser.add_argument('--datadir',
                                  type=str,
                                  default='~/.rngcoin',

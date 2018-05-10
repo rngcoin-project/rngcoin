@@ -58,7 +58,7 @@ void TxToJSON(const CTransaction& tx, const uint256 hashBlock, UniValue& entry)
         }
     }
 
-    entry.push_back(Pair("tx-comment", tx.txComment.Get()));
+    entry.push_back(Pair("tx-comment", tx.txComment.get()));
 }
 
 UniValue getrawtransaction(const JSONRPCRequest& request)

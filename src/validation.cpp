@@ -643,7 +643,7 @@ static bool AcceptToMemoryPoolWorker(const CChainParams& chainparams, CTxMemPool
         }
 
         // Check for txComment fees
-        const CAmount minTxCommentFee = ((CAmount) TX_COMMENT_BYTE_PRICE) * tx.txComment.GetSerializedLength();
+        const CAmount minTxCommentFee = ((CAmount) TX_COMMENT_BYTE_PRICE) * tx.txComment.getSerializedLength();
         if (nModifiedFees < minTxCommentFee) {
             return state.DoS(0, false, REJECT_INSUFFICIENTFEE, "txcomment fee not met");
         }

@@ -319,16 +319,30 @@ void SendCoinsDialog::on_sendButton_clicked()
     QString questionString = tr("Are you sure you want to send?");
     questionString.append("<br /><br />%1");
 
+    const auto redSpan = [] (QString content)
+    {
+        return "<span style='color:#aa0000;'>" + content + "</span>";
+    };
+
     if(txFee > 0)
     {
         // append fee string if a fee is required
-        questionString.append("<hr /><span style='color:#aa0000;'>");
-        questionString.append(BitcoinUnits::formatHtmlWithUnit(model->getOptionsModel()->getDisplayUnit(), txFee));
-        questionString.append("</span> ");
-        questionString.append(tr("added as transaction fee"));
+        questionString.append("<hr />");
+        questionString.append(redSpan(BitcoinUnits::formatHtmlWithUnit(model->getOptionsModel()->getDisplayUnit(), txFee)));
+        questionString.append(tr(" added as transaction fee"));
 
         // append transaction size
         questionString.append(" (" + QString::number((double)currentTransaction.getTransactionSize() / 1000) + " kB)");
+    }
+
+    const auto& txComment = currentTransaction.getTransaction()->tx->txComment;
+    if (! txComment.empty())
+    {
+        questionString.append("<br />" + redSpan(QString::number(txComment.getSerializedLength())) + " symbols accounted in fee");
+        if (txComment.get().length() != txComment.getSerializedLength())
+        {
+            questionString.append(" (" + redSpan(QString::number(txComment.get().length())) + " before compression)");
+        }
     }
 
     // add total amount in all subdivision units

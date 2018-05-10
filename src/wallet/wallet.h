@@ -261,7 +261,7 @@ public:
     const uint256& GetHash() const { return tx->GetHash(); }
     bool IsCoinBase() const { return tx->IsCoinBase(); }
 
-    const std::string& GetTxComment() const { return tx->txComment.Get(); }
+    const std::string& GetTxComment() const { return tx->txComment.get(); }
 };
 
 /** 
