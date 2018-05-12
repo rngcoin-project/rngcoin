@@ -319,16 +319,30 @@ void SendCoinsDialog::on_sendButton_clicked()
     QString questionString = tr("Are you sure you want to send?");
     questionString.append("<br /><br />%1");
 
+    const auto redSpan = [] (QString content)
+    {
+        return "<span style='color:#aa0000;'>" + content + "</span>";
+    };
+
     if(txFee > 0)
     {
         // append fee string if a fee is required
-        questionString.append("<hr /><span style='color:#aa0000;'>");
-        questionString.append(BitcoinUnits::formatHtmlWithUnit(model->getOptionsModel()->getDisplayUnit(), txFee));
-        questionString.append("</span> ");
-        questionString.append(tr("added as transaction fee"));
+        questionString.append("<hr />");
+        questionString.append(redSpan(BitcoinUnits::formatHtmlWithUnit(model->getOptionsModel()->getDisplayUnit(), txFee)));
+        questionString.append(tr(" added as transaction fee"));
 
         // append transaction size
         questionString.append(" (" + QString::number((double)currentTransaction.getTransactionSize() / 1000) + " kB)");
+    }
+
+    const auto& txComment = currentTransaction.getTransaction()->tx->txComment;
+    if (! txComment.empty())
+    {
+        questionString.append("<br />" + redSpan(QString::number(txComment.getSerializedLength())) + " symbols accounted in fee");
+        if (txComment.get().length() != txComment.getSerializedLength())
+        {
+            questionString.append(" (" + redSpan(QString::number(txComment.get().length())) + " before compression)");
+        }
     }
 
     // add total amount in all subdivision units
@@ -667,7 +681,7 @@ void SendCoinsDialog::updateSmartFeeLabel()
     updateCoinControlState(coin_control);
     coin_control.m_feerate.reset(); // Explicitly use only fee estimation rate for smart fee labels
     FeeCalculation feeCalc;
-    CFeeRate feeRate = CFeeRate(CWallet::GetMinimumFee(1000, coin_control, ::mempool, ::feeEstimator, &feeCalc));
+    CFeeRate feeRate = CFeeRate(CWallet::GetMinimumFee(1000, coin_control, ::mempool, ::feeEstimator, &feeCalc, 0));
 
     ui->labelSmartFee->setText(BitcoinUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), feeRate.GetFeePerK()) + "/kB");
 

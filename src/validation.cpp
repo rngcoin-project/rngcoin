@@ -642,6 +642,12 @@ static bool AcceptToMemoryPoolWorker(const CChainParams& chainparams, CTxMemPool
             return state.DoS(0, false, REJECT_INSUFFICIENTFEE, "min relay fee not met");
         }
 
+        // Check for txComment fees
+        const CAmount minTxCommentFee = ((CAmount) TX_COMMENT_BYTE_PRICE) * tx.txComment.getSerializedLength();
+        if (nModifiedFees < minTxCommentFee) {
+            return state.DoS(0, false, REJECT_INSUFFICIENTFEE, "txcomment fee not met");
+        }
+
         if (nAbsurdFee && nFees > nAbsurdFee)
             return state.Invalid(false,
                 REJECT_HIGHFEE, "absurdly-high-fee",
@@ -1040,13 +1046,19 @@ bool ReadBlockFromDisk(CBlock& block, const CBlockIndex* pindex, const Consensus
 
 CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
 {
+    // premine
+    if (nHeight == 1)
+    {
+        return 84 * 1000 * 1000 * COIN;
+    }
+
     int halvings = nHeight / consensusParams.nSubsidyHalvingInterval;
     // Force block reward to zero when right shift is undefined.
     if (halvings >= 64)
         return 0;
 
-    CAmount nSubsidy = 50 * COIN;
-    // Subsidy is cut in half every 210,000 blocks which will occur approximately every 4 years.
+    CAmount nSubsidy = 180 * COIN;
+    // Subsidy is cut in half every 2100000 blocks
     nSubsidy >>= halvings;
     return nSubsidy;
 }

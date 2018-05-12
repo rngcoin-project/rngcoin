@@ -1,0 +1,6 @@
+version: '3'
+services:
+  rngcoin:
+    build: .
+    ports:
+      - "9342:9342"

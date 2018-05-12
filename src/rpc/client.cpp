@@ -12,6 +12,7 @@
 
 #include <univalue.h>
 
+
 class CRPCConvertParam
 {
 public:
@@ -36,9 +37,9 @@ static const CRPCConvertParam vRPCConvertParams[] =
     { "getnetworkhashps", 0, "nblocks" },
     { "getnetworkhashps", 1, "height" },
     { "sendtoaddress", 1, "amount" },
-    { "sendtoaddress", 4, "subtractfeefromamount" },
-    { "sendtoaddress", 5 , "replaceable" },
-    { "sendtoaddress", 6 , "conf_target" },
+    { "sendtoaddress", 5, "subtractfeefromamount" },
+    { "sendtoaddress", 6 , "replaceable" },
+    { "sendtoaddress", 7 , "conf_target" },
     { "settxfee", 0, "amount" },
     { "getreceivedbyaddress", 1, "minconf" },
     { "getreceivedbyaccount", 1, "minconf" },
@@ -71,9 +72,9 @@ static const CRPCConvertParam vRPCConvertParams[] =
     { "listsinceblock", 3, "include_removed" },
     { "sendmany", 1, "amounts" },
     { "sendmany", 2, "minconf" },
-    { "sendmany", 4, "subtractfeefrom" },
-    { "sendmany", 5 , "replaceable" },
-    { "sendmany", 6 , "conf_target" },
+    { "sendmany", 5, "subtractfeefrom" },
+    { "sendmany", 6 , "replaceable" },
+    { "sendmany", 7 , "conf_target" },
     { "addmultisigaddress", 0, "nrequired" },
     { "addmultisigaddress", 1, "keys" },
     { "createmultisig", 0, "nrequired" },

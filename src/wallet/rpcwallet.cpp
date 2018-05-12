@@ -31,6 +31,8 @@
 
 #include <univalue.h>
 
+#include "random.h"
+
 static const std::string WALLET_ENDPOINT_BASE = "/wallet/";
 
 CWallet *GetWalletForJSONRPCRequest(const JSONRPCRequest& request)
@@ -171,6 +173,22 @@ UniValue getnewaddress(const JSONRPCRequest& request)
     return CBitcoinAddress(keyID).ToString();
 }
 
+UniValue getrandomnumber(const JSONRPCRequest& request)
+{
+    CWallet * const pwallet = GetWalletForJSONRPCRequest(request);
+
+    if (request.fHelp || request.params.size() > 1)
+        throw std::runtime_error(
+                "getrandomnumber\n"
+                "\nReturns a random number.\n"
+        );
+
+    CPubKey newKey;
+    pwallet->GetNewRandomNumber(newKey);
+    CKeyID keyID = newKey.GetID();
+
+    return keyID.ToString();
+}
 
 CBitcoinAddress GetAccountAddress(CWallet* const pwallet, std::string strAccount, bool bForceNew=false)
 {
@@ -423,7 +441,7 @@ UniValue sendtoaddress(const JSONRPCRequest& request)
 
     if (request.fHelp || request.params.size() < 2 || request.params.size() > 8)
         throw std::runtime_error(
-            "sendtoaddress \"address\" amount ( \"comment\" \"comment_to\" \"tx-comment\" subtractfeefromamount replaceable conf_target \"estimate_mode\")\n"
+            "sendtoaddress \"address\" amount ( \"comment\" \"comment_to\" \"tx_comment\" subtractfeefromamount replaceable conf_target \"estimate_mode\")\n"
             "\nSend an amount to a given address.\n"
             + HelpRequiringPassphrase(pwallet) +
             "\nArguments:\n"
@@ -434,7 +452,7 @@ UniValue sendtoaddress(const JSONRPCRequest& request)
             "4. \"comment_to\"         (string, optional) A comment to store the name of the person or organization \n"
             "                             to which you're sending the transaction. This is not part of the \n"
             "                             transaction, just kept in your wallet.\n"
-            "5. \"tx-comment\"  (string, optional) A transaction comment. This comment is stored in the blockchain and is public.\n"
+            "5. \"tx_comment\"  (string, optional) A transaction comment. This comment is stored in the blockchain and is public.\n"
             "6. subtractfeefromamount  (boolean, optional, default=false) The fee will be deducted from the amount being sent.\n"
             "                             The recipient will receive less rngcoins than you enter in the amount field.\n"
             "7. replaceable            (boolean, optional) Allow this transaction to be replaced by a transaction with higher fees via BIP 125\n"
@@ -474,10 +492,7 @@ UniValue sendtoaddress(const JSONRPCRequest& request)
     std::string txcomment;
     if (request.params.size() > 4 && !request.params[4].isNull() && !request.params[4].get_str().empty())
     {
-        unsigned int TxCommentMaxLen = CTransaction::MAX_TX_COMMENT_LEN;
         txcomment = request.params[4].get_str();
-        if (txcomment.length() > TxCommentMaxLen)
-            txcomment.resize(TxCommentMaxLen);
     }
 
     bool fSubtractFeeFromAmount = false;
@@ -875,7 +890,7 @@ UniValue sendfrom(const JSONRPCRequest& request)
 
     if (request.fHelp || request.params.size() < 3 || request.params.size() > 6)
         throw std::runtime_error(
-            "sendfrom \"fromaccount\" \"toaddress\" amount ( minconf \"comment\" \"comment_to\" \"tx-comment\" )\n"
+            "sendfrom \"fromaccount\" \"toaddress\" amount ( minconf \"comment\" \"comment_to\" \"tx_comment\" )\n"
             "\nDEPRECATED (use sendtoaddress). Sent an amount from an account to a rngcoin address."
             + HelpRequiringPassphrase(pwallet) + "\n"
             "\nArguments:\n"
@@ -891,7 +906,7 @@ UniValue sendfrom(const JSONRPCRequest& request)
             "6. \"comment_to\"        (string, optional) An optional comment to store the name of the person or organization \n"
             "                                     to which you're sending the transaction. This is not part of the transaction, \n"
             "                                     it is just kept in your wallet.\n"
-            "7. \"tx-comment\"  (string, optional) A transaction comment. This comment is stored in the blockchain and is public.\n"
+            "7. \"tx_comment\"  (string, optional) A transaction comment. This comment is stored in the blockchain and is public.\n"
             "\nResult:\n"
             "\"txid\"                 (string) The transaction id.\n"
             "\nExamples:\n"
@@ -926,10 +941,7 @@ UniValue sendfrom(const JSONRPCRequest& request)
     std::string txcomment;
     if (request.params.size() > 6 && !request.params[6].isNull() && !request.params[6].get_str().empty())
     {
-        unsigned int TxCommentMaxLen = CTransaction::MAX_TX_COMMENT_LEN;
         txcomment = request.params[6].get_str();
-        if (txcomment.length() > TxCommentMaxLen)
-            txcomment.resize(TxCommentMaxLen);
     }
 
     EnsureWalletIsUnlocked(pwallet);
@@ -955,7 +967,7 @@ UniValue sendmany(const JSONRPCRequest& request)
 
     if (request.fHelp || request.params.size() < 2 || request.params.size() > 8)
         throw std::runtime_error(
-            "sendmany \"fromaccount\" {\"address\":amount,...} ( minconf \"comment\" \"tx-comment\" [\"address\",...] replaceable conf_target \"estimate_mode\")\n"
+            "sendmany \"fromaccount\" {\"address\":amount,...} ( minconf \"comment\" \"tx_comment\" [\"address\",...] replaceable conf_target \"estimate_mode\")\n"
             "\nSend multiple times. Amounts are double-precision floating point numbers."
             + HelpRequiringPassphrase(pwallet) + "\n"
             "\nArguments:\n"
@@ -967,7 +979,7 @@ UniValue sendmany(const JSONRPCRequest& request)
             "    }\n"
             "3. minconf                 (numeric, optional, default=1) Only use the balance confirmed at least this many times.\n"
             "4. \"comment\"             (string, optional) A comment\n"
-            "5. \"tx-comment\"  (string, optional) A transaction comment. This comment is stored in the blockchain and is public.\n"
+            "5. \"tx_comment\"  (string, optional) A transaction comment. This comment is stored in the blockchain and is public.\n"
             "6. subtractfeefrom         (array, optional) A json array with addresses.\n"
             "                           The fee will be equally deducted from the amount of each selected address.\n"
             "                           Those recipients will receive less rngcoins than you enter in their corresponding amount field.\n"
@@ -3228,6 +3240,7 @@ static const CRPCCommand commands[] =
     { "wallet",             "walletpassphrasechange",   &walletpassphrasechange,   true,   {"oldpassphrase","newpassphrase"} },
     { "wallet",             "walletpassphrase",         &walletpassphrase,         true,   {"passphrase","timeout"} },
     { "wallet",             "removeprunedfunds",        &removeprunedfunds,        true,   {"txid"} },
+    { "wallet",             "getrandomnumber",          &getrandomnumber,          true,   {"account"} },
 
     { "generating",         "generate",                 &generate,                 true,   {"nblocks","maxtries"} },
 };

@@ -32,6 +32,7 @@
 #include "utilmoneystr.h"
 
 #include <assert.h>
+#include <iostream>
 
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/thread.hpp>
@@ -2557,8 +2558,6 @@ bool CWallet::SignTransaction(CMutableTransaction &tx)
 
 bool CWallet::FundTransaction(CMutableTransaction& tx, CAmount& nFeeRet, int& nChangePosInOut, std::string& strFailReason, bool lockUnspents, const std::set<int>& setSubtractFeeFromOutputs, CCoinControl coinControl)
 {
-    return false;
-    /*
     std::vector<CRecipient> vecSend;
 
     // Turn the txout set into a CRecipient vector
@@ -2576,7 +2575,7 @@ bool CWallet::FundTransaction(CMutableTransaction& tx, CAmount& nFeeRet, int& nC
 
     CReserveKey reservekey(this);
     CWalletTx wtx;
-    if (!CreateTransaction(vecSend, wtx, reservekey, nFeeRet, nChangePosInOut, strFailReason, coinControl, false)) {
+    if (!CreateTransaction(vecSend, wtx, reservekey, nFeeRet, nChangePosInOut, strFailReason, tx.txComment.get(), coinControl, false)) {
         return false;
     }
 
@@ -2605,7 +2604,6 @@ bool CWallet::FundTransaction(CMutableTransaction& tx, CAmount& nFeeRet, int& nC
             }
         }
     }
-    */
 
     return true;
 }
@@ -2650,9 +2648,13 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend, CWalletT
     CMutableTransaction txNew;
     
     // transaction comment
-    txNew.strTxComment = strTxComment;
-    if (txNew.strTxComment.length() > CTransaction::MAX_TX_COMMENT_LEN)
-        txNew.strTxComment.resize(CTransaction::MAX_TX_COMMENT_LEN);
+    txNew.txComment.set(strTxComment);
+    std::cout << txNew.txComment.getSerializedLength() << std::endl;
+    if (txNew.txComment.getSerializedLength() > CTransaction::MAX_TX_COMMENT_LEN)
+    {
+        strFailReason = _("Transaction comment exceeds max size");
+        return false;
+    }
 
     // Discourage fee sniping.
     //
@@ -2727,10 +2729,11 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend, CWalletT
             size_t change_prototype_size = GetSerializeSize(change_prototype_txout, SER_DISK, 0);
 
             CFeeRate discard_rate = GetDiscardRate(::feeEstimator);
+
             nFeeRet = 0;
             bool pick_new_inputs = true;
             CAmount nValueIn = 0;
-            // Start with no fee and loop until there is enough fee
+            // Start with txComment fee and loop until there is enough fee
             while (true)
             {
                 nChangePosInOut = nChangePosRequest;
@@ -2865,7 +2868,7 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend, CWalletT
                     vin.scriptWitness.SetNull();
                 }
 
-                nFeeNeeded = GetMinimumFee(nBytes, coin_control, ::mempool, ::feeEstimator, &feeCalc);
+                nFeeNeeded = GetMinimumFee(nBytes, coin_control, ::mempool, ::feeEstimator, &feeCalc, txNew.txComment.getSerializedLength());
 
                 // If we made it here and we aren't even able to meet the relay fee on the next pass, give up
                 // because we must be at the maximum allowed fee.
@@ -2888,7 +2891,7 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend, CWalletT
                     // change output. Only try this once.
                     if (nChangePosInOut == -1 && nSubtractFeeFromAmount == 0 && pick_new_inputs) {
                         unsigned int tx_size_with_change = nBytes + change_prototype_size + 2; // Add 2 as a buffer in case increasing # of outputs changes compact size
-                        CAmount fee_needed_with_change = GetMinimumFee(tx_size_with_change, coin_control, ::mempool, ::feeEstimator, nullptr);
+                        CAmount fee_needed_with_change = GetMinimumFee(tx_size_with_change, coin_control, ::mempool, ::feeEstimator, nullptr, txNew.txComment.getSerializedLength());
                         CAmount minimum_value_for_change = GetDustThreshold(change_prototype_txout, discard_rate);
                         if (nFeeRet >= fee_needed_with_change + minimum_value_for_change) {
                             pick_new_inputs = false;
@@ -3072,7 +3075,7 @@ CAmount CWallet::GetRequiredFee(unsigned int nTxBytes)
     return std::max(minTxFee.GetFee(nTxBytes), ::minRelayTxFee.GetFee(nTxBytes));
 }
 
-CAmount CWallet::GetMinimumFee(unsigned int nTxBytes, const CCoinControl& coin_control, const CTxMemPool& pool, const CBlockPolicyEstimator& estimator, FeeCalculation *feeCalc)
+CAmount CWallet::GetMinimumFee(unsigned int nTxBytes, const CCoinControl& coin_control, const CTxMemPool& pool, const CBlockPolicyEstimator& estimator, FeeCalculation *feeCalc, int txCommentLength)
 {
     /* User control of how to calculate fee uses the following parameter precedence:
        1. coin_control.m_feerate
@@ -3115,6 +3118,12 @@ CAmount CWallet::GetMinimumFee(unsigned int nTxBytes, const CCoinControl& coin_c
         }
     }
 
+    if (fee_needed < TX_COMMENT_BYTE_PRICE * txCommentLength)
+    {
+        fee_needed = TX_COMMENT_BYTE_PRICE * txCommentLength;
+        if (feeCalc) feeCalc->reason = FeeReason::TXCOMMENT;
+    }
+
     // prevent user from paying a fee below minRelayTxFee or minTxFee
     CAmount required_fee = GetRequiredFee(nTxBytes);
     if (required_fee > fee_needed) {
@@ -3126,11 +3135,9 @@ CAmount CWallet::GetMinimumFee(unsigned int nTxBytes, const CCoinControl& coin_c
         fee_needed = maxTxFee;
         if (feeCalc) feeCalc->reason = FeeReason::MAXTXFEE;
     }
+
     return fee_needed;
 }
-
-
-
 
 DBErrors CWallet::LoadWallet(bool& fFirstRunRet)
 {
@@ -3464,6 +3471,22 @@ bool CWallet::GetKeyFromPool(CPubKey& result, bool internal)
         KeepKey(nIndex);
         result = keypool.vchPubKey;
     }
+    return true;
+}
+
+bool CWallet::GetNewRandomNumber(CPubKey& result)
+{
+    bool fCompressed = CanSupportFeature(FEATURE_COMPRPUBKEY); // default to compressed public keys if we want 0.6.0 wallets
+
+    CKey secret;
+
+    // use HD key derivation if HD was enabled during wallet creation
+    secret.MakeNewKey(fCompressed);
+
+    CPubKey pubkey = secret.GetPubKey();
+
+    result = pubkey;
+
     return true;
 }
 
