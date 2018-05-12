@@ -6,14 +6,27 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>596</width>
-    <height>342</height>
+    <width>1022</width>
+    <height>634</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">#OverviewPage {
+	background-color:       rgb(246, 246, 247); 
+	/*background-image:     url(:/icons/res/icons/bkg_1.png);*/
+	background-repeat:    false;
+	background-position: right bottom;
+}
+
+</string>
+  </property>
   <layout class="QVBoxLayout" name="topLayout">
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
    <item>
     <widget class="QLabel" name="labelAlerts">
      <property name="visible">
@@ -40,7 +53,7 @@
        <item>
         <widget class="QFrame" name="frame">
          <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
+          <enum>QFrame::NoFrame</enum>
          </property>
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
@@ -48,19 +61,6 @@
          <layout class="QVBoxLayout" name="verticalLayout_4">
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_4">
-            <item>
-             <widget class="QLabel" name="label_5">
-              <property name="font">
-               <font>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string>Balances</string>
-              </property>
-             </widget>
-            </item>
             <item>
              <widget class="QPushButton" name="labelWalletStatus">
               <property name="enabled">
@@ -95,6 +95,28 @@
              </widget>
             </item>
             <item>
+             <widget class="QLabel" name="label_5">
+              <property name="font">
+               <font>
+                <family>Montserrat</family>
+                <pointsize>18</pointsize>
+                <weight>62</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font-size: 18pt;
+font-weight: 500; 
+font-family: &quot;Montserrat&quot;;
+color: rgb(50, 60, 60);
+</string>
+              </property>
+              <property name="text">
+               <string>Balances</string>
+              </property>
+             </widget>
+            </item>
+            <item>
              <spacer name="horizontalSpacer_3">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
@@ -110,23 +132,63 @@
            </layout>
           </item>
           <item>
-           <layout class="QGridLayout" name="gridLayout">
-            <property name="spacing">
-             <number>12</number>
+           <spacer name="verticalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
             </property>
-            <item row="2" column="2">
-             <widget class="QLabel" name="labelWatchPending">
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>15</width>
+              <height>30</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <layout class="QGridLayout" name="gridLayout">
+            <property name="horizontalSpacing">
+             <number>14</number>
+            </property>
+            <property name="verticalSpacing">
+             <number>18</number>
+            </property>
+            <item row="2" column="3">
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item row="3" column="2">
+             <widget class="QLabel" name="labelWatchImmature">
               <property name="font">
                <font>
-                <weight>75</weight>
-                <bold>true</bold>
+                <family>Montserrat SemiBold</family>
+                <pointsize>12</pointsize>
+                <weight>7</weight>
+                <italic>false</italic>
+                <bold>false</bold>
                </font>
               </property>
               <property name="cursor">
                <cursorShape>IBeamCursor</cursorShape>
               </property>
               <property name="toolTip">
-               <string>Unconfirmed transactions to watch-only addresses</string>
+               <string>Mined balance in watch-only addresses that has not yet matured</string>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(52, 52, 52);
+font: 63 12pt &quot;Montserrat SemiBold&quot;;
+</string>
               </property>
               <property name="text">
                <string notr="true">0.000 000 00 RNG</string>
@@ -143,8 +205,11 @@
              <widget class="QLabel" name="labelUnconfirmed">
               <property name="font">
                <font>
-                <weight>75</weight>
-                <bold>true</bold>
+                <family>Montserrat SemiBold</family>
+                <pointsize>12</pointsize>
+                <weight>7</weight>
+                <italic>false</italic>
+                <bold>false</bold>
                </font>
               </property>
               <property name="cursor">
@@ -153,6 +218,11 @@
               <property name="toolTip">
                <string>Total of transactions that have yet to be confirmed, and do not yet count toward the spendable balance</string>
               </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(52, 52, 52);
+font: 63 12pt &quot;Montserrat SemiBold&quot;;
+</string>
+              </property>
               <property name="text">
                <string notr="true">0.000 000 00 RNG</string>
               </property>
@@ -164,19 +234,27 @@
               </property>
              </widget>
             </item>
-            <item row="3" column="2">
-             <widget class="QLabel" name="labelWatchImmature">
+            <item row="2" column="2">
+             <widget class="QLabel" name="labelWatchPending">
               <property name="font">
                <font>
-                <weight>75</weight>
-                <bold>true</bold>
+                <family>Montserrat SemiBold</family>
+                <pointsize>12</pointsize>
+                <weight>7</weight>
+                <italic>false</italic>
+                <bold>false</bold>
                </font>
               </property>
               <property name="cursor">
                <cursorShape>IBeamCursor</cursorShape>
               </property>
               <property name="toolTip">
-               <string>Mined balance in watch-only addresses that has not yet matured</string>
+               <string>Unconfirmed transactions to watch-only addresses</string>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(52, 52, 52);
+font: 63 12pt &quot;Montserrat SemiBold&quot;;
+</string>
               </property>
               <property name="text">
                <string notr="true">0.000 000 00 RNG</string>
@@ -186,13 +264,6 @@
               </property>
               <property name="textInteractionFlags">
                <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="0" colspan="2">
-             <widget class="Line" name="line">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
               </property>
              </widget>
             </item>
@@ -217,53 +288,19 @@
             </item>
             <item row="5" column="0">
              <widget class="QLabel" name="labelTotalText">
+              <property name="styleSheet">
+               <string notr="true">color: rgb(52, 52, 52);
+font: 9pt &quot;Montserrat&quot;;</string>
+              </property>
               <property name="text">
                <string>Total:</string>
               </property>
              </widget>
             </item>
-            <item row="3" column="1">
-             <widget class="QLabel" name="labelImmature">
-              <property name="font">
-               <font>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="cursor">
-               <cursorShape>IBeamCursor</cursorShape>
-              </property>
-              <property name="toolTip">
-               <string>Mined balance that has not yet matured</string>
-              </property>
-              <property name="text">
-               <string notr="true">0.000 000 00 RNG</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="textInteractionFlags">
-               <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="3">
-             <spacer name="horizontalSpacer_2">
+            <item row="4" column="0" colspan="2">
+             <widget class="Line" name="line">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item row="3" column="0">
-             <widget class="QLabel" name="labelImmatureText">
-              <property name="text">
-               <string>Immature:</string>
               </property>
              </widget>
             </item>
@@ -271,8 +308,11 @@
              <widget class="QLabel" name="labelTotal">
               <property name="font">
                <font>
-                <weight>75</weight>
-                <bold>true</bold>
+                <family>Montserrat SemiBold</family>
+                <pointsize>12</pointsize>
+                <weight>7</weight>
+                <italic>false</italic>
+                <bold>false</bold>
                </font>
               </property>
               <property name="cursor">
@@ -281,6 +321,11 @@
               <property name="toolTip">
                <string>Your current total balance</string>
               </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(52, 52, 52);
+font: 63 12pt &quot;Montserrat SemiBold&quot;;
+</string>
+              </property>
               <property name="text">
                <string notr="true">0.000 000 00 RNG</string>
               </property>
@@ -292,19 +337,38 @@
               </property>
              </widget>
             </item>
-            <item row="5" column="2">
-             <widget class="QLabel" name="labelWatchTotal">
+            <item row="3" column="0">
+             <widget class="QLabel" name="labelImmatureText">
+              <property name="styleSheet">
+               <string notr="true">color: rgb(52, 52, 52);
+font: 9pt &quot;Montserrat&quot;;</string>
+              </property>
+              <property name="text">
+               <string>Immature:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="1">
+             <widget class="QLabel" name="labelImmature">
               <property name="font">
                <font>
-                <weight>75</weight>
-                <bold>true</bold>
+                <family>Montserrat SemiBold</family>
+                <pointsize>12</pointsize>
+                <weight>7</weight>
+                <italic>false</italic>
+                <bold>false</bold>
                </font>
               </property>
               <property name="cursor">
                <cursorShape>IBeamCursor</cursorShape>
               </property>
               <property name="toolTip">
-               <string>Current total balance in watch-only addresses</string>
+               <string>Mined balance that has not yet matured</string>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(52, 52, 52);
+font: 63 12pt &quot;Montserrat SemiBold&quot;;
+</string>
               </property>
               <property name="text">
                <string notr="true">0.000 000 00 RNG</string>
@@ -319,6 +383,10 @@
             </item>
             <item row="0" column="2">
              <widget class="QLabel" name="labelWatchonly">
+              <property name="styleSheet">
+               <string notr="true">color: rgb(52, 52, 52);
+font: 10pt &quot;Montserrat&quot;;</string>
+              </property>
               <property name="text">
                <string>Watch-only:</string>
               </property>
@@ -327,10 +395,76 @@
               </property>
              </widget>
             </item>
+            <item row="5" column="2">
+             <widget class="QLabel" name="labelWatchTotal">
+              <property name="font">
+               <font>
+                <family>Montserrat SemiBold</family>
+                <pointsize>12</pointsize>
+                <weight>7</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="cursor">
+               <cursorShape>IBeamCursor</cursorShape>
+              </property>
+              <property name="toolTip">
+               <string>Current total balance in watch-only addresses</string>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(52, 52, 52);
+font: 63 12pt &quot;Montserrat SemiBold&quot;;
+</string>
+              </property>
+              <property name="text">
+               <string notr="true">0.000 000 00 RNG</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="textInteractionFlags">
+               <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+              </property>
+             </widget>
+            </item>
             <item row="1" column="0">
              <widget class="QLabel" name="labelBalanceText">
+              <property name="font">
+               <font>
+                <family>Montserrat</family>
+                <pointsize>9</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(52, 52, 52);
+font: 9pt &quot;Montserrat&quot;;</string>
+              </property>
               <property name="text">
                <string>Available:</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="0">
+             <widget class="QLabel" name="labelPendingText">
+              <property name="font">
+               <font>
+                <family>Montserrat</family>
+                <pointsize>9</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(52, 52, 52);
+font: 9pt &quot;Montserrat&quot;;</string>
+              </property>
+              <property name="text">
+               <string>Pending:</string>
               </property>
              </widget>
             </item>
@@ -338,8 +472,11 @@
              <widget class="QLabel" name="labelBalance">
               <property name="font">
                <font>
-                <weight>75</weight>
-                <bold>true</bold>
+                <family>Montserrat SemiBold</family>
+                <pointsize>12</pointsize>
+                <weight>12</weight>
+                <italic>false</italic>
+                <bold>false</bold>
                </font>
               </property>
               <property name="cursor">
@@ -347,6 +484,11 @@
               </property>
               <property name="toolTip">
                <string>Your current spendable balance</string>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(52, 52, 52);
+font: 100 12pt &quot;Montserrat SemiBold&quot;;
+</string>
               </property>
               <property name="text">
                <string notr="true">0.000 000 00 RNG</string>
@@ -363,8 +505,11 @@
              <widget class="QLabel" name="labelWatchAvailable">
               <property name="font">
                <font>
-                <weight>75</weight>
-                <bold>true</bold>
+                <family>Montserrat SemiBold</family>
+                <pointsize>12</pointsize>
+                <weight>7</weight>
+                <italic>false</italic>
+                <bold>false</bold>
                </font>
               </property>
               <property name="cursor">
@@ -372,6 +517,11 @@
               </property>
               <property name="toolTip">
                <string>Your current balance in watch-only addresses</string>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(52, 52, 52);
+font: 63 12pt &quot;Montserrat SemiBold&quot;;
+</string>
               </property>
               <property name="text">
                <string notr="true">0.000 000 00 RNG</string>
@@ -384,15 +534,12 @@
               </property>
              </widget>
             </item>
-            <item row="2" column="0">
-             <widget class="QLabel" name="labelPendingText">
-              <property name="text">
-               <string>Pending:</string>
-              </property>
-             </widget>
-            </item>
             <item row="0" column="1">
              <widget class="QLabel" name="labelSpendable">
+              <property name="styleSheet">
+               <string notr="true">color: rgb(52, 52, 52);
+font: 10pt &quot;Montserrat&quot;;</string>
+              </property>
               <property name="text">
                <string>Spendable:</string>
               </property>
@@ -419,14 +566,37 @@
          </property>
         </spacer>
        </item>
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap resource="../bitcoin.qrc">:/icons/res/icons/rngcoin.png</pixmap>
+         </property>
+        </widget>
+       </item>
       </layout>
      </item>
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_3">
        <item>
         <widget class="QFrame" name="frame_2">
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">#frame_2
+{
+	background-color:       rgb(246, 246, 247); 
+	background-image:     url(:/icons/res/icons/bkg_1.png);
+	background-repeat:    false;
+	background-position: right bottom;
+
+}</string>
+         </property>
          <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
+          <enum>QFrame::NoFrame</enum>
          </property>
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
@@ -434,19 +604,6 @@
          <layout class="QVBoxLayout" name="verticalLayout">
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_2">
-            <item>
-             <widget class="QLabel" name="label_4">
-              <property name="font">
-               <font>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string>Recent transactions</string>
-              </property>
-             </widget>
-            </item>
             <item>
              <widget class="QPushButton" name="labelTransactionsStatus">
               <property name="enabled">
@@ -481,6 +638,27 @@
              </widget>
             </item>
             <item>
+             <widget class="QLabel" name="label_4">
+              <property name="font">
+               <font>
+                <family>Montserrat</family>
+                <pointsize>18</pointsize>
+                <weight>62</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font-size: 18pt;
+font-weight: 500; 
+font-family: &quot;Montserrat&quot;;
+color: rgb(50, 60, 60);</string>
+              </property>
+              <property name="text">
+               <string>Recent transactions</string>
+              </property>
+             </widget>
+            </item>
+            <item>
              <spacer name="horizontalSpacer">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
@@ -497,6 +675,9 @@
           </item>
           <item>
            <widget class="QListView" name="listTransactions">
+            <property name="autoFillBackground">
+             <bool>false</bool>
+            </property>
             <property name="styleSheet">
              <string notr="true">QListView { background: transparent; }</string>
             </property>
@@ -514,21 +695,21 @@
             </property>
            </widget>
           </item>
+          <item>
+           <spacer name="verticalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
          </layout>
         </widget>
-       </item>
-       <item>
-        <spacer name="verticalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
        </item>
       </layout>
      </item>
@@ -536,6 +717,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../bitcoin.qrc"/>
+ </resources>
  <connections/>
 </ui>

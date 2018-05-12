@@ -12,6 +12,8 @@
 #include <QImage>
 #include <QPalette>
 #include <QPixmap>
+#include <QFontDatabase>
+#include <QFont>
 
 static const struct {
     const char *platformId;
@@ -25,7 +27,7 @@ static const struct {
     {"macosx", false, false, true},
     {"windows", true, false, false},
     /* Other: linux, unix, ... */
-    {"other", true, true, false}
+    {"other", true, false, false}
 };
 static const unsigned platform_styles_count = sizeof(platform_styles)/sizeof(*platform_styles);
 
@@ -81,6 +83,18 @@ PlatformStyle::PlatformStyle(const QString &_name, bool _imagesOnButtons, bool _
     textColor(0,0,0)
 {
     // Determine icon highlighting color
+
+    QPalette oAppPalette = QApplication::palette();
+    oAppPalette.setColor(QPalette::Background, QColor(246, 246, 247));
+    oAppPalette.setColor(QPalette::HighlightedText, QColor("#67ADB8"));
+    // set default font
+    QFont oAppDefaultFont("Montserrat");
+    QApplication::setFont( oAppDefaultFont );
+
+
+
+    QApplication::setPalette( oAppPalette );
+
     if (colorizeIcons) {
         const QColor colorHighlightBg(QApplication::palette().color(QPalette::Highlight));
         const QColor colorHighlightFg(QApplication::palette().color(QPalette::HighlightedText));
@@ -95,6 +109,12 @@ PlatformStyle::PlatformStyle(const QString &_name, bool _imagesOnButtons, bool _
     }
     // Determine text color
     textColor = QColor(QApplication::palette().color(QPalette::WindowText));
+
+    // add styled fonts from resources
+    QFontDatabase::addApplicationFont(":/icons/res/fonts/Montserrat-Bold.otf");
+    QFontDatabase::addApplicationFont(":/icons/res/fonts/Montserrat-Medium.otf");
+    QFontDatabase::addApplicationFont(":/icons/res/fonts/Montserrat-Regular.otf");
+    QFontDatabase::addApplicationFont(":/icons/res/fonts/Montserrat-SemiBold.otf");
 }
 
 QImage PlatformStyle::SingleColorImage(const QString& filename) const

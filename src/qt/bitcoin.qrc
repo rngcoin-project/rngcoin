@@ -1,4 +1,4 @@
-<!DOCTYPE RCC><RCC version="1.0">
+<RCC>
     <qresource prefix="/icons">
         <file alias="bitcoin">res/icons/bitcoin.png</file>
         <file alias="rngcoin_splash">res/icons/rngcoin_splash.png</file>
@@ -54,6 +54,13 @@
         <file alias="hd_enabled">res/icons/hd_enabled.png</file>
         <file alias="hd_disabled">res/icons/hd_disabled.png</file>
         <file alias="network_disabled">res/icons/network_disabled.png</file>
+        <file>res/movies/makespinner.sh</file>
+        <file>res/icons/rngcoin.png</file>
+        <file>res/icons/bkg_1.png</file>
+        <file>res/fonts/Montserrat-Bold.otf</file>
+        <file>res/fonts/Montserrat-Medium.otf</file>
+        <file>res/fonts/Montserrat-Regular.otf</file>
+        <file>res/fonts/Montserrat-SemiBold.otf</file>
     </qresource>
     <qresource prefix="/movies">
         <file alias="spinner-000">res/movies/spinner-000.png</file>

@@ -75,6 +75,8 @@ TransactionView::TransactionView(const PlatformStyle *platformStyle, QWidget *pa
     dateWidget->addItem(tr("Last month"), LastMonth);
     dateWidget->addItem(tr("This year"), ThisYear);
     dateWidget->addItem(tr("Range..."), Range);
+
+    // set stylesheet
     hlayout->addWidget(dateWidget);
 
     typeWidget = new QComboBox(this);
