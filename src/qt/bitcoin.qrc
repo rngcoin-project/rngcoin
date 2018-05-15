@@ -56,11 +56,18 @@
         <file alias="network_disabled">res/icons/network_disabled.png</file>
         <file>res/movies/makespinner.sh</file>
         <file>res/icons/rngcoin.png</file>
-        <file>res/icons/bkg_1.png</file>
         <file>res/fonts/Montserrat-Bold.otf</file>
         <file>res/fonts/Montserrat-Medium.otf</file>
         <file>res/fonts/Montserrat-Regular.otf</file>
         <file>res/fonts/Montserrat-SemiBold.otf</file>
+        <file>res/icons/export-button.png</file>
+        <file>res/icons/export-button-hover.png</file>
+        <file>res/icons/export-button-pressed.png</file>
+        <file>res/icons/overview_page_bkg.png</file>
+        <file>res/icons/search-16.png</file>
+        <file>res/icons/triangle-down.png</file>
+        <file>res/icons/tx_page_bkg.png</file>
+        <file>res/icons/splashscrean_bkg.png</file>
     </qresource>
     <qresource prefix="/movies">
         <file alias="spinner-000">res/movies/spinner-000.png</file>

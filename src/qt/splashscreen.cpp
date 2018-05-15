@@ -30,8 +30,8 @@ SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle *networkStyle) 
     QWidget(0, f), curAlignment(0)
 {
     // set reference point, paddings
-    int paddingRight            = 50;
-    int paddingTop              = 50;
+    int paddingRight            = 130;
+    int paddingTop              = 115;
     int titleVersionVSpace      = 17;
     int titleCopyrightVSpace    = 40;
 
@@ -50,7 +50,7 @@ SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle *networkStyle) 
     QString font            = QApplication::font().toString();
 
     // create a bitmap according to device pixelratio
-    QSize splashSize(480*devicePixelRatio,320*devicePixelRatio);
+    QSize splashSize(580*devicePixelRatio,320*devicePixelRatio);
     pixmap = QPixmap(splashSize);
 
 #if QT_VERSION > 0x050100
@@ -69,12 +69,15 @@ SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle *networkStyle) 
     pixPaint.fillRect(rGradient, gradient);
 
     // draw the bitcoin icon, expected size of PNG: 1024x1024
-    QRect rectIcon(QPoint(-150,-122), QSize(430,430));
+    QRect rectIcon(QPoint(10,50), QSize(210,210));
 
-    const QSize requiredSize(1024,1024);
+    const QSize requiredSize(240,240);
     QPixmap icon(networkStyle->getAppIcon().pixmap(requiredSize));
+    pixPaint.drawPixmap( QPoint(20,20), icon);
 
-    pixPaint.drawPixmap(rectIcon, icon);
+
+    QPixmap oSplashDecor(":/icons/res/icons/splashscrean_bkg.png");
+    pixPaint.drawPixmap( QPoint(pixmap.rect().right() - oSplashDecor.width(), 0), oSplashDecor );
 
     // check font size and drawing with
     pixPaint.setFont(QFont(font, 33*fontFactor));
@@ -126,12 +129,25 @@ SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle *networkStyle) 
 
     // Resize window and move to center of desktop, disallow resizing
     QRect r(QPoint(), QSize(pixmap.size().width()/devicePixelRatio,pixmap.size().height()/devicePixelRatio));
+    r.setWidth( r.width() );
+
     resize(r.size());
     setFixedSize(r.size());
     move(QApplication::desktop()->screenGeometry().center() - r.center());
 
     subscribeToCoreSignals();
     installEventFilter(this);
+
+
+//    setObjectName("splashScrean");
+//    setStyleSheet( "#splashScrean {"
+//                                 "background-image:    url(:/icons/res/icons/splashscrean_bkg.png); "
+//                                 "background-repeat:   false;                                  "
+//                                 "background-position: right bottom;                           "
+//                                 "}"
+//                                 );
+
+
 }
 
 SplashScreen::~SplashScreen()

@@ -38,20 +38,56 @@ WalletView::WalletView(const PlatformStyle *_platformStyle, QWidget *parent):
     // Create tabs
     overviewPage = new OverviewPage(platformStyle);
 
+
+
     transactionsPage = new QWidget(this);
     QVBoxLayout *vbox = new QVBoxLayout();
     QHBoxLayout *hbox_buttons = new QHBoxLayout();
     transactionView = new TransactionView(platformStyle, this);
     vbox->addWidget(transactionView);
-    QPushButton *exportButton = new QPushButton(tr("&Export"), this);
+    QPushButton *exportButton = new QPushButton(/*tr("EXPORT"),*/ this);
+    exportButton->setMinimumSize(QSize(147, 39));
+    exportButton->setObjectName("btnExport");
+    exportButton->setStyleSheet(
+        "#btnExport{                                                        "
+        "border-style: 0px;                                                 "
+        "background-image: url(:/icons/res/icons/export-button.png);        "
+        "background-repeat:false;                                           "
+        "}                                                                  "
+        "                                                                   "
+        "#btnExport:hover{                                                  "
+        "background-image: url(:/icons/res/icons/export-button-hover.png);  "
+        "}                                                                  "
+        "                                                                   "
+        "#btnExport:pressed{                                                "
+        "background-image: url(:/icons/res/icons/export-button-pressed.png);"
+        "}                                                                  "
+        );
+
+
     exportButton->setToolTip(tr("Export the data in the current tab to a file"));
-    if (platformStyle->getImagesOnButtons()) {
-        exportButton->setIcon(platformStyle->SingleColorIcon(":/icons/export"));
-    }
+//    if (platformStyle->getImagesOnButtons()) {
+//        exportButton->setIcon(platformStyle->SingleColorIcon(":/icons/export"));
+//    }
     hbox_buttons->addStretch();
     hbox_buttons->addWidget(exportButton);
     vbox->addLayout(hbox_buttons);
+
+    // add decoration label
+    QLabel* pDecoreLabel = new QLabel(this);
+    pDecoreLabel->setPixmap( QPixmap(":/icons/res/icons/rngcoin.png") );
+    vbox->addWidget(pDecoreLabel);
+
     transactionsPage->setLayout(vbox);
+
+    transactionsPage->setObjectName("transactionsPage");
+    transactionsPage->setStyleSheet( "#transactionsPage {"
+                                 "background-color:    rgb(246, 246, 247);                     "
+                                 "background-image:    url(:/icons/res/icons/tx_page_bkg.png); "
+                                 "background-repeat:   false;                                  "
+                                 "background-position: right bottom;                           "
+                                 "}"
+                                 );
 
     receiveCoinsPage = new ReceiveCoinsDialog(platformStyle);
     sendCoinsPage = new SendCoinsDialog(platformStyle);

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1022</width>
-    <height>634</height>
+    <width>886</width>
+    <height>514</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -174,9 +174,9 @@ color: rgb(50, 60, 60);
                <font>
                 <family>Montserrat SemiBold</family>
                 <pointsize>12</pointsize>
-                <weight>7</weight>
+                <weight>62</weight>
                 <italic>false</italic>
-                <bold>false</bold>
+                <bold>true</bold>
                </font>
               </property>
               <property name="cursor">
@@ -187,7 +187,7 @@ color: rgb(50, 60, 60);
               </property>
               <property name="styleSheet">
                <string notr="true">color: rgb(52, 52, 52);
-font: 63 12pt &quot;Montserrat SemiBold&quot;;
+font: 500 12pt &quot;Montserrat SemiBold&quot;;
 </string>
               </property>
               <property name="text">
@@ -207,9 +207,9 @@ font: 63 12pt &quot;Montserrat SemiBold&quot;;
                <font>
                 <family>Montserrat SemiBold</family>
                 <pointsize>12</pointsize>
-                <weight>7</weight>
+                <weight>62</weight>
                 <italic>false</italic>
-                <bold>false</bold>
+                <bold>true</bold>
                </font>
               </property>
               <property name="cursor">
@@ -220,7 +220,7 @@ font: 63 12pt &quot;Montserrat SemiBold&quot;;
               </property>
               <property name="styleSheet">
                <string notr="true">color: rgb(52, 52, 52);
-font: 63 12pt &quot;Montserrat SemiBold&quot;;
+font: 500 12pt &quot;Montserrat SemiBold&quot;;
 </string>
               </property>
               <property name="text">
@@ -240,9 +240,9 @@ font: 63 12pt &quot;Montserrat SemiBold&quot;;
                <font>
                 <family>Montserrat SemiBold</family>
                 <pointsize>12</pointsize>
-                <weight>7</weight>
+                <weight>62</weight>
                 <italic>false</italic>
-                <bold>false</bold>
+                <bold>true</bold>
                </font>
               </property>
               <property name="cursor">
@@ -253,7 +253,7 @@ font: 63 12pt &quot;Montserrat SemiBold&quot;;
               </property>
               <property name="styleSheet">
                <string notr="true">color: rgb(52, 52, 52);
-font: 63 12pt &quot;Montserrat SemiBold&quot;;
+font: 500 12pt &quot;Montserrat SemiBold&quot;;
 </string>
               </property>
               <property name="text">
@@ -310,9 +310,9 @@ font: 9pt &quot;Montserrat&quot;;</string>
                <font>
                 <family>Montserrat SemiBold</family>
                 <pointsize>12</pointsize>
-                <weight>7</weight>
+                <weight>62</weight>
                 <italic>false</italic>
-                <bold>false</bold>
+                <bold>true</bold>
                </font>
               </property>
               <property name="cursor">
@@ -323,7 +323,7 @@ font: 9pt &quot;Montserrat&quot;;</string>
               </property>
               <property name="styleSheet">
                <string notr="true">color: rgb(52, 52, 52);
-font: 63 12pt &quot;Montserrat SemiBold&quot;;
+font: 500 12pt &quot;Montserrat SemiBold&quot;;
 </string>
               </property>
               <property name="text">
@@ -354,9 +354,9 @@ font: 9pt &quot;Montserrat&quot;;</string>
                <font>
                 <family>Montserrat SemiBold</family>
                 <pointsize>12</pointsize>
-                <weight>7</weight>
+                <weight>62</weight>
                 <italic>false</italic>
-                <bold>false</bold>
+                <bold>true</bold>
                </font>
               </property>
               <property name="cursor">
@@ -367,7 +367,7 @@ font: 9pt &quot;Montserrat&quot;;</string>
               </property>
               <property name="styleSheet">
                <string notr="true">color: rgb(52, 52, 52);
-font: 63 12pt &quot;Montserrat SemiBold&quot;;
+font: 500 12pt &quot;Montserrat SemiBold&quot;;
 </string>
               </property>
               <property name="text">
@@ -401,9 +401,9 @@ font: 10pt &quot;Montserrat&quot;;</string>
                <font>
                 <family>Montserrat SemiBold</family>
                 <pointsize>12</pointsize>
-                <weight>7</weight>
+                <weight>62</weight>
                 <italic>false</italic>
-                <bold>false</bold>
+                <bold>true</bold>
                </font>
               </property>
               <property name="cursor">
@@ -414,7 +414,7 @@ font: 10pt &quot;Montserrat&quot;;</string>
               </property>
               <property name="styleSheet">
                <string notr="true">color: rgb(52, 52, 52);
-font: 63 12pt &quot;Montserrat SemiBold&quot;;
+font: 500 12pt &quot;Montserrat SemiBold&quot;;
 </string>
               </property>
               <property name="text">
@@ -474,9 +474,9 @@ font: 9pt &quot;Montserrat&quot;;</string>
                <font>
                 <family>Montserrat SemiBold</family>
                 <pointsize>12</pointsize>
-                <weight>12</weight>
+                <weight>62</weight>
                 <italic>false</italic>
-                <bold>false</bold>
+                <bold>true</bold>
                </font>
               </property>
               <property name="cursor">
@@ -487,7 +487,7 @@ font: 9pt &quot;Montserrat&quot;;</string>
               </property>
               <property name="styleSheet">
                <string notr="true">color: rgb(52, 52, 52);
-font: 100 12pt &quot;Montserrat SemiBold&quot;;
+font: 500 12pt &quot;Montserrat SemiBold&quot;;
 </string>
               </property>
               <property name="text">
@@ -507,9 +507,9 @@ font: 100 12pt &quot;Montserrat SemiBold&quot;;
                <font>
                 <family>Montserrat SemiBold</family>
                 <pointsize>12</pointsize>
-                <weight>7</weight>
+                <weight>62</weight>
                 <italic>false</italic>
-                <bold>false</bold>
+                <bold>true</bold>
                </font>
               </property>
               <property name="cursor">
@@ -520,7 +520,7 @@ font: 100 12pt &quot;Montserrat SemiBold&quot;;
               </property>
               <property name="styleSheet">
                <string notr="true">color: rgb(52, 52, 52);
-font: 63 12pt &quot;Montserrat SemiBold&quot;;
+font: 500 12pt &quot;Montserrat SemiBold&quot;;
 </string>
               </property>
               <property name="text">
@@ -586,14 +586,14 @@ font: 10pt &quot;Montserrat&quot;;</string>
           <bool>false</bool>
          </property>
          <property name="styleSheet">
-          <string notr="true">#frame_2
-{
-	background-color:       rgb(246, 246, 247); 
-	background-image:     url(:/icons/res/icons/bkg_1.png);
-	background-repeat:    false;
-	background-position: right bottom;
-
-}</string>
+          <string notr="true">#frame_2                                                          
+{                                                                      
+    background-color:       rgb(246, 246, 247);                        
+    background-image:     url(:/icons/res/icons/overview_page_bkg.png);
+    background-repeat:    false;                                       
+    background-position: right bottom;                                 
+                                                                       
+}                                                                      </string>
          </property>
          <property name="frameShape">
           <enum>QFrame::NoFrame</enum>

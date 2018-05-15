@@ -44,15 +44,16 @@ TransactionView::TransactionView(const PlatformStyle *platformStyle, QWidget *pa
     // Build filter row
     setContentsMargins(0,0,0,0);
 
+
     QHBoxLayout *hlayout = new QHBoxLayout();
     hlayout->setContentsMargins(0,0,0,0);
 
     if (platformStyle->getUseExtraSpacing()) {
-        hlayout->setSpacing(5);
-        hlayout->addSpacing(26);
+        hlayout->setSpacing(30);
+        //hlayout->addSpacing(26);
     } else {
-        hlayout->setSpacing(0);
-        hlayout->addSpacing(23);
+        hlayout->setSpacing(30);
+        //hlayout->addSpacing(23);
     }
 
     watchOnlyWidget = new QComboBox(this);
@@ -101,7 +102,27 @@ TransactionView::TransactionView(const PlatformStyle *platformStyle, QWidget *pa
 #if QT_VERSION >= 0x040700
     addressWidget->setPlaceholderText(tr("Enter address or label to search"));
 #endif
-    hlayout->addWidget(addressWidget);
+    // marge search icon
+    addressWidget->setStyleSheet(
+                "background-color: rgb(255, 255, 255);  "
+                "font-size: 14px;                       "
+                "font: \"Montserrat\";                  "
+                "color: rgb(136, 136, 136);             "
+                );
+
+    QWidget* pStyledAddressWidget = new QWidget();
+    pStyledAddressWidget->setStyleSheet("background-color: rgb(255, 255, 255); "
+                                        "border-radius: 10px;");
+    QHBoxLayout* pLayAddressWidget = new QHBoxLayout(pStyledAddressWidget);
+    pLayAddressWidget->setContentsMargins(-1, 0, -1, 0);
+    pLayAddressWidget->setSpacing(0);
+    pLayAddressWidget->addWidget( addressWidget );
+    // search icon
+    QLabel* pSearchLabel = new QLabel();
+    pSearchLabel->setPixmap( QPixmap(":/icons/res/icons/search-16.png") );
+    pLayAddressWidget->addWidget( pSearchLabel );
+
+    hlayout->addWidget(pStyledAddressWidget);
 
     amountWidget = new QLineEdit(this);
 #if QT_VERSION >= 0x040700
@@ -127,14 +148,56 @@ TransactionView::TransactionView(const PlatformStyle *platformStyle, QWidget *pa
     prefix_typing_delay->setInterval(input_filter_delay);
 
     QVBoxLayout *vlayout = new QVBoxLayout(this);
-    vlayout->setContentsMargins(0,0,0,0);
-    vlayout->setSpacing(0);
+    vlayout->setContentsMargins(9,9,9,9);
+    vlayout->setSpacing(10);
 
     QTableView *view = new QTableView(this);
+    view->setStyleSheet(
+                    "QTableView{"
+                    "   gridline-color: rgb(246,246,247);"
+                    "   border: 2px solid rgb(246,246,247,200);"
+                    "   border-radius : 10px;"
+                    "   background: rgb(255,255,255, 200);"
+                    "   color: rgb(32,32,32);"
+                    "}"
+                    );
+
+        view->horizontalHeader()->setStyleSheet(
+                    "QHeaderView {        "
+                    "    background: rgb(255,255,255);"
+                    "    border-radius : 10px;     "
+                    "}                             "
+
+                    "QHeaderView::section {        "
+                    "    background: rgb(255,255,255); "
+                    "    border-right:  2px solid rgb(246,246,247); "
+                    "    border-bottom: 2px solid rgb(246,246,247); "
+                    "    border-left:   0px;       "
+                    "    border-top:    0px;       "
+                    "    padding: 4px;             "
+                    "    font-size: 10pt;          "
+                    "    font: \"Montserrat SemiBold\";"
+                    "}                             "
+
+                    "QHeaderView::section:first {        "
+                    "    border-top-left-radius: 10px;   "
+                    "    border-right: 2px solid rgb(246,246,247);    "
+                    "} "
+
+                    "QHeaderView::section:last {        "
+                    "    border-top-right-radius: 10px; "
+                    "}                                  "
+
+                    );
+
+
+
+
+
     vlayout->addLayout(hlayout);
     vlayout->addWidget(createDateRangeWidget());
     vlayout->addWidget(view);
-    vlayout->setSpacing(0);
+    vlayout->setSpacing(8);
     int width = view->verticalScrollBar()->sizeHint().width();
     // Cover scroll bar width with spacing
     if (platformStyle->getUseExtraSpacing()) {
@@ -205,6 +268,57 @@ TransactionView::TransactionView(const PlatformStyle *platformStyle, QWidget *pa
     connect(copyTxPlainText, SIGNAL(triggered()), this, SLOT(copyTxPlainText()));
     connect(editLabelAction, SIGNAL(triggered()), this, SLOT(editLabel()));
     connect(showDetailsAction, SIGNAL(triggered()), this, SLOT(showDetails()));
+
+    //
+    //  setup stylesheets
+    //
+    this->setObjectName("txViewWidget");
+    this->setStyleSheet( "#txViewWidget {"
+                         "background-color: rgb(246, 246, 247,20);"
+                         "}"
+                         );
+
+    // QComboBox
+    dateWidget->setStyleSheet("QComboBox {                                      "
+                              " border: 0px;                                    "
+                              " border-radius: 10px;                            "
+                              " min-width: 6em;                                 "
+                              " font-size: 14px;                                "
+                              " font: \"Montserrat\";                           "
+                              " color: rgb(136, 136, 136);                      "
+                              " background-color: rgb(255, 255, 255);           "
+                              " }                                               "
+                              "                                                 "
+                              " QComboBox::drop-down {                          "
+                              "     subcontrol-origin: padding;                 "
+                              "     subcontrol-position: top right;             "
+                              "     padding-right: 10px;                        "
+                              "     image: url(:/icons/res/icons/triangle-down.png);"
+                              "     width: 15px;                                "
+                              "     border-top-right-radius: 10px;              "
+                              "     border-bottom-right-radius: 10px;           "
+                              " }                                               "
+                              "                                                 "
+                              " QComboBox QAbstractItemView {                   "
+                              "     background-color: white;                    "
+                              "     border: 0px;                                "
+                              "     selection-color:  #3796a8;                  "
+                              " }                                               "
+                          );
+
+    typeWidget->setStyleSheet( dateWidget->styleSheet() );
+    watchOnlyWidget->setStyleSheet( dateWidget->styleSheet() );
+
+    // QLineEdit
+    amountWidget->setStyleSheet(
+                "border-radius: 10px;                  "
+                "background-color: rgb(255, 255, 255); "
+                "font-size: 14px;                      "
+                "font: \"Montserrat\";                 "
+                "color: rgb(136, 136, 136);            "
+                "padding-left: 8px;                    "
+                "padding-right: px;                    "
+                );
 }
 
 void TransactionView::setModel(WalletModel *_model)

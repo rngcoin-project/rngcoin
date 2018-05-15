@@ -370,8 +370,6 @@ public:
     static const int32_t CURRENT_VERSION = CURRENT_TX_VERSION;
     static const int32_t MAX_TX_COMMENT_LEN = 528;
 
-    static const int32_t MAX_TX_COMMENT_LEN = 528;
-
     // Changing the default transaction version requires a two step process: first
     // adapting relay policy by bumping MAX_STANDARD_VERSION, and then later date
     // bumping the default CURRENT_VERSION at which point both CURRENT_VERSION and

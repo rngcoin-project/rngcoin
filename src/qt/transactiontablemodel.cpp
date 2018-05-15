@@ -622,7 +622,23 @@ QVariant TransactionTableModel::data(const QModelIndex &index, int role) const
         {
             return addressColor(rec);
         }
+        if( index.column() == Date )
+        {
+            return COLOR_DATE_TIME;
+        }
         break;
+    case Qt::FontRole:
+        {
+            QFont oTableFont("Montserrat Regular");
+            if( index.column() == ToAddress )
+                oTableFont.setPointSize(10);
+            else
+                oTableFont.setPointSize(12);
+
+            return oTableFont;
+        }
+        break;
+
     case TypeRole:
         return rec->type;
     case DateRole:
