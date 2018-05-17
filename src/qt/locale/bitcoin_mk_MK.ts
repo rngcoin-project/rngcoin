@@ -139,7 +139,7 @@
     </message>
     <message>
         <source>Send coins to a RNGCoin address</source>
-        <translation>Испрати биткоини на Биткоин адреса</translation>
+        <translation>Испрати RNGCoin-и на RNGCoin адреса</translation>
     </message>
     <message>
         <source>&amp;Verify message...</source>
@@ -147,7 +147,7 @@
     </message>
     <message>
         <source>RNGCoin</source>
-        <translation>Биткоин</translation>
+        <translation>RNGCoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -579,7 +579,7 @@
     </message>
     <message>
         <source>RNGCoin Core</source>
-        <translation>Биткоин Core</translation>
+        <translation>RNGCoin Core</translation>
     </message>
     <message>
         <source>Warning</source>

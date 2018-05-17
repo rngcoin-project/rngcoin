@@ -60,6 +60,11 @@ public:
             foreground = brush.color();
         }
 
+        QFont oFont( "Montserrat Medium" );
+        oFont.setPointSize(10);
+
+        painter->setFont( oFont );
+
         painter->setPen(foreground);
         QRect boundingRect;
         painter->drawText(addressRect, Qt::AlignLeft|Qt::AlignVCenter, address, &boundingRect);
@@ -89,6 +94,9 @@ public:
         {
             amountText = QString("[") + amountText + QString("]");
         }
+        oFont.setPointSize(11);
+        painter->setFont( oFont );
+
         painter->drawText(amountRect, Qt::AlignRight|Qt::AlignVCenter, amountText);
 
         painter->setPen( COLOR_DATE_TIME );

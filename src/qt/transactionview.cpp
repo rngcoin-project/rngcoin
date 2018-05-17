@@ -302,7 +302,7 @@ TransactionView::TransactionView(const PlatformStyle *platformStyle, QWidget *pa
                               " QComboBox QAbstractItemView {                   "
                               "     background-color: white;                    "
                               "     border: 0px;                                "
-                              "     selection-color:  #3796a8;                  "
+                              "     selection-background-color:  #3796a8;       "
                               " }                                               "
                           );
 
@@ -376,6 +376,8 @@ void TransactionView::setModel(WalletModel *_model)
 
         // Watch-only signal
         connect(_model, SIGNAL(notifyWatchonlyChanged(bool)), this, SLOT(updateWatchOnlyColumn(bool)));
+
+        transactionView->resizeColumnsToContents();
     }
 }
 
