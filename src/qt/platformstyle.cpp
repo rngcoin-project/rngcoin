@@ -89,6 +89,7 @@ PlatformStyle::PlatformStyle(const QString &_name, bool _imagesOnButtons, bool _
     //oAppPalette.setColor(QPalette::HighlightedText, QColor("#67ADB8"));
     // set default font
     QFont oAppDefaultFont("Montserrat Medium");
+    oAppDefaultFont.setPointSize(10);
     QApplication::setFont( oAppDefaultFont );
 
 
