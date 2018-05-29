@@ -11,11 +11,22 @@
 #include "script/script.h"
 #include "serialize.h"
 #include "uint256.h"
-#include "util.h"
+#include "zlib.h"
 
 static const int SERIALIZE_TRANSACTION_NO_WITNESS = 0x40000000;
 static const int32_t NO_TXCOMMENT_TX_VERSION = 2;
 static const int32_t CURRENT_TX_VERSION = 3;
+
+namespace Compression
+{
+/** Compress a STL string using zlib with given compression level and return
+  * the binary data. */
+std::string compress_string(const std::string& str,
+                            int compressionlevel = Z_BEST_COMPRESSION);
+
+/** Decompress an STL string using zlib and return the original data. */
+std::string decompress_string(const std::string& str);
+}
 
 /** Compressed string **/
 class CTxComment

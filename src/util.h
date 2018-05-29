@@ -319,17 +319,6 @@ template <typename Callable> void TraceThread(const char* name,  Callable func)
     }
 }
 
-namespace Compression
-{
-/** Compress a STL string using zlib with given compression level and return
-  * the binary data. */
-std::string compress_string(const std::string& str,
-                            int compressionlevel = Z_BEST_COMPRESSION);
-
-/** Decompress an STL string using zlib and return the original data. */
-std::string decompress_string(const std::string& str);
-}
-
 std::string CopyrightHolders(const std::string& strPrefix);
 
 #endif // BITCOIN_UTIL_H
