@@ -50,7 +50,7 @@ static const int MAX_URI_LENGTH = 255;
 #define SPINNER_FRAMES 36
 
 #define QAPP_ORG_NAME "RNGCoin"
-#define QAPP_ORG_DOMAIN "rngcoin.org"
+#define QAPP_ORG_DOMAIN "rng-coin.io"
 #define QAPP_APP_NAME_DEFAULT "RNGCoin-Qt"
 #define QAPP_APP_NAME_TESTNET "RNGCoin-Qt-testnet"
 

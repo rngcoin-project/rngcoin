@@ -1,6 +1,6 @@
-RNGCoin Core version *0.15.1* is now available from:
+RNGCoin Core version *1.0.0* is now available from:
 
-  <https://download.rngcoin.org/rngcoin-0.15.1/>
+  <https://download.rng-coin.io/rngcoin-1.0.0/>
 
 This is a new minor version release, including various bugfixes and
 performance improvements, as well as updated translations.
@@ -149,7 +149,7 @@ Low-level RPC changes
   value is passed, instead of returning a list of all wallet transactions since
   the genesis block. The behaviour is unchanged when an empty string is provided.
 
-0.15.1 Change log
+1.0.0 Change log
 =================
 
 ### Mining

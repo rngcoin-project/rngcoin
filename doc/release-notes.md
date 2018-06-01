@@ -144,7 +144,7 @@ Low-level RPC changes
   value is passed, instead of returning a list of all wallet transactions since
   the genesis block. The behaviour is unchanged when an empty string is provided.
 
-0.15.1 Change log
+1.0.0 Change log
 =================
 
 ### Mining

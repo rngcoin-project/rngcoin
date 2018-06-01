@@ -3,7 +3,7 @@ RNGCoin Core integration/staging tree
 
 [![Build Status](https://travis-ci.org/rngcoin-project/rngcoin.svg?branch=master)](https://travis-ci.org/rngcoin-project/rngcoin)
 
-https://rngcoin.org
+https://rng-coin.io/
 
 What is RNGCoin?
 ----------------
@@ -15,7 +15,7 @@ out collectively by the network. RNGCoin Core is the name of open source
 software which enables the use of this currency.
 
 For more information, as well as an immediately useable, binary version of
-the RNGCoin Core software, see [https://rngcoin.org](https://rngcoin.org).
+the RNGCoin Core software, see [https://rng-coin.io/](https://rng-coin.io/).
 
 License
 -------

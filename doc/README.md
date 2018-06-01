@@ -5,7 +5,7 @@ Setup
 ---------------------
 RNGCoin Core is the original RNGCoin client and it builds the backbone of the network. It downloads and, by default, stores the entire history of RNGCoin transactions (which is currently more than 7 GBs); depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more.
 
-To download RNGCoin Core, visit [rngcoin.org](https://rngcoin.org).
+To download RNGCoin Core, visit [rng-coin.io](https://rng-coin.io/).
 
 Running
 ---------------------
@@ -28,7 +28,7 @@ Drag RNGCoin-Core to your applications folder, and then run RNGCoin-Core.
 
 ### Need Help?
 
-* See the documentation at the [RNGCoin Wiki](https://rngcoin.info/)
+* See the documentation at the [RNGCoin Wiki](https://rng-coin.io/)
 for help and more information.
 * Ask for help on [#rngcoin](http://webchat.freenode.net?channels=rngcoin) on Freenode. If you don't have an IRC client use [webchat here](http://webchat.freenode.net?channels=rngcoin).
 * Ask for help on the [RNGCoinTalk](https://rngcointalk.io/) forums.
