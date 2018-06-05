@@ -74,9 +74,9 @@ WalletView::WalletView(const PlatformStyle *_platformStyle, QWidget *parent):
     vbox->addLayout(hbox_buttons);
 
     // add decoration label
-    QLabel* pDecoreLabel = new QLabel(this);
-    pDecoreLabel->setPixmap( QPixmap(":/icons/res/icons/rngcoin.png") );
-    vbox->addWidget(pDecoreLabel);
+    //QLabel* pDecoreLabel = new QLabel(this);
+    //pDecoreLabel->setPixmap( QPixmap(":/icons/res/icons/rngcoin.png") );
+    //vbox->addWidget(pDecoreLabel);
 
     transactionsPage->setLayout(vbox);
 

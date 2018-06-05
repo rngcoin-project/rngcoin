@@ -27,7 +27,7 @@ static const struct {
     {"macosx", false, false, true},
     {"windows", true, false, false},
     /* Other: linux, unix, ... */
-    {"other", true, false, false}
+    {"other", true, false, true}
 };
 static const unsigned platform_styles_count = sizeof(platform_styles)/sizeof(*platform_styles);
 
@@ -88,11 +88,9 @@ PlatformStyle::PlatformStyle(const QString &_name, bool _imagesOnButtons, bool _
     oAppPalette.setColor(QPalette::Background, QColor(246, 246, 247));
     //oAppPalette.setColor(QPalette::HighlightedText, QColor("#67ADB8"));
     // set default font
-    QFont oAppDefaultFont("Montserrat Medium");
-    oAppDefaultFont.setPointSize(10);
+    QFont oAppDefaultFont("Montserrat SemiBold");
+    oAppDefaultFont.setPointSize(9);
     QApplication::setFont( oAppDefaultFont );
-
-
 
     QApplication::setPalette( oAppPalette );
 
