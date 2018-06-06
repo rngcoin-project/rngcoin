@@ -61,7 +61,7 @@ public:
         }
 
         QFont oFont( "Montserrat Medium" );
-        oFont.setPointSize(10);
+        oFont.setPointSize(8);
 
         painter->setFont( oFont );
 
@@ -94,7 +94,7 @@ public:
         {
             amountText = QString("[") + amountText + QString("]");
         }
-        oFont.setPointSize(11);
+        oFont.setPointSize(8);
         painter->setFont( oFont );
 
         painter->drawText(amountRect, Qt::AlignRight|Qt::AlignVCenter, amountText);
@@ -107,7 +107,7 @@ public:
 
     inline QSize sizeHint(const QStyleOptionViewItem &option, const QModelIndex &index) const
     {
-        return QSize(DECORATION_SIZE, DECORATION_SIZE);
+        return QSize(800, DECORATION_SIZE);
     }
 
     int unit;

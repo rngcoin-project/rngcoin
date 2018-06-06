@@ -631,9 +631,9 @@ QVariant TransactionTableModel::data(const QModelIndex &index, int role) const
         {
             QFont oTableFont("Montserrat Regular");
             if( index.column() == ToAddress )
-                oTableFont.setPointSize(10);
+                oTableFont.setPointSize(8);
             else
-                oTableFont.setPointSize(12);
+                oTableFont.setPointSize(9);
 
             return oTableFont;
         }
