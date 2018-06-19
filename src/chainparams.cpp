@@ -70,7 +70,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
  */
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-    const char* pszTimestamp = "RNGCoin 2018 April 9";
+    const char* pszTimestamp = "RNGCoin 2018 June 19";
     const CScript genesisOutputScript = CScript() << ParseHex("040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
@@ -134,17 +134,17 @@ public:
          * a large 32-bit integer with any alignment.
          */
         pchMessageStart[0] = 0xfb;
-        pchMessageStart[1] = 0xc0;
+        pchMessageStart[1] = 0xc1;
         pchMessageStart[2] = 0xb7;
         pchMessageStart[3] = 0xdb;
         nDefaultPort = 9342;
         nPruneAfterHeight = 100000;
 
-        genesis = CreateGenesisBlock(1523299417, 587892, 0x1e0ffff0, 1, 1 * COIN);
+        genesis = CreateGenesisBlock(1529424811, 2086981, 0x1e0ffff0, 1, 1 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
 
-        assert(consensus.hashGenesisBlock == uint256S("fece999377b46ddfa0986d3fc97a624c72ed7c9eb66050ab6ae007e17bdd322b"));
-        assert(genesis.hashMerkleRoot == uint256S("0b205b2a6b657f763ffb2fd66b2c0b3491e517f05d41c50a56bd041a19ffcba4"));
+        assert(consensus.hashGenesisBlock == uint256S("42221aeef1a739538e5154d736e35a669913a562685067466b1942f87f35b506"));
+        assert(genesis.hashMerkleRoot == uint256S("e2b9b6eca8c5fb0946b1188fbc835bd17060b47a2a2adc7ff15b36493f6fc9c6"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,60);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,5);
@@ -162,7 +162,7 @@ public:
 
         checkpointData = (CCheckpointData) {
             {
-                { 0, uint256S("fece999377b46ddfa0986d3fc97a624c72ed7c9eb66050ab6ae007e17bdd322b") }
+                { 0, uint256S("42221aeef1a739538e5154d736e35a669913a562685067466b1942f87f35b506") }
             }
         };
 
