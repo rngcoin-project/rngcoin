@@ -135,15 +135,15 @@ public:
          */
         pchMessageStart[0] = 0xfb;
         pchMessageStart[1] = 0xc1;
-        pchMessageStart[2] = 0xb7;
-        pchMessageStart[3] = 0xdb;
+        pchMessageStart[2] = 0xb9;
+        pchMessageStart[3] = 0xdc;
         nDefaultPort = 9342;
         nPruneAfterHeight = 100000;
 
-        genesis = CreateGenesisBlock(1529424811, 2086981, 0x1e0ffff0, 1, 1 * COIN);
+        genesis = CreateGenesisBlock(1530436047, 290203, 0x1e0ffff0, 1, 1 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
 
-        assert(consensus.hashGenesisBlock == uint256S("42221aeef1a739538e5154d736e35a669913a562685067466b1942f87f35b506"));
+        assert(consensus.hashGenesisBlock == uint256S("0e9eefec5db22e18180eb6648d9995d03c9c79b26dd250bc724b0de7f9234396"));
         assert(genesis.hashMerkleRoot == uint256S("e2b9b6eca8c5fb0946b1188fbc835bd17060b47a2a2adc7ff15b36493f6fc9c6"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,60);
@@ -162,7 +162,7 @@ public:
 
         checkpointData = (CCheckpointData) {
             {
-                { 0, uint256S("42221aeef1a739538e5154d736e35a669913a562685067466b1942f87f35b506") }
+                { 0, uint256S("0e9eefec5db22e18180eb6648d9995d03c9c79b26dd250bc724b0de7f9234396") }
             }
         };
 
