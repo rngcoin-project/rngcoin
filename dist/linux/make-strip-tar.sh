@@ -7,16 +7,18 @@ mkdir release
 mkdir release/bin
 
 
-cp ./src/rngcoin-tx    release/bin/
-cp ./src/rngcoin-cli   release/bin/
-cp ./src/qt/rngcoin-qt release/bin/
-cp ./src/rngcoind      release/bin/
+cp ../../src/rngcoin-tx    		release/bin/
+cp ../../src/rngcoin-cli   		release/bin/
+cp ../../src/qt/rngcoin-qt 		release/bin/
+cp ../../src/rngcoind      		release/bin/
+cp ../../src/test/test_rngcoin		release/bin/
 
 
 strip ./release/bin/rngcoin-tx
 strip ./release/bin/rngcoin-cli
 strip ./release/bin/rngcoin-qt
 strip ./release/bin/rngcoind
+strip ./release/bin/test_rngcoin
 
 cd release
 
