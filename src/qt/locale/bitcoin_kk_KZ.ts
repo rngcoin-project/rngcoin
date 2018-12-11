@@ -70,8 +70,8 @@
         <translation>Құпия сөзді өзгерту</translation>
     </message>
     <message>
-        <source>RNGCoin</source>
-        <translation>Биткоин</translation>
+        <source>Rngcoin</source>
+        <translation>Rngcoin</translation>
     </message>
     <message>
         <source>Wallet</source>

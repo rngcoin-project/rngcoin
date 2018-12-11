@@ -62,12 +62,12 @@
         <translation>адрасы Прымання</translation>
     </message>
     <message>
-        <source>These are your RNGCoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Тут знаходзяцца RNGCoin-адрасы для высылання плацяжоў. Заўсёды спраўджвайце колькасць і адрас прызначэння перад здзяйсненнем транзакцыі.</translation>
+        <source>These are your Rngcoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Тут знаходзяцца rngcoin-адрасы для высылання плацяжоў. Заўсёды спраўджвайце колькасць і адрас прызначэння перад здзяйсненнем транзакцыі.</translation>
     </message>
     <message>
-        <source>These are your RNGCoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Тут знаходзяцца RNGCoin-адрасы для прымання плацяжоў. Пажадана выкарыстоўваць новы адрас для кожнай транзакцыі.</translation>
+        <source>These are your Rngcoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Тут знаходзяцца rngcoin-адрасы для прымання плацяжоў. Пажадана выкарыстоўваць новы адрас для кожнай транзакцыі.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -298,8 +298,8 @@
         <translation>Пераіндэксацыя блокаў на дыску...</translation>
     </message>
     <message>
-        <source>Send coins to a RNGCoin address</source>
-        <translation>Даслаць манеты на RNGCoin-адрас</translation>
+        <source>Send coins to a Rngcoin address</source>
+        <translation>Даслаць манеты на rngcoin-адрас</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -322,8 +322,8 @@
         <translation>Праверыць паведамленне...</translation>
     </message>
     <message>
-        <source>RNGCoin</source>
-        <translation>RNGCoin</translation>
+        <source>Rngcoin</source>
+        <translation>rngcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -350,12 +350,12 @@
         <translation>Зашыфраваць прыватныя ключы, якия належаць вашаму гаманцу</translation>
     </message>
     <message>
-        <source>Sign messages with your RNGCoin addresses to prove you own them</source>
-        <translation>Падпісаць паведамленне з дапамогай RNGCoin-адраса каб даказаць, што яно належыць вам</translation>
+        <source>Sign messages with your Rngcoin addresses to prove you own them</source>
+        <translation>Падпісаць паведамленне з дапамогай rngcoin-адраса каб даказаць, што яно належыць вам</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified RNGCoin addresses</source>
-        <translation>Спраўдзіць паведамленне з дапамогай RNGCoin-адраса каб даказаць, што яно належыць вам</translation>
+        <source>Verify messages to ensure they were signed with specified Rngcoin addresses</source>
+        <translation>Спраўдзіць паведамленне з дапамогай rngcoin-адраса каб даказаць, што яно належыць вам</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -371,7 +371,7 @@
     </message>
     <message>
         <source>Request payments (generates QR codes and rngcoin: URIs)</source>
-        <translation>Запатрабаваць плацёж (генеруецца QR-код для rngcoin URI)</translation>
+        <translation>Запатрабаваць плацёж (генеруецца QR-код для біткойн URI)</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
@@ -383,7 +383,7 @@
     </message>
     <message>
         <source>Open a rngcoin: URI or payment request</source>
-        <translation>Адкрыць rngcoin: URI ці запыт плацяжу</translation>
+        <translation>Адкрыць біткойн: URI ці запыт плацяжу</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
@@ -1258,8 +1258,8 @@
         <translation>Запусціць у фоне як дэман і прымаць каманды</translation>
     </message>
     <message>
-        <source>RNGCoin Core</source>
-        <translation>RNGCoin Core</translation>
+        <source>Rngcoin Core</source>
+        <translation>Rngcoin Core</translation>
     </message>
     <message>
         <source>Do you want to rebuild the block database now?</source>

@@ -37,46 +37,10 @@
         <source>&amp;Delete</source>
         <translation>&amp;Dzēst</translation>
     </message>
-    <message>
-        <source>Choose the address to send coins to</source>
-        <translation>Izvēlies adresi uz kuru sūtīt rngcoins</translation>
-    </message>
-    <message>
-        <source>Choose the address to receive coins with</source>
-        <translation>Izvēlies adresi ar kuru saņemt rngcoins</translation>
-    </message>
-    <message>
-        <source>&amp;Copy Address</source>
-        <translation>&amp;Kopēt adresi</translation>
-    </message>
-    <message>
-        <source>&amp;Edit</source>
-        <translation>&amp;Rediģēt</translation>
-    </message>
-    <message>
-        <source>Export Address List</source>
-        <translation>Eksportēt Adrešu Sarakstu</translation>
-    </message>
-    <message>
-        <source>Exporting Failed</source>
-        <translation>Eksportēšana Neizdevās</translation>
-    </message>
     </context>
 <context>
     <name>AddressTableModel</name>
-    <message>
-        <source>Label</source>
-        <translation>Nosaukums</translation>
-    </message>
-    <message>
-        <source>Address</source>
-        <translation>Adrese</translation>
-    </message>
-    <message>
-        <source>(no label)</source>
-        <translation>(bez nosaukuma)</translation>
-    </message>
-</context>
+    </context>
 <context>
     <name>AskPassphraseDialog</name>
     <message>
@@ -94,30 +58,6 @@
     <message>
         <source>Repeat new passphrase</source>
         <translation>Jaunā parole vēlreiz</translation>
-    </message>
-    <message>
-        <source>Encrypt wallet</source>
-        <translation>Šifrēt maciņu</translation>
-    </message>
-    <message>
-        <source>Unlock wallet</source>
-        <translation>Atslēgt maciņu</translation>
-    </message>
-    <message>
-        <source>Decrypt wallet</source>
-        <translation>Atšifrēt maciņu</translation>
-    </message>
-    <message>
-        <source>Confirm wallet encryption</source>
-        <translation>Apstiprināt maciņa šifrēšanu</translation>
-    </message>
-    <message>
-        <source>Are you sure you wish to encrypt your wallet?</source>
-        <translation>Vai tu tiešām vēlies šifrēt savu maciņu?</translation>
-    </message>
-    <message>
-        <source>Wallet encryption failed</source>
-        <translation>Maciņa šifrēšana neizdevās</translation>
     </message>
     </context>
 <context>
@@ -202,8 +142,8 @@
         <translation>Bloku reindeksēšana no diska...</translation>
     </message>
     <message>
-        <source>Send coins to a RNGCoin address</source>
-        <translation>Nosūtīt bitkoinus uz RNGCoin adresi</translation>
+        <source>Send coins to a Rngcoin address</source>
+        <translation>Nosūtīt bitkoinus uz Rngcoin adresi</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -226,8 +166,8 @@
         <translation>&amp;Pārbaudīt ziņojumu...</translation>
     </message>
     <message>
-        <source>RNGCoin</source>
-        <translation>RNGCoin</translation>
+        <source>Rngcoin</source>
+        <translation>Rngcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -254,12 +194,12 @@
         <translation>Šifrēt privātās atslēgas kuras pieder tavam maciņam</translation>
     </message>
     <message>
-        <source>Sign messages with your RNGCoin addresses to prove you own them</source>
-        <translation>Parakstīt ziņojumus ar savām RNGCoin adresēm lai pierādītu ka tās pieder tev</translation>
+        <source>Sign messages with your Rngcoin addresses to prove you own them</source>
+        <translation>Parakstīt ziņojumus ar savām Rngcoin adresēm lai pierādītu ka tās pieder tev</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified RNGCoin addresses</source>
-        <translation>Pārbaudīt ziņojumus lai pārliecinātos, ka tie tika parakstīti ar norādītajām RNGCoin adresēm</translation>
+        <source>Verify messages to ensure they were signed with specified Rngcoin addresses</source>
+        <translation>Pārbaudīt ziņojumus lai pārliecinātos, ka tie tika parakstīti ar norādītajām Rngcoin adresēm</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -387,10 +327,6 @@
     <message>
         <source>Confirmed</source>
         <translation>Apstiprināts</translation>
-    </message>
-    <message>
-        <source>(no label)</source>
-        <translation>(bez nosaukuma)</translation>
     </message>
     </context>
 <context>
@@ -570,8 +506,8 @@
         <translation>&amp;Tērēt neapstiprinātu atlikumu</translation>
     </message>
     <message>
-        <source>Automatically open the RNGCoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Uz rūtera automātiski atvērt RNGCoin klienta portu. Tas strādā tikai tad, ja rūteris atbalsta UPnP un tas ir ieslēgts.</translation>
+        <source>Automatically open the Rngcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Uz rūtera automātiski atvērt Rngcoin klienta portu. Tas strādā tikai tad, ja rūteris atbalsta UPnP un tas ir ieslēgts.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
@@ -623,7 +559,7 @@
     </message>
     <message>
         <source>Whether to show coin control features or not.</source>
-        <translation>Vai rādīt RNGCoin kontroles funkcijas vai nē.</translation>
+        <translation>Vai rādīt Rngcoin kontroles funkcijas vai nē.</translation>
     </message>
     <message>
         <source>&amp;OK</source>
@@ -657,8 +593,8 @@
         <translation>Forma</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the RNGCoin network after a connection is established, but this process has not completed yet.</source>
-        <translation>Attēlotā informācija var būt novecojusi. Jūsu maciņš pēc savienojuma izveides automātiski sinhronizējas ar RNGCoin tīklu, taču šis process vēl nav beidzies.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Rngcoin network after a connection is established, but this process has not completed yet.</source>
+        <translation>Attēlotā informācija var būt novecojusi. Jūsu maciņš pēc savienojuma izveides automātiski sinhronizējas ar Rngcoin tīklu, taču šis process vēl nav beidzies.</translation>
     </message>
     <message>
         <source>Available:</source>
@@ -904,25 +840,9 @@
         <source>&amp;Save Image...</source>
         <translation>&amp;Saglabāt Attēlu...</translation>
     </message>
-    <message>
-        <source>Address</source>
-        <translation>Adrese</translation>
-    </message>
-    <message>
-        <source>Label</source>
-        <translation>Nosaukums</translation>
-    </message>
     </context>
 <context>
     <name>RecentRequestsTableModel</name>
-    <message>
-        <source>Label</source>
-        <translation>Nosaukums</translation>
-    </message>
-    <message>
-        <source>(no label)</source>
-        <translation>(bez nosaukuma)</translation>
-    </message>
     </context>
 <context>
     <name>SendCoinsDialog</name>
@@ -932,7 +852,7 @@
     </message>
     <message>
         <source>Coin Control Features</source>
-        <translation>RNGCoin Kontroles Funkcijas</translation>
+        <translation>Rngcoin Kontroles Funkcijas</translation>
     </message>
     <message>
         <source>Inputs...</source>
@@ -1006,11 +926,7 @@
         <source>S&amp;end</source>
         <translation>&amp;Sūtīt</translation>
     </message>
-    <message>
-        <source>(no label)</source>
-        <translation>(bez nosaukuma)</translation>
-    </message>
-</context>
+    </context>
 <context>
     <name>SendCoinsEntry</name>
     <message>
@@ -1111,8 +1027,8 @@
         <translation>Kopēt parakstu uz sistēmas starpliktuvi</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this RNGCoin address</source>
-        <translation>Parakstīt ziņojumu lai pierādītu, ka esi šīs RNGCoin adreses īpašnieks.</translation>
+        <source>Sign the message to prove you own this Rngcoin address</source>
+        <translation>Parakstīt ziņojumu lai pierādītu, ka esi šīs Rngcoin adreses īpašnieks.</translation>
     </message>
     <message>
         <source>Sign &amp;Message</source>
@@ -1165,29 +1081,9 @@
     </context>
 <context>
     <name>TransactionTableModel</name>
-    <message>
-        <source>Label</source>
-        <translation>Nosaukums</translation>
-    </message>
-    <message>
-        <source>(no label)</source>
-        <translation>(bez nosaukuma)</translation>
-    </message>
     </context>
 <context>
     <name>TransactionView</name>
-    <message>
-        <source>Label</source>
-        <translation>Nosaukums</translation>
-    </message>
-    <message>
-        <source>Address</source>
-        <translation>Adrese</translation>
-    </message>
-    <message>
-        <source>Exporting Failed</source>
-        <translation>Eksportēšana Neizdevās</translation>
-    </message>
     </context>
 <context>
     <name>UnitDisplayStatusBarControl</name>
@@ -1228,8 +1124,8 @@
         <translation>Darbināt fonā kā servisu un pieņemt komandas</translation>
     </message>
     <message>
-        <source>RNGCoin Core</source>
-        <translation>RNGCoin Core</translation>
+        <source>Rngcoin Core</source>
+        <translation>Rngcoin Core</translation>
     </message>
     <message>
         <source>&lt;category&gt; can be:</source>

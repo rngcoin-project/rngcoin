@@ -46,12 +46,12 @@
         <translation>Duke marr adresen</translation>
     </message>
     <message>
-        <source>These are your RNGCoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Këto janë RNGCoin adresat e juaja për të dërguar pagesa. Gjithmon kontrolloni shumën dhe adresën pranuese para se të dërgoni monedha.</translation>
+        <source>These are your Rngcoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Këto janë Rngcoin adresat e juaja për të dërguar pagesa. Gjithmon kontrolloni shumën dhe adresën pranuese para se të dërgoni monedha.</translation>
     </message>
     <message>
-        <source>These are your RNGCoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Këto janë RNGCoin adresat e juaja për të pranuar pagesa. Rekomandohet që gjithmon të përdorni një adresë të re për çdo transaksion.</translation>
+        <source>These are your Rngcoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Këto janë Rngcoin adresat e juaja për të pranuar pagesa. Rekomandohet që gjithmon të përdorni një adresë të re për çdo transaksion.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -214,8 +214,8 @@
         <translation>Ndrysho frazkalimin e përdorur per enkriptimin e portofolit</translation>
     </message>
     <message>
-        <source>RNGCoin</source>
-        <translation>RNGCoin</translation>
+        <source>Rngcoin</source>
+        <translation>Rngcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -784,8 +784,8 @@
         <translation>Opsionet:</translation>
     </message>
     <message>
-        <source>RNGCoin Core</source>
-        <translation>Berthama RNGCoin</translation>
+        <source>Rngcoin Core</source>
+        <translation>Berthama Rngcoin</translation>
     </message>
     <message>
         <source>Information</source>

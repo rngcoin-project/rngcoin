@@ -29,6 +29,7 @@ class COutput;
 class CPubKey;
 class CWallet;
 class uint256;
+class NameTableModel;
 
 QT_BEGIN_NAMESPACE
 class QTimer;
@@ -61,6 +62,10 @@ public:
 
     static const int CURRENT_VERSION = 1;
     int nVersion;
+
+    // rngcoin: used by exchange
+    std::string comment;
+    std::string commentto;
 
     ADD_SERIALIZE_METHODS;
 
@@ -114,7 +119,8 @@ public:
         TransactionCreationFailed, // Error returned when wallet is still locked
         TransactionCommitFailed,
         AbsurdFee,
-        PaymentRequestExpired
+        PaymentRequestExpired,
+        MintOnlyMode
     };
 
     enum EncryptionStatus
@@ -128,8 +134,10 @@ public:
     AddressTableModel *getAddressTableModel();
     TransactionTableModel *getTransactionTableModel();
     RecentRequestsTableModel *getRecentRequestsTableModel();
+    NameTableModel *getNameTableModel();
 
-    CAmount getBalance(const CCoinControl *coinControl = nullptr) const;
+    CAmount getBalance(const CCoinControl *coinControl = NULL) const;
+    CAmount getStake() const;
     CAmount getUnconfirmedBalance() const;
     CAmount getImmatureBalance() const;
     bool haveWatchOnly() const;
@@ -154,7 +162,7 @@ public:
     };
 
     // prepare transaction for getting txfee before sending coins
-    SendCoinsReturn prepareTransaction(const QString &txcomment, WalletModelTransaction &transaction, const CCoinControl& coinControl);
+    SendCoinsReturn prepareTransaction(const QString &txcomment, WalletModelTransaction &transaction, const CCoinControl *coinControl = NULL);
 
     // Send coins to a list of recipients
     SendCoinsReturn sendCoins(const QString &txcomment, WalletModelTransaction &transaction);
@@ -162,7 +170,7 @@ public:
     // Wallet encryption
     bool setWalletEncrypted(bool encrypted, const SecureString &passphrase);
     // Passphrase only needed when unlocking
-    bool setWalletLocked(bool locked, const SecureString &passPhrase=SecureString());
+    bool setWalletLocked(bool locked, const SecureString &passPhrase=SecureString(), int64_t nSeconds = 0, bool fMintOnly = false);
     bool changePassphrase(const SecureString &oldPass, const SecureString &newPass);
     // Wallet backup
     bool backupWallet(const QString &filename);
@@ -190,7 +198,7 @@ public:
     UnlockContext requestUnlock();
 
     bool getPubKey(const CKeyID &address, CPubKey& vchPubKeyOut) const;
-    bool IsSpendable(const CTxDestination& dest) const;
+    bool havePrivKey(const CKeyID &address) const;
     bool getPrivKey(const CKeyID &address, CKey& vchPrivKeyOut) const;
     void getOutputs(const std::vector<COutPoint>& vOutpoints, std::vector<COutput>& vOutputs);
     bool isSpent(const COutPoint& outpoint) const;
@@ -207,16 +215,14 @@ public:
     bool transactionCanBeAbandoned(uint256 hash) const;
     bool abandonTransaction(uint256 hash) const;
 
-    bool transactionCanBeBumped(uint256 hash) const;
-    bool bumpFee(uint256 hash);
-
     static bool isWalletEnabled();
 
     bool hdEnabled() const;
 
     int getDefaultConfirmTarget() const;
 
-    bool getDefaultWalletRbf() const;
+    // rngcoin:
+    bool getAddressForChange(std::string &sAddress);
 
 private:
     CWallet *wallet;
@@ -230,9 +236,11 @@ private:
     AddressTableModel *addressTableModel;
     TransactionTableModel *transactionTableModel;
     RecentRequestsTableModel *recentRequestsTableModel;
+    NameTableModel *nameTableModel;
 
     // Cache some values to be able to detect changes
     CAmount cachedBalance;
+    CAmount cachedStake;
     CAmount cachedUnconfirmedBalance;
     CAmount cachedImmatureBalance;
     CAmount cachedWatchOnlyBalance;
@@ -249,7 +257,7 @@ private:
 
 Q_SIGNALS:
     // Signal that balance in wallet changed
-    void balanceChanged(const CAmount& balance, const CAmount& unconfirmedBalance, const CAmount& immatureBalance,
+    void balanceChanged(const CAmount& balance, const CAmount& stake, const CAmount& unconfirmedBalance, const CAmount& immatureBalance,
                         const CAmount& watchOnlyBalance, const CAmount& watchUnconfBalance, const CAmount& watchImmatureBalance);
 
     // Encryption status of wallet changed

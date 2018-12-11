@@ -110,16 +110,16 @@
         <translation>Recibiendo direcciones</translation>
     </message>
     <message>
-        <source>Send coins to a RNGCoin address</source>
-        <translation>Enviar monedas a una dirección RNGCoin</translation>
+        <source>Send coins to a Rngcoin address</source>
+        <translation>Enviar monedas a una dirección Rngcoin</translation>
     </message>
     <message>
         <source>Change the passphrase used for wallet encryption</source>
         <translation>Cambie la clave utilizada para el cifrado del monedero</translation>
     </message>
     <message>
-        <source>RNGCoin</source>
-        <translation>RNGCoin</translation>
+        <source>Rngcoin</source>
+        <translation>Rngcoin</translation>
     </message>
     <message>
         <source>Wallet</source>

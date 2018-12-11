@@ -138,16 +138,16 @@
         <translation>Повторно индексирање на блокови од дискот...</translation>
     </message>
     <message>
-        <source>Send coins to a RNGCoin address</source>
-        <translation>Испрати RNGCoin-и на RNGCoin адреса</translation>
+        <source>Send coins to a Rngcoin address</source>
+        <translation>Испрати rngcoinи на Rngcoin адреса</translation>
     </message>
     <message>
         <source>&amp;Verify message...</source>
         <translation>&amp;Потврди порака...</translation>
     </message>
     <message>
-        <source>RNGCoin</source>
-        <translation>RNGCoin</translation>
+        <source>Rngcoin</source>
+        <translation>Rngcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -578,8 +578,8 @@
         <translation>Опции:</translation>
     </message>
     <message>
-        <source>RNGCoin Core</source>
-        <translation>RNGCoin Core</translation>
+        <source>Rngcoin Core</source>
+        <translation>Rngcoin Core</translation>
     </message>
     <message>
         <source>Warning</source>

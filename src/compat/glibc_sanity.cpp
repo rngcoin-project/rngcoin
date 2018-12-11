@@ -56,7 +56,7 @@ bool sanity_test_fdelt()
 }
 #endif
 
-} // namespace
+} // anon namespace
 
 bool glibc_sanity_test()
 {

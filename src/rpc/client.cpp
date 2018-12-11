@@ -10,8 +10,10 @@
 #include <set>
 #include <stdint.h>
 
+#include <boost/algorithm/string/case_conv.hpp> // for to_lower()
 #include <univalue.h>
 
+using namespace std;
 
 class CRPCConvertParam
 {
@@ -22,7 +24,7 @@ public:
 };
 
 /**
- * Specify a (method, idx, name) here if the argument is a non-string RPC
+ * Specifiy a (method, idx, name) here if the argument is a non-string RPC
  * argument and needs to be converted from JSON.
  *
  * @note Parameter indexes start from 0.
@@ -32,14 +34,14 @@ static const CRPCConvertParam vRPCConvertParams[] =
     { "setmocktime", 0, "timestamp" },
     { "generate", 0, "nblocks" },
     { "generate", 1, "maxtries" },
+    { "setgenerate", 0, "generate" },
+    { "setgenerate", 1, "genproclimit" },
     { "generatetoaddress", 0, "nblocks" },
     { "generatetoaddress", 2, "maxtries" },
     { "getnetworkhashps", 0, "nblocks" },
     { "getnetworkhashps", 1, "height" },
     { "sendtoaddress", 1, "amount" },
     { "sendtoaddress", 5, "subtractfeefromamount" },
-    { "sendtoaddress", 6 , "replaceable" },
-    { "sendtoaddress", 7 , "conf_target" },
     { "settxfee", 0, "amount" },
     { "getreceivedbyaddress", 1, "minconf" },
     { "getreceivedbyaccount", 1, "minconf" },
@@ -66,15 +68,14 @@ static const CRPCConvertParam vRPCConvertParams[] =
     { "listaccounts", 0, "minconf" },
     { "listaccounts", 1, "include_watchonly" },
     { "walletpassphrase", 1, "timeout" },
+    { "walletpassphrase", 2, "mintonly" },
     { "getblocktemplate", 0, "template_request" },
     { "listsinceblock", 1, "target_confirmations" },
     { "listsinceblock", 2, "include_watchonly" },
-    { "listsinceblock", 3, "include_removed" },
     { "sendmany", 1, "amounts" },
     { "sendmany", 2, "minconf" },
     { "sendmany", 5, "subtractfeefrom" },
-    { "sendmany", 6 , "replaceable" },
-    { "sendmany", 7 , "conf_target" },
+    { "scantxoutset", 1, "scanobjects" },
     { "addmultisigaddress", 0, "nrequired" },
     { "addmultisigaddress", 1, "keys" },
     { "createmultisig", 0, "nrequired" },
@@ -82,22 +83,16 @@ static const CRPCConvertParam vRPCConvertParams[] =
     { "listunspent", 0, "minconf" },
     { "listunspent", 1, "maxconf" },
     { "listunspent", 2, "addresses" },
-    { "listunspent", 3, "include_unsafe" },
-    { "listunspent", 4, "query_options" },
-    { "getblock", 1, "verbosity" },
     { "getblock", 1, "verbose" },
     { "getblockheader", 1, "verbose" },
-    { "getchaintxstats", 0, "nblocks" },
     { "gettransaction", 1, "include_watchonly" },
     { "getrawtransaction", 1, "verbose" },
     { "createrawtransaction", 0, "inputs" },
     { "createrawtransaction", 1, "outputs" },
     { "createrawtransaction", 2, "locktime" },
-    { "createrawtransaction", 3, "replaceable" },
     { "signrawtransaction", 1, "prevtxs" },
     { "signrawtransaction", 2, "privkeys" },
     { "sendrawtransaction", 1, "allowhighfees" },
-    { "combinerawtransaction", 0, "txs" },
     { "fundrawtransaction", 1, "options" },
     { "gettxout", 1, "n" },
     { "gettxout", 2, "include_mempool" },
@@ -116,10 +111,9 @@ static const CRPCConvertParam vRPCConvertParams[] =
     { "keypoolrefill", 0, "newsize" },
     { "getrawmempool", 0, "verbose" },
     { "estimatefee", 0, "nblocks" },
-    { "estimatesmartfee", 0, "conf_target" },
-    { "estimaterawfee", 0, "conf_target" },
-    { "estimaterawfee", 1, "threshold" },
-    { "prioritisetransaction", 1, "dummy" },
+    { "estimatepriority", 0, "nblocks" },
+    { "estimatesmartpriority", 0, "nblocks" },
+    { "prioritisetransaction", 1, "priority_delta" },
     { "prioritisetransaction", 2, "fee_delta" },
     { "setban", 2, "bantime" },
     { "setban", 3, "absolute" },
@@ -127,9 +121,6 @@ static const CRPCConvertParam vRPCConvertParams[] =
     { "getmempoolancestors", 1, "verbose" },
     { "getmempooldescendants", 1, "verbose" },
     { "bumpfee", 1, "options" },
-    { "logging", 0, "include" },
-    { "logging", 1, "exclude" },
-    { "disconnectnode", 1, "nodeid" },
     // Echo with conversion (For testing only)
     { "echojson", 0, "arg0" },
     { "echojson", 1, "arg1" },
@@ -141,6 +132,34 @@ static const CRPCConvertParam vRPCConvertParams[] =
     { "echojson", 7, "arg7" },
     { "echojson", 8, "arg8" },
     { "echojson", 9, "arg9" },
+
+    // ppcoin:
+    { "sendalert", 2, "minver"},
+    { "sendalert", 3, "maxver"},
+    { "sendalert", 4, "priority"},
+    { "sendalert", 5, "id"},
+    { "sendalert", 6, "cancelupto"},
+    { "reservebalance", 0, "reserve" },
+    { "reservebalance", 1, "amount" },
+
+    // rngcoin:
+    { "name_new", 2, "days" },
+    { "name_update", 2, "days" },
+    { "name_scan", 1, "max-returned" },
+    { "name_scan", 2, "max-value-length" },
+    { "name_scan_address", 1, "max-value-length" },
+    { "name_filter", 1, "maxage" },
+    { "name_filter", 2, "from" },
+    { "name_filter", 3, "nb" },
+    { "name_history", 1, "fullhistory" },
+    { "name_indexinfo", 0, "indextype" },
+    { "sendtoname", 1, "amount" },
+    { "randpay_createaddrchap", 0, "risk" },
+    { "randpay_createaddrchap", 1, "timio" },
+    { "randpay_createtx", 0, "amount"},
+    { "randpay_createtx", 2, "risk" },
+    { "randpay_createtx", 3, "timio" },
+    { "randpay_submittx", 1, "risk" },
 };
 
 class CRPCConvertTable
@@ -183,7 +202,7 @@ UniValue ParseNonRFCJSONValue(const std::string& strVal)
     UniValue jVal;
     if (!jVal.read(std::string("[")+strVal+std::string("]")) ||
         !jVal.isArray() || jVal.size()!=1)
-        throw std::runtime_error(std::string("Error parsing JSON:")+strVal);
+        throw runtime_error(string("Error parsing JSON:")+strVal);
     return jVal[0];
 }
 

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -e
+. /usr/share/debconf/confmodule
+
+case "$1" in
+  remove|deconfigure|abort-install)
+    rm -f /var/tmp/rngcoin-install.flag
+    pkill -9 -u rng > /dev/null 2>&1 || true
+    getent passwd rng >/dev/null && userdel rng >/dev/null 2>&1 || true
+    rm -f /etc/ssl/rng/rngcoin.key /etc/ssl/rng/rngcoin.crt /etc/rngcoin/rngcoin.conf /etc/rngcoin/certs
+  ;;
+esac
+
+exit 0

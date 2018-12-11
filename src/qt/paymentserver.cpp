@@ -78,7 +78,7 @@ namespace // Anon namespace
 //
 static QString ipcServerName()
 {
-    QString name("RNGCoinQt");
+    QString name("RngcoinQt");
 
     // Append a simple hash of the datadir
     // Note that GetDataDir(true) returns a different path
@@ -122,7 +122,7 @@ void PaymentServer::LoadRootCAs(X509_STORE* _store)
 
     // Note: use "-system-" default here so that users can pass -rootcertificates=""
     // and get 'I don't like X.509 certificates, don't trust anybody' behavior:
-    QString certFile = QString::fromStdString(gArgs.GetArg("-rootcertificates", "-system-"));
+    QString certFile = QString::fromStdString(GetArg("-rootcertificates", "-system-"));
 
     // Empty store
     if (certFile.isEmpty()) {
@@ -144,7 +144,7 @@ void PaymentServer::LoadRootCAs(X509_STORE* _store)
     int nRootCerts = 0;
     const QDateTime currentTime = QDateTime::currentDateTime();
 
-    for (const QSslCertificate& cert : certList) {
+    Q_FOREACH (const QSslCertificate& cert, certList) {
         // Don't log NULL certificates
         if (cert.isNull())
             continue;
@@ -215,20 +215,18 @@ void PaymentServer::ipcParseCommandLine(int argc, char* argv[])
         {
             savedPaymentRequests.append(arg);
 
-            SendCoinsRecipient r;
-            if (GUIUtil::parseBitcoinURI(arg, &r) && !r.address.isEmpty())
+            std::vector<SendCoinsRecipient> rv;
+            if (GUIUtil::parseBitcoinURI(arg, rv) && !rv[0].address.isEmpty())
             {
-                CBitcoinAddress address(r.address.toStdString());
-                auto tempChainParams = CreateChainParams(CBaseChainParams::MAIN);
+                CBitcoinAddress address(rv[0].address.toStdString());
 
-                if (address.IsValid(*tempChainParams))
+                if (address.IsValid(Params(CBaseChainParams::MAIN)))
                 {
                     SelectParams(CBaseChainParams::MAIN);
                 }
-                else {
-                    tempChainParams = CreateChainParams(CBaseChainParams::TESTNET);
-                    if (address.IsValid(*tempChainParams))
-                        SelectParams(CBaseChainParams::TESTNET);
+                else if (address.IsValid(Params(CBaseChainParams::TESTNET)))
+                {
+                    SelectParams(CBaseChainParams::TESTNET);
                 }
             }
         }
@@ -267,14 +265,14 @@ void PaymentServer::ipcParseCommandLine(int argc, char* argv[])
 bool PaymentServer::ipcSendCommandLine()
 {
     bool fResult = false;
-    for (const QString& r : savedPaymentRequests)
+    Q_FOREACH (const QString& r, savedPaymentRequests)
     {
         QLocalSocket* socket = new QLocalSocket();
         socket->connectToServer(ipcServerName(), QIODevice::WriteOnly);
         if (!socket->waitForConnected(BITCOIN_IPC_CONNECT_TIMEOUT))
         {
             delete socket;
-            socket = nullptr;
+            socket = NULL;
             return false;
         }
 
@@ -290,7 +288,7 @@ bool PaymentServer::ipcSendCommandLine()
         socket->disconnectFromServer();
 
         delete socket;
-        socket = nullptr;
+        socket = NULL;
         fResult = true;
     }
 
@@ -364,7 +362,7 @@ void PaymentServer::initNetManager()
 {
     if (!optionsModel)
         return;
-    if (netManager != nullptr)
+    if (netManager != NULL)
         delete netManager;
 
     // netManager is used to fetch paymentrequests given in bitcoin: URIs
@@ -392,7 +390,7 @@ void PaymentServer::uiReady()
     initNetManager();
 
     saveURIs = false;
-    for (const QString& s : savedPaymentRequests)
+    Q_FOREACH (const QString& s, savedPaymentRequests)
     {
         handleURIOrFile(s);
     }
@@ -438,20 +436,20 @@ void PaymentServer::handleURIOrFile(const QString& s)
         }
         else // normal URI
         {
-            SendCoinsRecipient recipient;
-            if (GUIUtil::parseBitcoinURI(s, &recipient))
+            std::vector<SendCoinsRecipient> recipients;
+            if (GUIUtil::parseBitcoinURI(s, recipients))
             {
-                CBitcoinAddress address(recipient.address.toStdString());
+                CBitcoinAddress address(recipients[0].address.toStdString());
                 if (!address.IsValid()) {
-                    Q_EMIT message(tr("URI handling"), tr("Invalid payment address %1").arg(recipient.address),
+                    Q_EMIT message(tr("URI handling"), tr("Invalid payment address %1").arg(recipients[0].address),
                         CClientUIInterface::MSG_ERROR);
                 }
                 else
-                    Q_EMIT receivedPaymentRequest(recipient);
+                    Q_EMIT receivedPaymentRequest(recipients[0]);
             }
             else
                 Q_EMIT message(tr("URI handling"),
-                    tr("URI cannot be parsed! This can be caused by an invalid RNGCoin address or malformed URI parameters."),
+                    tr("URI cannot be parsed! This can be caused by an invalid Rngcoin address or malformed URI parameters."),
                     CClientUIInterface::ICON_WARNING);
 
             return;
@@ -555,7 +553,7 @@ bool PaymentServer::processPaymentRequest(const PaymentRequestPlus& request, Sen
     QList<std::pair<CScript, CAmount> > sendingTos = request.getPayTo();
     QStringList addresses;
 
-    for (const std::pair<CScript, CAmount>& sendingTo : sendingTos) {
+    Q_FOREACH(const PAIRTYPE(CScript, CAmount)& sendingTo, sendingTos) {
         // Extract and check destination addresses
         CTxDestination dest;
         if (ExtractDestination(sendingTo.first, dest)) {
@@ -582,7 +580,7 @@ bool PaymentServer::processPaymentRequest(const PaymentRequestPlus& request, Sen
 
         // Extract and check amounts
         CTxOut txOut(sendingTo.second, sendingTo.first);
-        if (IsDust(txOut, ::dustRelayFee)) {
+        if (txOut.IsDust(dustRelayFee)) {
             Q_EMIT message(tr("Payment request error"), tr("Requested payment amount of %1 is too small (considered dust).")
                 .arg(BitcoinUnits::formatWithUnit(optionsModel->getDisplayUnit(), sendingTo.second)),
                 CClientUIInterface::MSG_ERROR);
@@ -742,7 +740,7 @@ void PaymentServer::reportSslErrors(QNetworkReply* reply, const QList<QSslError>
     Q_UNUSED(reply);
 
     QString errString;
-    for (const QSslError& err : errs) {
+    Q_FOREACH (const QSslError& err, errs) {
         qWarning() << "PaymentServer::reportSslErrors: " << err;
         errString += err.errorString() + "\n";
     }

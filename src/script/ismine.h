@@ -37,5 +37,6 @@ isminetype IsMine(const CKeyStore& keystore, const CScript& scriptPubKey, bool& 
 isminetype IsMine(const CKeyStore& keystore, const CScript& scriptPubKey, SigVersion = SIGVERSION_BASE);
 isminetype IsMine(const CKeyStore& keystore, const CTxDestination& dest, bool& isInvalid, SigVersion = SIGVERSION_BASE);
 isminetype IsMine(const CKeyStore& keystore, const CTxDestination& dest, SigVersion = SIGVERSION_BASE);
+isminetype IsMine(bool& fName, const CKeyStore& keystore, const CScript& scriptPubKey);
 
 #endif // BITCOIN_SCRIPT_ISMINE_H

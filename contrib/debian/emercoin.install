@@ -1,0 +1,7 @@
+contrib/debian/rng usr/bin
+contrib/debian/rngcoin.conf var/lib/rng/.rngcoin
+contrib/debian/rngcoind.service lib/systemd/system
+contrib/debian/rngcoind.logrotate etc/logrotate.d
+usr/local/bin/rngcoind usr/bin
+usr/local/bin/rngcoin-cli usr/bin
+usr/local/bin/rngcoin-tx usr/bin

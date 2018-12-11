@@ -13,7 +13,6 @@
 #include "core_io.h"
 #include "keystore.h"
 #include "policy/policy.h"
-#include "policy/rbf.h"
 #include "primitives/transaction.h"
 #include "script/script.h"
 #include "script/sign.h"
@@ -25,6 +24,7 @@
 #include <stdio.h>
 
 #include <boost/algorithm/string.hpp>
+#include <boost/assign/list_of.hpp>
 
 static bool fCreateBlank;
 static std::map<std::string,UniValue> registers;
@@ -39,7 +39,7 @@ static int AppInitRawTx(int argc, char* argv[])
     //
     // Parameters
     //
-    gArgs.ParseParameters(argc, argv);
+    ParseParameters(argc, argv);
 
     // Check for -testnet or -regtest parameter (Params() calls are only valid after this clause)
     try {
@@ -49,9 +49,9 @@ static int AppInitRawTx(int argc, char* argv[])
         return EXIT_FAILURE;
     }
 
-    fCreateBlank = gArgs.GetBoolArg("-create", false);
+    fCreateBlank = GetBoolArg("-create", false);
 
-    if (argc<2 || gArgs.IsArgSet("-?") || gArgs.IsArgSet("-h") || gArgs.IsArgSet("-help"))
+    if (argc<2 || IsArgSet("-?") || IsArgSet("-h") || IsArgSet("-help"))
     {
         // First part of help message is specific to this utility
         std::string strUsage = strprintf(_("%s rngcoin-tx utility version"), _(PACKAGE_NAME)) + " " + FormatFullVersion() + "\n\n" +
@@ -77,7 +77,6 @@ static int AppInitRawTx(int argc, char* argv[])
         strUsage += HelpMessageOpt("in=TXID:VOUT(:SEQUENCE_NUMBER)", _("Add input to TX"));
         strUsage += HelpMessageOpt("locktime=N", _("Set TX lock time to N"));
         strUsage += HelpMessageOpt("nversion=N", _("Set TX version to N"));
-        strUsage += HelpMessageOpt("replaceable(=N)", _("Set RBF opt-in sequence number for input N (if not provided, opt-in all available inputs)"));
         strUsage += HelpMessageOpt("outaddr=VALUE:ADDRESS", _("Add address-based output to TX"));
         strUsage += HelpMessageOpt("outpubkey=VALUE:PUBKEY[:FLAGS]", _("Add pay-to-pubkey output to TX") + ". " +
             _("Optionally add the \"W\" flag to produce a pay-to-witness-pubkey-hash output") + ". " +
@@ -203,26 +202,6 @@ static void MutateTxLocktime(CMutableTransaction& tx, const std::string& cmdVal)
     tx.nLockTime = (unsigned int) newLocktime;
 }
 
-static void MutateTxRBFOptIn(CMutableTransaction& tx, const std::string& strInIdx)
-{
-    // parse requested index
-    int inIdx = atoi(strInIdx);
-    if (inIdx < 0 || inIdx >= (int)tx.vin.size()) {
-        throw std::runtime_error("Invalid TX input index '" + strInIdx + "'");
-    }
-
-    // set the nSequence to MAX_INT - 2 (= RBF opt in flag)
-    int cnt = 0;
-    for (CTxIn& txin : tx.vin) {
-        if (strInIdx == "" || cnt == inIdx) {
-            if (txin.nSequence > MAX_BIP125_RBF_SEQUENCE) {
-                txin.nSequence = MAX_BIP125_RBF_SEQUENCE;
-            }
-        }
-        ++cnt;
-    }
-}
-
 static void MutateTxAddInput(CMutableTransaction& tx, const std::string& strInput)
 {
     std::vector<std::string> vStrInputParts;
@@ -239,7 +218,7 @@ static void MutateTxAddInput(CMutableTransaction& tx, const std::string& strInpu
     uint256 txid(uint256S(strTxid));
 
     static const unsigned int minTxOutSz = 9;
-    static const unsigned int maxVout = MAX_BLOCK_WEIGHT / (WITNESS_SCALE_FACTOR * minTxOutSz);
+    static const unsigned int maxVout = MAX_BLOCK_BASE_SIZE / minTxOutSz;
 
     // extract and validate vout
     std::string strVout = vStrInputParts[1];
@@ -299,6 +278,7 @@ static void MutateTxAddOutPubKey(CMutableTransaction& tx, const std::string& str
     if (!pubkey.IsFullyValid())
         throw std::runtime_error("invalid TX output pubkey");
     CScript scriptPubKey = GetScriptForRawPubKey(pubkey);
+    CBitcoinAddress addr(scriptPubKey);
 
     // Extract and validate FLAGS
     bool bSegWit = false;
@@ -310,9 +290,6 @@ static void MutateTxAddOutPubKey(CMutableTransaction& tx, const std::string& str
     }
 
     if (bSegWit) {
-        if (!pubkey.IsCompressed()) {
-            throw std::runtime_error("Uncompressed pubkeys are not useable for SegWit outputs");
-        }
         // Call GetScriptForWitness() to build a P2WSH scriptPubKey
         scriptPubKey = GetScriptForWitness(scriptPubKey);
     }
@@ -380,11 +357,6 @@ static void MutateTxAddOutMultiSig(CMutableTransaction& tx, const std::string& s
     CScript scriptPubKey = GetScriptForMultisig(required, pubkeys);
 
     if (bSegWit) {
-        for (CPubKey& pubkey : pubkeys) {
-            if (!pubkey.IsCompressed()) {
-                throw std::runtime_error("Uncompressed pubkeys are not useable for SegWit outputs");
-            }
-        }
         // Call GetScriptForWitness() to build a P2WSH scriptPubKey
         scriptPubKey = GetScriptForWitness(scriptPubKey);
     }
@@ -517,12 +489,28 @@ static bool findSighashFlags(int& flags, const std::string& flagStr)
     return false;
 }
 
+uint256 ParseHashUO(std::map<std::string,UniValue>& o, std::string strKey)
+{
+    if (!o.count(strKey))
+        return uint256();
+    return ParseHashUV(o[strKey], strKey);
+}
+
+std::vector<unsigned char> ParseHexUO(std::map<std::string,UniValue>& o, std::string strKey)
+{
+    if (!o.count(strKey)) {
+        std::vector<unsigned char> emptyVec;
+        return emptyVec;
+    }
+    return ParseHexUV(o[strKey], strKey);
+}
+
 static CAmount AmountFromValue(const UniValue& value)
 {
     if (!value.isNum() && !value.isStr())
         throw std::runtime_error("Amount is not a number or string");
     CAmount amount;
-    if (!ParseFixedPoint(value.getValStr(), 8, &amount))
+    if (!ParseFixedPoint(value.getValStr(), 6, &amount))
         throw std::runtime_error("Invalid amount");
     if (!MoneyRange(amount))
         throw std::runtime_error("Amount out of range");
@@ -574,11 +562,7 @@ static void MutateTxSign(CMutableTransaction& tx, const std::string& flagStr)
             if (!prevOut.isObject())
                 throw std::runtime_error("expected prevtxs internal object");
 
-            std::map<std::string, UniValue::VType> types = {
-                {"txid", UniValue::VSTR},
-                {"vout", UniValue::VNUM},
-                {"scriptPubKey", UniValue::VSTR},
-            };
+            std::map<std::string,UniValue::VType> types = boost::assign::map_list_of("txid", UniValue::VSTR)("vout",UniValue::VNUM)("scriptPubKey",UniValue::VSTR);
             if (!prevOut.checkObject(types))
                 throw std::runtime_error("prevtxs internal object typecheck fail");
 
@@ -588,31 +572,29 @@ static void MutateTxSign(CMutableTransaction& tx, const std::string& flagStr)
             if (nOut < 0)
                 throw std::runtime_error("vout must be positive");
 
-            COutPoint out(txid, nOut);
             std::vector<unsigned char> pkData(ParseHexUV(prevOut["scriptPubKey"], "scriptPubKey"));
             CScript scriptPubKey(pkData.begin(), pkData.end());
 
+            CCoinsModifier coins = view.ModifyCoins(txid);
             {
-                const Coin& coin = view.AccessCoin(out);
-                if (!coin.IsSpent() && coin.out.scriptPubKey != scriptPubKey) {
+                if (coins->IsAvailable(nOut) && coins->vout[nOut].scriptPubKey != scriptPubKey) {
                     std::string err("Previous output scriptPubKey mismatch:\n");
-                    err = err + ScriptToAsmStr(coin.out.scriptPubKey) + "\nvs:\n"+
+                    err = err + ScriptToAsmStr(coins->vout[nOut].scriptPubKey) + "\nvs:\n"+
                         ScriptToAsmStr(scriptPubKey);
                     throw std::runtime_error(err);
                 }
-                Coin newcoin;
-                newcoin.out.scriptPubKey = scriptPubKey;
-                newcoin.out.nValue = 0;
+                if ((unsigned int)nOut >= coins->vout.size())
+                    coins->vout.resize(nOut+1);
+                coins->vout[nOut].scriptPubKey = scriptPubKey;
+                coins->vout[nOut].nValue = 0;
                 if (prevOut.exists("amount")) {
-                    newcoin.out.nValue = AmountFromValue(prevOut["amount"]);
+                    coins->vout[nOut].nValue = AmountFromValue(prevOut["amount"]);
                 }
-                newcoin.nHeight = 1;
-                view.AddCoin(out, std::move(newcoin), true);
             }
 
             // if redeemScript given and private keys given,
             // add redeemScript to the tempKeystore so it can be signed:
-            if ((scriptPubKey.IsPayToScriptHash() || scriptPubKey.IsPayToWitnessScriptHash()) &&
+            if ((scriptPubKey.IsPayToScriptHash(coins->nVersion) || scriptPubKey.IsPayToWitnessScriptHash(coins->nVersion)) &&
                 prevOut.exists("redeemScript")) {
                 UniValue v = prevOut["redeemScript"];
                 std::vector<unsigned char> rsData(ParseHexUV(v, "redeemScript"));
@@ -629,13 +611,16 @@ static void MutateTxSign(CMutableTransaction& tx, const std::string& flagStr)
     // Sign what we can:
     for (unsigned int i = 0; i < mergedTx.vin.size(); i++) {
         CTxIn& txin = mergedTx.vin[i];
-        const Coin& coin = view.AccessCoin(txin.prevout);
-        if (coin.IsSpent()) {
+        const CCoins* coins = view.AccessCoins(txin.prevout.hash);
+        if (!coins || !coins->IsAvailable(txin.prevout.n)) {
             fComplete = false;
             continue;
         }
-        const CScript& prevPubKey = coin.out.scriptPubKey;
-        const CAmount& amount = coin.out.nValue;
+        const CScript& prevPubKey = txin.prevout.hash != randpaytx ?
+                    coins->vout[txin.prevout.n].scriptPubKey :
+                    GenerateScriptForRandPay(mergedTx.vout[0].scriptPubKey);
+
+        const CAmount& amount = coins->vout[txin.prevout.n].nValue;
 
         SignatureData sigdata;
         // Only sign SIGHASH_SINGLE if there's a corresponding output:
@@ -643,11 +628,11 @@ static void MutateTxSign(CMutableTransaction& tx, const std::string& flagStr)
             ProduceSignature(MutableTransactionSignatureCreator(&keystore, &mergedTx, i, amount, nHashType), prevPubKey, sigdata);
 
         // ... and merge in other signatures:
-        for (const CTransaction& txv : txVariants)
+        BOOST_FOREACH(const CTransaction& txv, txVariants)
             sigdata = CombineSignatures(prevPubKey, MutableTransactionSignatureChecker(&mergedTx, i, amount), sigdata, DataFromTransaction(txv, i));
         UpdateTransaction(mergedTx, i, sigdata);
 
-        if (!VerifyScript(txin.scriptSig, prevPubKey, &txin.scriptWitness, STANDARD_SCRIPT_VERIFY_FLAGS, MutableTransactionSignatureChecker(&mergedTx, i, amount)))
+        if (!VerifyScript(txin.scriptSig, prevPubKey, mergedTx.nVersion, &txin.scriptWitness, STANDARD_SCRIPT_VERIFY_FLAGS, MutableTransactionSignatureChecker(&mergedTx, i, amount)))
             fComplete = false;
     }
 
@@ -681,9 +666,6 @@ static void MutateTx(CMutableTransaction& tx, const std::string& command,
         MutateTxVersion(tx, commandVal);
     else if (command == "locktime")
         MutateTxLocktime(tx, commandVal);
-    else if (command == "replaceable") {
-        MutateTxRBFOptIn(tx, commandVal);
-    }
 
     else if (command == "delin")
         MutateTxDelInput(tx, commandVal);
@@ -694,13 +676,11 @@ static void MutateTx(CMutableTransaction& tx, const std::string& command,
         MutateTxDelOutput(tx, commandVal);
     else if (command == "outaddr")
         MutateTxAddOutAddr(tx, commandVal);
-    else if (command == "outpubkey") {
-        if (!ecc) { ecc.reset(new Secp256k1Init()); }
+    else if (command == "outpubkey")
         MutateTxAddOutPubKey(tx, commandVal);
-    } else if (command == "outmultisig") {
-        if (!ecc) { ecc.reset(new Secp256k1Init()); }
+    else if (command == "outmultisig")
         MutateTxAddOutMultiSig(tx, commandVal);
-    } else if (command == "outscript")
+    else if (command == "outscript")
         MutateTxAddOutScript(tx, commandVal);
     else if (command == "outdata")
         MutateTxAddOutData(tx, commandVal);
@@ -745,9 +725,9 @@ static void OutputTxHex(const CTransaction& tx)
 
 static void OutputTx(const CTransaction& tx)
 {
-    if (gArgs.GetBoolArg("-json", false))
+    if (GetBoolArg("-json", false))
         OutputTxJSON(tx);
-    else if (gArgs.GetBoolArg("-txid", false))
+    else if (GetBoolArg("-txid", false))
         OutputTxHash(tx);
     else
         OutputTxHex(tx);
@@ -830,7 +810,7 @@ static int CommandLineRawTx(int argc, char* argv[])
         nRet = EXIT_FAILURE;
     }
     catch (...) {
-        PrintExceptionContinue(nullptr, "CommandLineRawTx()");
+        PrintExceptionContinue(NULL, "CommandLineRawTx()");
         throw;
     }
 
@@ -853,7 +833,7 @@ int main(int argc, char* argv[])
         PrintExceptionContinue(&e, "AppInitRawTx()");
         return EXIT_FAILURE;
     } catch (...) {
-        PrintExceptionContinue(nullptr, "AppInitRawTx()");
+        PrintExceptionContinue(NULL, "AppInitRawTx()");
         return EXIT_FAILURE;
     }
 
@@ -864,7 +844,7 @@ int main(int argc, char* argv[])
     catch (const std::exception& e) {
         PrintExceptionContinue(&e, "CommandLineRawTx()");
     } catch (...) {
-        PrintExceptionContinue(nullptr, "CommandLineRawTx()");
+        PrintExceptionContinue(NULL, "CommandLineRawTx()");
     }
     return ret;
 }

@@ -16,12 +16,12 @@ BEGIN
     BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
-            VALUE "CompanyName",        "RNGCoin"
+            VALUE "CompanyName",        "Rngcoin"
             VALUE "FileDescription",    "rngcoin-cli (JSON-RPC client for " PACKAGE_NAME ")"
             VALUE "FileVersion",        VER_FILEVERSION_STR
             VALUE "InternalName",       "rngcoin-cli"
             VALUE "LegalCopyright",     COPYRIGHT_STR
-            VALUE "LegalTrademarks1",   "Distributed under the MIT software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php."
+            VALUE "LegalTrademarks1",   "Distributed under the GPL3 software license, see the accompanying file COPYING or http://www.gnu.org/licenses/gpl.html."
             VALUE "OriginalFilename",   "rngcoin-cli.exe"
             VALUE "ProductName",        "rngcoin-cli"
             VALUE "ProductVersion",     VER_PRODUCTVERSION_STR

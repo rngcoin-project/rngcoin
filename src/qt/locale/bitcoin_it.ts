@@ -62,12 +62,12 @@
         <translation>Indirizzi di ricezione</translation>
     </message>
     <message>
-        <source>These are your RNGCoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Questo è un elenco di indirizzi RNGCoin a cui puoi inviare pagamenti. Controlla sempre l'importo e l'indirizzo del beneficiario prima di inviare rngcoin.</translation>
+        <source>These are your Rngcoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Questo è un elenco di indirizzi Rngcoin a cui puoi inviare pagamenti. Controlla sempre l'importo e l'indirizzo del beneficiario prima di inviare rngcoin.</translation>
     </message>
     <message>
-        <source>These are your RNGCoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Questi sono i tuoi indirizzi RNGCoin che puoi usare per ricevere pagamenti. Si raccomanda di generare un nuovo indirizzo per ogni transazione.</translation>
+        <source>These are your Rngcoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Questi sono i tuoi indirizzi Rngcoin che puoi usare per ricevere pagamenti. Si raccomanda di generare un nuovo indirizzo per ogni transazione.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -314,28 +314,12 @@
         <translation>Apri &amp;URI...</translation>
     </message>
     <message>
-        <source>Click to disable network activity.</source>
-        <translation>Clicca per disattivare la rete.</translation>
-    </message>
-    <message>
-        <source>Network activity disabled.</source>
-        <translation>Attività di rete disabilitata</translation>
-    </message>
-    <message>
-        <source>Click to enable network activity again.</source>
-        <translation>Clicca per abilitare nuovamente l'attività di rete</translation>
-    </message>
-    <message>
-        <source>Syncing Headers (%1%)...</source>
-        <translation>Sincronizzazione Headers (%1%)...</translation>
-    </message>
-    <message>
         <source>Reindexing blocks on disk...</source>
         <translation>Re-indicizzazione blocchi su disco...</translation>
     </message>
     <message>
-        <source>Send coins to a RNGCoin address</source>
-        <translation>Invia fondi ad un indirizzo RNGCoin</translation>
+        <source>Send coins to a Rngcoin address</source>
+        <translation>Invia fondi ad un indirizzo Rngcoin</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -358,8 +342,8 @@
         <translation>&amp;Verifica messaggio...</translation>
     </message>
     <message>
-        <source>RNGCoin</source>
-        <translation>RNGCoin</translation>
+        <source>Rngcoin</source>
+        <translation>Rngcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -386,12 +370,12 @@
         <translation>Cifra le chiavi private che appartengono al tuo portamonete</translation>
     </message>
     <message>
-        <source>Sign messages with your RNGCoin addresses to prove you own them</source>
-        <translation>Firma messaggi con i tuoi indirizzi RNGCoin per dimostrarne il possesso</translation>
+        <source>Sign messages with your Rngcoin addresses to prove you own them</source>
+        <translation>Firma messaggi con i tuoi indirizzi Rngcoin per dimostrarne il possesso</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified RNGCoin addresses</source>
-        <translation>Verifica che i messaggi siano stati firmati con gli indirizzi RNGCoin specificati</translation>
+        <source>Verify messages to ensure they were signed with specified Rngcoin addresses</source>
+        <translation>Verifica che i messaggi siano stati firmati con gli indirizzi Rngcoin specificati</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -430,8 +414,8 @@
         <translation>Opzioni della riga di &amp;comando</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to RNGCoin network</source>
-        <translation><numerusform>%n connessione attiva alla rete RNGCoin</numerusform><numerusform>%n connessioni alla rete RNGCoin attive</numerusform></translation>
+        <source>%n active connection(s) to Rngcoin network</source>
+        <translation><numerusform>%n connessione attiva alla rete Rngcoin</numerusform><numerusform>%n connessioni alla rete Rngcoin attive</numerusform></translation>
     </message>
     <message>
         <source>Indexing blocks on disk...</source>
@@ -474,16 +458,12 @@
         <translation>Aggiornato</translation>
     </message>
     <message>
-        <source>Show the %1 help message to get a list with possible RNGCoin command-line options</source>
-        <translation>Mostra il messaggio di aiuto di %1 per ottenere una lista di opzioni di comando per RNGCoin </translation>
+        <source>Show the %1 help message to get a list with possible Rngcoin command-line options</source>
+        <translation>Mostra il messaggio di aiuto di %1 per ottenere una lista di opzioni di comando per Rngcoin </translation>
     </message>
     <message>
         <source>%1 client</source>
         <translation>%1 client</translation>
-    </message>
-    <message>
-        <source>Connecting to peers...</source>
-        <translation>Connessione ai peers</translation>
     </message>
     <message>
         <source>Catching up...</source>
@@ -528,14 +508,6 @@
         <translation>Transazione ricevuta</translation>
     </message>
     <message>
-        <source>HD key generation is &lt;b&gt;enabled&lt;/b&gt;</source>
-        <translation>La creazione della chiave HD è &lt;b&gt;abilitata&lt;/b&gt;</translation>
-    </message>
-    <message>
-        <source>HD key generation is &lt;b&gt;disabled&lt;/b&gt;</source>
-        <translation>La creazione della chiave HD è &lt;b&gt;disabilitata&lt;/b&gt;</translation>
-    </message>
-    <message>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt;</source>
         <translation>Il portamonete è &lt;b&gt;cifrato&lt;/b&gt; ed attualmente &lt;b&gt;sbloccato&lt;/b&gt;</translation>
     </message>
@@ -543,11 +515,7 @@
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</source>
         <translation>Il portamonete è &lt;b&gt;cifrato&lt;/b&gt; ed attualmente &lt;b&gt;bloccato&lt;/b&gt;</translation>
     </message>
-    <message>
-        <source>A fatal error occurred. RNGCoin can no longer continue safely and will quit.</source>
-        <translation>Si è verificato un errore critico. RNGCoin non può più funzionare in maniera sicura e verrà chiuso.</translation>
-    </message>
-</context>
+    </context>
 <context>
     <name>CoinControlDialog</name>
     <message>
@@ -738,7 +706,7 @@
         <translation>Modifica indirizzo d'invio</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid RNGCoin address.</source>
+        <source>The entered address "%1" is not a valid Rngcoin address.</source>
         <translation>L'indirizzo inserito "%1" non è un indirizzo rngcoin valido.</translation>
     </message>
     <message>
@@ -847,8 +815,8 @@
         <translation>Dato che questa è la prima volta che il programma viene lanciato, puoi scegliere dove %1 salverà i suoi dati.</translation>
     </message>
     <message>
-        <source>%1 will download and store a copy of the RNGCoin block chain. At least %2GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-        <translation>%1 scaricherà e salverà una copia della Blockchain di RNGCoin. Saranno salvati almeno %2GB di dati in questo percorso e continueranno ad aumentare col tempo. Anche il portafoglio verrà salvato in questo percorso.</translation>
+        <source>%1 will download and store a copy of the Rngcoin block chain. At least %2GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <translation>%1 scaricherà e salverà una copia della Blockchain di Rngcoin. Saranno salvati almeno %2GB di dati in questo percorso e continueranno ad aumentare col tempo. Anche il portafoglio verrà salvato in questo percorso.</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
@@ -882,10 +850,6 @@
         <translation>Modulo</translation>
     </message>
     <message>
-        <source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the rngcoin network, as detailed below.</source>
-        <translation>Transazioni recenti potrebbero non essere visibili ancora, perciò il saldo del tuo portafoglio potrebbe non essere corretto. Questa informazione risulterà corretta quando il tuo portafoglio avrà terminato la sincronizzazione con la rete rngcoin, come indicato in dettaglio più sotto.</translation>
-    </message>
-    <message>
         <source>Number of blocks left</source>
         <translation>Numero di blocchi mancanti</translation>
     </message>
@@ -902,26 +866,10 @@
         <translation>Progresso</translation>
     </message>
     <message>
-        <source>Progress increase per hour</source>
-        <translation>Aumento dei progressi per ogni ora</translation>
-    </message>
-    <message>
-        <source>calculating...</source>
-        <translation>calcolando...</translation>
-    </message>
-    <message>
-        <source>Estimated time left until synced</source>
-        <translation>Tempo stimato al completamento della sincronizzazione.</translation>
-    </message>
-    <message>
         <source>Hide</source>
         <translation>Nascondi</translation>
     </message>
-    <message>
-        <source>Unknown. Syncing Headers (%1)...</source>
-        <translation>Sconosciuto. Sincronizzazione Headers (%1)...</translation>
-    </message>
-</context>
+    </context>
 <context>
     <name>OpenURIDialog</name>
     <message>
@@ -1041,16 +989,16 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
         <translation>&amp;Spendi resti non confermati</translation>
     </message>
     <message>
-        <source>Automatically open the RNGCoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Apri automaticamente la porta del client RNGCoin sul router. Il protocollo UPnP deve essere supportato da parte del router ed attivo.</translation>
+        <source>Automatically open the Rngcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Apri automaticamente la porta del client Rngcoin sul router. Il protocollo UPnP deve essere supportato da parte del router ed attivo.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
         <translation>Mappa le porte tramite &amp;UPnP</translation>
     </message>
     <message>
-        <source>Connect to the RNGCoin network through a SOCKS5 proxy.</source>
-        <translation>Connessione alla rete RNGCoin attraverso un proxy SOCKS5.</translation>
+        <source>Connect to the Rngcoin network through a SOCKS5 proxy.</source>
+        <translation>Connessione alla rete Rngcoin attraverso un proxy SOCKS5.</translation>
     </message>
     <message>
         <source>&amp;Connect through SOCKS5 proxy (default proxy):</source>
@@ -1089,8 +1037,8 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
         <translation>Tor</translation>
     </message>
     <message>
-        <source>Connect to the RNGCoin network through a separate SOCKS5 proxy for Tor hidden services.</source>
-        <translation>Connette alla rete RNGCoin attraverso un proxy SOCKS5 separato per Tor.</translation>
+        <source>Connect to the Rngcoin network through a separate SOCKS5 proxy for Tor hidden services.</source>
+        <translation>Connette alla rete Rngcoin attraverso un proxy SOCKS5 separato per Tor.</translation>
     </message>
     <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services:</source>
@@ -1188,8 +1136,8 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
         <translation>Modulo</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the RNGCoin network after a connection is established, but this process has not completed yet.</source>
-        <translation>Le informazioni visualizzate potrebbero non essere aggiornate. Il portamonete si sincronizza automaticamente con la rete RNGCoin una volta stabilita una connessione, ma questo processo non è ancora stato completato.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Rngcoin network after a connection is established, but this process has not completed yet.</source>
+        <translation>Le informazioni visualizzate potrebbero non essere aggiornate. Il portamonete si sincronizza automaticamente con la rete Rngcoin una volta stabilita una connessione, ma questo processo non è ancora stato completato.</translation>
     </message>
     <message>
         <source>Watch-only:</source>
@@ -1279,8 +1227,8 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
         <translation>Indirizzo di pagamento non valido %1</translation>
     </message>
     <message>
-        <source>URI cannot be parsed! This can be caused by an invalid RNGCoin address or malformed URI parameters.</source>
-        <translation>Impossibile interpretare l'URI! I parametri dell'URI o l'indirizzo RNGCoin potrebbero non essere corretti.</translation>
+        <source>URI cannot be parsed! This can be caused by an invalid Rngcoin address or malformed URI parameters.</source>
+        <translation>Impossibile interpretare l'URI! I parametri dell'URI o l'indirizzo Rngcoin potrebbero non essere corretti.</translation>
     </message>
     <message>
         <source>Payment request file handling</source>
@@ -1335,14 +1283,6 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
         <translation>La richiesta di pagamento non può essere processata!</translation>
     </message>
     <message>
-        <source>Bad response from server %1</source>
-        <translation> Risposta errata da parte del server %1 </translation>
-    </message>
-    <message>
-        <source>Network request error</source>
-        <translation> Errore di richiesta di rete</translation>
-    </message>
-    <message>
         <source>Payment acknowledged</source>
         <translation>Pagamento riconosciuto</translation>
     </message>
@@ -1369,8 +1309,8 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
         <translation>Importo</translation>
     </message>
     <message>
-        <source>Enter a RNGCoin address (e.g. %1)</source>
-        <translation>Inserisci un indirizzo RNGCoin (ad es. %1)</translation>
+        <source>Enter a Rngcoin address or name (e.g. %1)</source>
+        <translation>Inserisci un indirizzo Rngcoin (ad es. %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -1428,21 +1368,9 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
         <source>%n year(s)</source>
         <translation><numerusform>%n anno</numerusform><numerusform>%n anni</numerusform></translation>
     </message>
-    <message>
-        <source>%1 didn't yet exit safely...</source>
-        <translation>%1 non è ancora stato chiuso in modo sicuro</translation>
-    </message>
-</context>
+    </context>
 <context>
     <name>QObject::QObject</name>
-    <message>
-        <source>Error: Specified data directory "%1" does not exist.</source>
-        <translation>Errore: La cartella dati "%1" specificata non esiste.</translation>
-    </message>
-    <message>
-        <source>Error: Cannot parse configuration file: %1. Only use key=value syntax.</source>
-        <translation>Errore: impossibile interpretare il file di configurazione: %1. Usare esclusivamente la sintassi chiave=valore.</translation>
-    </message>
     <message>
         <source>Error: %1</source>
         <translation>Errore: %1</translation>
@@ -1626,10 +1554,6 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
         <translation>Attesa ping</translation>
     </message>
     <message>
-        <source>Min Ping</source>
-        <translation>Ping Minimo</translation>
-    </message>
-    <message>
         <source>Time Offset</source>
         <translation>Scarto Temporale</translation>
     </message>
@@ -1694,14 +1618,6 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
         <translation>&amp;Disconnetti</translation>
     </message>
     <message>
-        <source>Ban for</source>
-        <translation>Bannato per</translation>
-    </message>
-    <message>
-        <source>&amp;Unban</source>
-        <translation>&amp;Sbanna</translation>
-    </message>
-    <message>
         <source>Welcome to the %1 RPC console.</source>
         <translation>Benvenuto nella console RPC di %1.</translation>
     </message>
@@ -1712,10 +1628,6 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
     <message>
         <source>Type &lt;b&gt;help&lt;/b&gt; for an overview of available commands.</source>
         <translation>Scrivi &lt;b&gt;help&lt;/b&gt; per un riassunto dei comandi disponibili.</translation>
-    </message>
-    <message>
-        <source>Network activity disabled</source>
-        <translation>Attività di rete disabilitata</translation>
     </message>
     <message>
         <source>%1 B</source>
@@ -1789,8 +1701,8 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
         <translation>R&amp;iusa un indirizzo di ricezione (non raccomandato)</translation>
     </message>
     <message>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the RNGCoin network.</source>
-        <translation>Un messaggio opzionale da allegare e mostrare all'apertura della richiesta di pagamento. Nota: Il messaggio non sarà inviato con il pagamento sulla rete RNGCoin.</translation>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Rngcoin network.</source>
+        <translation>Un messaggio opzionale da allegare e mostrare all'apertura della richiesta di pagamento. Nota: Il messaggio non sarà inviato con il pagamento sulla rete Rngcoin.</translation>
     </message>
     <message>
         <source>An optional label to associate with the new receiving address.</source>
@@ -1899,15 +1811,7 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
         <source>Message</source>
         <translation>Messaggio</translation>
     </message>
-    <message>
-        <source>Resulting URI too long, try to reduce the text for label / message.</source>
-        <translation> L'URI risultante è troppo lungo, prova a ridurre il testo nell'etichetta / messaggio.</translation>
-    </message>
-    <message>
-        <source>Error encoding URI into QR Code.</source>
-        <translation> Errore nella codifica dell'URI nel codice QR.</translation>
-    </message>
-</context>
+    </context>
 <context>
     <name>RecentRequestsTableModel</name>
     <message>
@@ -1943,7 +1847,7 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
     <name>SendCoinsDialog</name>
     <message>
         <source>Send Coins</source>
-        <translation>Invia RNGCoin</translation>
+        <translation>Invia Rngcoin</translation>
     </message>
     <message>
         <source>Coin Control Features</source>
@@ -2114,44 +2018,16 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
         <translation>%1 a %2</translation>
     </message>
     <message>
-        <source>Are you sure you want to send?</source>
-        <translation> Sei sicuro di voler inviare?</translation>
-    </message>
-    <message>
         <source>added as transaction fee</source>
         <translation> Includi il costo della transazione</translation>
-    </message>
-    <message>
-        <source>Total Amount %1</source>
-        <translation>Importo Totale %1</translation>
     </message>
     <message>
         <source>or</source>
         <translation>o</translation>
     </message>
     <message>
-        <source>Confirm send coins</source>
-        <translation>Conferma invio coins</translation>
-    </message>
-    <message>
-        <source>The recipient address is not valid. Please recheck.</source>
-        <translation> L'indirizzo del destinatario non è valido. Si prega di ricontrollare.</translation>
-    </message>
-    <message>
-        <source>The amount to pay must be larger than 0.</source>
-        <translation> L'importo da pagare deve essere maggiore di 0.</translation>
-    </message>
-    <message>
         <source>The amount exceeds your balance.</source>
         <translation>Non hai abbastanza fondi</translation>
-    </message>
-    <message>
-        <source>The total exceeds your balance when the %1 transaction fee is included.</source>
-        <translation> Il totale è superiore al tuo saldo attuale includendo la commissione di %1. </translation>
-    </message>
-    <message>
-        <source>Duplicate address found: addresses should only be used once each.</source>
-        <translation> Rilevato un indirizzo duplicato Ciascun indirizzo dovrebbe essere utilizzato una sola volta.</translation>
     </message>
     <message>
         <source>Transaction creation failed!</source>
@@ -2162,10 +2038,6 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
         <translation>La transazione è stata respinta per il seguente motivo: %1</translation>
     </message>
     <message>
-        <source>A fee higher than %1 is considered an absurdly high fee.</source>
-        <translation> Una commissione maggiore di %1 è considerata irragionevolmente elevata.</translation>
-    </message>
-    <message>
         <source>Payment request expired.</source>
         <translation>Richiesta di pagamento scaduta.</translation>
     </message>
@@ -2174,16 +2046,8 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
         <translation><numerusform>%n blocco</numerusform><numerusform>%n blocchi</numerusform></translation>
     </message>
     <message>
-        <source>Pay only the required fee of %1</source>
-        <translation> Paga solamente la commissione richiesta di %1</translation>
-    </message>
-    <message numerus="yes">
-        <source>Estimated to begin confirmation within %n block(s).</source>
-        <translation><numerusform>Inizio delle conferme stimato entro %n blocchi.</numerusform><numerusform>Inizio delle conferme stimato entro %n blocchi.</numerusform></translation>
-    </message>
-    <message>
-        <source>Warning: Invalid RNGCoin address</source>
-        <translation>Attenzione: Indirizzo RNGCoin non valido</translation>
+        <source>Warning: Invalid Rngcoin address</source>
+        <translation>Attenzione: Indirizzo Rngcoin non valido</translation>
     </message>
     <message>
         <source>Warning: Unknown change address</source>
@@ -2217,8 +2081,8 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
         <translation>Questo è un normale pagamento.</translation>
     </message>
     <message>
-        <source>The RNGCoin address to send the payment to</source>
-        <translation>L'indirizzo RNGCoin a cui vuoi inviare il pagamento</translation>
+        <source>The Rngcoin address to send the payment to</source>
+        <translation>L'indirizzo Rngcoin a cui vuoi inviare il pagamento</translation>
     </message>
     <message>
         <source>Alt+A</source>
@@ -2261,8 +2125,8 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
         <translation>Inserisci un'etichetta per questo indirizzo per aggiungerlo alla lista degli indirizzi utilizzati</translation>
     </message>
     <message>
-        <source>A message that was attached to the rngcoin: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the RNGCoin network.</source>
-        <translation>Messaggio incluso nel rngcoin URI e che sarà memorizzato con la transazione per vostro riferimento. Nota: Questo messaggio non sarà inviato attraverso la rete RNGCoin.</translation>
+        <source>A message that was attached to the rngcoin: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Rngcoin network.</source>
+        <translation>Messaggio incluso nel rngcoin URI e che sarà memorizzato con la transazione per vostro riferimento. Nota: Questo messaggio non sarà inviato attraverso la rete Rngcoin.</translation>
     </message>
     <message>
         <source>Pay To:</source>
@@ -2306,8 +2170,8 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
         <translation>È possibile firmare messaggi/accordi con i propri indirizzi in modo da dimostrare di poter ricevere rngcoin attraverso di essi. Si consiglia di prestare attenzione a non firmare dichiarazioni vaghe o casuali, attacchi di phishing potrebbero cercare di indurre ad apporre la firma su di esse. Si raccomanda di firmare esclusivamente dichiarazioni completamente dettagliate e delle quali si condivide in pieno il contenuto.</translation>
     </message>
     <message>
-        <source>The RNGCoin address to sign the message with</source>
-        <translation>L'indirizzo RNGCoin da utilizzare per firmare il messaggio</translation>
+        <source>The Rngcoin address to sign the message with</source>
+        <translation>L'indirizzo Rngcoin da utilizzare per firmare il messaggio</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -2338,8 +2202,8 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
         <translation>Copia la firma corrente nella clipboard</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this RNGCoin address</source>
-        <translation>Firma un messaggio per dimostrare di possedere questo indirizzo RNGCoin</translation>
+        <source>Sign the message to prove you own this Rngcoin address</source>
+        <translation>Firma un messaggio per dimostrare di possedere questo indirizzo Rngcoin</translation>
     </message>
     <message>
         <source>Sign &amp;Message</source>
@@ -2362,11 +2226,11 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
         <translation>Per verificare il messaggio inserire l'indirizzo del firmatario, il messaggio e la firma nei campi sottostanti, assicurandosi di copiare esattamente anche ritorni a capo, spazi, tabulazioni, etc.. Si raccomanda di non lasciarsi fuorviare dalla firma a leggere più di quanto non sia riportato nel testo del messaggio stesso, in modo da evitare di cadere vittima di attacchi di tipo man-in-the-middle. Si ricorda che la verifica della firma dimostra soltanto che il firmatario può ricevere pagamenti con l'indirizzo corrispondente, non prova l'invio di alcuna transazione.</translation>
     </message>
     <message>
-        <source>The RNGCoin address the message was signed with</source>
-        <translation>L'indirizzo RNGCoin con cui è stato contrassegnato il messaggio</translation>
+        <source>The Rngcoin address the message was signed with</source>
+        <translation>L'indirizzo Rngcoin con cui è stato contrassegnato il messaggio</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified RNGCoin address</source>
+        <source>Verify the message to ensure it was signed with the specified Rngcoin address</source>
         <translation>Verifica il messaggio per accertare che sia stato firmato con l'indirizzo specificato</translation>
     </message>
     <message>
@@ -2376,10 +2240,6 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
     <message>
         <source>Reset all verify message fields</source>
         <translation>Reimposta tutti i campi della verifica messaggio</translation>
-    </message>
-    <message>
-        <source>Click "Sign Message" to generate signature</source>
-        <translation>Clicca "Firma Messaggio" per generare una firma</translation>
     </message>
     <message>
         <source>The entered address is invalid.</source>
@@ -2609,10 +2469,6 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
         <translation>Non confermata</translation>
     </message>
     <message>
-        <source>Abandoned</source>
-        <translation>Abbandonato</translation>
-    </message>
-    <message>
         <source>Confirmed (%1 confirmations)</source>
         <translation>Confermata (%1 conferme)</translation>
     </message>
@@ -2627,10 +2483,6 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
     <message>
         <source>Received with</source>
         <translation>Ricevuto tramite</translation>
-    </message>
-    <message>
-        <source>Received from</source>
-        <translation>Ricevuto da</translation>
     </message>
     <message>
         <source>Sent to</source>
@@ -2740,10 +2592,6 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
         <translation>Importo minimo</translation>
     </message>
     <message>
-        <source>Abandon transaction</source>
-        <translation>Abbandona transazione </translation>
-    </message>
-    <message>
         <source>Copy address</source>
         <translation>Copia indirizzo</translation>
     </message>
@@ -2850,7 +2698,7 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
     <name>WalletModel</name>
     <message>
         <source>Send Coins</source>
-        <translation>Invia RNGCoin</translation>
+        <translation>Invia Rngcoin</translation>
     </message>
 </context>
 <context>
@@ -2947,8 +2795,8 @@ Per specificare più URL separarli con una barra verticale "|".</translation>
         <translation>Impossibile avviare il server HTTP. Dettagli nel log di debug.</translation>
     </message>
     <message>
-        <source>RNGCoin Core</source>
-        <translation>RNGCoin Core</translation>
+        <source>Rngcoin Core</source>
+        <translation>Rngcoin Core</translation>
     </message>
     <message>
         <source>The %s developers</source>

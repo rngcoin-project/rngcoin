@@ -3,23 +3,23 @@
     <name>AddressBookPage</name>
     <message>
         <source>Right-click to edit address or label</source>
-        <translation>Haga clic en el botón derecho para editar la dirección o etiqueta</translation>
+        <translation>Haz clic derecho para editar la dirección o etiqueta</translation>
     </message>
     <message>
         <source>Create a new address</source>
-        <translation>Cree una nueva dirección</translation>
+        <translation>Crear una nueva dirección</translation>
     </message>
     <message>
         <source>&amp;New</source>
-        <translation> Y Nuevo</translation>
+        <translation>&amp;Nuevo</translation>
     </message>
     <message>
         <source>Copy the currently selected address to the system clipboard</source>
-        <translation>Copie la dirección seleccionada al portapapeles del sistema</translation>
+        <translation>Copiar la dirección seleccionada al portapapeles del sistema</translation>
     </message>
     <message>
         <source>&amp;Copy</source>
-        <translation>Y Copiar</translation>
+        <translation>&amp;Copiar</translation>
     </message>
     <message>
         <source>C&amp;lose</source>
@@ -27,19 +27,19 @@
     </message>
     <message>
         <source>Delete the currently selected address from the list</source>
-        <translation>Elimine la dirección seleccionada de la lista</translation>
+        <translation>Eliminar la dirección seleccionada de la lista</translation>
     </message>
     <message>
         <source>Export the data in the current tab to a file</source>
-        <translation>Exporte los datos en la ficha actual a un archivo</translation>
+        <translation>Exportar los datos en la ficha actual a un archivo</translation>
     </message>
     <message>
         <source>&amp;Export</source>
-        <translation>Y Exportar</translation>
+        <translation>&amp;Exportar</translation>
     </message>
     <message>
         <source>&amp;Delete</source>
-        <translation>Y Eliminar</translation>
+        <translation>&amp;Eliminar</translation>
     </message>
     <message>
         <source>Choose the address to send coins to</source>
@@ -55,19 +55,19 @@
     </message>
     <message>
         <source>Sending addresses</source>
-        <translation>Direcciones para hacer pagos</translation>
+        <translation>Enviando direcciones</translation>
     </message>
     <message>
         <source>Receiving addresses</source>
-        <translation>Direcciones para recibir pagos</translation>
+        <translation>Recibiendo direcciones</translation>
     </message>
     <message>
-        <source>These are your RNGCoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Estas son sus direcciones RNGCoin para enviar pagos. Verifique siempre la cantidad y la dirección de destino antes de enviar monedas.</translation>
+        <source>These are your Rngcoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Estas son sus direcciones Rngcoin para enviar pagos. Verifique siempre la cantidad y la dirección de recibimiento antes de enviar monedas.</translation>
     </message>
     <message>
-        <source>These are your RNGCoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Estas son sus direcciones RNGCoin para recibir pagos. Se recomienda utilizar una nueva dirección de recepción para cada transacción</translation>
+        <source>These are your Rngcoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Estas son sus direcciones Rngcoin para recibir pagos. Se recomienda utilizar una nueva dirección de recibimiento para cada transacción</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -87,15 +87,15 @@
     </message>
     <message>
         <source>Comma separated file (*.csv)</source>
-        <translation>Archivo separado mediante coma (*.csv)</translation>
+        <translation>Archivo separado de coma (*.csv)</translation>
     </message>
     <message>
         <source>Exporting Failed</source>
-        <translation>No se ha podido completar la exportación</translation>
+        <translation>Falló la exportación</translation>
     </message>
     <message>
         <source>There was an error trying to save the address list to %1. Please try again.</source>
-        <translation>Se ha producido un error intentando guardar la lista de direcciones en %1. Por favor inténtelo de nuevo.</translation>
+        <translation>Había un error intentando guardar la lista de direcciones en %1. Por favor inténtelo de nuevo.</translation>
     </message>
 </context>
 <context>
@@ -117,15 +117,15 @@
     <name>AskPassphraseDialog</name>
     <message>
         <source>Passphrase Dialog</source>
-        <translation>Cuadro de diálogo de la frase de contraseña</translation>
+        <translation>Diálogo de contraseña</translation>
     </message>
     <message>
         <source>Enter passphrase</source>
-        <translation>Introduzca frase de contraseña</translation>
+        <translation>Introducir contraseña</translation>
     </message>
     <message>
         <source>New passphrase</source>
-        <translation>Repita la nueva frase de contraseña</translation>
+        <translation>Nueva contraseña</translation>
     </message>
     <message>
         <source>Repeat new passphrase</source>
@@ -137,7 +137,7 @@
     </message>
     <message>
         <source>Encrypt wallet</source>
-        <translation>Encripte el Monedero</translation>
+        <translation>Monedero encriptado</translation>
     </message>
     <message>
         <source>This operation needs your wallet passphrase to unlock the wallet.</source>
@@ -338,8 +338,8 @@
         <translation>Reindexando bloques en disco...</translation>
     </message>
     <message>
-        <source>Send coins to a RNGCoin address</source>
-        <translation>Enviar rngcoins a una dirección RNGCoin</translation>
+        <source>Send coins to a Rngcoin address</source>
+        <translation>Enviar rngcoins a una dirección Rngcoin</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -362,8 +362,8 @@
         <translation>&amp;Verificar mensaje...</translation>
     </message>
     <message>
-        <source>RNGCoin</source>
-        <translation>RNGCoin</translation>
+        <source>Rngcoin</source>
+        <translation>Rngcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -390,12 +390,12 @@
         <translation>Cifrar las claves privadas de su monedero</translation>
     </message>
     <message>
-        <source>Sign messages with your RNGCoin addresses to prove you own them</source>
-        <translation>Firmar mensajes con sus direcciones RNGCoin para demostrar la propiedad</translation>
+        <source>Sign messages with your Rngcoin addresses to prove you own them</source>
+        <translation>Firmar mensajes con sus direcciones Rngcoin para demostrar la propiedad</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified RNGCoin addresses</source>
-        <translation>Verificar mensajes comprobando que están firmados con direcciones RNGCoin concretas</translation>
+        <source>Verify messages to ensure they were signed with specified Rngcoin addresses</source>
+        <translation>Verificar mensajes comprobando que están firmados con direcciones Rngcoin concretas</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -434,8 +434,8 @@
         <translation>&amp;Opciones de consola de comandos</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to RNGCoin network</source>
-        <translation><numerusform>%n conexión activa hacia la red RNGCoin</numerusform><numerusform>%n conexiones activas hacia la red RNGCoin</numerusform></translation>
+        <source>%n active connection(s) to Rngcoin network</source>
+        <translation><numerusform>%n conexión activa hacia la red Rngcoin</numerusform><numerusform>%n conexiones activas hacia la red Rngcoin</numerusform></translation>
     </message>
     <message>
         <source>Indexing blocks on disk...</source>
@@ -478,16 +478,12 @@
         <translation>Actualizado</translation>
     </message>
     <message>
-        <source>Show the %1 help message to get a list with possible RNGCoin command-line options</source>
-        <translation>Mostrar el mensaje de ayuda %1 para obtener una lista de los posibles comandos de linea de comandos de RNGCoin</translation>
+        <source>Show the %1 help message to get a list with possible Rngcoin command-line options</source>
+        <translation>Mostrar el mensaje de ayuda %1 para obtener una lista de los posibles comandos de linea de comandos de Rngcoin</translation>
     </message>
     <message>
         <source>%1 client</source>
         <translation>%1 cliente</translation>
-    </message>
-    <message>
-        <source>Connecting to peers...</source>
-        <translation>Conectando a pares...</translation>
     </message>
     <message>
         <source>Catching up...</source>
@@ -532,14 +528,6 @@
         <translation>Transacción entrante</translation>
     </message>
     <message>
-        <source>HD key generation is &lt;b&gt;enabled&lt;/b&gt;</source>
-        <translation>La generación de claves HD está &lt;b&gt;activada&lt;/b&gt;</translation>
-    </message>
-    <message>
-        <source>HD key generation is &lt;b&gt;disabled&lt;/b&gt;</source>
-        <translation>La generación de claves HD está &lt;b&gt;desactivada&lt;/b&gt;</translation>
-    </message>
-    <message>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt;</source>
         <translation>El monedero está &lt;b&gt;cifrado&lt;/b&gt; y actualmente &lt;b&gt;desbloqueado&lt;/b&gt;</translation>
     </message>
@@ -548,8 +536,8 @@
         <translation>El monedero está &lt;b&gt;cifrado&lt;/b&gt; y actualmente &lt;b&gt;bloqueado&lt;/b&gt;</translation>
     </message>
     <message>
-        <source>A fatal error occurred. RNGCoin can no longer continue safely and will quit.</source>
-        <translation>Ha ocurrido un error fatal. RNGCoin no puede continuar de manera segura y se cerrará.</translation>
+        <source>A fatal error occurred. Rngcoin can no longer continue safely and will quit.</source>
+        <translation>Ha ocurrido un error fatal. Rngcoin no puede continuar de manera segura y se cerrará.</translation>
     </message>
 </context>
 <context>
@@ -727,7 +715,7 @@
     </message>
     <message>
         <source>New receiving address</source>
-        <translation>Nueva dirección de recepción</translation>
+        <translation>Nueva dirección de recivimiento</translation>
     </message>
     <message>
         <source>New sending address</source>
@@ -735,15 +723,15 @@
     </message>
     <message>
         <source>Edit receiving address</source>
-        <translation>Editar dirección de recepción</translation>
+        <translation>Editar dirección de recivimiento</translation>
     </message>
     <message>
         <source>Edit sending address</source>
         <translation>Editar dirección de envío</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid RNGCoin address.</source>
-        <translation>La dirección introducida "%1" no es una dirección RNGCoin válida.</translation>
+        <source>The entered address "%1" is not a valid Rngcoin address.</source>
+        <translation>La dirección introducida "%1" no es una dirección Rngcoin válida.</translation>
     </message>
     <message>
         <source>The entered address "%1" is already in the address book.</source>
@@ -851,8 +839,8 @@
         <translation>Al ser la primera vez que se ejecuta el programa, puede elegir donde %1 almacenara sus datos</translation>
     </message>
     <message>
-        <source>%1 will download and store a copy of the RNGCoin block chain. At least %2GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-        <translation>%1 va a descargar y almacenar una copia de la cadena de bloques de RNGCoin. Al menos %2GB de datos seran almacenados en este directorio, que ira creciendo con el tiempo. El monedero se guardara tambien en ese directorio. </translation>
+        <source>%1 will download and store a copy of the Rngcoin block chain. At least %2GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <translation>%1 va a descargar y almacenar una copia de la cadena de bloques de Rngcoin. Al menos %2GB de datos seran almacenados en este directorio, que ira creciendo con el tiempo. El monedero se guardara tambien en ese directorio. </translation>
     </message>
     <message>
         <source>Use the default data directory</source>
@@ -884,10 +872,6 @@
     <message>
         <source>Form</source>
         <translation>Formulario</translation>
-    </message>
-    <message>
-        <source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the rngcoin network, as detailed below.</source>
-        <translation>Las transacciones recientes podrían no ser visibles todavía, por lo que el balance de la cartera podría ser incorrecto. Esta información será correcta una vez su cartera se haya terminado de sincronizar con la red rngcoin, como se detalla más abajo.</translation>
     </message>
     <message>
         <source>Number of blocks left</source>
@@ -1044,16 +1028,16 @@
         <translation>&amp;Gastar cambio no confirmado</translation>
     </message>
     <message>
-        <source>Automatically open the RNGCoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Abrir automáticamente el puerto del cliente RNGCoin en el router. Esta opción solo funciona si el router admite UPnP y está activado.</translation>
+        <source>Automatically open the Rngcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Abrir automáticamente el puerto del cliente Rngcoin en el router. Esta opción solo funciona si el router admite UPnP y está activado.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
         <translation>Mapear el puerto mediante &amp;UPnP</translation>
     </message>
     <message>
-        <source>Connect to the RNGCoin network through a SOCKS5 proxy.</source>
-        <translation>Conectarse a la red RNGCoin a través de un proxy SOCKS5.</translation>
+        <source>Connect to the Rngcoin network through a SOCKS5 proxy.</source>
+        <translation>Conectarse a la red Rngcoin a través de un proxy SOCKS5.</translation>
     </message>
     <message>
         <source>&amp;Connect through SOCKS5 proxy (default proxy):</source>
@@ -1092,8 +1076,8 @@
         <translation>Tor</translation>
     </message>
     <message>
-        <source>Connect to the RNGCoin network through a separate SOCKS5 proxy for Tor hidden services.</source>
-        <translation>Conectar a la red RNGCoin mediante un proxy SOCKS5 por separado para los servicios ocultos de Tor.</translation>
+        <source>Connect to the Rngcoin network through a separate SOCKS5 proxy for Tor hidden services.</source>
+        <translation>Conectar a la red Rngcoin mediante un proxy SOCKS5 por separado para los servicios ocultos de Tor.</translation>
     </message>
     <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services:</source>
@@ -1191,8 +1175,8 @@
         <translation>Formulario</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the RNGCoin network after a connection is established, but this process has not completed yet.</source>
-        <translation>La información mostrada puede estar desactualizada. Su monedero se sincroniza automáticamente con la red RNGCoin después de que se haya establecido una conexión, pero este proceso aún no se ha completado.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Rngcoin network after a connection is established, but this process has not completed yet.</source>
+        <translation>La información mostrada puede estar desactualizada. Su monedero se sincroniza automáticamente con la red Rngcoin después de que se haya establecido una conexión, pero este proceso aún no se ha completado.</translation>
     </message>
     <message>
         <source>Watch-only:</source>
@@ -1282,8 +1266,8 @@
         <translation>Dirección de pago inválida %1</translation>
     </message>
     <message>
-        <source>URI cannot be parsed! This can be caused by an invalid RNGCoin address or malformed URI parameters.</source>
-        <translation>URI no puede ser analizado! Esto puede ser causado por una dirección RNGCoin inválida o parametros URI mal formados.</translation>
+        <source>URI cannot be parsed! This can be caused by an invalid Rngcoin address or malformed URI parameters.</source>
+        <translation>URI no puede ser analizado! Esto puede ser causado por una dirección Rngcoin inválida o parametros URI mal formados.</translation>
     </message>
     <message>
         <source>Payment request file handling</source>
@@ -1364,11 +1348,7 @@
         <source>NodeId</source>
         <translation>NodeId</translation>
     </message>
-    <message>
-        <source>Ping</source>
-        <translation>Ping</translation>
-    </message>
-</context>
+    </context>
 <context>
     <name>QObject</name>
     <message>
@@ -1376,8 +1356,8 @@
         <translation>Cantidad</translation>
     </message>
     <message>
-        <source>Enter a RNGCoin address (e.g. %1)</source>
-        <translation>Introducir una dirección RNGCoin (p. ej. %1)</translation>
+        <source>Enter a Rngcoin address or name (e.g. %1)</source>
+        <translation>Introducir una dirección Rngcoin (p. ej. %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -1407,26 +1387,6 @@
         <source>%1 ms</source>
         <translation>%1 ms</translation>
     </message>
-    <message numerus="yes">
-        <source>%n second(s)</source>
-        <translation><numerusform>%n segundo</numerusform><numerusform>%n segundos</numerusform></translation>
-    </message>
-    <message numerus="yes">
-        <source>%n minute(s)</source>
-        <translation><numerusform>%n minuto</numerusform><numerusform>%n minutos</numerusform></translation>
-    </message>
-    <message numerus="yes">
-        <source>%n hour(s)</source>
-        <translation><numerusform>%n hora</numerusform><numerusform>%n horas</numerusform></translation>
-    </message>
-    <message numerus="yes">
-        <source>%n day(s)</source>
-        <translation><numerusform>%n día</numerusform><numerusform>%n días</numerusform></translation>
-    </message>
-    <message numerus="yes">
-        <source>%n week(s)</source>
-        <translation><numerusform>%n semana</numerusform><numerusform>%n semanas</numerusform></translation>
-    </message>
     <message>
         <source>%1 and %2</source>
         <translation>%1 y %2</translation>
@@ -1442,15 +1402,7 @@
         <source>Error: Specified data directory "%1" does not exist.</source>
         <translation>Error: directorio especificado "%1" no existe.</translation>
     </message>
-    <message>
-        <source>Error: Cannot parse configuration file: %1. Only use key=value syntax.</source>
-        <translation>Error: no se puede interpretar el archivo de configuración: %1. Utilize exclusivamente sintaxis clave=valor.</translation>
-    </message>
-    <message>
-        <source>Error: %1</source>
-        <translation>Error: %1</translation>
-    </message>
-</context>
+    </context>
 <context>
     <name>QRImageWidget</name>
     <message>
@@ -1629,10 +1581,6 @@
         <translation>Espera de Ping</translation>
     </message>
     <message>
-        <source>Min Ping</source>
-        <translation>Ping mín.</translation>
-    </message>
-    <message>
         <source>Time Offset</source>
         <translation>Desplazamiento de tiempo</translation>
     </message>
@@ -1693,14 +1641,6 @@
         <translation>1 &amp;año</translation>
     </message>
     <message>
-        <source>&amp;Disconnect</source>
-        <translation>&amp;Desconectar</translation>
-    </message>
-    <message>
-        <source>&amp;Unban</source>
-        <translation>&amp;Desbanear</translation>
-    </message>
-    <message>
         <source>Welcome to the %1 RPC console.</source>
         <translation>Bienvenido a la consola RPC %1.</translation>
     </message>
@@ -1711,14 +1651,6 @@
     <message>
         <source>Type &lt;b&gt;help&lt;/b&gt; for an overview of available commands.</source>
         <translation>Escriba &lt;b&gt;help&lt;/b&gt; para ver un resumen de los comandos disponibles.</translation>
-    </message>
-    <message>
-        <source>WARNING: Scammers have been active, telling users to type commands here, stealing their wallet contents. Do not use this console without fully understanding the ramification of a command.</source>
-        <translation>ADVERTENCIA: algunos estafadores han estado pidiendo a los usuarios que escriban comandos aquí, robando el contenido de sus carteras. No use esta consola sin entender completamente las ramificaciones del comando.</translation>
-    </message>
-    <message>
-        <source>Network activity disabled</source>
-        <translation>Actividad de red desactivada</translation>
     </message>
     <message>
         <source>%1 B</source>
@@ -1792,8 +1724,8 @@
         <translation>R&amp;eutilizar una dirección existente para recibir (no recomendado)</translation>
     </message>
     <message>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the RNGCoin network.</source>
-        <translation>Un mensaje opcional para adjuntar a la solicitud de pago, que se muestra cuando se abre la solicitud. Nota: El mensaje no se enviará con el pago por la red RNGCoin.</translation>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Rngcoin network.</source>
+        <translation>Un mensaje opcional para adjuntar a la solicitud de pago, que se muestra cuando se abre la solicitud. Nota: El mensaje no se enviará con el pago por la red Rngcoin.</translation>
     </message>
     <message>
         <source>An optional label to associate with the new receiving address.</source>
@@ -1838,10 +1770,6 @@
     <message>
         <source>Remove</source>
         <translation>Eliminar</translation>
-    </message>
-    <message>
-        <source>Copy URI</source>
-        <translation>Copiar URL</translation>
     </message>
     <message>
         <source>Copy label</source>
@@ -2026,7 +1954,7 @@
     </message>
     <message>
         <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks. But be aware that this can end up in a never confirming transaction once there is more demand for rngcoin transactions than the network can process.</source>
-        <translation>Pagando solamente la cuota mínima es correcto, siempre y cuando haya menos volumen de transacciones que el espacio en los bloques. Pero tenga en cuenta que esto puede terminar en una transacción nunca confirmada, una vez que haya más demanda para transacciones RNGCoin que la red pueda procesar.</translation>
+        <translation>Pagando solamente la cuota mínima es correcto, siempre y cuando haya menos volumen de transacciones que el espacio en los bloques. Pero tenga en cuenta que esto puede terminar en una transacción nunca confirmada, una vez que haya más demanda para transacciones Rngcoin que la red pueda procesar.</translation>
     </message>
     <message>
         <source>(read the tooltip)</source>
@@ -2165,10 +2093,6 @@
         <translation>¡Falló la creación de transacción!</translation>
     </message>
     <message>
-        <source>The transaction was rejected with the following reason: %1</source>
-        <translation>Esta transacción fue rechazada por la siguiente razón: %1</translation>
-    </message>
-    <message>
         <source>A fee higher than %1 is considered an absurdly high fee.</source>
         <translation>Una couta mayor que %1 se considera una cuota irracionalmente alta.</translation>
     </message>
@@ -2176,29 +2100,17 @@
         <source>Payment request expired.</source>
         <translation>Solicitud de pago caducada.</translation>
     </message>
-    <message numerus="yes">
-        <source>%n block(s)</source>
-        <translation><numerusform>%n bloque</numerusform><numerusform>%n bloques</numerusform></translation>
-    </message>
     <message>
         <source>Pay only the required fee of %1</source>
         <translation>Pagar únicamente la cuota solicitada de %1</translation>
     </message>
     <message>
-        <source>Warning: Invalid RNGCoin address</source>
-        <translation>Alerta: dirección RNGCoin inválida</translation>
+        <source>Warning: Invalid Rngcoin address</source>
+        <translation>Alerta: dirección Rngcoin inválida</translation>
     </message>
     <message>
         <source>Warning: Unknown change address</source>
         <translation>Alerta: dirección cambiada desconocida</translation>
-    </message>
-    <message>
-        <source>Confirm custom change address</source>
-        <translation>Confirmar dirección de cambio personalizada</translation>
-    </message>
-    <message>
-        <source>The address you selected for change is not part of this wallet. Any or all funds in your wallet may be sent to this address. Are you sure?</source>
-        <translation>La dirección que seleccionó para el cambio no es parte de esta cartera. Parte o la totalidad de los fondos de su cartera podrían ser enviados a esta dirección. ¿Está seguro?</translation>
     </message>
     <message>
         <source>(no label)</source>
@@ -2228,8 +2140,8 @@
         <translation>Esto es un pago ordinario.</translation>
     </message>
     <message>
-        <source>The RNGCoin address to send the payment to</source>
-        <translation>Dirección RNGCoin a la que enviar el pago</translation>
+        <source>The Rngcoin address to send the payment to</source>
+        <translation>Dirección Rngcoin a la que enviar el pago</translation>
     </message>
     <message>
         <source>Alt+A</source>
@@ -2272,8 +2184,8 @@
         <translation>Introduce una etiqueta para esta dirección para añadirla a la lista de direcciones utilizadas</translation>
     </message>
     <message>
-        <source>A message that was attached to the rngcoin: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the RNGCoin network.</source>
-        <translation>Un mensaje que se adjuntó a la rngcoin: URL que será almacenada con la transacción para su referencia. Nota: Este mensaje no se envía a través de la red RNGCoin.</translation>
+        <source>A message that was attached to the rngcoin: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Rngcoin network.</source>
+        <translation>Un mensaje que se adjuntó a la rngcoin: URL que será almacenada con la transacción para su referencia. Nota: Este mensaje no se envía a través de la red Rngcoin.</translation>
     </message>
     <message>
         <source>Pay To:</source>
@@ -2321,8 +2233,8 @@
         <translation>Puede firmar los mensajes con sus direcciones para demostrar que las posee. Tenga cuidado de no firmar cualquier cosa de manera vaga o aleatoria, pues los ataques de phishing pueden tratar de engañarle firmando su identidad a través de ellos. Sólo firme declaraciones totalmente detalladas con las que usted esté de acuerdo.</translation>
     </message>
     <message>
-        <source>The RNGCoin address to sign the message with</source>
-        <translation>Dirección RNGCoin con la que firmar el mensaje</translation>
+        <source>The Rngcoin address to sign the message with</source>
+        <translation>Dirección Rngcoin con la que firmar el mensaje</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -2353,8 +2265,8 @@
         <translation>Copiar la firma actual al portapapeles del sistema</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this RNGCoin address</source>
-        <translation>Firmar el mensaje para demostrar que se posee esta dirección RNGCoin</translation>
+        <source>Sign the message to prove you own this Rngcoin address</source>
+        <translation>Firmar el mensaje para demostrar que se posee esta dirección Rngcoin</translation>
     </message>
     <message>
         <source>Sign &amp;Message</source>
@@ -2377,12 +2289,12 @@
         <translation>Introduzca la dirección para la firma, el mensaje (asegurándose de copiar tal cual los saltos de línea, espacios, tabulaciones, etc.) y la firma a continuación para verificar el mensaje. Tenga cuidado de no asumir más información de lo que dice el propio mensaje firmado para evitar fraudes basados en ataques de tipo man-in-the-middle. </translation>
     </message>
     <message>
-        <source>The RNGCoin address the message was signed with</source>
-        <translation>La dirección RNGCoin con la que se firmó el mensaje</translation>
+        <source>The Rngcoin address the message was signed with</source>
+        <translation>La dirección Rngcoin con la que se firmó el mensaje</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified RNGCoin address</source>
-        <translation>Verificar el mensaje para comprobar que fue firmado con la dirección RNGCoin indicada</translation>
+        <source>Verify the message to ensure it was signed with the specified Rngcoin address</source>
+        <translation>Verificar el mensaje para comprobar que fue firmado con la dirección Rngcoin indicada</translation>
     </message>
     <message>
         <source>Verify &amp;Message</source>
@@ -2461,10 +2373,6 @@
 </context>
 <context>
     <name>TransactionDesc</name>
-    <message numerus="yes">
-        <source>Open for %n more block(s)</source>
-        <translation><numerusform>Abierto para %n bloque más</numerusform><numerusform>Abierto para %n bloques más</numerusform></translation>
-    </message>
     <message>
         <source>Open until %1</source>
         <translation>Abierto hasta %1</translation>
@@ -3017,8 +2925,8 @@
         <translation>No se ha podido comenzar el servidor HTTP. Ver debug log para detalles.</translation>
     </message>
     <message>
-        <source>RNGCoin Core</source>
-        <translation>RNGCoin Core</translation>
+        <source>Rngcoin Core</source>
+        <translation>Rngcoin Core</translation>
     </message>
     <message>
         <source>The %s developers</source>
@@ -3737,10 +3645,6 @@
     <message>
         <source>Threshold for disconnecting misbehaving peers (default: %u)</source>
         <translation>Umbral para la desconexión de pares con mal comportamiento (predeterminado: %u)</translation>
-    </message>
-    <message>
-        <source>Transaction amounts must not be negative</source>
-        <translation>Las cantidades de las transacciones no pueden ser negativas.</translation>
     </message>
     <message>
         <source>Unknown network specified in -onlynet: '%s'</source>

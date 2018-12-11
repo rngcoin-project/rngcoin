@@ -53,6 +53,12 @@ enum txnouttype
     TX_NULL_DATA,
     TX_WITNESS_V0_SCRIPTHASH,
     TX_WITNESS_V0_KEYHASH,
+
+    // names:
+    TX_NAME_PUBKEYHASH,
+    TX_NAME_SCRIPTHASH,
+    TX_NAME_WITNESS_V0_SCRIPTHASH,
+    TX_NAME_WITNESS_V0_KEYHASH,
 };
 
 class CNoDestination {
@@ -80,5 +86,7 @@ CScript GetScriptForDestination(const CTxDestination& dest);
 CScript GetScriptForRawPubKey(const CPubKey& pubkey);
 CScript GetScriptForMultisig(int nRequired, const std::vector<CPubKey>& keys);
 CScript GetScriptForWitness(const CScript& redeemscript);
+
+CScript GenerateScriptForRandPay(const CScript& scriptPubKey);
 
 #endif // BITCOIN_SCRIPT_STANDARD_H

@@ -10,8 +10,11 @@
 #include "util.h"
 #include "utilstrencodings.h"
 
+#include <boost/foreach.hpp>
 
-typedef std::vector<unsigned char> valtype;
+using namespace std;
+
+typedef vector<unsigned char> valtype;
 
 bool fAcceptDatacarrier = DEFAULT_ACCEPT_DATACARRIER;
 unsigned nMaxDatacarrierBytes = MAX_OP_RETURN_RELAY;
@@ -30,44 +33,50 @@ const char* GetTxnOutputType(txnouttype t)
     case TX_NULL_DATA: return "nulldata";
     case TX_WITNESS_V0_KEYHASH: return "witness_v0_keyhash";
     case TX_WITNESS_V0_SCRIPTHASH: return "witness_v0_scripthash";
+
+    // names:
+    case TX_NAME_PUBKEYHASH: return "name_pubkeyhash";
+    case TX_NAME_SCRIPTHASH: return "name_scripthash";
+    case TX_NAME_WITNESS_V0_KEYHASH: return "name_witness_v0_keyhash";
+    case TX_NAME_WITNESS_V0_SCRIPTHASH: return "name_witness_v0_scripthash";
     }
-    return nullptr;
+    return NULL;
 }
 
 /**
  * Return public keys or hashes from scriptPubKey, for 'standard' transaction types.
  */
-bool Solver(const CScript& scriptPubKey, txnouttype& typeRet, std::vector<std::vector<unsigned char> >& vSolutionsRet)
+static bool SolverInner(const CScript& scriptPubKey, txnouttype& typeRet, vector<vector<unsigned char> >& vSolutionsRet)
 {
     // Templates
-    static std::multimap<txnouttype, CScript> mTemplates;
+    static multimap<txnouttype, CScript> mTemplates;
     if (mTemplates.empty())
     {
         // Standard tx, sender provides pubkey, receiver adds signature
-        mTemplates.insert(std::make_pair(TX_PUBKEY, CScript() << OP_PUBKEY << OP_CHECKSIG));
+        mTemplates.insert(make_pair(TX_PUBKEY, CScript() << OP_PUBKEY << OP_CHECKSIG));
 
         // Bitcoin address tx, sender provides hash of pubkey, receiver provides signature and pubkey
-        mTemplates.insert(std::make_pair(TX_PUBKEYHASH, CScript() << OP_DUP << OP_HASH160 << OP_PUBKEYHASH << OP_EQUALVERIFY << OP_CHECKSIG));
+        mTemplates.insert(make_pair(TX_PUBKEYHASH, CScript() << OP_DUP << OP_HASH160 << OP_PUBKEYHASH << OP_EQUALVERIFY << OP_CHECKSIG));
 
         // Sender provides N pubkeys, receivers provides M signatures
-        mTemplates.insert(std::make_pair(TX_MULTISIG, CScript() << OP_SMALLINTEGER << OP_PUBKEYS << OP_SMALLINTEGER << OP_CHECKMULTISIG));
+        mTemplates.insert(make_pair(TX_MULTISIG, CScript() << OP_SMALLINTEGER << OP_PUBKEYS << OP_SMALLINTEGER << OP_CHECKMULTISIG));
     }
 
     vSolutionsRet.clear();
 
     // Shortcut for pay-to-script-hash, which are more constrained than the other types:
     // it is always OP_HASH160 20 [20 byte hash] OP_EQUAL
-    if (scriptPubKey.IsPayToScriptHash())
+    if (scriptPubKey.IsPayToScriptHash(0))  // rngcoin: there is no need to check for names here, because caller of this function will do just that
     {
         typeRet = TX_SCRIPTHASH;
-        std::vector<unsigned char> hashBytes(scriptPubKey.begin()+2, scriptPubKey.begin()+22);
+        vector<unsigned char> hashBytes(scriptPubKey.begin()+2, scriptPubKey.begin()+22);
         vSolutionsRet.push_back(hashBytes);
         return true;
     }
 
     int witnessversion;
     std::vector<unsigned char> witnessprogram;
-    if (scriptPubKey.IsWitnessProgram(witnessversion, witnessprogram)) {
+    if (scriptPubKey.IsWitnessProgram(witnessversion, witnessprogram, 0)) {  // rngcoin: there is no need to check for names here, because caller of this function will do just that
         if (witnessversion == 0 && witnessprogram.size() == 20) {
             typeRet = TX_WITNESS_V0_KEYHASH;
             vSolutionsRet.push_back(witnessprogram);
@@ -93,13 +102,13 @@ bool Solver(const CScript& scriptPubKey, txnouttype& typeRet, std::vector<std::v
 
     // Scan templates
     const CScript& script1 = scriptPubKey;
-    for (const std::pair<txnouttype, CScript>& tplate : mTemplates)
+    BOOST_FOREACH(const PAIRTYPE(txnouttype, CScript)& tplate, mTemplates)
     {
         const CScript& script2 = tplate.second;
         vSolutionsRet.clear();
 
         opcodetype opcode1, opcode2;
-        std::vector<unsigned char> vch1, vch2;
+        vector<unsigned char> vch1, vch2;
 
         // Compare
         CScript::const_iterator pc1 = script1.begin();
@@ -176,9 +185,32 @@ bool Solver(const CScript& scriptPubKey, txnouttype& typeRet, std::vector<std::v
     return false;
 }
 
+bool Solver(const CScript& scriptPubKey, txnouttype& typeRet, vector<vector<unsigned char> >& vSolutionsRet)
+{
+    bool ret = SolverInner(scriptPubKey, typeRet, vSolutionsRet);
+
+    // rngcoin: remove name (if any exist) and try again
+    CScript scriptWithoutName;
+    if (!ret && RemoveNameScriptPrefix(scriptPubKey, scriptWithoutName))
+    {
+        ret = SolverInner(scriptWithoutName, typeRet, vSolutionsRet);
+
+        // make return type indicate name for supported tx types
+        if (ret) switch (typeRet) {
+        case TX_PUBKEYHASH: {typeRet = TX_NAME_PUBKEYHASH; break;}
+        case TX_SCRIPTHASH: {typeRet = TX_NAME_SCRIPTHASH; break;}
+        case TX_WITNESS_V0_KEYHASH: {typeRet = TX_NAME_WITNESS_V0_KEYHASH; break;}
+        case TX_WITNESS_V0_SCRIPTHASH: {typeRet = TX_NAME_WITNESS_V0_SCRIPTHASH; break;}
+        default: {typeRet = TX_NONSTANDARD; ret = false; break;}  // unknown name type - don't know how to process this
+        }
+    }
+
+    return ret;
+}
+
 bool ExtractDestination(const CScript& scriptPubKey, CTxDestination& addressRet)
 {
-    std::vector<valtype> vSolutions;
+    vector<valtype> vSolutions;
     txnouttype whichType;
     if (!Solver(scriptPubKey, whichType, vSolutions))
         return false;
@@ -192,12 +224,12 @@ bool ExtractDestination(const CScript& scriptPubKey, CTxDestination& addressRet)
         addressRet = pubKey.GetID();
         return true;
     }
-    else if (whichType == TX_PUBKEYHASH)
+    else if (whichType == TX_PUBKEYHASH  || whichType == TX_NAME_PUBKEYHASH)
     {
         addressRet = CKeyID(uint160(vSolutions[0]));
         return true;
     }
-    else if (whichType == TX_SCRIPTHASH)
+    else if (whichType == TX_SCRIPTHASH || whichType == TX_NAME_SCRIPTHASH)
     {
         addressRet = CScriptID(uint160(vSolutions[0]));
         return true;
@@ -206,11 +238,11 @@ bool ExtractDestination(const CScript& scriptPubKey, CTxDestination& addressRet)
     return false;
 }
 
-bool ExtractDestinations(const CScript& scriptPubKey, txnouttype& typeRet, std::vector<CTxDestination>& addressRet, int& nRequiredRet)
+bool ExtractDestinations(const CScript& scriptPubKey, txnouttype& typeRet, vector<CTxDestination>& addressRet, int& nRequiredRet)
 {
     addressRet.clear();
     typeRet = TX_NONSTANDARD;
-    std::vector<valtype> vSolutions;
+    vector<valtype> vSolutions;
     if (!Solver(scriptPubKey, typeRet, vSolutions))
         return false;
     if (typeRet == TX_NULL_DATA){
@@ -272,7 +304,7 @@ public:
         return true;
     }
 };
-} // namespace
+}
 
 CScript GetScriptForDestination(const CTxDestination& dest)
 {
@@ -292,7 +324,7 @@ CScript GetScriptForMultisig(int nRequired, const std::vector<CPubKey>& keys)
     CScript script;
 
     script << CScript::EncodeOP_N(nRequired);
-    for (const CPubKey& key : keys)
+    BOOST_FOREACH(const CPubKey& key, keys)
         script << ToByteVector(key);
     script << CScript::EncodeOP_N(keys.size()) << OP_CHECKMULTISIG;
     return script;
@@ -310,7 +342,7 @@ CScript GetScriptForWitness(const CScript& redeemscript)
             CHash160().Write(&vSolutions[0][0], vSolutions[0].size()).Finalize(h160);
             ret << OP_0 << std::vector<unsigned char>(&h160[0], &h160[20]);
             return ret;
-        } else if (typ == TX_PUBKEYHASH) {
+        } else if (typ == TX_PUBKEYHASH || typ == TX_NAME_PUBKEYHASH) {
            ret << OP_0 << vSolutions[0];
            return ret;
         }
@@ -319,4 +351,13 @@ CScript GetScriptForWitness(const CScript& redeemscript)
     CSHA256().Write(&redeemscript[0], redeemscript.size()).Finalize(hash.begin());
     ret << OP_0 << ToByteVector(hash);
     return ret;
+}
+
+// rngcoin: scriptPubKey should come from vout[0]
+CScript GenerateScriptForRandPay(const CScript& scriptPubKey)
+{
+    CTxDestination address;
+    if (ExtractDestination(scriptPubKey, address))
+        return GetScriptForDestination(address);
+    else return CScript() << OP_RETURN;
 }

@@ -1,0 +1,14 @@
+[Unit]
+Description=Rngcoin Wallet
+After=network.target
+
+[Service]
+Type=forking
+User=rng
+ExecStart=/usr/bin/rngcoind -daemon -datadir=/var/lib/rng/.rngcoin -conf=/var/lib/rng/.rngcoin/rngcoin.conf -pid=/var/lib/rng/.rngcoin/rngcoind.pid
+ExecStop=/usr/bin/rngcoin-cli -datadir=/var/lib/rng/.rngcoin stop
+PIDFile=/var/lib/rng/.rngcoin/rngcoind.pid
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

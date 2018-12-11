@@ -10,10 +10,13 @@
 
 #include <atomic>
 
+class AddressTableModel;
 class BanTableModel;
 class OptionsModel;
 class PeerTableModel;
+class TransactionTableModel;
 
+class CWallet;
 class CBlockIndex;
 
 QT_BEGIN_NAMESPACE
@@ -112,7 +115,7 @@ public Q_SLOTS:
     void updateTimer();
     void updateNumConnections(int numConnections);
     void updateNetworkActive(bool networkActive);
-    void updateAlert();
+    void updateAlert(const QString &hash, int status);
     void updateBanlist();
 };
 

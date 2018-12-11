@@ -16,8 +16,8 @@ BEGIN
     BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
-            VALUE "CompanyName",        "RNGCoin"
-            VALUE "FileDescription",    "rngcoin-tx (CLI RNGCoin transaction editor utility)"
+            VALUE "CompanyName",        "Rngcoin"
+            VALUE "FileDescription",    "rngcoin-tx (CLI Rngcoin transaction editor utility)"
             VALUE "FileVersion",        VER_FILEVERSION_STR
             VALUE "InternalName",       "rngcoin-tx"
             VALUE "LegalCopyright",     COPYRIGHT_STR

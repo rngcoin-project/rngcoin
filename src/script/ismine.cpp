@@ -11,13 +11,16 @@
 #include "script/standard.h"
 #include "script/sign.h"
 
+#include <boost/foreach.hpp>
 
-typedef std::vector<unsigned char> valtype;
+using namespace std;
 
-unsigned int HaveKeys(const std::vector<valtype>& pubkeys, const CKeyStore& keystore)
+typedef vector<unsigned char> valtype;
+
+unsigned int HaveKeys(const vector<valtype>& pubkeys, const CKeyStore& keystore)
 {
     unsigned int nResult = 0;
-    for (const valtype& pubkey : pubkeys)
+    BOOST_FOREACH(const valtype& pubkey, pubkeys)
     {
         CKeyID keyID = CPubKey(pubkey).GetID();
         if (keystore.HaveKey(keyID))
@@ -26,35 +29,17 @@ unsigned int HaveKeys(const std::vector<valtype>& pubkeys, const CKeyStore& keys
     return nResult;
 }
 
-isminetype IsMine(const CKeyStore& keystore, const CScript& scriptPubKey, SigVersion sigversion)
+isminetype IsMineInner(const CKeyStore &keystore, const CScript& scriptPubKey, bool& isInvalid, SigVersion sigversion, bool& fName)
 {
-    bool isInvalid = false;
-    return IsMine(keystore, scriptPubKey, isInvalid, sigversion);
-}
-
-isminetype IsMine(const CKeyStore& keystore, const CTxDestination& dest, SigVersion sigversion)
-{
-    bool isInvalid = false;
-    return IsMine(keystore, dest, isInvalid, sigversion);
-}
-
-isminetype IsMine(const CKeyStore &keystore, const CTxDestination& dest, bool& isInvalid, SigVersion sigversion)
-{
-    CScript script = GetScriptForDestination(dest);
-    return IsMine(keystore, script, isInvalid, sigversion);
-}
-
-isminetype IsMine(const CKeyStore &keystore, const CScript& scriptPubKey, bool& isInvalid, SigVersion sigversion)
-{
-    isInvalid = false;
-
-    std::vector<valtype> vSolutions;
+    fName = false;
+    vector<valtype> vSolutions;
     txnouttype whichType;
     if (!Solver(scriptPubKey, whichType, vSolutions)) {
         if (keystore.HaveWatchOnly(scriptPubKey))
             return ISMINE_WATCH_UNSOLVABLE;
         return ISMINE_NO;
     }
+    fName = whichType == TX_NAME_PUBKEYHASH || whichType == TX_NAME_SCRIPTHASH || whichType == TX_NAME_WITNESS_V0_SCRIPTHASH || whichType == TX_NAME_WITNESS_V0_KEYHASH;
 
     CKeyID keyID;
     switch (whichType)
@@ -72,6 +57,7 @@ isminetype IsMine(const CKeyStore &keystore, const CScript& scriptPubKey, bool& 
             return ISMINE_SPENDABLE;
         break;
     case TX_WITNESS_V0_KEYHASH:
+    case TX_NAME_WITNESS_V0_KEYHASH:
     {
         if (!keystore.HaveCScript(CScriptID(CScript() << OP_0 << vSolutions[0]))) {
             // We do not support bare witness outputs unless the P2SH version of it would be
@@ -85,6 +71,7 @@ isminetype IsMine(const CKeyStore &keystore, const CScript& scriptPubKey, bool& 
         break;
     }
     case TX_PUBKEYHASH:
+    case TX_NAME_PUBKEYHASH:
         keyID = CKeyID(uint160(vSolutions[0]));
         if (sigversion != SIGVERSION_BASE) {
             CPubKey pubkey;
@@ -97,6 +84,7 @@ isminetype IsMine(const CKeyStore &keystore, const CScript& scriptPubKey, bool& 
             return ISMINE_SPENDABLE;
         break;
     case TX_SCRIPTHASH:
+    case TX_NAME_SCRIPTHASH:
     {
         CScriptID scriptID = CScriptID(uint160(vSolutions[0]));
         CScript subscript;
@@ -108,6 +96,7 @@ isminetype IsMine(const CKeyStore &keystore, const CScript& scriptPubKey, bool& 
         break;
     }
     case TX_WITNESS_V0_SCRIPTHASH:
+    case TX_NAME_WITNESS_V0_SCRIPTHASH:
     {
         if (!keystore.HaveCScript(CScriptID(CScript() << OP_0 << vSolutions[0]))) {
             break;
@@ -131,7 +120,7 @@ isminetype IsMine(const CKeyStore &keystore, const CScript& scriptPubKey, bool& 
         // partially owned (somebody else has a key that can spend
         // them) enable spend-out-from-under-you attacks, especially
         // in shared-wallet situations.
-        std::vector<valtype> keys(vSolutions.begin()+1, vSolutions.begin()+vSolutions.size()-1);
+        vector<valtype> keys(vSolutions.begin()+1, vSolutions.begin()+vSolutions.size()-1);
         if (sigversion != SIGVERSION_BASE) {
             for (size_t i = 0; i < keys.size(); i++) {
                 if (keys[i].size() != 33) {
@@ -152,4 +141,35 @@ isminetype IsMine(const CKeyStore &keystore, const CScript& scriptPubKey, bool& 
         return ProduceSignature(DummySignatureCreator(&keystore), scriptPubKey, sigs) ? ISMINE_WATCH_SOLVABLE : ISMINE_WATCH_UNSOLVABLE;
     }
     return ISMINE_NO;
+}
+
+isminetype IsMine(const CKeyStore &keystore, const CScript& scriptPubKey, bool& isInvalid, SigVersion sigversion)
+{
+    bool fName;
+    return IsMineInner(keystore, scriptPubKey, isInvalid, sigversion, fName);
+}
+
+isminetype IsMine(const CKeyStore& keystore, const CScript& scriptPubKey, SigVersion sigversion)
+{
+    bool isInvalid = false;
+    return IsMine(keystore, scriptPubKey, isInvalid, sigversion);
+}
+
+isminetype IsMine(const CKeyStore& keystore, const CTxDestination& dest, SigVersion sigversion)
+{
+    bool isInvalid = false;
+    return IsMine(keystore, dest, isInvalid, sigversion);
+}
+
+isminetype IsMine(const CKeyStore &keystore, const CTxDestination& dest, bool& isInvalid, SigVersion sigversion)
+{
+    CScript script = GetScriptForDestination(dest);
+    return IsMine(keystore, script, isInvalid, sigversion);
+}
+
+// rngcoin: normal check + name check
+isminetype IsMine(bool &fName, const CKeyStore &keystore, const CScript& scriptPubKey)
+{
+    bool isInvalid = false;
+    return IsMineInner(keystore, scriptPubKey, isInvalid, SIGVERSION_BASE, fName);
 }

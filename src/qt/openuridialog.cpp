@@ -32,8 +32,8 @@ QString OpenURIDialog::getURI()
 
 void OpenURIDialog::accept()
 {
-    SendCoinsRecipient rcp;
-    if(GUIUtil::parseBitcoinURI(getURI(), &rcp))
+    std::vector<SendCoinsRecipient> rcp;
+    if(GUIUtil::parseBitcoinURI(getURI(), rcp))
     {
         /* Only accept value URIs */
         QDialog::accept();
@@ -44,7 +44,7 @@ void OpenURIDialog::accept()
 
 void OpenURIDialog::on_selectFileButton_clicked()
 {
-    QString filename = GUIUtil::getOpenFileName(this, tr("Select payment request file to open"), "", "", nullptr);
+    QString filename = GUIUtil::getOpenFileName(this, tr("Select payment request file to open"), "", "", NULL);
     if(filename.isEmpty())
         return;
     QUrl fileUri = QUrl::fromLocalFile(filename);

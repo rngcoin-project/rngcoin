@@ -60,24 +60,24 @@ public:
     };
 
 private:
-    WalletModel *model;
-    TransactionFilterProxy *transactionProxyModel;
-    QTableView *transactionView;
+    WalletModel *model = 0;
+    TransactionFilterProxy *transactionProxyModel = 0;
+    struct TableView;
+    TableView *transactionView = 0;
 
-    QComboBox *dateWidget;
-    QComboBox *typeWidget;
-    QComboBox *watchOnlyWidget;
-    QLineEdit *addressWidget;
-    QLineEdit *amountWidget;
+    QComboBox *dateWidget = 0;
+    QComboBox *typeWidget = 0;
+    QComboBox *watchOnlyWidget = 0;
+    QLineEdit *addressWidget = 0;
+    QLineEdit *amountWidget = 0;
 
-    QMenu *contextMenu;
-    QSignalMapper *mapperThirdPartyTxUrls;
+    QMenu *contextMenu = 0;
+    QSignalMapper *mapperThirdPartyTxUrls = 0;
 
-    QFrame *dateRangeWidget;
-    QDateTimeEdit *dateFrom;
-    QDateTimeEdit *dateTo;
-    QAction *abandonAction;
-    QAction *bumpFeeAction;
+    QFrame *dateRangeWidget = 0;
+    QDateTimeEdit *dateFrom = 0;
+    QDateTimeEdit *dateTo = 0;
+    QAction *abandonAction = 0;
 
     QWidget *createDateRangeWidget();
 
@@ -101,20 +101,20 @@ private Q_SLOTS:
     void openThirdPartyTxUrl(QString url);
     void updateWatchOnlyColumn(bool fHaveWatchOnly);
     void abandonTx();
-    void bumpFee();
 
 Q_SIGNALS:
     void doubleClicked(const QModelIndex&);
 
     /**  Fired when a message should be reported to the user */
     void message(const QString &title, const QString &message, unsigned int style);
+    void amountSelected(const QString &title);
 
 public Q_SLOTS:
     void chooseDate(int idx);
     void chooseType(int idx);
     void chooseWatchonly(int idx);
-    void changedAmount();
-    void changedPrefix();
+    void changedPrefix(const QString &prefix);
+    void changedAmount(const QString &amount);
     void exportClicked();
     void focusTransaction(const QModelIndex&);
 

@@ -62,12 +62,12 @@
         <translation>Адреси за получаване</translation>
     </message>
     <message>
-        <source>These are your RNGCoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <source>These are your Rngcoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
         <translation>Това са адресите на получателите на плащания. Винаги проверявайте размера на сумата и адреса на получателя, преди да изпратите монети.</translation>
     </message>
     <message>
-        <source>These are your RNGCoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Това са Вашите RNGCoin адреси,благодарение на които ще получавате плащания.Препоръчително е да използвате нови адреси за получаване на всяка транзакция.</translation>
+        <source>These are your Rngcoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Това са Вашите rngcoin адреси,благодарение на които ще получавате плащания.Препоръчително е да използвате нови адреси за получаване на всяка транзакция.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -169,7 +169,7 @@
     </message>
     <message>
         <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR RNGCOINS&lt;/b&gt;!</source>
-        <translation>ВНИМАНИЕ: Ако шифрирате вашият портфейл и изгубите паролата си, &lt;b&gt;ЩЕ ИЗГУБИТЕ ВСИЧКИТЕ СИ БИТКОИНИ&lt;/b&gt;!</translation>
+        <translation>ВНИМАНИЕ: Ако шифрирате вашият портфейл и изгубите паролата си, &lt;b&gt;ЩЕ ИЗГУБИТЕ ВСИЧКИТЕ СИ ЕМЕРКОИНИ&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -314,24 +314,12 @@
         <translation>Отвори &amp;URI...</translation>
     </message>
     <message>
-        <source>Click to disable network activity.</source>
-        <translation>Натиснете за деактивиране на мрежата</translation>
-    </message>
-    <message>
-        <source>Network activity disabled.</source>
-        <translation>Мрежата деактивирана</translation>
-    </message>
-    <message>
-        <source>Click to enable network activity again.</source>
-        <translation>Натиснете за повторно активиране на мрежата</translation>
-    </message>
-    <message>
         <source>Reindexing blocks on disk...</source>
         <translation>Повторно индексиране на блоковете на диска...</translation>
     </message>
     <message>
-        <source>Send coins to a RNGCoin address</source>
-        <translation>Изпращане към Биткоин адрес</translation>
+        <source>Send coins to a Rngcoin address</source>
+        <translation>Изпращане към Rngcoin адрес</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -354,8 +342,8 @@
         <translation>&amp;Проверка на съобщение...</translation>
     </message>
     <message>
-        <source>RNGCoin</source>
-        <translation>Биткоин</translation>
+        <source>Rngcoin</source>
+        <translation>Rngcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -382,12 +370,12 @@
         <translation>Шифроване на личните ключове,които принадлежат на портфейла Ви.</translation>
     </message>
     <message>
-        <source>Sign messages with your RNGCoin addresses to prove you own them</source>
-        <translation>Пишете съобщения със своя RNGCoin адрес за да докажете,че е ваш.</translation>
+        <source>Sign messages with your Rngcoin addresses to prove you own them</source>
+        <translation>Пишете съобщения със своя rngcoin адрес за да докажете,че е ваш.</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified RNGCoin addresses</source>
-        <translation>Потвърждаване на съобщения  за да се знае,че са написани с дадените RNGCoin адреси.</translation>
+        <source>Verify messages to ensure they were signed with specified Rngcoin addresses</source>
+        <translation>Потвърждаване на съобщения  за да се знае,че са написани с дадените rngcoin адреси.</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -407,7 +395,7 @@
     </message>
     <message>
         <source>Request payments (generates QR codes and rngcoin: URIs)</source>
-        <translation>Изискване на плащания(генерира QR кодове и RNGCoin: URIs)</translation>
+        <translation>Изискване на плащания(генерира QR кодове и rngcoin: URIs)</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
@@ -419,7 +407,7 @@
     </message>
     <message>
         <source>Open a rngcoin: URI or payment request</source>
-        <translation>Отворете RNGCoin: URI  или заявка за плащане</translation>
+        <translation>Отворете rngcoin: URI  или заявка за плащане</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
@@ -462,16 +450,12 @@
         <translation>Синхронизиран</translation>
     </message>
     <message>
-        <source>Show the %1 help message to get a list with possible RNGCoin command-line options</source>
-        <translation>Покажи %1 помощно съобщение за да получиш лист с възможни RNGCoin команди</translation>
+        <source>Show the %1 help message to get a list with possible Rngcoin command-line options</source>
+        <translation>Покажи %1 помощно съобщение за да получиш лист с възможни rngcoin команди</translation>
     </message>
     <message>
         <source>%1 client</source>
         <translation>%1 клиент</translation>
-    </message>
-    <message>
-        <source>Connecting to peers...</source>
-        <translation>Свързване с пиъри</translation>
     </message>
     <message>
         <source>Catching up...</source>
@@ -706,8 +690,8 @@
         <translation>Редактиране на адрес за изпращане</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid RNGCoin address.</source>
-        <translation>"%1" не е валиден Биткоин адрес.</translation>
+        <source>The entered address "%1" is not a valid Rngcoin address.</source>
+        <translation>"%1" не е валиден Rngcoin адрес.</translation>
     </message>
     <message>
         <source>The entered address "%1" is already in the address book.</source>
@@ -811,10 +795,6 @@
         <translation>Добре дошли в %1.</translation>
     </message>
     <message>
-        <source>As this is the first time the program is launched, you can choose where %1 will store its data.</source>
-        <translation>Програмата се стартира за първи път вие може да изберете къде %1 ще се запаметят данните.</translation>
-    </message>
-    <message>
         <source>Use the default data directory</source>
         <translation>Използване на директория по подразбиране</translation>
     </message>
@@ -836,10 +816,6 @@
     <message>
         <source>Last block time</source>
         <translation>Време на последния блок</translation>
-    </message>
-    <message>
-        <source>calculating...</source>
-        <translation>Изчисляване...</translation>
     </message>
     <message>
         <source>Hide</source>
@@ -928,16 +904,16 @@
         <translation>&amp;Похарчете непотвърденото ресто</translation>
     </message>
     <message>
-        <source>Automatically open the RNGCoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Автоматично отваряне на входящия RNGCoin порт. Работи само с рутери поддържащи UPnP.</translation>
+        <source>Automatically open the Rngcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Автоматично отваряне на входящия Rngcoin порт. Работи само с рутери поддържащи UPnP.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
         <translation>Отваряне на входящия порт чрез &amp;UPnP</translation>
     </message>
     <message>
-        <source>Connect to the RNGCoin network through a SOCKS5 proxy.</source>
-        <translation>Свързване с RNGCoin мрежата чрез SOCKS5  прокси.</translation>
+        <source>Connect to the Rngcoin network through a SOCKS5 proxy.</source>
+        <translation>Свързване с rngcoin мрежата чрез SOCKS5  прокси.</translation>
     </message>
     <message>
         <source>&amp;Connect through SOCKS5 proxy (default proxy):</source>
@@ -1031,8 +1007,8 @@
         <translation>Формуляр</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the RNGCoin network after a connection is established, but this process has not completed yet.</source>
-        <translation>Текущата информация на екрана може да не е актуална. Вашият портфейл ще се синхронизира автоматично с мрежата на Биткоин, щом поне една връзката с нея се установи; този процес все още не е приключил.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Rngcoin network after a connection is established, but this process has not completed yet.</source>
+        <translation>Текущата информация на екрана може да не е актуална. Вашият портфейл ще се синхронизира автоматично с мрежата на Rngcoin, щом поне една връзката с нея се установи; този процес все още не е приключил.</translation>
     </message>
     <message>
         <source>Watch-only:</source>
@@ -1087,7 +1063,7 @@
     </message>
     <message>
         <source>Cannot start rngcoin: click-to-pay handler</source>
-        <translation>RNGCoin не можe да се стартира: click-to-pay handler</translation>
+        <translation>rngcoin не можe да се стартира: click-to-pay handler</translation>
     </message>
     <message>
         <source>URI handling</source>
@@ -1160,8 +1136,8 @@
         <translation>Сума</translation>
     </message>
     <message>
-        <source>Enter a RNGCoin address (e.g. %1)</source>
-        <translation>Въведете RNGCoin адрес (например: %1)</translation>
+        <source>Enter a Rngcoin address or name (e.g. %1)</source>
+        <translation>Въведете rngcoin адрес (например: %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -1713,8 +1689,8 @@
         <translation>Заявката за плащане е изтекла.</translation>
     </message>
     <message>
-        <source>Warning: Invalid RNGCoin address</source>
-        <translation>Внимание: Невалиден RNGCoin адрес</translation>
+        <source>Warning: Invalid Rngcoin address</source>
+        <translation>Внимание: Невалиден rngcoin адрес</translation>
     </message>
     <message>
         <source>Warning: Unknown change address</source>
@@ -1833,7 +1809,7 @@
         <translation>Копиране на текущия подпис</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this RNGCoin address</source>
+        <source>Sign the message to prove you own this Rngcoin address</source>
         <translation>Подпишете съобщение като доказателство, че притежавате определен адрес</translation>
     </message>
     <message>
@@ -1849,8 +1825,8 @@
         <translation>&amp;Провери</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified RNGCoin address</source>
-        <translation>Проверете съобщение, за да сте сигурни че е подписано с определен Биткоин адрес</translation>
+        <source>Verify the message to ensure it was signed with the specified Rngcoin address</source>
+        <translation>Проверете съобщение, за да сте сигурни че е подписано с определен Rngcoin адрес</translation>
     </message>
     <message>
         <source>Verify &amp;Message</source>
@@ -2370,8 +2346,8 @@
         <translation>Въведете Ваш публичен адрес</translation>
     </message>
     <message>
-        <source>RNGCoin Core</source>
-        <translation>RNGCoin ядро</translation>
+        <source>Rngcoin Core</source>
+        <translation>rngcoin ядро</translation>
     </message>
     <message>
         <source>&lt;category&gt; can be:</source>

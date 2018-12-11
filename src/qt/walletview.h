@@ -2,8 +2,7 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_QT_WALLETVIEW_H
-#define BITCOIN_QT_WALLETVIEW_H
+#pragma once
 
 #include "amount.h"
 
@@ -15,9 +14,11 @@ class OverviewPage;
 class PlatformStyle;
 class ReceiveCoinsDialog;
 class SendCoinsDialog;
+class ManageNamesPage;
 class SendCoinsRecipient;
 class TransactionView;
 class WalletModel;
+class WalletFrame;
 class AddressBookPage;
 
 QT_BEGIN_NAMESPACE
@@ -36,7 +37,7 @@ class WalletView : public QStackedWidget
     Q_OBJECT
 
 public:
-    explicit WalletView(const PlatformStyle *platformStyle, QWidget *parent);
+    explicit WalletView(const PlatformStyle *platformStyle, WalletFrame *parent);
     ~WalletView();
 
     void setBitcoinGUI(BitcoinGUI *gui);
@@ -55,18 +56,18 @@ public:
     void showOutOfSyncWarning(bool fShow);
 
 private:
-    ClientModel *clientModel;
-    WalletModel *walletModel;
+    WalletFrame *walletFrame = 0;
+    ClientModel *clientModel = 0;
+    WalletModel *walletModel = 0;
 
     OverviewPage *overviewPage;
     QWidget *transactionsPage;
     ReceiveCoinsDialog *receiveCoinsPage;
     SendCoinsDialog *sendCoinsPage;
+    // ManageNamesPage *manageNamesPage;
     AddressBookPage *usedSendingAddressesPage;
     AddressBookPage *usedReceivingAddressesPage;
-
     TransactionView *transactionView;
-
     QProgressDialog *progressDialog;
     const PlatformStyle *platformStyle;
 
@@ -79,6 +80,8 @@ public Q_SLOTS:
     void gotoReceiveCoinsPage();
     /** Switch to send coins page */
     void gotoSendCoinsPage(QString addr = "");
+    /** Switch to manage names page */
+    // void gotoManageNamesPage();
 
     /** Show Sign/Verify Message dialog and switch to sign message tab */
     void gotoSignMessageTab(QString addr = "");
@@ -113,6 +116,9 @@ public Q_SLOTS:
     /** User has requested more information about the out of sync state */
     void requestedSyncWarningInfo();
 
+    /** Unlock|Lock wallet when clicking on icon */
+    void on_labelWalletEncryptionIcon_clicked();
+
 Q_SIGNALS:
     /** Signal that we want to show the main window */
     void showNormalIfMinimized();
@@ -127,5 +133,3 @@ Q_SIGNALS:
     /** Notify that the out of sync warning icon has been pressed */
     void outOfSyncWarningClicked();
 };
-
-#endif // BITCOIN_QT_WALLETVIEW_H

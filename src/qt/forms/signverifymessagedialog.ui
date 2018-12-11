@@ -48,7 +48,7 @@
          <item>
           <widget class="QValidatedLineEdit" name="addressIn_SM">
            <property name="toolTip">
-            <string>The RNGCoin address to sign the message with</string>
+            <string>The Rngcoin address to sign the message with</string>
            </property>
           </widget>
          </item>
@@ -98,6 +98,9 @@
         <widget class="QPlainTextEdit" name="messageIn_SM">
          <property name="toolTip">
           <string>Enter the message you want to sign here</string>
+         </property>
+         <property name="placeholderText">
+          <string>Message text</string>
          </property>
         </widget>
        </item>
@@ -152,7 +155,7 @@
          <item>
           <widget class="QPushButton" name="signMessageButton_SM">
            <property name="toolTip">
-            <string>Sign the message to prove you own this RNGCoin address</string>
+            <string>Sign the message to prove you own this Rngcoin address</string>
            </property>
            <property name="text">
             <string>Sign &amp;Message</string>
@@ -258,7 +261,7 @@
          <item>
           <widget class="QValidatedLineEdit" name="addressIn_VM">
            <property name="toolTip">
-            <string>The RNGCoin address the message was signed with</string>
+            <string>The Rngcoin address the message was signed with</string>
            </property>
           </widget>
          </item>
@@ -285,17 +288,25 @@
         </layout>
        </item>
        <item>
-        <widget class="QPlainTextEdit" name="messageIn_VM"/>
+        <widget class="QPlainTextEdit" name="messageIn_VM">
+         <property name="placeholderText">
+          <string>Enter message to verify</string>
+         </property>
+        </widget>
        </item>
        <item>
-        <widget class="QValidatedLineEdit" name="signatureIn_VM"/>
+        <widget class="QValidatedLineEdit" name="signatureIn_VM">
+         <property name="placeholderText">
+          <string>Enter signature</string>
+         </property>
+        </widget>
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_2_VM">
          <item>
           <widget class="QPushButton" name="verifyMessageButton_VM">
            <property name="toolTip">
-            <string>Verify the message to ensure it was signed with the specified RNGCoin address</string>
+            <string>Verify the message to ensure it was signed with the specified Rngcoin address</string>
            </property>
            <property name="text">
             <string>Verify &amp;Message</string>

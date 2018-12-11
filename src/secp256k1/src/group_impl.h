@@ -1,7 +1,7 @@
 /**********************************************************************
  * Copyright (c) 2013, 2014 Pieter Wuille                             *
- * Distributed under the MIT software license, see the accompanying   *
- * file COPYING or http://www.opensource.org/licenses/mit-license.php.*
+ * Distributed under the GPL3 software license, see the accompanying   *
+ * file COPYING or http://www.gnu.org/licenses/gpl.html.*
  **********************************************************************/
 
 #ifndef _SECP256K1_GROUP_IMPL_H_
@@ -198,6 +198,12 @@ static void secp256k1_gej_set_infinity(secp256k1_gej *r) {
     secp256k1_fe_clear(&r->x);
     secp256k1_fe_clear(&r->y);
     secp256k1_fe_clear(&r->z);
+}
+
+static void secp256k1_ge_set_infinity(secp256k1_ge *r) {
+    r->infinity = 1;
+    secp256k1_fe_clear(&r->x);
+    secp256k1_fe_clear(&r->y);
 }
 
 static void secp256k1_gej_clear(secp256k1_gej *r) {

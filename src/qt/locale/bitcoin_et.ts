@@ -62,12 +62,12 @@
         <translation>Vastuvõtvad aadressid</translation>
     </message>
     <message>
-        <source>These are your RNGCoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Need on sinu RNGCoin aadressid maksete saatmiseks. Ennem müntide saatmist kontrolli alati summat ja makse saaja aadressi.</translation>
+        <source>These are your Rngcoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Need on sinu Rngcoin aadressid maksete saatmiseks. Ennem müntide saatmist kontrolli alati summat ja makse saaja aadressi.</translation>
     </message>
     <message>
-        <source>These are your RNGCoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Need on sinu RNGCoin aadressid sisenevate maksete vastu võtmiseks. Soovitav on iga tehingu tarbeks kasutada uut aadressi.</translation>
+        <source>These are your Rngcoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Need on sinu Rngcoin aadressid sisenevate maksete vastu võtmiseks. Soovitav on iga tehingu tarbeks kasutada uut aadressi.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -290,8 +290,8 @@
         <translation>Kettal olevate blokkide re-indekseerimine...</translation>
     </message>
     <message>
-        <source>Send coins to a RNGCoin address</source>
-        <translation>Saada münte RNGCoini aadressile</translation>
+        <source>Send coins to a Rngcoin address</source>
+        <translation>Saada münte Rngcoini aadressile</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -314,8 +314,8 @@
         <translation>&amp;Kontrolli sõnumit...</translation>
     </message>
     <message>
-        <source>RNGCoin</source>
-        <translation>RNGCoin</translation>
+        <source>Rngcoin</source>
+        <translation>Rngcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -342,12 +342,12 @@
         <translation>Krüpteeri oma rahakoti privaatvõtmed</translation>
     </message>
     <message>
-        <source>Sign messages with your RNGCoin addresses to prove you own them</source>
-        <translation>Omandi tõestamiseks allkirjasta sõnumid oma RNGCoini aadressiga</translation>
+        <source>Sign messages with your Rngcoin addresses to prove you own them</source>
+        <translation>Omandi tõestamiseks allkirjasta sõnumid oma Rngcoini aadressiga</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified RNGCoin addresses</source>
-        <translation>Kinnita sõnumid kindlustamaks et need allkirjastati määratud RNGCoini aadressiga</translation>
+        <source>Verify messages to ensure they were signed with specified Rngcoin addresses</source>
+        <translation>Kinnita sõnumid kindlustamaks et need allkirjastati määratud Rngcoini aadressiga</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -378,8 +378,8 @@
         <translation>Käsurea valikud</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to RNGCoin network</source>
-        <translation><numerusform>%n aktiivne ühendus RNGCoini võrku</numerusform><numerusform>%n aktiivset ühendust RNGCoini võrku</numerusform></translation>
+        <source>%n active connection(s) to Rngcoin network</source>
+        <translation><numerusform>%n aktiivne ühendus Rngcoini võrku</numerusform><numerusform>%n aktiivset ühendust Rngcoini võrku</numerusform></translation>
     </message>
     <message>
         <source>Indexing blocks on disk...</source>
@@ -626,8 +626,8 @@
         <translation>Muuda saatvat aadressi</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid RNGCoin address.</source>
-        <translation>Sisestatud aadress "%1" ei ole korrektne RNGCoin aadress.</translation>
+        <source>The entered address "%1" is not a valid Rngcoin address.</source>
+        <translation>Sisestatud aadress "%1" ei ole korrektne Rngcoin aadress.</translation>
     </message>
     <message>
         <source>The entered address "%1" is already in the address book.</source>
@@ -756,8 +756,8 @@
         <translation>Ekspert</translation>
     </message>
     <message>
-        <source>Automatically open the RNGCoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>RNGCoini kliendi pordi automaatne avamine ruuteris. Toimib, kui sinu ruuter aktsepteerib UPnP ühendust.</translation>
+        <source>Automatically open the Rngcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Rngcoini kliendi pordi automaatne avamine ruuteris. Toimib, kui sinu ruuter aktsepteerib UPnP ühendust.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
@@ -855,8 +855,8 @@
         <translation>Vorm</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the RNGCoin network after a connection is established, but this process has not completed yet.</source>
-        <translation>Kuvatav info ei pruugi olla ajakohane. Ühenduse loomisel süngitakse sinu rahakott automaatselt Liteconi võrgustikuga, kuid see toiming on hetkel lõpetamata.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Rngcoin network after a connection is established, but this process has not completed yet.</source>
+        <translation>Kuvatav info ei pruugi olla ajakohane. Ühenduse loomisel süngitakse sinu rahakott automaatselt Rngcoin võrgustikuga, kuid see toiming on hetkel lõpetamata.</translation>
     </message>
     <message>
         <source>Pending:</source>
@@ -1337,8 +1337,8 @@
         <translation>Maksepäring aegunud.</translation>
     </message>
     <message>
-        <source>Warning: Invalid RNGCoin address</source>
-        <translation>Hoiatus: Ebakorrektne RNGCoin aadress</translation>
+        <source>Warning: Invalid Rngcoin address</source>
+        <translation>Hoiatus: Ebakorrektne Rngcoin aadress</translation>
     </message>
     <message>
         <source>(no label)</source>
@@ -1417,8 +1417,8 @@
         <translation>&amp;Allkirjastamise teade</translation>
     </message>
     <message>
-        <source>The RNGCoin address to sign the message with</source>
-        <translation>RNGCoin aadress millega sõnum allkirjastada</translation>
+        <source>The Rngcoin address to sign the message with</source>
+        <translation>Rngcoin aadress millega sõnum allkirjastada</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -1449,8 +1449,8 @@
         <translation>Kopeeri praegune signatuur vahemällu</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this RNGCoin address</source>
-        <translation>Allkirjasta sõnum RNGCoini aadressi sulle kuulumise tõestamiseks</translation>
+        <source>Sign the message to prove you own this Rngcoin address</source>
+        <translation>Allkirjasta sõnum Rngcoini aadressi sulle kuulumise tõestamiseks</translation>
     </message>
     <message>
         <source>Sign &amp;Message</source>
@@ -1469,12 +1469,12 @@
         <translation>&amp;Kinnita Sõnum</translation>
     </message>
     <message>
-        <source>The RNGCoin address the message was signed with</source>
-        <translation>RNGCoin aadress millega sõnum on allkirjastatud</translation>
+        <source>The Rngcoin address the message was signed with</source>
+        <translation>Rngcoin aadress millega sõnum on allkirjastatud</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified RNGCoin address</source>
-        <translation>Kinnita sõnum tõestamaks selle allkirjastatust määratud RNGCoini aadressiga.</translation>
+        <source>Verify the message to ensure it was signed with the specified Rngcoin address</source>
+        <translation>Kinnita sõnum tõestamaks selle allkirjastatust määratud Rngcoini aadressiga.</translation>
     </message>
     <message>
         <source>Verify &amp;Message</source>
@@ -1758,8 +1758,8 @@
         <translation>Tööta taustal ning aktsepteeri käsklusi</translation>
     </message>
     <message>
-        <source>RNGCoin Core</source>
-        <translation>RNGCoini tuumik</translation>
+        <source>Rngcoin Core</source>
+        <translation>Rngcoini tuumik</translation>
     </message>
     <message>
         <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>

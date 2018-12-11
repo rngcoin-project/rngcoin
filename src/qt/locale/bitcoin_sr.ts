@@ -130,7 +130,7 @@
         <translation>Промени &amp;лозинку...</translation>
     </message>
     <message>
-        <source>Send coins to a RNGCoin address</source>
+        <source>Send coins to a Rngcoin address</source>
         <translation>Пошаљите новац на rngcoin адресу</translation>
     </message>
     <message>

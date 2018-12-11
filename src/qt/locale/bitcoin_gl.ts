@@ -130,8 +130,8 @@
         <translation>Reindexando bloques no disco...</translation>
     </message>
     <message>
-        <source>Send coins to a RNGCoin address</source>
-        <translation>Enviar moedas a unha dirección RNGCoin</translation>
+        <source>Send coins to a Rngcoin address</source>
+        <translation>Enviar moedas a unha dirección Rngcoin</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -154,8 +154,8 @@
         <translation>&amp;Verificar mensaxe...</translation>
     </message>
     <message>
-        <source>RNGCoin</source>
-        <translation>RNGCoin</translation>
+        <source>Rngcoin</source>
+        <translation>Rngcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -182,12 +182,12 @@
         <translation>Encriptar as claves privadas que pertencen ao teu moedeiro</translation>
     </message>
     <message>
-        <source>Sign messages with your RNGCoin addresses to prove you own them</source>
-        <translation>Asina mensaxes coas túas direccións RNGCoin para probar que te pertencen</translation>
+        <source>Sign messages with your Rngcoin addresses to prove you own them</source>
+        <translation>Asina mensaxes coas túas direccións Rngcoin para probar que te pertencen</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified RNGCoin addresses</source>
-        <translation>Verificar mensaxes para asegurar que foron asinados con direccións RNGCoin dadas.</translation>
+        <source>Verify messages to ensure they were signed with specified Rngcoin addresses</source>
+        <translation>Verificar mensaxes para asegurar que foron asinados con direccións Rngcoin dadas.</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -466,8 +466,8 @@
         <translation>Moedeiro</translation>
     </message>
     <message>
-        <source>Automatically open the RNGCoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Abrir automáticamente o porto do cliente RNGCoin no router. Esto so funciona se o teu router soporta UPnP e está habilitado.</translation>
+        <source>Automatically open the Rngcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Abrir automáticamente o porto do cliente Rngcoin no router. Esto so funciona se o teu router soporta UPnP e está habilitado.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
@@ -545,8 +545,8 @@
         <translation>Formulario</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the RNGCoin network after a connection is established, but this process has not completed yet.</source>
-        <translation>A información amosada por estar desactualizada. O teu moedeiro sincronízase automáticamente coa rede RNGCoin despois de que se estableza unha conexión, pero este proceso non está todavía rematado.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Rngcoin network after a connection is established, but this process has not completed yet.</source>
+        <translation>A información amosada por estar desactualizada. O teu moedeiro sincronízase automáticamente coa rede Rngcoin despois de que se estableza unha conexión, pero este proceso non está todavía rematado.</translation>
     </message>
     <message>
         <source>Your current spendable balance</source>
@@ -927,8 +927,8 @@
         <translation>Copiar a sinatura actual ao portapapeis do sistema</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this RNGCoin address</source>
-        <translation>Asina a mensaxe para probar que posees esta dirección RNGCoin</translation>
+        <source>Sign the message to prove you own this Rngcoin address</source>
+        <translation>Asina a mensaxe para probar que posees esta dirección Rngcoin</translation>
     </message>
     <message>
         <source>Sign &amp;Message</source>
@@ -947,8 +947,8 @@
         <translation>&amp;Verificar Mensaxe</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified RNGCoin address</source>
-        <translation>Verificar a mensaxe para asegurar que foi asinada coa dirección RNGCoin especificada</translation>
+        <source>Verify the message to ensure it was signed with the specified Rngcoin address</source>
+        <translation>Verificar a mensaxe para asegurar que foi asinada coa dirección Rngcoin especificada</translation>
     </message>
     <message>
         <source>Verify &amp;Message</source>
@@ -1028,8 +1028,8 @@
         <translation>Executar no fondo como un demo e aceptar comandos</translation>
     </message>
     <message>
-        <source>RNGCoin Core</source>
-        <translation>Core de RNGCoin</translation>
+        <source>Rngcoin Core</source>
+        <translation>Core de Rngcoin</translation>
     </message>
     <message>
         <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>

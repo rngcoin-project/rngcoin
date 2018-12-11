@@ -142,8 +142,8 @@
         <translation>Deschide &amp;URI...</translation>
     </message>
     <message>
-        <source>Send coins to a RNGCoin address</source>
-        <translation>Trimite monedele către o adresă RNGCoin</translation>
+        <source>Send coins to a Rngcoin address</source>
+        <translation>Trimite monedele către o adresă Rngcoin</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -166,8 +166,8 @@
         <translation>&amp;Verifică mesajul...</translation>
     </message>
     <message>
-        <source>RNGCoin</source>
-        <translation>RNGCoin</translation>
+        <source>Rngcoin</source>
+        <translation>Rngcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -194,12 +194,12 @@
         <translation>Criptează cheile private care aparțin portofelului tău.</translation>
     </message>
     <message>
-        <source>Sign messages with your RNGCoin addresses to prove you own them</source>
-        <translation>Semnează mesajele cu adresa ta de RNGCoin pentru a face dovada că îți aparțin.</translation>
+        <source>Sign messages with your Rngcoin addresses to prove you own them</source>
+        <translation>Semnează mesajele cu adresa ta de Rngcoin pentru a face dovada că îți aparțin.</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified RNGCoin addresses</source>
-        <translation>Verifică mesajele cu scopul de a asigura faptul că au fost semnate cu adresa de RNGCoin specificată.</translation>
+        <source>Verify messages to ensure they were signed with specified Rngcoin addresses</source>
+        <translation>Verifică mesajele cu scopul de a asigura faptul că au fost semnate cu adresa de Rngcoin specificată.</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -748,8 +748,8 @@
 <context>
     <name>bitcoin-core</name>
     <message>
-        <source>RNGCoin Core</source>
-        <translation>RNGCoin Core</translation>
+        <source>Rngcoin Core</source>
+        <translation>Rngcoin Core</translation>
     </message>
     <message>
         <source>Information</source>

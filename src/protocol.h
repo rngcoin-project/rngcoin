@@ -161,9 +161,16 @@ extern const char *PING;
  */
 extern const char *PONG;
 /**
+ * The alert message warns nodes of problems that may affect them or the rest
+ * of the network.
+ * @since protocol version 311.
+ * @see https://bitcoin.org/en/developer-reference#alert
+ */
+extern const char *ALERT;
+/**
  * The notfound message is a reply to a getdata message which requested an
  * object the receiving node does not have available for relay.
- * @since protocol version 70001.
+ * @ince protocol version 70001.
  * @see https://bitcoin.org/en/developer-reference#notfound
  */
 extern const char *NOTFOUND;
@@ -240,6 +247,7 @@ extern const char *GETBLOCKTXN;
  * @since protocol version 70014 as described by BIP 152
  */
 extern const char *BLOCKTXN;
+extern const char *CHECKPOINT;
 };
 
 /* Get a vector of all valid message types (see above) */
@@ -360,5 +368,8 @@ public:
     int type;
     uint256 hash;
 };
+
+/** rngcoin: How much temperature a PoW header will remove */
+extern const unsigned int POW_HEADER_COOLING;
 
 #endif // BITCOIN_PROTOCOL_H

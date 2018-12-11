@@ -300,3 +300,9 @@ void BitcoinAmountField::setSingleStep(const CAmount& step)
 {
     amount->setSingleStep(step);
 }
+
+// rngcoin: need for exchange code:
+void BitcoinAmountField::setString (QString input)
+{
+    amount->fixup(input);
+}

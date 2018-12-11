@@ -31,6 +31,8 @@ class WalletModel;
 class HelpMessageDialog;
 class ModalOverlay;
 
+class CWallet;
+
 QT_BEGIN_NAMESPACE
 class QAction;
 class QProgressBar;
@@ -67,6 +69,7 @@ public:
     void removeAllWallets();
 #endif // ENABLE_WALLET
     bool enableWallet;
+    QLabel *labelWalletEncryptionIcon; // rngcoin: changed from private to public
 
 protected:
     void changeEvent(QEvent *e);
@@ -81,7 +84,6 @@ private:
     WalletFrame *walletFrame;
 
     UnitDisplayStatusBarControl *unitDisplayControl;
-    QLabel *labelWalletEncryptionIcon;
     QLabel *labelWalletHDStatusIcon;
     QLabel *connectionsControl;
     QLabel *labelBlocksIcon;
@@ -89,28 +91,29 @@ private:
     QProgressBar *progressBar;
     QProgressDialog *progressDialog;
 
-    QMenuBar *appMenuBar;
-    QAction *overviewAction;
-    QAction *historyAction;
-    QAction *quitAction;
-    QAction *sendCoinsAction;
-    QAction *sendCoinsMenuAction;
-    QAction *usedSendingAddressesAction;
-    QAction *usedReceivingAddressesAction;
-    QAction *signMessageAction;
-    QAction *verifyMessageAction;
-    QAction *aboutAction;
-    QAction *receiveCoinsAction;
-    QAction *receiveCoinsMenuAction;
-    QAction *optionsAction;
-    QAction *toggleHideAction;
-    QAction *encryptWalletAction;
-    QAction *backupWalletAction;
-    QAction *changePassphraseAction;
-    QAction *aboutQtAction;
-    QAction *openRPCConsoleAction;
-    QAction *openAction;
-    QAction *showHelpMessageAction;
+    QMenuBar *appMenuBar = 0;
+    QAction *overviewAction = 0;
+    QAction *historyAction = 0;
+    QAction *quitAction = 0;
+    QAction *sendCoinsAction = 0;
+    QAction *sendCoinsMenuAction = 0;
+    // QAction *manageNamesAction = 0;
+    QAction *usedSendingAddressesAction = 0;
+    QAction *usedReceivingAddressesAction = 0;
+    QAction *signMessageAction = 0;
+    QAction *verifyMessageAction = 0;
+    QAction *aboutAction = 0;
+    QAction *receiveCoinsAction = 0;
+    QAction *receiveCoinsMenuAction = 0;
+    QAction *optionsAction = 0;
+    QAction *toggleHideAction = 0;
+    QAction *encryptWalletAction = 0;
+    QAction *backupWalletAction = 0;
+    QAction *changePassphraseAction = 0;
+    QAction *aboutQtAction = 0;
+    QAction *openRPCConsoleAction = 0;
+    QAction *openAction = 0;
+    QAction *showHelpMessageAction = 0;
 
     QSystemTrayIcon *trayIcon;
     QMenu *trayIconMenu;
@@ -154,12 +157,24 @@ Q_SIGNALS:
     void receivedURI(const QString &uri);
 
 public Q_SLOTS:
+    /** Show window if hidden, unminimize when minimized, rise when obscured or show if hidden and fToggleHidden is true */
+    void showNormalIfMinimized(bool fToggleHidden = false);
     /** Set number of connections shown in the UI */
     void setNumConnections(int count);
     /** Set network state shown in the UI */
     void setNetworkActive(bool networkActive);
     /** Set number of blocks and last block date shown in the UI */
     void setNumBlocks(int count, const QDateTime& blockDate, double nVerificationProgress, bool headers);
+    /** Switch to overview (home) page */
+    void gotoOverviewPage();
+    /** Switch to history (transactions) page */
+    void gotoHistoryPage();
+    /** Switch to receive coins page */
+    void gotoReceiveCoinsPage();
+    /** Switch to send coins page */
+    void gotoSendCoinsPage(QString addr = "");
+    /** Switch to manage names page */
+    // void gotoManageNamesPage();
 
     /** Notify the user of an event from the core network or transaction handling code.
        @param[in] title     the message box / notification title
@@ -168,7 +183,7 @@ public Q_SLOTS:
                             @see CClientUIInterface::MessageBoxFlags
        @param[in] ret       pointer to a bool that will be modified to whether Ok was clicked (modal only)
     */
-    void message(const QString &title, const QString &message, unsigned int style, bool *ret = nullptr);
+    void message(const QString &title, const QString &message, unsigned int style, bool *ret = NULL);
 
 #ifdef ENABLE_WALLET
     /** Set the encryption status as shown in the UI.
@@ -191,15 +206,6 @@ public Q_SLOTS:
 
 private Q_SLOTS:
 #ifdef ENABLE_WALLET
-    /** Switch to overview (home) page */
-    void gotoOverviewPage();
-    /** Switch to history (transactions) page */
-    void gotoHistoryPage();
-    /** Switch to receive coins page */
-    void gotoReceiveCoinsPage();
-    /** Switch to send coins page */
-    void gotoSendCoinsPage(QString addr = "");
-
     /** Show Sign/Verify Message dialog and switch to sign message tab */
     void gotoSignMessageTab(QString addr = "");
     /** Show Sign/Verify Message dialog and switch to verify message tab */
@@ -207,6 +213,7 @@ private Q_SLOTS:
 
     /** Show open dialog */
     void openClicked();
+    void playIncomingTransactionSound();
 #endif // ENABLE_WALLET
     /** Show configuration dialog */
     void optionsClicked();
@@ -223,8 +230,6 @@ private Q_SLOTS:
     void trayIconActivated(QSystemTrayIcon::ActivationReason reason);
 #endif
 
-    /** Show window if hidden, unminimize when minimized, rise when obscured or show if hidden and fToggleHidden is true */
-    void showNormalIfMinimized(bool fToggleHidden = false);
     /** Simply calls showNormalIfMinimized(true) for use in SLOT() macro */
     void toggleHidden();
 

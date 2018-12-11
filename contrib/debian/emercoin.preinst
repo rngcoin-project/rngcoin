@@ -1,0 +1,21 @@
+#!/bin/bash
+
+set -e
+. /usr/share/debconf/confmodule
+
+case "$1" in
+  install)
+    getent passwd rng >/dev/null || {
+      groupadd -r rng && useradd -r -m -d /var/lib/rng -k /dev/null -s /bin/false -g rng rng
+    }
+    [ ! -f /etc/ssl/rng/rngcoin.key ] || [ ! -f /etc/ssl/rng/rngcoin.crt ] && {
+      mkdir -p /etc/ssl/rng
+      openssl req -nodes -x509 -newkey rsa:4096 -keyout /etc/ssl/rng/rngcoin.key -out /etc/ssl/rng/rngcoin.crt -days 3560 -subj /C=CY/L=Nicosia/O=Rngcoin/CN=rngcoin.local >/dev/null 2>&1
+      chown rng.rng /etc/ssl/rng/rngcoin.key /etc/ssl/rng/rngcoin.crt
+      chmod 600 /etc/ssl/rng/rngcoin.key
+    }
+    touch /var/tmp/rngcoin-install.flag
+  ;;
+esac
+
+exit 0

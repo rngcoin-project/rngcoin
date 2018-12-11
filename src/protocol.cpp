@@ -28,6 +28,7 @@ const char *GETADDR="getaddr";
 const char *MEMPOOL="mempool";
 const char *PING="ping";
 const char *PONG="pong";
+const char *ALERT="alert";
 const char *NOTFOUND="notfound";
 const char *FILTERLOAD="filterload";
 const char *FILTERADD="filteradd";
@@ -39,7 +40,8 @@ const char *SENDCMPCT="sendcmpct";
 const char *CMPCTBLOCK="cmpctblock";
 const char *GETBLOCKTXN="getblocktxn";
 const char *BLOCKTXN="blocktxn";
-} // namespace NetMsgType
+const char *CHECKPOINT="checkpoint";
+};
 
 /** All known message types. Keep this in the same order as the list of
  * messages above and in protocol.h.
@@ -60,6 +62,7 @@ const static std::string allNetMessageTypes[] = {
     NetMsgType::MEMPOOL,
     NetMsgType::PING,
     NetMsgType::PONG,
+    NetMsgType::ALERT,
     NetMsgType::NOTFOUND,
     NetMsgType::FILTERLOAD,
     NetMsgType::FILTERADD,
@@ -71,6 +74,7 @@ const static std::string allNetMessageTypes[] = {
     NetMsgType::CMPCTBLOCK,
     NetMsgType::GETBLOCKTXN,
     NetMsgType::BLOCKTXN,
+    NetMsgType::CHECKPOINT,
 };
 const static std::vector<std::string> allNetMessageTypesVec(allNetMessageTypes, allNetMessageTypes+ARRAYLEN(allNetMessageTypes));
 
@@ -151,7 +155,11 @@ CInv::CInv()
     hash.SetNull();
 }
 
-CInv::CInv(int typeIn, const uint256& hashIn) : type(typeIn), hash(hashIn) {}
+CInv::CInv(int typeIn, const uint256& hashIn)
+{
+    type = typeIn;
+    hash = hashIn;
+}
 
 bool operator<(const CInv& a, const CInv& b)
 {
@@ -188,3 +196,5 @@ const std::vector<std::string> &getAllNetMessageTypes()
 {
     return allNetMessageTypesVec;
 }
+
+const unsigned int POW_HEADER_COOLING = 70;

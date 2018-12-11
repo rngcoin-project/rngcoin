@@ -186,8 +186,8 @@
         <translation>Đánh chỉ số (indexing) lại các khối (blocks) trên ổ đĩa ...</translation>
     </message>
     <message>
-        <source>Send coins to a RNGCoin address</source>
-        <translation>Gửi coins đến tài khoản RNGCoin</translation>
+        <source>Send coins to a Rngcoin address</source>
+        <translation>Gửi coins đến tài khoản Rngcoin</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -206,8 +206,8 @@
         <translation>&amp;Tin nhắn xác thực</translation>
     </message>
     <message>
-        <source>RNGCoin</source>
-        <translation>RNGCoin</translation>
+        <source>Rngcoin</source>
+        <translation>Rngcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -234,12 +234,12 @@
         <translation>Mã hoá các khoá bí mật trong Ví của bạn.</translation>
     </message>
     <message>
-        <source>Sign messages with your RNGCoin addresses to prove you own them</source>
-        <translation>Dùng địa chỉ RNGCoin của bạn ký các tin nhắn để xác minh những nội dung tin nhắn đó là của bạn.</translation>
+        <source>Sign messages with your Rngcoin addresses to prove you own them</source>
+        <translation>Dùng địa chỉ Rngcoin của bạn ký các tin nhắn để xác minh những nội dung tin nhắn đó là của bạn.</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified RNGCoin addresses</source>
-        <translation>Kiểm tra các tin nhắn để chắc chắn rằng chúng được ký bằng các địa chỉ RNGCoin xác định.</translation>
+        <source>Verify messages to ensure they were signed with specified Rngcoin addresses</source>
+        <translation>Kiểm tra các tin nhắn để chắc chắn rằng chúng được ký bằng các địa chỉ Rngcoin xác định.</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -259,7 +259,7 @@
     </message>
     <message>
         <source>Request payments (generates QR codes and rngcoin: URIs)</source>
-        <translation>Yêu cầu thanh toán(tạo mã QR và địa chỉ RNGCoin: URLs)</translation>
+        <translation>Yêu cầu thanh toán(tạo mã QR và địa chỉ Rngcoin: URLs)</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
@@ -536,8 +536,8 @@
         <translation>Ví</translation>
     </message>
     <message>
-        <source>Connect to the RNGCoin network through a SOCKS5 proxy.</source>
-        <translation>Kết nối đến máy chủ RNGCoin thông qua SOCKS5 proxy.</translation>
+        <source>Connect to the Rngcoin network through a SOCKS5 proxy.</source>
+        <translation>Kết nối đến máy chủ Rngcoin thông qua SOCKS5 proxy.</translation>
     </message>
     <message>
         <source>Proxy &amp;IP:</source>
@@ -1018,8 +1018,8 @@
         <translation>Lựa chọn:</translation>
     </message>
     <message>
-        <source>RNGCoin Core</source>
-        <translation>RNGCoin Core</translation>
+        <source>Rngcoin Core</source>
+        <translation>Rngcoin Core</translation>
     </message>
     <message>
         <source>(default: %u)</source>

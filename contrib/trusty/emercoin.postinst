@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -e
+. /usr/share/debconf/confmodule
+
+case "$1" in
+  configure)
+    sed -i -e "s/\(^rpcpassword=MySuperPassword\)\(.*\)/rpcpassword=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)/" /var/lib/rng/.rngcoin/rngcoin.conf
+    chmod 600 /var/lib/rng/.rngcoin/rngcoin.conf
+    chown -R rng.rng /var/lib/rng/.rngcoin /usr/bin/rngcoin-cli
+    chmod 4750 /usr/bin/rngcoin-cli
+    mkdir -p /etc/rngcoin
+    ln -sf /var/lib/rng/.rngcoin/rngcoin.conf /etc/rngcoin/rngcoin.conf || true
+    ln -sf /etc/ssl/rng /etc/rngcoin/certs || true
+    [ -f /var/tmp/rngcoin-install.flag ] && {
+      rm -f /var/tmp/rngcoin-install.flag
+      update-rc.d rngcoind defaults
+    }
+    service rngcoind status >/dev/null && service rngcoind restart >/dev/null
+  ;;
+esac
+
+exit 0

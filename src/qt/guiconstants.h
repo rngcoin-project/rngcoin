@@ -22,15 +22,15 @@ static const bool DEFAULT_SPLASHSCREEN = true;
 /* Transaction list -- unconfirmed transaction */
 #define COLOR_UNCONFIRMED QColor(128, 128, 128)
 /* Transaction list -- negative amount */
-#define COLOR_NEGATIVE QColor(240, 40, 40)
+#define COLOR_NEGATIVE QColor(255, 0, 0)
 /* Transaction list -- bare address (without label) */
-#define COLOR_BAREADDRESS QColor("#73818c")
+#define COLOR_BAREADDRESS QColor(140, 140, 140)
 /* Transaction list -- TX status decoration - open until date */
 #define COLOR_TX_STATUS_OPENUNTILDATE QColor(64, 64, 255)
 /* Transaction list -- TX status decoration - offline */
 #define COLOR_TX_STATUS_OFFLINE QColor(192, 192, 192)
 /* Transaction list -- TX status decoration - danger, tx needs attention */
-#define COLOR_TX_STATUS_DANGER QColor("#f35333")
+#define COLOR_TX_STATUS_DANGER QColor(200, 100, 100)
 /* Transaction list -- TX status decoration - default color */
 #define COLOR_BLACK QColor(0, 0, 0)
 #define COLOR_DATE_TIME QColor("#399caa")
@@ -49,9 +49,9 @@ static const int MAX_URI_LENGTH = 255;
 /* Number of frames in spinner animation */
 #define SPINNER_FRAMES 36
 
-#define QAPP_ORG_NAME "RNGCoin"
+#define QAPP_ORG_NAME "RNGcoin"
 #define QAPP_ORG_DOMAIN "rng-coin.io"
-#define QAPP_APP_NAME_DEFAULT "RNGCoin-Qt"
-#define QAPP_APP_NAME_TESTNET "RNGCoin-Qt-testnet"
+#define QAPP_APP_NAME_DEFAULT "RNGcoin-Qt"
+#define QAPP_APP_NAME_TESTNET "RNGcoin-Qt-testnet"
 
 #endif // BITCOIN_QT_GUICONSTANTS_H

@@ -62,12 +62,12 @@
         <translation>استقبال العناوين</translation>
     </message>
     <message>
-        <source>These are your RNGCoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>هذه هي عناوين Litecion التابعة لك من أجل إرسال الدفعات. تحقق دائما من المبلغ و عنوان المرسل المستقبل قبل إرسال العملات</translation>
+        <source>These are your Rngcoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>هذه هي عناوين Emercion التابعة لك من أجل إرسال الدفعات. تحقق دائما من المبلغ و عنوان المرسل المستقبل قبل إرسال العملات</translation>
     </message>
     <message>
-        <source>These are your RNGCoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>هذه هي عناوين Litecion التابعة لك من أجل إستقبال الدفعات. ينصح استخدام عنوان جديد من أجل كل صفقة</translation>
+        <source>These are your Rngcoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>هذه هي عناوين Emercion التابعة لك من أجل إستقبال الدفعات. ينصح استخدام عنوان جديد من أجل كل صفقة</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -314,24 +314,12 @@
         <translation>افتح &amp;URI...</translation>
     </message>
     <message>
-        <source>Click to disable network activity.</source>
-        <translation>اضغط لإلغاء تفعيل الشبكه</translation>
-    </message>
-    <message>
-        <source>Network activity disabled.</source>
-        <translation>تم إلغاء تفعيل الشبكه</translation>
-    </message>
-    <message>
-        <source>Click to enable network activity again.</source>
-        <translation>اضغط لتفعيل الشبكه مره أخرى</translation>
-    </message>
-    <message>
         <source>Reindexing blocks on disk...</source>
         <translation>إعادة الفهرسة الكتل على القرص ...</translation>
     </message>
     <message>
-        <source>Send coins to a RNGCoin address</source>
-        <translation>ارسل عملات الى عنوان RNGCoin</translation>
+        <source>Send coins to a Rngcoin address</source>
+        <translation>ارسل عملات الى عنوان بيتكوين</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -354,7 +342,7 @@
         <translation>&amp;التحقق من الرسالة...</translation>
     </message>
     <message>
-        <source>RNGCoin</source>
+        <source>Rngcoin</source>
         <translation>بت كوين</translation>
     </message>
     <message>
@@ -382,12 +370,12 @@
         <translation>تشفير المفتاح الخاص بمحفظتك</translation>
     </message>
     <message>
-        <source>Sign messages with your RNGCoin addresses to prove you own them</source>
-        <translation>وقَع الرسائل بواسطة ال: RNGCoin الخاص بك لإثبات امتلاكك لهم</translation>
+        <source>Sign messages with your Rngcoin addresses to prove you own them</source>
+        <translation>وقَع الرسائل بواسطة ال: Rngcoin الخاص بك لإثبات امتلاكك لهم</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified RNGCoin addresses</source>
-        <translation>تحقق من الرسائل للتأكد من أنَها وُقعت برسائل RNGCoin محدَدة</translation>
+        <source>Verify messages to ensure they were signed with specified Rngcoin addresses</source>
+        <translation>تحقق من الرسائل للتأكد من أنَها وُقعت برسائل Rngcoin محدَدة</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -419,7 +407,7 @@
     </message>
     <message>
         <source>Open a rngcoin: URI or payment request</source>
-        <translation>فتح URI : RNGCoin أو طلب دفع</translation>
+        <translation>فتح URI : Rngcoin أو طلب دفع</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
@@ -462,7 +450,7 @@
         <translation>محدث</translation>
     </message>
     <message>
-        <source>Show the %1 help message to get a list with possible RNGCoin command-line options</source>
+        <source>Show the %1 help message to get a list with possible Rngcoin command-line options</source>
         <translation>بين اشارة المساعدة %1 للحصول على قائمة من خيارات اوامر البت كوين المحتملة </translation>
     </message>
     <message>
@@ -521,11 +509,7 @@
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</source>
         <translation>المحفظة &lt;b&gt;مشفرة&lt;/b&gt; و &lt;b&gt;مقفلة&lt;/b&gt; حاليا</translation>
     </message>
-    <message>
-        <source>A fatal error occurred. RNGCoin can no longer continue safely and will quit.</source>
-        <translation>خطأ فادح حدث . لا يمكن اتمام RNGCoin بامان سيتم الخروج</translation>
-    </message>
-</context>
+    </context>
 <context>
     <name>CoinControlDialog</name>
     <message>
@@ -625,10 +609,6 @@
         <translation>نسخ بعد الرسوم</translation>
     </message>
     <message>
-        <source>Copy bytes</source>
-        <translation>نسخ البايتات </translation>
-    </message>
-    <message>
         <source>Copy change</source>
         <translation>نسخ التعديل</translation>
     </message>
@@ -688,7 +668,7 @@
         <translation>تعديل عنوان الارسال</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid RNGCoin address.</source>
+        <source>The entered address "%1" is not a valid Rngcoin address.</source>
         <translation>العنوان المدخل "%1" ليس عنوان بيت كوين صحيح.</translation>
     </message>
     <message>
@@ -814,10 +794,6 @@
     <message>
         <source>Form</source>
         <translation>نمودج</translation>
-    </message>
-    <message>
-        <source>Unknown...</source>
-        <translation>غير معرف</translation>
     </message>
     <message>
         <source>Hide</source>
@@ -1387,10 +1363,6 @@
         <translation>نسخ بعد الرسوم</translation>
     </message>
     <message>
-        <source>Copy bytes</source>
-        <translation>نسخ البايتات </translation>
-    </message>
-    <message>
         <source>Copy change</source>
         <translation>نسخ التعديل</translation>
     </message>
@@ -1446,7 +1418,7 @@
         <translation>هذا دفع اعتيادي</translation>
     </message>
     <message>
-        <source>The RNGCoin address to send the payment to</source>
+        <source>The Rngcoin address to send the payment to</source>
         <translation>عنوان البت كوين المرسل اليه الدفع</translation>
     </message>
     <message>
@@ -1523,7 +1495,7 @@
         <translation>التوقيع</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this RNGCoin address</source>
+        <source>Sign the message to prove you own this Rngcoin address</source>
         <translation>وقع الرسالة لتثبت انك تمتلك عنوان البت كوين هذا</translation>
     </message>
     <message>
@@ -1960,7 +1932,7 @@
         <translation>حدد مجلد المعلومات</translation>
     </message>
     <message>
-        <source>RNGCoin Core</source>
+        <source>Rngcoin Core</source>
         <translation>جوهر البيت كوين</translation>
     </message>
     <message>

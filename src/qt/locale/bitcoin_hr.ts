@@ -54,8 +54,8 @@
         <translation>&amp;Odaberi</translation>
     </message>
     <message>
-        <source>These are your RNGCoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Ovo su vaše RNGCoin adrese za slanje novca. Uvijek provjerite iznos i adresu primatelja prije slanja novca.</translation>
+        <source>These are your Rngcoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Ovo su vaše Rngcoin adrese za slanje novca. Uvijek provjerite iznos i adresu primatelja prije slanja novca.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -174,7 +174,7 @@
         <translation>Re-indeksiranje blokova na disku...</translation>
     </message>
     <message>
-        <source>Send coins to a RNGCoin address</source>
+        <source>Send coins to a Rngcoin address</source>
         <translation>Slanje novca na rngcoin adresu</translation>
     </message>
     <message>
@@ -198,8 +198,8 @@
         <translation>&amp;Potvrdite poruku...</translation>
     </message>
     <message>
-        <source>RNGCoin</source>
-        <translation>RNGCoin</translation>
+        <source>Rngcoin</source>
+        <translation>Rngcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -226,11 +226,11 @@
         <translation>Šifriranje privatnih ključeva koji u novčaniku</translation>
     </message>
     <message>
-        <source>Sign messages with your RNGCoin addresses to prove you own them</source>
+        <source>Sign messages with your Rngcoin addresses to prove you own them</source>
         <translation>Poruku potpišemo s rngcoin adresom, kako bi dokazali vlasništvo nad tom adresom</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified RNGCoin addresses</source>
+        <source>Verify messages to ensure they were signed with specified Rngcoin addresses</source>
         <translation>Provjeravanje poruke, kao dokaz, da je potpisana navedenom rngcoin adresom</translation>
     </message>
     <message>
@@ -270,8 +270,8 @@
         <translation>Opcije &amp;naredbene linije</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to RNGCoin network</source>
-        <translation><numerusform>%n aktivna veza na RNGCoin mrežu</numerusform><numerusform>%n aktivnih veza na RNGCoin mrežu</numerusform><numerusform>%n aktivnih veza na RNGCoin mrežu</numerusform></translation>
+        <source>%n active connection(s) to Rngcoin network</source>
+        <translation><numerusform>%n aktivna veza na Rngcoin mrežu</numerusform><numerusform>%n aktivnih veza na Rngcoin mrežu</numerusform><numerusform>%n aktivnih veza na Rngcoin mrežu</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>Processed %n block(s) of transaction history.</source>
@@ -427,7 +427,7 @@
     </message>
     <message>
         <source>The address associated with this address list entry. This can only be modified for sending addresses.</source>
-        <translation>RNGCoin adresa. Izmjene adrese su moguće samo za adrese za slanje.</translation>
+        <translation>Rngcoin adresa. Izmjene adrese su moguće samo za adrese za slanje.</translation>
     </message>
     <message>
         <source>&amp;Address</source>
@@ -568,8 +568,8 @@
         <translation>&amp;Trošenje nepotvrđenih vraćenih iznosa</translation>
     </message>
     <message>
-        <source>Automatically open the RNGCoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Automatski otvori port RNGCoin klijenta na ruteru. To radi samo ako ruter podržava UPnP i ako je omogućen.</translation>
+        <source>Automatically open the Rngcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Automatski otvori port Rngcoin klijenta na ruteru. To radi samo ako ruter podržava UPnP i ako je omogućen.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
@@ -643,8 +643,8 @@
         <translation>Oblik</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the RNGCoin network after a connection is established, but this process has not completed yet.</source>
-        <translation>Prikazani podatci mogu biti zastarjeli. Vaš novčanik se automatski sinkronizira s RNGCoin mrežom kada je veza uspostavljena, ali taj proces još nije završen.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Rngcoin network after a connection is established, but this process has not completed yet.</source>
+        <translation>Prikazani podatci mogu biti zastarjeli. Vaš novčanik se automatski sinkronizira s Rngcoin mrežom kada je veza uspostavljena, ali taj proces još nije završen.</translation>
     </message>
     <message>
         <source>Total:</source>
@@ -1034,8 +1034,8 @@
         <translation>Izvršavaj u pozadini kao uslužnik i prihvaćaj komande</translation>
     </message>
     <message>
-        <source>RNGCoin Core</source>
-        <translation>RNGCoin Core</translation>
+        <source>Rngcoin Core</source>
+        <translation>Rngcoin Core</translation>
     </message>
     <message>
         <source>Block creation options:</source>

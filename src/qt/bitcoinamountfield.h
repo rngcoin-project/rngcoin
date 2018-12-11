@@ -56,6 +56,9 @@ public:
     */
     QWidget *setupTabChain(QWidget *prev);
 
+    // rngcoin: need for exchange code:
+    void setString (QString input);
+
 Q_SIGNALS:
     void valueChanged();
 

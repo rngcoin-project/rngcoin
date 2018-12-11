@@ -7,20 +7,24 @@
 
 #include "hash.h"
 #include "tinyformat.h"
-#include "utilstrencodings.h"
-#include "crypto/common.h"
-#include "crypto/scrypt.h"
+#include "checkpoints_eb.h"
+#include "arith_uint256.h"
 
 uint256 CBlockHeader::GetHash() const
 {
     return SerializeHash(*this);
 }
 
-uint256 CBlockHeader::GetPoWHash() const
+unsigned int CBlock::GetStakeEntropyBit(int32_t height) const
 {
-    uint256 thash;
-    scrypt_1024_1_1_256(BEGIN(nVersion), BEGIN(thash));
-    return thash;
+    unsigned int nEntropyBit = 0;
+    if (IsProtocolV04(nTime))
+        nEntropyBit = UintToArith256(GetHash()).GetLow64() & 1llu;// last bit of block hash
+    else if (height > -1 && height <= vEntropyBits_number_of_blocks)
+        // old protocol for entropy bit pre v0.4; exctracted from precomputed table.
+        nEntropyBit = (vEntropyBits[height >> 5] >> (height & 0x1f)) & 1;
+
+    return nEntropyBit;
 }
 
 std::string CBlock::ToString() const
@@ -33,8 +37,31 @@ std::string CBlock::ToString() const
         hashMerkleRoot.ToString(),
         nTime, nBits, nNonce,
         vtx.size());
-    for (const auto& tx : vtx) {
-        s << "  " << tx->ToString() << "\n";
+    for (unsigned int i = 0; i < vtx.size(); i++)
+    {
+        s << "  " << vtx[i]->ToString() << "\n";
     }
     return s.str();
+}
+
+int64_t GetBlockWeight(const CBlock& block)
+{
+    // This implements the weight = (stripped_size * 4) + witness_size formula,
+    // using only serialization with and without witness data. As witness_size
+    // is equal to total_size - stripped_size, this formula is identical to:
+    // weight = (stripped_size * 3) + total_size.
+    return ::GetSerializeSize(block, SER_NETWORK, PROTOCOL_VERSION | SERIALIZE_TRANSACTION_NO_WITNESS) * (WITNESS_SCALE_FACTOR - 1) + ::GetSerializeSize(block, SER_NETWORK, PROTOCOL_VERSION);
+}
+
+
+// Whether the given coinstake is subject to new v0.3 protocol
+bool IsProtocolV03(unsigned int nTimeCoinStake)
+{
+    return (nTimeCoinStake >= 1363800000);  // 03/20/2013 @ 5:20pm (UTC)
+}
+
+// Whether the given block is subject to new v0.4 protocol
+bool IsProtocolV04(unsigned int nTimeBlock)
+{
+    return (nTimeBlock >= 1449100800);      // 12/03/2015 @ 12:00am (UTC)
 }

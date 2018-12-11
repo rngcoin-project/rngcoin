@@ -30,8 +30,8 @@ SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle *networkStyle) 
     QWidget(0, f), curAlignment(0)
 {
     // set reference point, paddings
-    int paddingRight            = 130;
-    int paddingTop              = 115;
+    int paddingRight            = 50;
+    int paddingTop              = 50;
     int titleVersionVSpace      = 17;
     int titleCopyrightVSpace    = 40;
 
@@ -44,13 +44,13 @@ SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle *networkStyle) 
     // define text to place
     QString titleText       = tr(PACKAGE_NAME);
     QString versionText     = QString("Version %1").arg(QString::fromStdString(FormatFullVersion()));
-    QString copyrightText   = QString::fromUtf8(CopyrightHolders(strprintf("\xc2\xA9 %u-%u ", 2017, COPYRIGHT_YEAR)).c_str());
+    QString copyrightText   = QString::fromUtf8(CopyrightHolders(strprintf("\xc2\xA9 %u-%u ", 2009, COPYRIGHT_YEAR)).c_str());
     QString titleAddText    = networkStyle->getTitleAddText();
 
     QString font            = QApplication::font().toString();
 
     // create a bitmap according to device pixelratio
-    QSize splashSize(580*devicePixelRatio,320*devicePixelRatio);
+    QSize splashSize(480*devicePixelRatio,320*devicePixelRatio);
     pixmap = QPixmap(splashSize);
 
 #if QT_VERSION > 0x050100
@@ -68,16 +68,9 @@ SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle *networkStyle) 
     QRect rGradient(QPoint(0,0), splashSize);
     pixPaint.fillRect(rGradient, gradient);
 
-    // draw the bitcoin icon, expected size of PNG: 1024x1024
-    QRect rectIcon(QPoint(10,50), QSize(210,210));
-
-    const QSize requiredSize(240,240);
-    QPixmap icon(networkStyle->getAppIcon().pixmap(requiredSize));
-    pixPaint.drawPixmap( QPoint(20,20), icon);
-
-
-    QPixmap oSplashDecor(":/icons/res/icons/splashscrean_bkg.png");
-    pixPaint.drawPixmap( QPoint(pixmap.rect().right() - oSplashDecor.width(), 0), oSplashDecor );
+    // draw the rngcoin logo
+    pixPaint.setRenderHint(QPainter::SmoothPixmapTransform);
+    pixPaint.drawPixmap(0, 0, 266, 322, networkStyle->getStartScreenIcon());
 
     // check font size and drawing with
     pixPaint.setFont(QFont(font, 33*fontFactor));
@@ -129,40 +122,16 @@ SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle *networkStyle) 
 
     // Resize window and move to center of desktop, disallow resizing
     QRect r(QPoint(), QSize(pixmap.size().width()/devicePixelRatio,pixmap.size().height()/devicePixelRatio));
-    r.setWidth( r.width() );
-
     resize(r.size());
     setFixedSize(r.size());
     move(QApplication::desktop()->screenGeometry().center() - r.center());
 
     subscribeToCoreSignals();
-    installEventFilter(this);
-
-
-//    setObjectName("splashScrean");
-//    setStyleSheet( "#splashScrean {"
-//                                 "background-image:    url(:/icons/res/icons/splashscrean_bkg.png); "
-//                                 "background-repeat:   false;                                  "
-//                                 "background-position: right bottom;                           "
-//                                 "}"
-//                                 );
-
-
 }
 
 SplashScreen::~SplashScreen()
 {
     unsubscribeFromCoreSignals();
-}
-
-bool SplashScreen::eventFilter(QObject * obj, QEvent * ev) {
-    if (ev->type() == QEvent::KeyPress) {
-        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(ev);
-        if(keyEvent->text()[0] == 'q' && breakAction != nullptr) {
-            breakAction();
-        }
-    }
-    return QObject::eventFilter(obj, ev);
 }
 
 void SplashScreen::slotFinish(QWidget *mainWin)
@@ -191,18 +160,6 @@ static void ShowProgress(SplashScreen *splash, const std::string &title, int nPr
     InitMessage(splash, title + strprintf("%d", nProgress) + "%");
 }
 
-void SplashScreen::setBreakAction(const std::function<void(void)> &action)
-{
-    breakAction = action;
-}
-
-static void SetProgressBreakAction(SplashScreen *splash, const std::function<void(void)> &action)
-{
-    QMetaObject::invokeMethod(splash, "setBreakAction",
-        Qt::QueuedConnection,
-        Q_ARG(std::function<void(void)>, action));
-}
-
 #ifdef ENABLE_WALLET
 void SplashScreen::ConnectWallet(CWallet* wallet)
 {
@@ -216,7 +173,6 @@ void SplashScreen::subscribeToCoreSignals()
     // Connect signals to client
     uiInterface.InitMessage.connect(boost::bind(InitMessage, this, _1));
     uiInterface.ShowProgress.connect(boost::bind(ShowProgress, this, _1, _2));
-    uiInterface.SetProgressBreakAction.connect(boost::bind(SetProgressBreakAction, this, _1));
 #ifdef ENABLE_WALLET
     uiInterface.LoadWallet.connect(boost::bind(&SplashScreen::ConnectWallet, this, _1));
 #endif
@@ -228,7 +184,7 @@ void SplashScreen::unsubscribeFromCoreSignals()
     uiInterface.InitMessage.disconnect(boost::bind(InitMessage, this, _1));
     uiInterface.ShowProgress.disconnect(boost::bind(ShowProgress, this, _1, _2));
 #ifdef ENABLE_WALLET
-    for (CWallet* const & pwallet : connectedWallets) {
+    Q_FOREACH(CWallet* const & pwallet, connectedWallets) {
         pwallet->ShowProgress.disconnect(boost::bind(ShowProgress, this, _1, _2));
     }
 #endif

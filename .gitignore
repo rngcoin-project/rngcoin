@@ -1,15 +1,13 @@
 *.tar.gz
 
-*.pro.user
-
 *.exe
-src/litecoin
-src/litecoind
-src/litecoin-cli
-src/litecoin-tx
-src/test/test_litecoin
-src/test/test_litecoin_fuzzy
-src/qt/test/test_litecoin-qt
+src/rngcoin
+src/rngcoind
+src/rngcoin-cli
+src/rngcoin-tx
+src/test/test_rngcoin
+src/test/test_rngcoin_fuzzy
+src/qt/test/test_rngcoin-qt
 
 # autoreconf
 Makefile.in
@@ -43,7 +41,7 @@ src/univalue/gen
 src/qt/*.moc
 src/qt/moc_*.cpp
 src/qt/forms/ui_*.h
-
+*.pro.user
 src/qt/test/moc*.cpp
 
 .deps
@@ -76,12 +74,13 @@ src/qt/test/moc*.cpp
 # Compilation and Qt preprocessor part
 *.qm
 Makefile
-litecoin-qt
-Litecoin-Qt.app
+rngcoin-qt
+Rngcoin-Qt.app
 
 # Unit-tests
 Makefile.test
-litecoin-qt_test
+rngcoin-qt_test
+src/test/buildenv.py
 
 # Resources cpp
 qrc_*.cpp
@@ -94,7 +93,7 @@ build
 *.gcno
 *.gcda
 /*.info
-test_litecoin.coverage/
+test_bitcoin.coverage/
 total.coverage/
 coverage_percent.txt
 
@@ -102,8 +101,8 @@ coverage_percent.txt
 linux-coverage-build
 linux-build
 win32-build
-test/config.ini
-test/cache/*
+qa/pull-tester/tests_config.py
+qa/cache/*
 
 !src/leveldb*/Makefile
 

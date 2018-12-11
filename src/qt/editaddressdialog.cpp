@@ -1,6 +1,6 @@
 // Copyright (c) 2011-2016 The Bitcoin Core developers
-// Distributed under the MIT software license, see the accompanying
-// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+// Distributed under the GPL3 software license, see the accompanying
+// file COPYING or http://www.gnu.org/licenses/gpl.html.
 
 #include "editaddressdialog.h"
 #include "ui_editaddressdialog.h"
@@ -107,7 +107,7 @@ void EditAddressDialog::accept()
             break;
         case AddressTableModel::INVALID_ADDRESS:
             QMessageBox::warning(this, windowTitle(),
-                tr("The entered address \"%1\" is not a valid RNGCoin address.").arg(ui->addressEdit->text()),
+                tr("The entered address \"%1\" is not a valid Rngcoin address.").arg(ui->addressEdit->text()),
                 QMessageBox::Ok, QMessageBox::Ok);
             break;
         case AddressTableModel::DUPLICATE_ADDRESS:

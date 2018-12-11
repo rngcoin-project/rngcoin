@@ -12,7 +12,9 @@
 #include <boost/signals2/last_value.hpp>
 #include <boost/signals2/signal.hpp>
 
+class CBasicKeyStore;
 class CWallet;
+class uint256;
 class CBlockIndex;
 
 /** General change type (added, updated, removed). */
@@ -87,18 +89,16 @@ public:
     boost::signals2::signal<void (bool networkActive)> NotifyNetworkActiveChanged;
 
     /**
-     * Status bar alerts changed.
+     * New, updated or cancelled alert.
+     * @note sometimes called with lock cs_mapAlerts held.
      */
-    boost::signals2::signal<void ()> NotifyAlertChanged;
+    boost::signals2::signal<void (const uint256 &hash, ChangeType status)> NotifyAlertChanged;
 
     /** A wallet has been loaded. */
     boost::signals2::signal<void (CWallet* wallet)> LoadWallet;
 
     /** Show progress e.g. for verifychain */
     boost::signals2::signal<void (const std::string &title, int nProgress)> ShowProgress;
-
-    /** Set progress break action (possible "cancel button" triggers that action) */
-    boost::signals2::signal<void (std::function<void(void)> action)> SetProgressBreakAction;
 
     /** New block has been accepted */
     boost::signals2::signal<void (bool, const CBlockIndex *)> NotifyBlockTip;

@@ -19,6 +19,7 @@
 #include <vector>
 
 #include <boost/test/unit_test.hpp>
+#include <boost/tuple/tuple.hpp>
 
 BOOST_FIXTURE_TEST_SUITE(bloom_tests, BasicTestingSetup)
 
@@ -83,7 +84,7 @@ BOOST_AUTO_TEST_CASE(bloom_create_insert_serialize_with_tweak)
 
 BOOST_AUTO_TEST_CASE(bloom_create_insert_key)
 {
-    std::string strSecret = std::string("6vyk9uiGUm8CCKbYue4PpoSbdWKZnjrxMQYJ1PaDGrQ4bLHTxQJ");
+    std::string strSecret = std::string("5Kg1gnAjaLfKiwhhPpGS3QfRg2m6awQvaj98JCZBZQ5SuS2F15C");
     CBitcoinSecret vchSecret;
     BOOST_CHECK(vchSecret.SetString(strSecret));
 
@@ -462,7 +463,7 @@ BOOST_AUTO_TEST_CASE(merkle_block_4_test_update_none)
 
 static std::vector<unsigned char> RandomData()
 {
-    uint256 r = InsecureRand256();
+    uint256 r = GetRandHash();
     return std::vector<unsigned char>(r.begin(), r.end());
 }
 

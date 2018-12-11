@@ -16,9 +16,14 @@
 
 class CBlockIndex;
 class CChainParams;
+class CReserveKey;
 class CScript;
+class CWallet;
 
 namespace Consensus { struct Params; };
+
+static const bool DEFAULT_GENERATE = false;
+static const int DEFAULT_GENERATE_THREADS = 1;
 
 static const bool DEFAULT_PRINTPRIORITY = false;
 
@@ -86,7 +91,7 @@ struct CompareModifiedEntry {
 // This is sufficient to sort an ancestor package in an order that is valid
 // to appear in a block.
 struct CompareTxIterByAncestorCount {
-    bool operator()(const CTxMemPool::txiter &a, const CTxMemPool::txiter &b) const
+    bool operator()(const CTxMemPool::txiter &a, const CTxMemPool::txiter &b)
     {
         if (a->GetCountWithAncestors() != b->GetCountWithAncestors())
             return a->GetCountWithAncestors() < b->GetCountWithAncestors();
@@ -139,11 +144,13 @@ private:
 
     // Configuration parameters for the block size
     bool fIncludeWitness;
-    unsigned int nBlockMaxWeight;
+    unsigned int nBlockMaxWeight, nBlockMaxSize;
+    bool fNeedSizeAccounting;
     CFeeRate blockMinFeeRate;
 
     // Information on the current status of the block
     uint64_t nBlockWeight;
+    uint64_t nBlockSize;
     uint64_t nBlockTx;
     uint64_t nBlockSigOpsCost;
     CAmount nFees;
@@ -154,19 +161,15 @@ private:
     int64_t nLockTimeCutoff;
     const CChainParams& chainparams;
 
+    // Variables used for addPriorityTxs
+    int lastFewTxs;
+    bool blockFinished;
+
 public:
-    struct Options {
-        Options();
-        size_t nBlockMaxWeight;
-        size_t nBlockMaxSize;
-        CFeeRate blockMinFeeRate;
-    };
-
-    BlockAssembler(const CChainParams& params);
-    BlockAssembler(const CChainParams& params, const Options& options);
-
+    BlockAssembler(const CChainParams& chainparams);
     /** Construct a new block template with coinbase to scriptPubKeyIn */
-    std::unique_ptr<CBlockTemplate> CreateNewBlock(const CScript& scriptPubKeyIn, bool fMineWitnessTx=true);
+    // rngcoin: if pwallet != NULL it will attempt to create coinstake
+    std::unique_ptr<CBlockTemplate> CreateNewBlock(const CScript& scriptPubKeyIn, bool fMineWitnessTx=true, CWallet* pwallet=nullptr, bool* pfPoSCancel=nullptr);
 
 private:
     // utility functions
@@ -176,10 +179,20 @@ private:
     void AddToBlock(CTxMemPool::txiter iter);
 
     // Methods for how to add transactions to a block.
+    /** rngcoin: add transactions at random */
+    void addTxs();
+    /** Add transactions based on tx "priority" */
+    void addPriorityTxs();
     /** Add transactions based on feerate including unconfirmed ancestors
       * Increments nPackagesSelected / nDescendantsUpdated with corresponding
       * statistics from the package selection (for logging statistics). */
     void addPackageTxs(int &nPackagesSelected, int &nDescendantsUpdated);
+
+    // helper function for addPriorityTxs
+    /** Test if tx will still "fit" in the block */
+    bool TestForBlock(CTxMemPool::txiter iter);
+    /** Test if tx still has unconfirmed parents not yet in block */
+    bool isStillDependent(CTxMemPool::txiter iter);
 
     // helper functions for addPackageTxs()
     /** Remove confirmed (inBlock) entries from given set */
@@ -205,5 +218,13 @@ private:
 /** Modify the extranonce in a block */
 void IncrementExtraNonce(CBlock* pblock, const CBlockIndex* pindexPrev, unsigned int& nExtraNonce);
 int64_t UpdateTime(CBlockHeader* pblock, const Consensus::Params& consensusParams, const CBlockIndex* pindexPrev);
+
+namespace boost {
+    class thread_group;
+} // namespace boost
+/** Run the stake minter thread */
+void MintStake(boost::thread_group& threadGroup, CWallet* pwallet);
+/** Run the miner threads */
+void GenerateRngcoins(bool fGenerate, int nThreads, const CChainParams& chainparams);
 
 #endif // BITCOIN_MINER_H

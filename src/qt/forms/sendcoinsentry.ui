@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>729</width>
-    <height>150</height>
+    <width>912</width>
+    <height>288</height>
    </rect>
   </property>
   <property name="focusPolicy">
@@ -23,20 +23,8 @@
    <property name="frameShape">
     <enum>QFrame::NoFrame</enum>
    </property>
-   <layout class="QGridLayout" name="gridLayout">
-    <property name="topMargin">
-     <number>8</number>
-    </property>
-    <property name="bottomMargin">
-     <number>4</number>
-    </property>
-    <property name="horizontalSpacing">
-     <number>12</number>
-    </property>
-    <property name="verticalSpacing">
-     <number>8</number>
-    </property>
-    <item row="0" column="0">
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="0" colspan="2">
      <widget class="QLabel" name="payToLabel">
       <property name="text">
        <string>Pay &amp;To:</string>
@@ -49,7 +37,7 @@
       </property>
      </widget>
     </item>
-    <item row="0" column="1">
+    <item row="0" column="2">
      <layout class="QHBoxLayout" name="payToLayout">
       <property name="spacing">
        <number>0</number>
@@ -57,7 +45,7 @@
       <item>
        <widget class="QValidatedLineEdit" name="payTo">
         <property name="toolTip">
-         <string>The RNGCoin address to send the payment to</string>
+         <string>The Rngcoin address to send the payment to</string>
         </property>
        </widget>
       </item>
@@ -142,14 +130,14 @@
       </property>
      </widget>
     </item>
-    <item row="1" column="1">
+    <item row="1" column="2">
      <widget class="QLineEdit" name="addAsLabel">
       <property name="toolTip">
        <string>Enter a label for this address to add it to the list of used addresses</string>
       </property>
      </widget>
     </item>
-    <item row="2" column="0">
+    <item row="2" column="0" colspan="2">
      <widget class="QLabel" name="amountLabel">
       <property name="text">
        <string>A&amp;mount:</string>
@@ -162,7 +150,7 @@
       </property>
      </widget>
     </item>
-    <item row="2" column="1">
+    <item row="2" column="2">
      <layout class="QHBoxLayout" name="horizontalLayoutAmount" stretch="0,1">
       <item>
        <widget class="BitcoinAmountField" name="payAmount"/>
@@ -179,7 +167,7 @@
       </item>
      </layout>
     </item>
-    <item row="3" column="0">
+    <item row="3" column="0" colspan="2">
      <widget class="QLabel" name="messageLabel">
       <property name="text">
        <string>Message:</string>
@@ -189,21 +177,251 @@
       </property>
      </widget>
     </item>
-    <item row="3" column="1">
+    <item row="3" column="2">
      <widget class="QLabel" name="messageTextLabel">
       <property name="toolTip">
-       <string>A message that was attached to the rngcoin: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the RNGCoin network.</string>
+       <string>A message that was attached to the rngcoin: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Rngcoin network.</string>
       </property>
       <property name="textFormat">
        <enum>Qt::PlainText</enum>
       </property>
      </widget>
     </item>
-    <item row="4" column="0" colspan="2">
+    <item row="4" column="0" colspan="3">
      <widget class="Line" name="line">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
+     </widget>
+    </item>
+    <item row="5" column="0" colspan="3">
+     <layout class="QFormLayout" name="toggleExchLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="toggleExchLabel">
+        <property name="text">
+         <string>Pay to other cryptocurrencies:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="buddy">
+         <cstring>payTo</cstring>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QCheckBox" name="checkBoxExch">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="6" column="1" colspan="2">
+     <widget class="QWidget" name="exchWidget" native="true">
+      <property name="toolTip">
+       <string>This is a payment to external cryptocurrencies</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <layout class="QHBoxLayout" name="horizontalLayout1">
+         <item>
+          <widget class="QLabel" name="amountExchLabel">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Pay</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout1_1">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLineEdit" name="payAmountExch">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="toolTip">
+              <string>Amount of currency</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="payTypeExch">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>1</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>45</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>45</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>Currency short name (i.e. BTC)</string>
+             </property>
+             <property name="text">
+              <string>BTC</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QLabel" name="toExchLabel">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>To</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout1_2">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLineEdit" name="payToExch">
+             <property name="toolTip">
+              <string>Enter external address here</string>
+             </property>
+             <property name="placeholderText">
+              <string>Enter external address here</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QToolButton" name="pasteExchButton">
+             <property name="toolTip">
+              <string>Paste address from clipboard</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="../bitcoin.qrc">
+               <normaloff>:/icons/editpaste</normaloff>:/icons/editpaste</iconset>
+             </property>
+             <property name="shortcut">
+              <string>Alt+P</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QToolButton" name="deleteExchButton">
+             <property name="toolTip">
+              <string>Remove this entry</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="../bitcoin.qrc">
+               <normaloff>:/icons/remove</normaloff>:/icons/remove</iconset>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item row="1" column="0">
+        <layout class="QHBoxLayout" name="horizontalLayout2">
+         <item>
+          <widget class="QPushButton" name="requestPaymentButton">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Request Payment</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="exchLabel">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="text">
+            <string>Exchange:</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="exchComboBox">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="toolTip">
+            <string>Exchange selection</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="infoExchLabel">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;WARNING: You're using external service! Rngcoin is not responsible for functionality and correct behavior of this service.&lt;/span&gt;&lt;br/&gt;Usage: Enter amount, currency typea and address. Press Request Payment and select desired exchange service.&lt;br/&gt;After creating transaction you can view details by double clicking that transaction in transaction list tab.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </item>
    </layout>
@@ -1254,6 +1472,7 @@
    <class>BitcoinAmountField</class>
    <extends>QLineEdit</extends>
    <header>bitcoinamountfield.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <tabstops>

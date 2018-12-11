@@ -26,6 +26,8 @@
 #include <QIcon>
 #include <QList>
 
+#include <boost/foreach.hpp>
+
 // Amount column is right-aligned it contains numbers
 static int column_alignments[] = {
         Qt::AlignLeft|Qt::AlignVCenter, /* status */
@@ -144,7 +146,7 @@ public:
                 {
                     parent->beginInsertRows(QModelIndex(), lowerIndex, lowerIndex+toInsert.size()-1);
                     int insert_idx = lowerIndex;
-                    for (const TransactionRecord &rec : toInsert)
+                    Q_FOREACH(const TransactionRecord &rec, toInsert)
                     {
                         cachedWallet.insert(insert_idx, rec);
                         insert_idx += 1;
@@ -167,10 +169,6 @@ public:
         case CT_UPDATED:
             // Miscellaneous updates -- nothing to do, status update will take care of this, and is only computed for
             // visible transactions.
-            for (int i = lowerIndex; i < upperIndex; i++) {
-                TransactionRecord *rec = &cachedWallet[i];
-                rec->status.needsUpdate = true;
-            }
             break;
         }
     }
@@ -383,6 +381,10 @@ QString TransactionTableModel::formatTxType(const TransactionRecord *wtx) const
         return tr("Payment to yourself");
     case TransactionRecord::Generated:
         return tr("Mined");
+    case TransactionRecord::StakeMint:
+        return tr("Mint by stake");
+    case TransactionRecord::NameOp:
+        return tr("Name operation");
     default:
         return QString();
     }
@@ -393,6 +395,7 @@ QVariant TransactionTableModel::txAddressDecoration(const TransactionRecord *wtx
     switch(wtx->type)
     {
     case TransactionRecord::Generated:
+    case TransactionRecord::StakeMint:
         return QIcon(":/icons/tx_mined");
     case TransactionRecord::RecvWithAddress:
     case TransactionRecord::RecvFromOther:
@@ -400,6 +403,8 @@ QVariant TransactionTableModel::txAddressDecoration(const TransactionRecord *wtx
     case TransactionRecord::SendToAddress:
     case TransactionRecord::SendToOther:
         return QIcon(":/icons/tx_output");
+    case TransactionRecord::NameOp:
+        return QIcon(":/icons/tx_nameop");
     default:
         return QIcon(":/icons/tx_inout");
     }
@@ -420,8 +425,10 @@ QString TransactionTableModel::formatTxToAddress(const TransactionRecord *wtx, b
     case TransactionRecord::RecvWithAddress:
     case TransactionRecord::SendToAddress:
     case TransactionRecord::Generated:
+    case TransactionRecord::StakeMint:
         return lookupAddress(wtx->address, tooltip) + watchAddress;
     case TransactionRecord::SendToOther:
+    case TransactionRecord::NameOp:
         return QString::fromStdString(wtx->address) + watchAddress;
     case TransactionRecord::SendToSelf:
     default:
@@ -454,6 +461,7 @@ QVariant TransactionTableModel::addressColor(const TransactionRecord *wtx) const
     case TransactionRecord::RecvWithAddress:
     case TransactionRecord::SendToAddress:
     case TransactionRecord::Generated:
+    case TransactionRecord::StakeMint:
         {
         QString label = walletModel->getAddressTableModel()->labelForAddress(QString::fromStdString(wtx->address));
         if(label.isEmpty())
@@ -508,7 +516,7 @@ QVariant TransactionTableModel::txStatusDecoration(const TransactionRecord *wtx)
         return QIcon(":/icons/transaction_conflicted");
     case TransactionStatus::Immature: {
         int total = wtx->status.depth + wtx->status.matures_in;
-        int part = (wtx->status.depth * 4 / total) + 1;
+        int part = (wtx->status.depth * 5 / total) + 1;
         return QIcon(QString(":/icons/transaction_%1").arg(part));
         }
     case TransactionStatus::MaturesWarning:
@@ -531,7 +539,8 @@ QString TransactionTableModel::formatTooltip(const TransactionRecord *rec) const
 {
     QString tooltip = formatTxStatus(rec) + QString("\n") + formatTxType(rec);
     if(rec->type==TransactionRecord::RecvFromOther || rec->type==TransactionRecord::SendToOther ||
-       rec->type==TransactionRecord::SendToAddress || rec->type==TransactionRecord::RecvWithAddress)
+       rec->type==TransactionRecord::SendToAddress || rec->type==TransactionRecord::RecvWithAddress ||
+       rec->type==TransactionRecord::NameOp)
     {
         tooltip += QString(" ") + formatTxToAddress(rec, true);
         if (rec->txcomment.length() > 0)

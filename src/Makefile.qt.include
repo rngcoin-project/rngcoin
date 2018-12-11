@@ -13,24 +13,18 @@ QT_TS = \
   qt/locale/bitcoin_be_BY.ts \
   qt/locale/bitcoin_bg_BG.ts \
   qt/locale/bitcoin_bg.ts \
-  qt/locale/bitcoin_bn.ts \
-  qt/locale/bitcoin_bs.ts \
   qt/locale/bitcoin_ca_ES.ts \
   qt/locale/bitcoin_ca.ts \
   qt/locale/bitcoin_ca@valencia.ts \
   qt/locale/bitcoin_cs.ts \
   qt/locale/bitcoin_cy.ts \
   qt/locale/bitcoin_da.ts \
-  qt/locale/bitcoin_de_DE.ts \
   qt/locale/bitcoin_de.ts \
   qt/locale/bitcoin_el_GR.ts \
   qt/locale/bitcoin_el.ts \
-  qt/locale/bitcoin_en_AU.ts \
   qt/locale/bitcoin_en_GB.ts \
   qt/locale/bitcoin_en.ts \
-  qt/locale/bitcoin_en_US.ts \
   qt/locale/bitcoin_eo.ts \
-  qt/locale/bitcoin_es_419.ts \
   qt/locale/bitcoin_es_AR.ts \
   qt/locale/bitcoin_es_CL.ts \
   qt/locale/bitcoin_es_CO.ts \
@@ -50,16 +44,13 @@ QT_TS = \
   qt/locale/bitcoin_fr_FR.ts \
   qt/locale/bitcoin_fr.ts \
   qt/locale/bitcoin_gl.ts \
-  qt/locale/bitcoin_he_IL.ts \
   qt/locale/bitcoin_he.ts \
   qt/locale/bitcoin_hi_IN.ts \
   qt/locale/bitcoin_hr.ts \
   qt/locale/bitcoin_hu.ts \
   qt/locale/bitcoin_id_ID.ts \
-  qt/locale/bitcoin_id.ts \
   qt/locale/bitcoin_it_IT.ts \
   qt/locale/bitcoin_it.ts \
-  qt/locale/bitcoin_ja_JP.ts \
   qt/locale/bitcoin_ja.ts \
   qt/locale/bitcoin_ka.ts \
   qt/locale/bitcoin_kk_KZ.ts \
@@ -72,11 +63,8 @@ QT_TS = \
   qt/locale/bitcoin_mk_MK.ts \
   qt/locale/bitcoin_mn.ts \
   qt/locale/bitcoin_ms_MY.ts \
-  qt/locale/bitcoin_my.ts \
-  qt/locale/bitcoin_nb_NO.ts \
   qt/locale/bitcoin_nb.ts \
   qt/locale/bitcoin_ne.ts \
-  qt/locale/bitcoin_nl_NL.ts \
   qt/locale/bitcoin_nl.ts \
   qt/locale/bitcoin_pam.ts \
   qt/locale/bitcoin_pl.ts \
@@ -86,7 +74,6 @@ QT_TS = \
   qt/locale/bitcoin_ro.ts \
   qt/locale/bitcoin_ru_RU.ts \
   qt/locale/bitcoin_ru.ts \
-  qt/locale/bitcoin_si.ts \
   qt/locale/bitcoin_sk.ts \
   qt/locale/bitcoin_sl_SI.ts \
   qt/locale/bitcoin_sq.ts \
@@ -94,9 +81,7 @@ QT_TS = \
   qt/locale/bitcoin_sr.ts \
   qt/locale/bitcoin_sv.ts \
   qt/locale/bitcoin_ta.ts \
-  qt/locale/bitcoin_te.ts \
   qt/locale/bitcoin_th_TH.ts \
-  qt/locale/bitcoin_th.ts \
   qt/locale/bitcoin_tr_TR.ts \
   qt/locale/bitcoin_tr.ts \
   qt/locale/bitcoin_uk.ts \
@@ -116,6 +101,7 @@ QT_FORMS_UI = \
   qt/forms/editaddressdialog.ui \
   qt/forms/helpmessagedialog.ui \
   qt/forms/intro.ui \
+  qt/forms/managenamespage.ui \
   qt/forms/modaloverlay.ui \
   qt/forms/openuridialog.ui \
   qt/forms/optionsdialog.ui \
@@ -137,7 +123,6 @@ QT_MOC_CPP = \
   qt/moc_bitcoinamountfield.cpp \
   qt/moc_bitcoingui.cpp \
   qt/moc_bitcoinunits.cpp \
-  qt/moc_callback.cpp \
   qt/moc_clientmodel.cpp \
   qt/moc_coincontroldialog.cpp \
   qt/moc_coincontroltreewidget.cpp \
@@ -147,6 +132,8 @@ QT_MOC_CPP = \
   qt/moc_intro.cpp \
   qt/moc_macdockiconhandler.cpp \
   qt/moc_macnotificationhandler.cpp \
+  qt/moc_managenamespage.cpp \
+  qt/moc_nametablemodel.cpp \
   qt/moc_modaloverlay.cpp \
   qt/moc_notificator.cpp \
   qt/moc_openuridialog.cpp \
@@ -183,7 +170,6 @@ BITCOIN_MM = \
 QT_MOC = \
   qt/bitcoin.moc \
   qt/bitcoinamountfield.moc \
-  qt/callback.moc \
   qt/intro.moc \
   qt/overviewpage.moc \
   qt/rpcconsole.moc
@@ -206,7 +192,6 @@ BITCOIN_QT_H = \
   qt/bitcoinamountfield.h \
   qt/bitcoingui.h \
   qt/bitcoinunits.h \
-  qt/callback.h \
   qt/clientmodel.h \
   qt/coincontroldialog.h \
   qt/coincontroltreewidget.h \
@@ -217,6 +202,30 @@ BITCOIN_QT_H = \
   qt/intro.h \
   qt/macdockiconhandler.h \
   qt/macnotificationhandler.h \
+  qt/managenamespage.h \
+  qt/ManageDnsPage.h \
+  qt/QNameCoin.h \
+  qt/CheckDiplomaWidget.h \
+  qt/DiplomaWidget.h \
+  qt/RegisterDiplomaWidget.h \
+  qt/RegisterUniversityWidget.h \
+  qt/NameEqValueTextEdit.h \
+  qt/PhoneNumberLineEdit.h \
+  qt/ValidatorToLabel.h \
+  qt/EmailLineEdit.h \
+  qt/EmailValidator.h \
+  qt/DpoCreateRecordWidget.h \
+  qt/DpoCreateRootWidget.h \
+  qt/DpoRegisterDocWidget.h \
+  qt/DpoWidget.h \
+  qt/YearSpinBox.h \
+  qt/DpoUseCaseScheme.h \
+  qt/NameValueLineEdits.h \
+  qt/SelectableLineEdit.h \
+  qt/SelectableTextEdit.h \
+  qt/IPv4LineEdit.h \
+  qt/IPv6LineEdit.h \
+  qt/nametablemodel.h \
   qt/modaloverlay.h \
   qt/networkstyle.h \
   qt/notificator.h \
@@ -257,9 +266,10 @@ RES_ICONS = \
   qt/res/icons/address-book.png \
   qt/res/icons/about.png \
   qt/res/icons/about_qt.png \
-  qt/res/icons/bitcoin.ico \
-  qt/res/icons/bitcoin_testnet.ico \
-  qt/res/icons/bitcoin.png \
+  qt/res/icons/rngcoin.ico \
+  qt/res/icons/rngcoin_testnet.ico \
+  qt/res/icons/rngcoin.png \
+  qt/res/icons/rngcoin_testnet.png \
   qt/res/icons/chevron.png \
   qt/res/icons/clock1.png \
   qt/res/icons/clock2.png \
@@ -288,9 +298,9 @@ RES_ICONS = \
   qt/res/icons/history.png \
   qt/res/icons/info.png \
   qt/res/icons/key.png \
-  qt/res/icons/rngcoin_splash.png \
   qt/res/icons/lock_closed.png \
   qt/res/icons/lock_open.png \
+  qt/res/icons/name2.png \
   qt/res/icons/network_disabled.png \
   qt/res/icons/open.png \
   qt/res/icons/overview.png \
@@ -307,8 +317,27 @@ RES_ICONS = \
   qt/res/icons/tx_input.png \
   qt/res/icons/tx_output.png \
   qt/res/icons/tx_mined.png \
+  qt/res/icons/tx_nameop.png \
   qt/res/icons/warning.png \
-  qt/res/icons/verify.png
+  qt/res/icons/verify.png \
+  qt/res/icons/DPO-16.png \
+  qt/res/icons/DPO-32.png \
+  qt/res/icons/DPO_use_case_2.png \
+  qt/res/icons/Rngcoin-48.jpg \
+  qt/res/icons/EmerDNS-128.png \
+  qt/res/icons/EmerDNS-16.png \
+  qt/res/icons/EmerDNS-32.png \
+  qt/res/icons/EmerSSL-16.png \
+  qt/res/icons/EmerSSL-32.png \
+  qt/res/icons/EmerSSL-64.png \
+  qt/res/icons/Enumer-16.png \
+  qt/res/icons/Enumer-32.png \
+  qt/res/icons/InfoCard-16.png \
+  qt/res/icons/InfoCard-32.png \
+  qt/res/icons/Trusted-diploma-16-monochrome.png \
+  qt/res/icons/TrustedDiploma-16.png \
+  qt/res/icons/TrustedDiploma-32.png \
+  qt/res/icons/splash.png
 
 BITCOIN_QT_BASE_CPP = \
   qt/bantablemodel.cpp \
@@ -343,6 +372,29 @@ BITCOIN_QT_WALLET_CPP = \
   qt/coincontroldialog.cpp \
   qt/coincontroltreewidget.cpp \
   qt/editaddressdialog.cpp \
+  qt/managenamespage.cpp \
+  qt/ManageDnsPage.cpp \
+  qt/CheckDiplomaWidget.cpp \
+  qt/DiplomaWidget.cpp \
+  qt/QNameCoin.cpp \
+  qt/RegisterDiplomaWidget.cpp \
+  qt/RegisterUniversityWidget.cpp \
+  qt/NameEqValueTextEdit.cpp \
+  qt/PhoneNumberLineEdit.cpp \
+  qt/ValidatorToLabel.cpp \
+  qt/EmailLineEdit.cpp \
+  qt/EmailValidator.cpp \
+  qt/DpoCreateRecordWidget.cpp \
+  qt/DpoCreateRootWidget.cpp \
+  qt/DpoRegisterDocWidget.cpp \
+  qt/DpoWidget.cpp \
+  qt/DpoUseCaseScheme.cpp \
+  qt/NameValueLineEdits.cpp \
+  qt/SelectableLineEdit.cpp \
+  qt/SelectableTextEdit.cpp \
+  qt/IPv4LineEdit.cpp \
+  qt/IPv4LineEdit.cpp \
+  qt/nametablemodel.cpp \
   qt/openuridialog.cpp \
   qt/overviewpage.cpp \
   qt/paymentrequestplus.cpp \
@@ -423,9 +475,9 @@ endif
 if ENABLE_ZMQ
 qt_rngcoin_qt_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
 endif
-qt_rngcoin_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CONSENSUS) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) $(LIBLEVELDB_SSE42) $(LIBMEMENV) \
+qt_rngcoin_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CONSENSUS) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) $(LIBMEMENV) \
   $(BOOST_LIBS) $(QT_LIBS) $(QT_DBUS_LIBS) $(QR_LIBS) $(PROTOBUF_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(COMPRESS_LIBS) $(MINIUPNPC_LIBS) $(LIBSECP256K1) \
-  $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
+  $(EVENT_PTHREADS_LIBS) $(EVENT_OPENSSL_LIBS) $(EVENT_LIBS)
 qt_rngcoin_qt_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 qt_rngcoin_qt_LIBTOOLFLAGS = --tag CXX
 

@@ -15,9 +15,18 @@
 
 #include <unordered_map>
 
+#define MIN_TRANSACTION_BASE_SIZE (::GetSerializeSize(CTransaction(), SER_NETWORK, PROTOCOL_VERSION | SERIALIZE_TRANSACTION_NO_WITNESS))
+
 CBlockHeaderAndShortTxIDs::CBlockHeaderAndShortTxIDs(const CBlock& block, bool fUseWTXID) :
         nonce(GetRand(std::numeric_limits<uint64_t>::max())),
-        shorttxids(block.vtx.size() - 1), prefilledtxn(1), header(block) {
+        shorttxids(block.vtx.size() - 1), prefilledtxn(1) {
+
+    // rngcoin: get header with correct nFlags and auxpow
+    BlockMap::iterator mi = mapBlockIndex.find(block.GetHash());
+    assert(mi != mapBlockIndex.end()); // rngcoin: we should always have index for a block that we have accepted
+    header = (*mi).second->GetBlockHeader();
+    vchBlockSig = block.vchBlockSig;
+
     FillShortTxIDSelector();
     //TODO: Use our mempool prior to block acceptance to predictively fill more than just the coinbase
     prefilledtxn[0] = {0, block.vtx[0]};
@@ -48,11 +57,12 @@ uint64_t CBlockHeaderAndShortTxIDs::GetShortID(const uint256& txhash) const {
 ReadStatus PartiallyDownloadedBlock::InitData(const CBlockHeaderAndShortTxIDs& cmpctblock, const std::vector<std::pair<uint256, CTransactionRef>>& extra_txn) {
     if (cmpctblock.header.IsNull() || (cmpctblock.shorttxids.empty() && cmpctblock.prefilledtxn.empty()))
         return READ_STATUS_INVALID;
-    if (cmpctblock.shorttxids.size() + cmpctblock.prefilledtxn.size() > MAX_BLOCK_WEIGHT / MIN_SERIALIZABLE_TRANSACTION_WEIGHT)
+    if (cmpctblock.shorttxids.size() + cmpctblock.prefilledtxn.size() > MAX_BLOCK_BASE_SIZE / MIN_TRANSACTION_BASE_SIZE)
         return READ_STATUS_INVALID;
 
     assert(header.IsNull() && txn_available.empty());
     header = cmpctblock.header;
+    vchBlockSig = cmpctblock.vchBlockSig;
     txn_available.resize(cmpctblock.BlockTxCount());
 
     int32_t lastprefilledindex = -1;
@@ -145,7 +155,7 @@ ReadStatus PartiallyDownloadedBlock::InitData(const CBlockHeaderAndShortTxIDs& c
                 // request it.
                 // This should be rare enough that the extra bandwidth doesn't matter,
                 // but eating a round-trip due to FillBlock failure would be annoying
-                // Note that we don't want duplication between extra_txn and mempool to
+                // Note that we dont want duplication between extra_txn and mempool to
                 // trigger this case, so we compare witness hashes first
                 if (txn_available[idit->second] &&
                         txn_available[idit->second]->GetWitnessHash() != extra_txn[i].second->GetWitnessHash()) {
@@ -162,7 +172,7 @@ ReadStatus PartiallyDownloadedBlock::InitData(const CBlockHeaderAndShortTxIDs& c
             break;
     }
 
-    LogPrint(BCLog::CMPCTBLOCK, "Initialized PartiallyDownloadedBlock for block %s using a cmpctblock of size %lu\n", cmpctblock.header.GetHash().ToString(), GetSerializeSize(cmpctblock, SER_NETWORK, PROTOCOL_VERSION));
+    LogPrint("cmpctblock", "Initialized PartiallyDownloadedBlock for block %s using a cmpctblock of size %lu\n", cmpctblock.header.GetHash().ToString(), GetSerializeSize(cmpctblock, SER_NETWORK, PROTOCOL_VERSION));
 
     return READ_STATUS_OK;
 }
@@ -170,13 +180,14 @@ ReadStatus PartiallyDownloadedBlock::InitData(const CBlockHeaderAndShortTxIDs& c
 bool PartiallyDownloadedBlock::IsTxAvailable(size_t index) const {
     assert(!header.IsNull());
     assert(index < txn_available.size());
-    return txn_available[index] != nullptr;
+    return txn_available[index] ? true : false;
 }
 
 ReadStatus PartiallyDownloadedBlock::FillBlock(CBlock& block, const std::vector<CTransactionRef>& vtx_missing) {
     assert(!header.IsNull());
     uint256 hash = header.GetHash();
     block = header;
+    block.vchBlockSig = vchBlockSig;
     block.vtx.resize(txn_available.size());
 
     size_t tx_missing_offset = 0;
@@ -207,11 +218,10 @@ ReadStatus PartiallyDownloadedBlock::FillBlock(CBlock& block, const std::vector<
         return READ_STATUS_CHECKBLOCK_FAILED;
     }
 
-    LogPrint(BCLog::CMPCTBLOCK, "Successfully reconstructed block %s with %lu txn prefilled, %lu txn from mempool (incl at least %lu from extra pool) and %lu txn requested\n", hash.ToString(), prefilled_count, mempool_count, extra_count, vtx_missing.size());
+    LogPrint("cmpctblock", "Successfully reconstructed block %s with %lu txn prefilled, %lu txn from mempool (incl at least %lu from extra pool) and %lu txn requested\n", hash.ToString(), prefilled_count, mempool_count, extra_count, vtx_missing.size());
     if (vtx_missing.size() < 5) {
-        for (const auto& tx : vtx_missing) {
-            LogPrint(BCLog::CMPCTBLOCK, "Reconstructed block %s required tx %s\n", hash.ToString(), tx->GetHash().ToString());
-        }
+        for (const auto& tx : vtx_missing)
+            LogPrint("cmpctblock", "Reconstructed block %s required tx %s\n", hash.ToString(), tx->GetHash().ToString());
     }
 
     return READ_STATUS_OK;

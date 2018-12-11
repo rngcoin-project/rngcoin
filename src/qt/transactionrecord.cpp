@@ -9,16 +9,24 @@
 #include "validation.h"
 #include "timedata.h"
 #include "wallet/wallet.h"
+#include "hooks.h"
 
 #include <stdint.h>
 
+#include <boost/foreach.hpp>
 
 /* Return positive answer if transaction should be shown in list.
  */
 bool TransactionRecord::showTransaction(const CWalletTx &wtx)
 {
-    // There are currently no cases where we hide transactions, but
-    // we may want to use this in the future for things like RBF.
+    if (wtx.IsCoinBase() || wtx.IsCoinStake())
+    {
+        // Ensures we show generated coins / mined transactions at depth 1
+        if (!wtx.IsInMainChain())
+        {
+            return false;
+        }
+    }
     return true;
 }
 
@@ -28,7 +36,7 @@ bool TransactionRecord::showTransaction(const CWalletTx &wtx)
 QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *wallet, const CWalletTx &wtx)
 {
     QList<TransactionRecord> parts;
-    int64_t nTime = wtx.GetTxTime();
+    int64_t nTime = wtx.tx->nTime;
     CAmount nCredit = wtx.GetCredit(ISMINE_ALL);
     CAmount nDebit = wtx.GetDebit(ISMINE_ALL);
     CAmount nNet = nCredit - nDebit;
@@ -40,7 +48,19 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
     }
     std::map<std::string, std::string> mapValue = wtx.mapValue;
 
-    if (nNet > 0 || wtx.IsCoinBase())
+    if (wtx.tx->nVersion == NAMECOIN_TX_VERSION) // rngcoin: name transaction
+    {
+        std::string address = "failed to get address";
+        for (const auto& txout : wtx.tx->vout)
+            if (hooks->ExtractAddress(txout.scriptPubKey, address))
+                break;
+        parts.append(TransactionRecord(hash, nTime, TransactionRecord::NameOp, address, nNet, 0, wtx.GetTxComment()));
+    }
+    else if (wtx.tx->IsCoinStake()) // ppcoin: coinstake transaction
+    {
+        parts.append(TransactionRecord(hash, nTime, TransactionRecord::StakeMint, "", -nDebit, wtx.tx->GetValueOut(), txcomment));
+    }
+    else if (nNet > 0 || wtx.IsCoinBase())
     {
         //
         // Credit
@@ -83,7 +103,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
     {
         bool involvesWatchAddress = false;
         isminetype fAllFromMe = ISMINE_SPENDABLE;
-        for (const CTxIn& txin : wtx.tx->vin)
+        BOOST_FOREACH(const CTxIn& txin, wtx.tx->vin)
         {
             isminetype mine = wallet->IsMine(txin);
             if(mine & ISMINE_WATCH_ONLY) involvesWatchAddress = true;
@@ -91,7 +111,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
         }
 
         isminetype fAllToMe = ISMINE_SPENDABLE;
-        for (const CTxOut& txout : wtx.tx->vout)
+        BOOST_FOREACH(const CTxOut& txout, wtx.tx->vout)
         {
             isminetype mine = wallet->IsMine(txout);
             if(mine & ISMINE_WATCH_ONLY) involvesWatchAddress = true;
@@ -174,7 +194,7 @@ void TransactionRecord::updateStatus(const CWalletTx &wtx)
     // Determine transaction status
 
     // Find the block the tx is in
-    CBlockIndex* pindex = nullptr;
+    CBlockIndex* pindex = NULL;
     BlockMap::iterator mi = mapBlockIndex.find(wtx.hashBlock);
     if (mi != mapBlockIndex.end())
         pindex = (*mi).second;
@@ -182,7 +202,7 @@ void TransactionRecord::updateStatus(const CWalletTx &wtx)
     // Sort order, unrecorded transactions sort to the top
     status.sortKey = strprintf("%010d-%01d-%010u-%03d",
         (pindex ? pindex->nHeight : std::numeric_limits<int>::max()),
-        (wtx.IsCoinBase() ? 1 : 0),
+        ((wtx.IsCoinBase() || wtx.IsCoinStake()) ? 1 : 0),
         wtx.nTimeReceived,
         idx);
     status.countsForBalance = wtx.IsTrusted() && !(wtx.GetBlocksToMaturity() > 0);
@@ -203,7 +223,7 @@ void TransactionRecord::updateStatus(const CWalletTx &wtx)
         }
     }
     // For generated transactions, determine maturity
-    else if(type == TransactionRecord::Generated)
+    else if(type == TransactionRecord::Generated || type == TransactionRecord::StakeMint)
     {
         if (wtx.GetBlocksToMaturity() > 0)
         {
@@ -214,8 +234,9 @@ void TransactionRecord::updateStatus(const CWalletTx &wtx)
                 status.matures_in = wtx.GetBlocksToMaturity();
 
                 // Check if the block was requested by anyone
-                if (GetAdjustedTime() - wtx.nTimeReceived > 2 * 60 && wtx.GetRequestCount() == 0)
-                    status.status = TransactionStatus::MaturesWarning;
+                // TODO: investigate issue with false warning triggering
+                /*if (GetAdjustedTime() - wtx.nTimeReceived > 2 * 60 && wtx.GetRequestCount() == 0)
+                    status.status = TransactionStatus::MaturesWarning;*/
             }
             else
             {
@@ -252,13 +273,13 @@ void TransactionRecord::updateStatus(const CWalletTx &wtx)
             status.status = TransactionStatus::Confirmed;
         }
     }
-    status.needsUpdate = false;
+
 }
 
 bool TransactionRecord::statusUpdateNeeded()
 {
     AssertLockHeld(cs_main);
-    return status.cur_num_blocks != chainActive.Height() || status.needsUpdate;
+    return status.cur_num_blocks != chainActive.Height();
 }
 
 QString TransactionRecord::getTxID() const

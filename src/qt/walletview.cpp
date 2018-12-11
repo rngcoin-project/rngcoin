@@ -9,6 +9,7 @@
 #include "bitcoingui.h"
 #include "clientmodel.h"
 #include "guiutil.h"
+#include "managenamespage.h"
 #include "optionsmodel.h"
 #include "overviewpage.h"
 #include "platformstyle.h"
@@ -18,6 +19,7 @@
 #include "transactiontablemodel.h"
 #include "transactionview.h"
 #include "walletmodel.h"
+#include "walletframe.h"
 
 #include "ui_interface.h"
 
@@ -29,55 +31,31 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 
-WalletView::WalletView(const PlatformStyle *_platformStyle, QWidget *parent):
+WalletView::WalletView(const PlatformStyle *_platformStyle, WalletFrame *parent):
     QStackedWidget(parent),
-    clientModel(0),
-    walletModel(0),
+    walletFrame(parent),
     platformStyle(_platformStyle)
 {
+    Q_ASSERT(walletFrame);
     // Create tabs
     overviewPage = new OverviewPage(platformStyle);
-
-
 
     transactionsPage = new QWidget(this);
     QVBoxLayout *vbox = new QVBoxLayout();
     QHBoxLayout *hbox_buttons = new QHBoxLayout();
     transactionView = new TransactionView(platformStyle, this);
     vbox->addWidget(transactionView);
-    QPushButton *exportButton = new QPushButton(/*tr("EXPORT"),*/ this);
-    exportButton->setMinimumSize(QSize(147, 39));
-    exportButton->setObjectName("btnExport");
-    exportButton->setStyleSheet(
-        "#btnExport{                                                        "
-        "border-style: 0px;                                                 "
-        "background-image: url(:/icons/res/icons/export-button.png);        "
-        "background-repeat:false;                                           "
-        "}                                                                  "
-        "                                                                   "
-        "#btnExport:hover{                                                  "
-        "background-image: url(:/icons/res/icons/export-button-hover.png);  "
-        "}                                                                  "
-        "                                                                   "
-        "#btnExport:pressed{                                                "
-        "background-image: url(:/icons/res/icons/export-button-pressed.png);"
-        "}                                                                  "
-        );
-
-
+    QPushButton *exportButton = new QPushButton(tr("&Export"), this);
     exportButton->setToolTip(tr("Export the data in the current tab to a file"));
-//    if (platformStyle->getImagesOnButtons()) {
-//        exportButton->setIcon(platformStyle->SingleColorIcon(":/icons/export"));
-//    }
+    if (platformStyle->getImagesOnButtons()) {
+        exportButton->setIcon(platformStyle->SingleColorIcon(":/icons/export"));
+    }
+    auto labelTotal = new QLabel;
+    hbox_buttons->addWidget(labelTotal);
     hbox_buttons->addStretch();
     hbox_buttons->addWidget(exportButton);
     vbox->addLayout(hbox_buttons);
-
-    // add decoration label
-    //QLabel* pDecoreLabel = new QLabel(this);
-    //pDecoreLabel->setPixmap( QPixmap(":/icons/res/icons/rngcoin.png") );
-    //vbox->addWidget(pDecoreLabel);
-
+    connect(transactionView, &TransactionView::amountSelected, labelTotal, &QLabel::setText);
     transactionsPage->setLayout(vbox);
 
     transactionsPage->setObjectName("transactionsPage");
@@ -91,6 +69,7 @@ WalletView::WalletView(const PlatformStyle *_platformStyle, QWidget *parent):
 
     receiveCoinsPage = new ReceiveCoinsDialog(platformStyle);
     sendCoinsPage = new SendCoinsDialog(platformStyle);
+    // manageNamesPage = new ManageNamesPage();
 
     usedSendingAddressesPage = new AddressBookPage(platformStyle, AddressBookPage::ForEditing, AddressBookPage::SendingTab, this);
     usedReceivingAddressesPage = new AddressBookPage(platformStyle, AddressBookPage::ForEditing, AddressBookPage::ReceivingTab, this);
@@ -99,6 +78,7 @@ WalletView::WalletView(const PlatformStyle *_platformStyle, QWidget *parent):
     addWidget(transactionsPage);
     addWidget(receiveCoinsPage);
     addWidget(sendCoinsPage);
+    // addWidget(manageNamesPage);
 
     // Clicking on a transaction on the overview pre-selects the transaction on the transaction history page
     connect(overviewPage, SIGNAL(transactionClicked(QModelIndex)), transactionView, SLOT(focusTransaction(QModelIndex)));
@@ -106,6 +86,9 @@ WalletView::WalletView(const PlatformStyle *_platformStyle, QWidget *parent):
 
     // Double-clicking on a transaction on the transaction history page shows details
     connect(transactionView, SIGNAL(doubleClicked(QModelIndex)), transactionView, SLOT(showDetails()));
+
+    // Double-clicking on a name on the name page copies all values
+    // connect(manageNamesPage, SIGNAL(doubleClicked(QModelIndex)), manageNamesPage, SLOT(onCopyAllAction()));
 
     // Clicking on "Export" allows to export the transaction list
     connect(exportButton, SIGNAL(clicked()), transactionView, SLOT(exportClicked()));
@@ -138,6 +121,9 @@ void WalletView::setBitcoinGUI(BitcoinGUI *gui)
 
         // Connect HD enabled state signal 
         connect(this, SIGNAL(hdEnabledStatusChanged(int)), gui, SLOT(setHDStatus(int)));
+
+        // rngcoin:
+        connect(gui->labelWalletEncryptionIcon, SIGNAL(clicked(QPoint)), this, SLOT(on_labelWalletEncryptionIcon_clicked()));
     }
 }
 
@@ -158,6 +144,7 @@ void WalletView::setWalletModel(WalletModel *_walletModel)
     overviewPage->setWalletModel(_walletModel);
     receiveCoinsPage->setModel(_walletModel);
     sendCoinsPage->setModel(_walletModel);
+    // manageNamesPage->setModel(_walletModel);
     usedReceivingAddressesPage->setModel(_walletModel->getAddressTableModel());
     usedSendingAddressesPage->setModel(_walletModel->getAddressTableModel());
 
@@ -229,6 +216,11 @@ void WalletView::gotoSendCoinsPage(QString addr)
         sendCoinsPage->setAddress(addr);
 }
 
+// void WalletView::gotoManageNamesPage()
+// {
+//     setCurrentWidget(manageNamesPage);
+// }
+
 void WalletView::gotoSignMessageTab(QString addr)
 {
     // calls show() in showTab_SM()
@@ -283,7 +275,7 @@ void WalletView::backupWallet()
 {
     QString filename = GUIUtil::getSaveFileName(this,
         tr("Backup Wallet"), QString(),
-        tr("Wallet Data (*.dat)"), nullptr);
+        tr("Wallet Data (*.dat)"), NULL);
 
     if (filename.isEmpty())
         return;
@@ -364,4 +356,29 @@ void WalletView::showProgress(const QString &title, int nProgress)
 void WalletView::requestedSyncWarningInfo()
 {
     Q_EMIT outOfSyncWarningClicked();
+}
+
+extern std::string strMintWarning;
+
+void WalletView::on_labelWalletEncryptionIcon_clicked()
+{
+    if (!walletModel)
+        return;
+
+    if (walletModel->getEncryptionStatus() == WalletModel::Unlocked)
+    {
+        strMintWarning = "Info: Minting suspended due to locked wallet.";
+        walletModel->setWalletLocked(true);
+        Q_EMIT clientModel->alertsChanged(clientModel->getStatusBarWarnings());
+    }
+    else
+    {
+        AskPassphraseDialog dlg(AskPassphraseDialog::UnlockExtended, this);
+        dlg.setModel(walletModel);
+        if (dlg.exec() == QDialog::Accepted)
+        {
+            strMintWarning = "";
+            Q_EMIT clientModel->alertsChanged(clientModel->getStatusBarWarnings());
+        }
+    }
 }

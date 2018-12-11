@@ -126,8 +126,8 @@
         <translation>Оношилгоо ба засварын консолыг онгойлго</translation>
     </message>
     <message>
-        <source>RNGCoin</source>
-        <translation>RNGCoin</translation>
+        <source>Rngcoin</source>
+        <translation>rngcoin</translation>
     </message>
     <message>
         <source>Wallet</source>

@@ -10,19 +10,19 @@ Usage:
     gen_base58_test_vectors.py invalid 50 > ../../src/test/data/base58_keys_invalid.json
 '''
 # 2012 Wladimir J. van der Laan
-# Released under MIT License
+# Released under GPL3 License
 import os
 from itertools import islice
-from base58 import b58encode_chk, b58decode_chk, b58chars
+from base58 import b58encode, b58decode, b58encode_chk, b58decode_chk, b58chars
 import random
 from binascii import b2a_hex
 
 # key types
-PUBKEY_ADDRESS = 48
+PUBKEY_ADDRESS = 0
 SCRIPT_ADDRESS = 5
 PUBKEY_ADDRESS_TEST = 111
 SCRIPT_ADDRESS_TEST = 196
-PRIVKEY = 176
+PRIVKEY = 128
 PRIVKEY_TEST = 239
 
 metadata_keys = ['isPrivkey', 'isTestnet', 'addrType', 'isCompressed']

@@ -9,6 +9,7 @@
 #include <QObject>
 
 class BitcoinGUI;
+class ClientModel;
 
 namespace Ui {
     class HelpMessageDialog;

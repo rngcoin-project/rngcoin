@@ -1,0 +1,7 @@
+contrib/trusty/rng usr/bin
+contrib/trusty/rngcoin.conf var/lib/rng/.rngcoin
+contrib/trusty/rngcoind etc/init.d
+contrib/trusty/rngcoind.logrotate etc/logrotate.d
+usr/local/bin/rngcoind usr/bin
+usr/local/bin/rngcoin-cli usr/bin
+usr/local/bin/rngcoin-tx usr/bin

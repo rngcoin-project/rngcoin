@@ -114,8 +114,8 @@
         <translation>Reindexando bloques en el disco...</translation>
     </message>
     <message>
-        <source>Send coins to a RNGCoin address</source>
-        <translation>Enviar monedas a una dirección RNGCoin</translation>
+        <source>Send coins to a Rngcoin address</source>
+        <translation>Enviar monedas a una dirección Rngcoin</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -130,8 +130,8 @@
         <translation>Abre la consola de depuración y diágnostico</translation>
     </message>
     <message>
-        <source>RNGCoin</source>
-        <translation>RNGCoin</translation>
+        <source>Rngcoin</source>
+        <translation>Rngcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -158,12 +158,12 @@
         <translation>Encriptar las llaves privadas que pertenecen a tu billetera</translation>
     </message>
     <message>
-        <source>Sign messages with your RNGCoin addresses to prove you own them</source>
-        <translation>Firma mensajes con tus direcciones RNGCoin para probar que eres dueño de ellas</translation>
+        <source>Sign messages with your Rngcoin addresses to prove you own them</source>
+        <translation>Firma mensajes con tus direcciones Rngcoin para probar que eres dueño de ellas</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified RNGCoin addresses</source>
-        <translation>Verificar mensajes para asegurar que estaban firmados con direcciones RNGCoin especificas</translation>
+        <source>Verify messages to ensure they were signed with specified Rngcoin addresses</source>
+        <translation>Verificar mensajes para asegurar que estaban firmados con direcciones Rngcoin especificas</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -608,8 +608,8 @@
         <translation>Correr en segundo plano como daemon y aceptar comandos</translation>
     </message>
     <message>
-        <source>RNGCoin Core</source>
-        <translation>RNGCoin Core</translation>
+        <source>Rngcoin Core</source>
+        <translation>Rngcoin Core</translation>
     </message>
     <message>
         <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>

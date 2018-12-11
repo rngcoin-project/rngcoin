@@ -62,12 +62,12 @@
         <translation>Адреса получения</translation>
     </message>
     <message>
-        <source>These are your RNGCoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Это ваши адреса RNGCoin для отправки платежей. Всегда проверяйте сумму и адрес получателя перед отправкой перевода.</translation>
+        <source>These are your Rngcoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Это ваши адреса Rngcoin для отправки платежей. Всегда проверяйте сумму и адрес получателя перед отправкой перевода.</translation>
     </message>
     <message>
-        <source>These are your RNGCoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Это ваши адреса RNGCoin для приёма платежей. Рекомендуется использовать новый адрес получения для каждой транзакции.</translation>
+        <source>These are your Rngcoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Это ваши адреса Rngcoin для приёма платежей. Рекомендуется использовать новый адрес получения для каждой транзакции.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -133,27 +133,27 @@
     </message>
     <message>
         <source>Enter the new passphrase to the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;ten or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
-        <translation>Введите новый пароль бумажника.&lt;br/&gt;Используйте пароль, состоящий из &lt;b&gt;десяти или более случайных символов&lt;/b&gt;, или &lt;b&gt;восьми или более слов&lt;/b&gt;.</translation>
+        <translation>Введите новый пароль кошелька.&lt;br/&gt;Используйте пароль, состоящий из &lt;b&gt;десяти или более случайных символов&lt;/b&gt;, или &lt;b&gt;восьми или более слов&lt;/b&gt;.</translation>
     </message>
     <message>
         <source>Encrypt wallet</source>
-        <translation>Зашифровать бумажник</translation>
+        <translation>Зашифровать кошелёк</translation>
     </message>
     <message>
         <source>This operation needs your wallet passphrase to unlock the wallet.</source>
-        <translation>Для выполнения операции требуется пароль вашего бумажника.</translation>
+        <translation>Для выполнения операции требуется пароль вашего кошелька.</translation>
     </message>
     <message>
         <source>Unlock wallet</source>
-        <translation>Разблокировать бумажник</translation>
+        <translation>Разблокировать кошелёк</translation>
     </message>
     <message>
         <source>This operation needs your wallet passphrase to decrypt the wallet.</source>
-        <translation>Для выполнения операции требуется пароль вашего бумажника.</translation>
+        <translation>Для выполнения операции требуется пароль вашего кошелька.</translation>
     </message>
     <message>
         <source>Decrypt wallet</source>
-        <translation>Расшифровать бумажник</translation>
+        <translation>Расшифровать кошелёк</translation>
     </message>
     <message>
         <source>Change passphrase</source>
@@ -161,39 +161,39 @@
     </message>
     <message>
         <source>Enter the old passphrase and new passphrase to the wallet.</source>
-        <translation>Введите старый и новый пароль для бумажника.</translation>
+        <translation>Введите старый и новый пароль для кошелька.</translation>
     </message>
     <message>
         <source>Confirm wallet encryption</source>
-        <translation>Подтвердите шифрование бумажника</translation>
+        <translation>Подтвердите шифрование кошелька</translation>
     </message>
     <message>
         <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR RNGCOINS&lt;/b&gt;!</source>
-        <translation>Предупреждение: если вы зашифруете бумажник и потеряете пароль, вы &lt;b&gt;ПОТЕРЯЕТЕ ВСЕ ВАШИ RNGCoin-Ы&lt;/b&gt;!</translation>
+        <translation>Предупреждение: если вы зашифруете кошелёк и потеряете пароль, вы &lt;b&gt;ПОТЕРЯЕТЕ ВСЕ ВАШИ ЭМЕРКОИНЫ&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
-        <translation>Вы уверены, что хотите зашифровать ваш бумажник?</translation>
+        <translation>Вы уверены, что хотите зашифровать ваш кошелёк?</translation>
     </message>
     <message>
         <source>Wallet encrypted</source>
-        <translation>Бумажник зашифрован</translation>
+        <translation>Кошелёк зашифрован</translation>
     </message>
     <message>
         <source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your rngcoins from being stolen by malware infecting your computer.</source>
-        <translation>Сейчас %1 закроется для завершения процесса шифрования. Помните, что шифрование вашего бумажника не может полностью защитить ваши RNGCoinы от кражи с помощью инфицирования вашего компьютера вредоносным ПО.</translation>
+        <translation>Сейчас %1 закроется для завершения процесса шифрования. Помните, что шифрование вашего кошелька не может полностью защитить ваши эмеркоины от кражи с помощью инфицирования вашего компьютера вредоносным ПО.</translation>
     </message>
     <message>
         <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. For security reasons, previous backups of the unencrypted wallet file will become useless as soon as you start using the new, encrypted wallet.</source>
-        <translation>ВАЖНО: все предыдущие резервные копии вашего бумажника должны быть заменены новым зашифрованным файлом. В целях безопасности предыдущие резервные копии незашифрованного бумажника станут бесполезны, как только вы начнёте использовать новый зашифрованный бумажник.</translation>
+        <translation>ВАЖНО: все предыдущие резервные копии вашего кошелька должны быть заменены новым зашифрованным файлом. В целях безопасности предыдущие резервные копии незашифрованного кошелька станут бесполезны, как только вы начнёте использовать новый зашифрованный кошелёк.</translation>
     </message>
     <message>
         <source>Wallet encryption failed</source>
-        <translation>Не удалось зашифровать бумажник</translation>
+        <translation>Не удалось зашифровать кошелёк</translation>
     </message>
     <message>
         <source>Wallet encryption failed due to an internal error. Your wallet was not encrypted.</source>
-        <translation>Шифрование бумажника не удалось из-за внутренней ошибки. Ваш бумажник не был зашифрован.</translation>
+        <translation>Шифрование кошелька не удалось из-за внутренней ошибки. Ваш кошелёк не был зашифрован.</translation>
     </message>
     <message>
         <source>The supplied passphrases do not match.</source>
@@ -201,19 +201,19 @@
     </message>
     <message>
         <source>Wallet unlock failed</source>
-        <translation>Разблокировка бумажника не удалась</translation>
+        <translation>Разблокировка кошелька не удалась</translation>
     </message>
     <message>
         <source>The passphrase entered for the wallet decryption was incorrect.</source>
-        <translation>Неверный пароль для расшифровки бумажника.</translation>
+        <translation>Неверный пароль для расшифровки кошелька.</translation>
     </message>
     <message>
         <source>Wallet decryption failed</source>
-        <translation>Расшифровка бумажника не удалась</translation>
+        <translation>Расшифровка кошелька не удалась</translation>
     </message>
     <message>
         <source>Wallet passphrase was successfully changed.</source>
-        <translation>Пароль бумажника успешно изменён.</translation>
+        <translation>Пароль кошелька успешно изменён.</translation>
     </message>
     <message>
         <source>Warning: The Caps Lock key is on!</source>
@@ -251,7 +251,7 @@
     </message>
     <message>
         <source>Show general overview of wallet</source>
-        <translation>Показать общий обзор действий с бумажником</translation>
+        <translation>Показать общий обзор действий с кошельком</translation>
     </message>
     <message>
         <source>&amp;Transactions</source>
@@ -295,11 +295,11 @@
     </message>
     <message>
         <source>&amp;Encrypt Wallet...</source>
-        <translation>&amp;Зашифровать бумажник...</translation>
+        <translation>&amp;Зашифровать кошелёк...</translation>
     </message>
     <message>
         <source>&amp;Backup Wallet...</source>
-        <translation>&amp;Сделать резервную копию бумажника...</translation>
+        <translation>&amp;Сделать резервную копию кошелька...</translation>
     </message>
     <message>
         <source>&amp;Change Passphrase...</source>
@@ -338,16 +338,16 @@
         <translation>Идёт переиндексация блоков на диске...</translation>
     </message>
     <message>
-        <source>Send coins to a RNGCoin address</source>
-        <translation>Отправить монеты на указанный адрес RNGCoin</translation>
+        <source>Send coins to a Rngcoin address</source>
+        <translation>Отправить монеты на указанный адрес Rngcoin</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
-        <translation>Сделать резервную копию бумажника в другом месте</translation>
+        <translation>Сделать резервную копию кошелька в другом месте</translation>
     </message>
     <message>
         <source>Change the passphrase used for wallet encryption</source>
-        <translation>Изменить пароль шифрования бумажника</translation>
+        <translation>Изменить пароль шифрования кошелька</translation>
     </message>
     <message>
         <source>&amp;Debug window</source>
@@ -362,12 +362,12 @@
         <translation>&amp;Проверить сообщение...</translation>
     </message>
     <message>
-        <source>RNGCoin</source>
-        <translation>RNGCoin</translation>
+        <source>Rngcoin</source>
+        <translation>Rngcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
-        <translation>Бумажник</translation>
+        <translation>Кошелёк</translation>
     </message>
     <message>
         <source>&amp;Send</source>
@@ -387,15 +387,15 @@
     </message>
     <message>
         <source>Encrypt the private keys that belong to your wallet</source>
-        <translation>Зашифровать приватные ключи, принадлежащие вашему бумажнику</translation>
+        <translation>Зашифровать приватные ключи, принадлежащие вашему кошельку</translation>
     </message>
     <message>
-        <source>Sign messages with your RNGCoin addresses to prove you own them</source>
-        <translation>Подписать сообщения вашим адресом RNGCoin, чтобы доказать, что вы им владеете</translation>
+        <source>Sign messages with your Rngcoin addresses to prove you own them</source>
+        <translation>Подписать сообщения вашим адресом Rngcoin, чтобы доказать, что вы им владеете</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified RNGCoin addresses</source>
-        <translation>Проверить сообщения, чтобы удостовериться, что они были подписаны определённым адресом RNGCoin</translation>
+        <source>Verify messages to ensure they were signed with specified Rngcoin addresses</source>
+        <translation>Проверить сообщения, чтобы удостовериться, что они были подписаны определённым адресом Rngcoin</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -434,8 +434,8 @@
         <translation>&amp;Параметры командной строки</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to RNGCoin network</source>
-        <translation><numerusform>%n активных соединений с сетью RNGCoin</numerusform><numerusform>%n активных соединений с сетью RNGCoin</numerusform><numerusform>%n активных соединений с сетью RNGCoin</numerusform><numerusform>%n активных соединений с сетью RNGCoin</numerusform></translation>
+        <source>%n active connection(s) to Rngcoin network</source>
+        <translation><numerusform>%n активных соединений с сетью Rngcoin</numerusform><numerusform>%n активных соединений с сетью Rngcoin</numerusform><numerusform>%n активных соединений с сетью Rngcoin</numerusform><numerusform>%n активных соединений с сетью Rngcoin</numerusform></translation>
     </message>
     <message>
         <source>Indexing blocks on disk...</source>
@@ -478,7 +478,7 @@
         <translation>Синхронизировано</translation>
     </message>
     <message>
-        <source>Show the %1 help message to get a list with possible RNGCoin command-line options</source>
+        <source>Show the %1 help message to get a list with possible Rngcoin command-line options</source>
         <translation>Показать помощь по %1, чтобы получить список доступных параметров командной строки</translation>
     </message>
     <message>
@@ -541,15 +541,15 @@
     </message>
     <message>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt;</source>
-        <translation>Бумажник &lt;b&gt;зашифрован&lt;/b&gt; и в настоящее время &lt;b&gt;разблокирован&lt;/b&gt;</translation>
+        <translation>Кошелёк &lt;b&gt;зашифрован&lt;/b&gt; и в настоящее время &lt;b&gt;разблокирован&lt;/b&gt;</translation>
     </message>
     <message>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</source>
-        <translation>Бумажник &lt;b&gt;зашифрован&lt;/b&gt; и в настоящее время &lt;b&gt;заблокирован&lt;/b&gt;</translation>
+        <translation>Кошелёк &lt;b&gt;зашифрован&lt;/b&gt; и в настоящее время &lt;b&gt;заблокирован&lt;/b&gt;</translation>
     </message>
     <message>
-        <source>A fatal error occurred. RNGCoin can no longer continue safely and will quit.</source>
-        <translation>Произошла неисправимая ошибка. RNGCoin не может безопасно продолжать работу и будет закрыт.</translation>
+        <source>A fatal error occurred. Rngcoin can no longer continue safely and will quit.</source>
+        <translation>Произошла неисправимая ошибка. Rngcoin не может безопасно продолжать работу и будет закрыт.</translation>
     </message>
 </context>
 <context>
@@ -742,8 +742,8 @@
         <translation>Изменить адрес отправки</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid RNGCoin address.</source>
-        <translation>Введённый адрес "%1" не является правильным RNGCoin-адресом.</translation>
+        <source>The entered address "%1" is not a valid Rngcoin address.</source>
+        <translation>Введённый адрес "%1" не является правильным Rngcoin-адресом.</translation>
     </message>
     <message>
         <source>The entered address "%1" is already in the address book.</source>
@@ -751,7 +751,7 @@
     </message>
     <message>
         <source>Could not unlock wallet.</source>
-        <translation>Не удается разблокировать бумажник.</translation>
+        <translation>Не удается разблокировать кошелёк.</translation>
     </message>
     <message>
         <source>New key generation failed.</source>
@@ -851,8 +851,8 @@
         <translation>При первом запуске программы вы можете выбрать где %1 будет хранить свои данные.</translation>
     </message>
     <message>
-        <source>%1 will download and store a copy of the RNGCoin block chain. At least %2GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-        <translation>%1 скачает и сохранит копию цепи блоков. Как минимум %2GB будут записаны в этот каталог, и со временем он будет расти. Бумажник также будет сохранен в этом каталоге.</translation>
+        <source>%1 will download and store a copy of the Rngcoin block chain. At least %2GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <translation>%1 скачает и сохранит копию цепи блоков. Как минимум %2GB будут записаны в этот каталог, и со временем он будет расти. Кошелёк также будет сохранен в этом каталоге.</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
@@ -887,11 +887,11 @@
     </message>
     <message>
         <source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the rngcoin network, as detailed below.</source>
-        <translation>Недавние транзакции могут быть пока не видны, поэтому ваш баланс может отображаться некорректно. Эта информация станет корректной, как только ваш бумажник будет синхронизирован с сетью, см. подробности ниже.</translation>
+        <translation>Недавние транзакции могут быть пока не видны, поэтому ваш баланс может отображаться некорректно. Эта информация станет корректной, как только ваш кошелёк будет синхронизирован с сетью, см. подробности ниже.</translation>
     </message>
     <message>
         <source>Attempting to spend rngcoins that are affected by not-yet-displayed transactions will not be accepted by the network.</source>
-        <translation>Попытка потратить RNGCoin-ы из ещё не отображённых транзакций будет отвергнута сетью.</translation>
+        <translation>Попытка потратить эмеркоины из ещё не отображённых транзакций будет отвергнута сетью.</translation>
     </message>
     <message>
         <source>Number of blocks left</source>
@@ -1048,20 +1048,20 @@
         <translation>&amp;Тратить неподтверждённую сдачу</translation>
     </message>
     <message>
-        <source>Automatically open the RNGCoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Автоматически открыть порт для RNGCoin-клиента на роутере. Работает только если Ваш роутер поддерживает UPnP, и данная функция включена.</translation>
+        <source>Automatically open the Rngcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Автоматически открыть порт для Rngcoin-клиента на роутере. Работает только если Ваш роутер поддерживает UPnP, и данная функция включена.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
         <translation>Пробросить порт через &amp;UPnP</translation>
     </message>
     <message>
-        <source>Connect to the RNGCoin network through a SOCKS5 proxy.</source>
-        <translation>Подключаться к сети RNGCoin через прокси SOCKS5</translation>
+        <source>Connect to the Rngcoin network through a SOCKS5 proxy.</source>
+        <translation>Подключаться к сети Rngcoin через прокси SOCKS5</translation>
     </message>
     <message>
         <source>&amp;Connect through SOCKS5 proxy (default proxy):</source>
-        <translation>&amp;Подключаться к сети RNGCoin через прокси SOCKS5 (прокси по умолчанию):</translation>
+        <translation>&amp;Подключаться к сети Rngcoin через прокси SOCKS5 (прокси по умолчанию):</translation>
     </message>
     <message>
         <source>Proxy &amp;IP:</source>
@@ -1096,8 +1096,8 @@
         <translation>Tor</translation>
     </message>
     <message>
-        <source>Connect to the RNGCoin network through a separate SOCKS5 proxy for Tor hidden services.</source>
-        <translation>Подключаться к сети RNGCoin через прокси SOCKS5 для скрытых сервисов Tor.</translation>
+        <source>Connect to the Rngcoin network through a separate SOCKS5 proxy for Tor hidden services.</source>
+        <translation>Подключаться к сети Rngcoin через прокси SOCKS5 для скрытых сервисов Tor.</translation>
     </message>
     <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services:</source>
@@ -1195,8 +1195,8 @@
         <translation>Форма</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the RNGCoin network after a connection is established, but this process has not completed yet.</source>
-        <translation>Отображаемая информация может быть устаревшей. Ваш бумажник автоматически синхронизируется с сетью RNGCoin после подключения, но этот процесс пока не завершён.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Rngcoin network after a connection is established, but this process has not completed yet.</source>
+        <translation>Отображаемая информация может быть устаревшей. Ваш кошелёк автоматически синхронизируется с сетью Rngcoin после подключения, но этот процесс пока не завершён.</translation>
     </message>
     <message>
         <source>Watch-only:</source>
@@ -1286,8 +1286,8 @@
         <translation>Неверный адрес платежа %1</translation>
     </message>
     <message>
-        <source>URI cannot be parsed! This can be caused by an invalid RNGCoin address or malformed URI parameters.</source>
-        <translation>Не удалось обработать URI! Это может быть связано с неверным адресом RNGCoin или неправильными параметрами URI.</translation>
+        <source>URI cannot be parsed! This can be caused by an invalid Rngcoin address or malformed URI parameters.</source>
+        <translation>Не удалось обработать URI! Это может быть связано с неверным адресом Rngcoin или неправильными параметрами URI.</translation>
     </message>
     <message>
         <source>Payment request file handling</source>
@@ -1380,8 +1380,8 @@
         <translation>Сумма</translation>
     </message>
     <message>
-        <source>Enter a RNGCoin address (e.g. %1)</source>
-        <translation>Введите адрес RNGCoin (например, %1)</translation>
+        <source>Enter a Rngcoin address or name (e.g. %1)</source>
+        <translation>Введите адрес Rngcoin или имя (например, %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -1726,7 +1726,7 @@
     </message>
     <message>
         <source>WARNING: Scammers have been active, telling users to type commands here, stealing their wallet contents. Do not use this console without fully understanding the ramification of a command.</source>
-        <translation>ВНИМАНИЕ: мошенники предлагали пользователям вводить сюда команды, похищая таким образом содержимое их бумажников. Не используйте эту консоль без полного понимания смысла команд.</translation>
+        <translation>ВНИМАНИЕ: мошенники предлагали пользователям вводить сюда команды, похищая таким образом содержимое их кошельков. Не используйте эту консоль без полного понимания смысла команд.</translation>
     </message>
     <message>
         <source>Network activity disabled</source>
@@ -1804,8 +1804,8 @@
         <translation>&amp;Повторно использовать существующий адрес получения (не рекомендуется)</translation>
     </message>
     <message>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the RNGCoin network.</source>
-        <translation>Необязательное сообщение для запроса платежа, которое будет показано при открытии запроса. Заметьте: сообщение не будет отправлено вместе с платежом через сеть RNGCoin.</translation>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Rngcoin network.</source>
+        <translation>Необязательное сообщение для запроса платежа, которое будет показано при открытии запроса. Заметьте: сообщение не будет отправлено вместе с платежом через сеть Rngcoin.</translation>
     </message>
     <message>
         <source>An optional label to associate with the new receiving address.</source>
@@ -2201,8 +2201,8 @@
         <translation><numerusform>Начало подтверждения ожидается через %n блок.</numerusform><numerusform>Начало подтверждения ожидается через %n блока.</numerusform><numerusform>Начало подтверждения ожидается через %n блоков.</numerusform><numerusform>Начало подтверждения ожидается через %n блоков.</numerusform></translation>
     </message>
     <message>
-        <source>Warning: Invalid RNGCoin address</source>
-        <translation>Внимание: неверный адрес RNGCoin</translation>
+        <source>Warning: Invalid Rngcoin address</source>
+        <translation>Внимание: неверный адрес Rngcoin</translation>
     </message>
     <message>
         <source>Warning: Unknown change address</source>
@@ -2244,8 +2244,8 @@
         <translation>Это нормальный платёж.</translation>
     </message>
     <message>
-        <source>The RNGCoin address to send the payment to</source>
-        <translation>Адрес RNGCoin, на который отправить платёж</translation>
+        <source>The Rngcoin address to send the payment to</source>
+        <translation>Адрес Rngcoin, на который отправить платёж</translation>
     </message>
     <message>
         <source>Alt+A</source>
@@ -2265,7 +2265,7 @@
     </message>
     <message>
         <source>The fee will be deducted from the amount being sent. The recipient will receive less rngcoins than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
-        <translation>С отправляемой суммы будет удержана комиссия. Получателю придёт меньше RNGCoin-ов, чем вы вводите в поле количества. Если выбрано несколько получателей, комиссия распределяется поровну.</translation>
+        <translation>С отправляемой суммы будет удержана комиссия. Получателю придёт меньше эмеркоинов, чем вы вводите в поле количества. Если выбрано несколько получателей, комиссия распределяется поровну.</translation>
     </message>
     <message>
         <source>S&amp;ubtract fee from amount</source>
@@ -2288,8 +2288,8 @@
         <translation>Введите метку для этого адреса, чтобы добавить его в список использованных</translation>
     </message>
     <message>
-        <source>A message that was attached to the rngcoin: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the RNGCoin network.</source>
-        <translation>К rngcoin: URI было прикреплено сообщение, которое будет сохранено вместе с транзакцией для вашего сведения. Заметьте: сообщение не будет отправлено через сеть RNGCoin.</translation>
+        <source>A message that was attached to the rngcoin: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Rngcoin network.</source>
+        <translation>К rngcoin: URI было прикреплено сообщение, которое будет сохранено вместе с транзакцией для вашего сведения. Заметьте: сообщение не будет отправлено через сеть Rngcoin.</translation>
     </message>
     <message>
         <source>Pay To:</source>
@@ -2334,11 +2334,11 @@
     </message>
     <message>
         <source>You can sign messages/agreements with your addresses to prove you can receive rngcoins sent to them. Be careful not to sign anything vague or random, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
-        <translation>Вы можете подписывать сообщения/соглашения своими адресами, чтобы доказать свою возможность получать RNGCoin-ы на них. Будьте осторожны, не подписывайте что-то неопределённое или случайное, так как фишинговые атаки могут обманным путём заставить вас подписать нежелательные сообщения. Подписывайте только те сообщения, с которыми вы согласны вплоть до мелочей.</translation>
+        <translation>Вы можете подписывать сообщения/соглашения своими адресами, чтобы доказать свою возможность получать эмеркоины на них. Будьте осторожны, не подписывайте что-то неопределённое или случайное, так как фишинговые атаки могут обманным путём заставить вас подписать нежелательные сообщения. Подписывайте только те сообщения, с которыми вы согласны вплоть до мелочей.</translation>
     </message>
     <message>
-        <source>The RNGCoin address to sign the message with</source>
-        <translation>Адрес RNGCoin, которым подписать сообщение</translation>
+        <source>The Rngcoin address to sign the message with</source>
+        <translation>Адрес Rngcoin, которым подписать сообщение</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -2369,8 +2369,8 @@
         <translation>Скопировать текущую подпись в системный буфер обмена</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this RNGCoin address</source>
-        <translation>Подписать сообщение, чтобы доказать владение адресом RNGCoin</translation>
+        <source>Sign the message to prove you own this Rngcoin address</source>
+        <translation>Подписать сообщение, чтобы доказать владение адресом Rngcoin</translation>
     </message>
     <message>
         <source>Sign &amp;Message</source>
@@ -2393,12 +2393,12 @@
         <translation>Введите ниже адрес получателя, сообщение (убедитесь, что переводы строк, пробелы, табы и т.п. в точности скопированы) и подпись, чтобы проверить сообщение. Убедитесь, что не скопировали лишнего в подпись, по сравнению с самим подписываемым сообщением, чтобы не стать жертвой атаки "man-in-the-middle". Заметьте, что эта операция удостоверяет лишь авторство подписавшего, но не может удостоверить отправителя транзакции.</translation>
     </message>
     <message>
-        <source>The RNGCoin address the message was signed with</source>
-        <translation>Адрес RNGCoin, которым было подписано сообщение</translation>
+        <source>The Rngcoin address the message was signed with</source>
+        <translation>Адрес Rngcoin, которым было подписано сообщение</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified RNGCoin address</source>
-        <translation>Проверить сообщение, чтобы убедиться, что оно было подписано указанным адресом RNGCoin</translation>
+        <source>Verify the message to ensure it was signed with the specified Rngcoin address</source>
+        <translation>Проверить сообщение, чтобы убедиться, что оно было подписано указанным адресом Rngcoin</translation>
     </message>
     <message>
         <source>Verify &amp;Message</source>
@@ -2426,7 +2426,7 @@
     </message>
     <message>
         <source>Wallet unlock was cancelled.</source>
-        <translation>Разблокировка бумажника была отменена.</translation>
+        <translation>Разблокировка кошелька была отменена.</translation>
     </message>
     <message>
         <source>Private key for the entered address is not available.</source>
@@ -2942,7 +2942,7 @@
     <name>WalletFrame</name>
     <message>
         <source>No wallet has been loaded.</source>
-        <translation>Не был загружен ни один бумажник.</translation>
+        <translation>Не был загружен ни один кошелёк.</translation>
     </message>
 </context>
 <context>
@@ -2964,11 +2964,11 @@
     </message>
     <message>
         <source>Backup Wallet</source>
-        <translation>Резервная копия бумажника</translation>
+        <translation>Резервная копия кошелька</translation>
     </message>
     <message>
         <source>Wallet Data (*.dat)</source>
-        <translation>Данные бумажника (*.dat)</translation>
+        <translation>Данные кошелька (*.dat)</translation>
     </message>
     <message>
         <source>Backup Failed</source>
@@ -2976,7 +2976,7 @@
     </message>
     <message>
         <source>There was an error trying to save the wallet data to %1.</source>
-        <translation>Произошла ошибка при сохранении данных бумажника в %1.</translation>
+        <translation>Произошла ошибка при сохранении данных кошелька в %1.</translation>
     </message>
     <message>
         <source>Backup Successful</source>
@@ -2984,7 +2984,7 @@
     </message>
     <message>
         <source>The wallet data was successfully saved to %1.</source>
-        <translation>Данные бумажника были успешно сохранены в %1.</translation>
+        <translation>Данные кошелька были успешно сохранены в %1.</translation>
     </message>
 </context>
 <context>
@@ -3058,8 +3058,8 @@
         <translation>Невозможно запустить HTTP сервер. Смотри debug лог для подробностей.</translation>
     </message>
     <message>
-        <source>RNGCoin Core</source>
-        <translation>RNGCoin Core</translation>
+        <source>Rngcoin Core</source>
+        <translation>Rngcoin Core</translation>
     </message>
     <message>
         <source>The %s developers</source>
@@ -3079,7 +3079,7 @@
     </message>
     <message>
         <source>Delete all wallet transactions and only recover those parts of the blockchain through -rescan on startup</source>
-        <translation>Удалить все транзакции бумажника с возможностью восстановить эти части цепи блоков с помощью -rescan при запуске</translation>
+        <translation>Удалить все транзакции кошелька с возможностью восстановить эти части цепи блоков с помощью -rescan при запуске</translation>
     </message>
     <message>
         <source>Error loading %s: You can't enable HD on a already existing non-HD wallet</source>
@@ -3091,7 +3091,7 @@
     </message>
     <message>
         <source>Execute command when a wallet transaction changes (%s in cmd is replaced by TxID)</source>
-        <translation>Выполнить команду, когда меняется транзакция в бумажнике (%s в команде заменяется на TxID)</translation>
+        <translation>Выполнить команду, когда меняется транзакция в кошельке (%s в команде заменяется на TxID)</translation>
     </message>
     <message>
         <source>Extra transactions to keep in memory for compact block reconstructions (default: %u)</source>
@@ -3107,7 +3107,7 @@
     </message>
     <message>
         <source>Maximum total fees (in %s) to use in a single wallet transaction or raw transaction; setting this too low may abort large transactions (default: %s)</source>
-        <translation>Максимальная сумма комиссий (%s) для одной транзакции в бумажнике или сырой транзакции; слишком низкое значение может вызвать прерывание больших транзакций (по умолчанию: %s)</translation>
+        <translation>Максимальная сумма комиссий (%s) для одной транзакции в кошельке или сырой транзакции; слишком низкое значение может вызвать прерывание больших транзакций (по умолчанию: %s)</translation>
     </message>
     <message>
         <source>Please check that your computer's date and time are correct! If your clock is wrong, %s will not work properly.</source>
@@ -3151,7 +3151,7 @@
     </message>
     <message>
         <source>Wallet will not create transactions that violate mempool chain limits (default: %u)</source>
-        <translation>Бумажник не будет создавать транзакции, которые нарушают лимиты цепочки пула в памяти (по умолчанию: %u)</translation>
+        <translation>Кошелёк не будет создавать транзакции, которые нарушают лимиты цепочки пула в памяти (по умолчанию: %u)</translation>
     </message>
     <message>
         <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
@@ -3183,7 +3183,7 @@
     </message>
     <message>
         <source>Attempt to recover private keys from a corrupt wallet on startup</source>
-        <translation>Попытаться восстановить приватные ключи из повреждённого бумажника при запуске</translation>
+        <translation>Попытаться восстановить приватные ключи из повреждённого кошелька при запуске</translation>
     </message>
     <message>
         <source>Block creation options:</source>
@@ -3219,7 +3219,7 @@
     </message>
     <message>
         <source>Do not load the wallet and disable wallet RPC calls</source>
-        <translation>Не загружать бумажник и запретить обращения к нему через RPC</translation>
+        <translation>Не загружать кошелёк и запретить обращения к нему через RPC</translation>
     </message>
     <message>
         <source>Do you want to rebuild the block database now?</source>
@@ -3251,7 +3251,7 @@
     </message>
     <message>
         <source>Error initializing wallet database environment %s!</source>
-        <translation>Ошибка инициализации окружения БД бумажника %s!</translation>
+        <translation>Ошибка инициализации окружения БД кошелька %s!</translation>
     </message>
     <message>
         <source>Error loading %s</source>
@@ -3259,11 +3259,11 @@
     </message>
     <message>
         <source>Error loading %s: Wallet corrupted</source>
-        <translation>Ошибка загрузки %s: Бумажник поврежден</translation>
+        <translation>Ошибка загрузки %s: Кошелёк поврежден</translation>
     </message>
     <message>
         <source>Error loading %s: Wallet requires newer version of %s</source>
-        <translation>Ошибка загрузки %s: Для бумажника требуется более новая версия %s</translation>
+        <translation>Ошибка загрузки %s: Для кошелька требуется более новая версия %s</translation>
     </message>
     <message>
         <source>Error loading %s: You can't disable HD on a already existing HD wallet</source>
@@ -3367,7 +3367,7 @@
     </message>
     <message>
         <source>Specify wallet file (within data directory)</source>
-        <translation>Укажите файл бумажника (внутри каталога данных)</translation>
+        <translation>Укажите файл кошелька (внутри каталога данных)</translation>
     </message>
     <message>
         <source>The source code is available from %s.</source>
@@ -3407,23 +3407,23 @@
     </message>
     <message>
         <source>Verifying wallet...</source>
-        <translation>Проверка бумажника...</translation>
+        <translation>Проверка кошелька...</translation>
     </message>
     <message>
         <source>Wallet %s resides outside data directory %s</source>
-        <translation>Бумажник %s располагается вне каталога данных %s</translation>
+        <translation>Кошелёк %s располагается вне каталога данных %s</translation>
     </message>
     <message>
         <source>Wallet debugging/testing options:</source>
-        <translation>Параметры отладки/тестирования бумажника:</translation>
+        <translation>Параметры отладки/тестирования кошелька:</translation>
     </message>
     <message>
         <source>Wallet needed to be rewritten: restart %s to complete</source>
-        <translation>Необходимо перезаписать бумажник, перезапустите %s для завершения операции.</translation>
+        <translation>Необходимо перезаписать кошелёк, перезапустите %s для завершения операции.</translation>
     </message>
     <message>
         <source>Wallet options:</source>
-        <translation>Настройки бумажника:</translation>
+        <translation>Настройки кошелька:</translation>
     </message>
     <message>
         <source>Allow JSON-RPC connections from specified source. Valid for &lt;ip&gt; are a single IP (e.g. 1.2.3.4), a network/netmask (e.g. 1.2.3.4/255.255.255.0) or a network/CIDR (e.g. 1.2.3.4/24). This option can be specified multiple times</source>
@@ -3439,7 +3439,7 @@
     </message>
     <message>
         <source>Create new files with system default permissions, instead of umask 077 (only effective with disabled wallet functionality)</source>
-        <translation>Создавать новые файлы с системными правами по умолчанию вместо umask 077 (эффективно только при отключенном бумажнике)</translation>
+        <translation>Создавать новые файлы с системными правами по умолчанию вместо umask 077 (эффективно только при отключенном кошельке)</translation>
     </message>
     <message>
         <source>Discover own IP addresses (default: 1 when listening and no -externalip or -proxy)</source>
@@ -3483,7 +3483,7 @@
     </message>
     <message>
         <source>Use hierarchical deterministic key generation (HD) after BIP32. Only has effect during wallet creation/first start</source>
-        <translation>Использовать иерархическую детерминированную генерацию ключей (HD) после BIP32. Применяется в процессе создания бумажника / первого запуска</translation>
+        <translation>Использовать иерархическую детерминированную генерацию ключей (HD) после BIP32. Применяется в процессе создания кошелька / первого запуска</translation>
     </message>
     <message>
         <source>Whitelisted peers cannot be DoS banned and their transactions are always relayed, even if they are already in the mempool, useful e.g. for a gateway</source>
@@ -3551,7 +3551,7 @@
     </message>
     <message>
         <source>Rescan the block chain for missing wallet transactions on startup</source>
-        <translation>Перепроверить цепь блоков на предмет отсутствующих в бумажнике транзакций при запуске</translation>
+        <translation>Перепроверить цепь блоков на предмет отсутствующих в кошельке транзакций при запуске</translation>
     </message>
     <message>
         <source>Send trace/debug info to console instead of debug.log file</source>
@@ -3607,7 +3607,7 @@
     </message>
     <message>
         <source>Upgrade wallet to latest format on startup</source>
-        <translation>Обновить бумажник до последнего формата при запуске</translation>
+        <translation>Обновить кошелёк до последнего формата при запуске</translation>
     </message>
     <message>
         <source>Username for JSON-RPC connections</source>
@@ -3735,7 +3735,7 @@
     </message>
     <message>
         <source>Warning: Wallet file corrupt, data salvaged! Original %s saved as %s in %s; if your balance or transactions are incorrect you should restore from a backup.</source>
-        <translation>Внимание: Файл бумажника поврежден, данные восстановлены! Оригинальный %s сохранен как %s в %s; Если баланс или транзакции некорректны, вы должны восстановить файл из резервной копии.</translation>
+        <translation>Внимание: Файл кошелька поврежден, данные восстановлены! Оригинальный %s сохранен как %s в %s; Если баланс или транзакции некорректны, вы должны восстановить файл из резервной копии.</translation>
     </message>
     <message>
         <source>Whitelist peers connecting from the given IP address (e.g. 1.2.3.4) or CIDR notated network (e.g. 1.2.3.0/24). Can be specified multiple times.</source>
@@ -3783,7 +3783,7 @@
     </message>
     <message>
         <source>Make the wallet broadcast transactions</source>
-        <translation>Рассылать транзакции из бумажника</translation>
+        <translation>Рассылать транзакции из кошелька</translation>
     </message>
     <message>
         <source>Maximum per-connection receive buffer, &lt;n&gt;*1000 bytes (default: %u)</source>
@@ -3843,7 +3843,7 @@
     </message>
     <message>
         <source>The wallet will avoid paying less than the minimum relay fee.</source>
-        <translation>Бумажник постарается не платить меньше, чем минимальная комиссия передачи.</translation>
+        <translation>Кошелёк постарается не платить меньше, чем минимальная комиссия передачи.</translation>
     </message>
     <message>
         <source>This is the minimum transaction fee you pay on every transaction.</source>
@@ -3887,11 +3887,11 @@
     </message>
     <message>
         <source>Loading wallet...</source>
-        <translation>Загрузка бумажника...</translation>
+        <translation>Загрузка кошелька...</translation>
     </message>
     <message>
         <source>Cannot downgrade wallet</source>
-        <translation>Не удаётся понизить версию бумажника</translation>
+        <translation>Не удаётся понизить версию кошелька</translation>
     </message>
     <message>
         <source>Cannot write default address</source>

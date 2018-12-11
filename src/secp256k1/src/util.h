@@ -1,7 +1,7 @@
 /**********************************************************************
  * Copyright (c) 2013, 2014 Pieter Wuille                             *
- * Distributed under the MIT software license, see the accompanying   *
- * file COPYING or http://www.opensource.org/licenses/mit-license.php.*
+ * Distributed under the GPL3 software license, see the accompanying   *
+ * file COPYING or http://www.gnu.org/licenses/gpl.html.*
  **********************************************************************/
 
 #ifndef _SECP256K1_UTIL_H_
@@ -57,10 +57,7 @@ static SECP256K1_INLINE void secp256k1_callback_call(const secp256k1_callback * 
 #endif
 
 /* Like assert(), but when VERIFY is defined, and side-effect safe. */
-#if defined(COVERAGE)
-#define VERIFY_CHECK(check)
-#define VERIFY_SETUP(stmt)
-#elif defined(VERIFY)
+#ifdef VERIFY
 #define VERIFY_CHECK CHECK
 #define VERIFY_SETUP(stmt) do { stmt; } while(0)
 #else

@@ -1,7 +1,7 @@
 <RCC>
     <qresource prefix="/icons">
-        <file alias="bitcoin">res/icons/bitcoin.png</file>
-        <file alias="rngcoin_splash">res/icons/rngcoin_splash.png</file>
+        <file alias="rngcoin">res/icons/rngcoin.png</file>
+        <file alias="rngcoin_testnet">res/icons/rngcoin_testnet.png</file>
         <file alias="address-book">res/icons/address-book.png</file>
         <file alias="quit">res/icons/quit.png</file>
         <file alias="send">res/icons/send.png</file>
@@ -54,20 +54,25 @@
         <file alias="hd_enabled">res/icons/hd_enabled.png</file>
         <file alias="hd_disabled">res/icons/hd_disabled.png</file>
         <file alias="network_disabled">res/icons/network_disabled.png</file>
-        <file>res/movies/makespinner.sh</file>
-        <file>res/icons/rngcoin.png</file>
-        <file>res/fonts/Montserrat-Bold.otf</file>
-        <file>res/fonts/Montserrat-Medium.otf</file>
-        <file>res/fonts/Montserrat-Regular.otf</file>
-        <file>res/fonts/Montserrat-SemiBold.otf</file>
-        <file>res/icons/export-button.png</file>
-        <file>res/icons/export-button-hover.png</file>
-        <file>res/icons/export-button-pressed.png</file>
-        <file>res/icons/overview_page_bkg.png</file>
-        <file>res/icons/search-16.png</file>
-        <file>res/icons/triangle-down.png</file>
-        <file>res/icons/tx_page_bkg.png</file>
-        <file>res/icons/splashscrean_bkg.png</file>
+        <file alias="tx_nameop">res/icons/tx_nameop.png</file>
+        <file alias="name2">res/icons/name2.png</file>
+        <file alias="DPO-16.png">res/icons/DPO-16.png</file>
+        <file alias="DPO-32.png">res/icons/DPO-32.png</file>
+        <file alias="DPO_use_case_2.png">res/icons/DPO_use_case_2.png</file>
+        <file alias="EmerDNS-128.png">res/icons/EmerDNS-128.png</file>
+        <file alias="EmerDNS-16.png">res/icons/EmerDNS-16.png</file>
+        <file alias="EmerDNS-32.png">res/icons/EmerDNS-32.png</file>
+        <file alias="EmerSSL-16.png">res/icons/EmerSSL-16.png</file>
+        <file alias="EmerSSL-32.png">res/icons/EmerSSL-32.png</file>
+        <file alias="EmerSSL-64.png">res/icons/EmerSSL-64.png</file>
+        <file alias="Enumer-16.png">res/icons/Enumer-16.png</file>
+        <file alias="Enumer-32.png">res/icons/Enumer-32.png</file>
+        <file alias="InfoCard-16.png">res/icons/InfoCard-16.png</file>
+        <file alias="InfoCard-32.png">res/icons/InfoCard-32.png</file>
+        <file alias="Trusted-diploma-16-monochrome.png">res/icons/Trusted-diploma-16-monochrome.png</file>
+        <file alias="TrustedDiploma-16.png">res/icons/TrustedDiploma-16.png</file>
+        <file alias="TrustedDiploma-32.png">res/icons/name2.png</file>
+        <file alias="splash">res/icons/splash.png</file>
     </qresource>
     <qresource prefix="/movies">
         <file alias="spinner-000">res/movies/spinner-000.png</file>

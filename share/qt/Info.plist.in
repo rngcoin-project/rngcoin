@@ -11,34 +11,34 @@
   </array>
 
   <key>CFBundleIconFile</key>
-  <string>bitcoin.icns</string>
+  <string>rngcoin.icns</string>
 
   <key>CFBundlePackageType</key>
   <string>APPL</string>
 
   <key>CFBundleGetInfoString</key>
-  <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@, Copyright © 2009-@COPYRIGHT_YEAR@ @COPYRIGHT_HOLDERS_FINAL@</string>
+  <string>@RNGCOIN_VERSION_MAJOR@.@RNGCOIN_VERSION_MINOR@.@RNGCOIN_VERSION_REVISION@, Copyright © 2009-@COPYRIGHT_YEAR@ @COPYRIGHT_HOLDERS_FINAL@</string>
 
   <key>CFBundleShortVersionString</key>
-  <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@</string>
+  <string>@RNGCOIN_VERSION_MAJOR@.@RNGCOIN_VERSION_MINOR@.@RNGCOIN_VERSION_REVISION@</string>
 
   <key>CFBundleVersion</key>
-  <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@</string>
+  <string>@RNGCOIN_VERSION_MAJOR@.@RNGCOIN_VERSION_MINOR@.@RNGCOIN_VERSION_REVISION@</string>
 
   <key>CFBundleSignature</key>
   <string>????</string>
 
   <key>CFBundleExecutable</key>
-  <string>RNGCoin-Qt</string>
+  <string>Rngcoin-Qt</string>
   
   <key>CFBundleName</key>
-  <string>RNGCoin-Qt</string>
+  <string>Rngcoin-Qt</string>
 
   <key>LSHasLocalizedDisplayName</key>
   <true/>
 
   <key>CFBundleIdentifier</key>
-  <string>org.rngcoin.RNGCoin-Qt</string>
+  <string>com.rngcoin.Rngcoin-Qt</string>
 
   <key>CFBundleURLTypes</key>
   <array>
@@ -46,7 +46,7 @@
       <key>CFBundleTypeRole</key>
       <string>Editor</string>
       <key>CFBundleURLName</key>
-      <string>org.rngcoin.RNGCoinPayment</string>
+      <string>com.rngcoin.RngcoinPayment</string>
       <key>CFBundleURLSchemes</key>
       <array>
         <string>rngcoin</string>
@@ -58,9 +58,9 @@
   <array>
     <dict>
       <key>UTTypeIdentifier</key>
-      <string>org.rngcoin.paymentrequest</string>
+      <string>com.rngcoin.paymentrequest</string>
       <key>UTTypeDescription</key>
-      <string>RNGCoin payment request</string>
+      <string>Rngcoin payment request</string>
       <key>UTTypeConformsTo</key>
       <array>
         <string>public.data</string>
@@ -84,7 +84,7 @@
       <string>Editor</string>
       <key>LSItemContentTypes</key>
       <array>
-        <string>org.rngcoin.paymentrequest</string>
+        <string>com.rngcoin.paymentrequest</string>
       </array>
       <key>LSHandlerRank</key>
       <string>Owner</string>

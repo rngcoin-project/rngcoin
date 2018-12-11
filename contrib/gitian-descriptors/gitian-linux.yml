@@ -1,5 +1,5 @@
 ---
-name: "rngcoin-linux-0.15"
+name: "rngcoin-linux-0.7"
 enable_cache: true
 suites:
 - "trusty"
@@ -28,7 +28,7 @@ packages:
 - "ca-certificates"
 - "python"
 remotes:
-- "url": "https://github.com/rngcoin-project/rngcoin.git"
+- "url": "ssh://git-codecommit.eu-central-1.amazonaws.com/v1/repos/rng-coin-fork"
   "dir": "rngcoin"
 files: []
 script: |
@@ -144,9 +144,6 @@ script: |
   find rngcoin-* | sort | tar --no-recursion --mode='u+rw,go+r-w,a+X' --owner=0 --group=0 -c -T - | gzip -9n > ../$SOURCEDIST
   popd
 
-  # Workaround for tarball not building with the bare tag version (prep)
-  make -C src obj/build.h
-
   ORIGPATH="$PATH"
   # Extract the release tarball into a dir for each host and build
   for i in ${HOSTS}; do
@@ -156,11 +153,6 @@ script: |
     INSTALLPATH=`pwd`/installed/${DISTNAME}
     mkdir -p ${INSTALLPATH}
     tar --strip-components=1 -xf ../$SOURCEDIST
-
-    # Workaround for tarball not building with the bare tag version
-    echo '#!/bin/true' >share/genbuild.sh
-    mkdir src/obj
-    cp ../src/obj/build.h src/obj/
 
     CONFIG_SITE=${BASEPREFIX}/${i}/share/config.site ./configure --prefix=/ --disable-ccache --disable-maintainer-mode --disable-dependency-tracking ${CONFIGFLAGS} CFLAGS="${HOST_CFLAGS}" CXXFLAGS="${HOST_CXXFLAGS}" LDFLAGS="${HOST_LDFLAGS}"
     make ${MAKEOPTS}
@@ -181,14 +173,8 @@ script: |
     find . -name "lib*.la" -delete
     find . -name "lib*.a" -delete
     rm -rf ${DISTNAME}/lib/pkgconfig
- 
-    # RNGCoin: Delete libbitcoin from binary distribution for now, see #192
-    rm -rf ${DISTNAME}/lib/
-    rm -rf ${DISTNAME}/include/
-    # RNGCoin: ends
- 
     find ${DISTNAME}/bin -type f -executable -exec ../contrib/devtools/split-debug.sh {} {} {}.dbg \;
-    #find ${DISTNAME}/lib -type f -exec ../contrib/devtools/split-debug.sh {} {} {}.dbg \; # RNGCoin: see issue 192
+    find ${DISTNAME}/lib -type f -exec ../contrib/devtools/split-debug.sh {} {} {}.dbg \;
     find ${DISTNAME} -not -name "*.dbg" | sort | tar --no-recursion --mode='u+rw,go+r-w,a+X' --owner=0 --group=0 -c -T - | gzip -9n > ${OUTDIR}/${DISTNAME}-${i}.tar.gz
     find ${DISTNAME} -name "*.dbg" | sort | tar --no-recursion --mode='u+rw,go+r-w,a+X' --owner=0 --group=0 -c -T - | gzip -9n > ${OUTDIR}/${DISTNAME}-${i}-debug.tar.gz
     cd ../../

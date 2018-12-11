@@ -50,24 +50,12 @@
         <translation>Επιλέξτε διεύθυνση παραλαβής νομισμάτων</translation>
     </message>
     <message>
-        <source>C&amp;hoose</source>
-        <translation>Ε&amp;πιλογή</translation>
-    </message>
-    <message>
         <source>Sending addresses</source>
         <translation>Διευθύνσεις αποστολής</translation>
     </message>
     <message>
         <source>Receiving addresses</source>
         <translation>Διευθύνσεις λήψης</translation>
-    </message>
-    <message>
-        <source>These are your RNGCoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Αυτές είναι οι RNGCoin διευθύνσεις σας για να στέλνετε πληρωμές. Να ελέγχετε πάντα το ποσό, καθώς και τη διεύθυνση παραλήπτη πριν στείλετε νομίσματα.</translation>
-    </message>
-    <message>
-        <source>These are your RNGCoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Αυτές είναι οι RNGCoin διευθύνσεις σας για να λαμβάνετε πληρωμές. Προτείνετε να χρησιμοποιείτε μια νέα διεύθυνση παραλήπτη για κάθε συναλλαγή.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -86,18 +74,10 @@
         <translation>Εξαγωγή Λίστας Διεύθυνσεων</translation>
     </message>
     <message>
-        <source>Comma separated file (*.csv)</source>
-        <translation>Αρχείο οριοθετημένο με κόμματα (*.csv)</translation>
-    </message>
-    <message>
         <source>Exporting Failed</source>
         <translation>Αποτυχία Εξαγωγής</translation>
     </message>
-    <message>
-        <source>There was an error trying to save the address list to %1. Please try again.</source>
-        <translation>Σφάλμα κατά την προσπάθεια αποθήκευσης της λίστας διευθύνσεων στο %1. Παρακαλώ δοκιμάστε ξανά.</translation>
-    </message>
-</context>
+    </context>
 <context>
     <name>AddressTableModel</name>
     <message>
@@ -130,14 +110,6 @@
     <message>
         <source>Repeat new passphrase</source>
         <translation>Επανέλαβε τον νέο κωδικό πρόσβασης</translation>
-    </message>
-    <message>
-        <source>Enter the new passphrase to the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;ten or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
-        <translation>Εισάγετε το νέο κωδικό πρόσβασης στο πορτοφόλι. &lt;br/&gt;Παρακαλώ χρησιμοποιείστε έναν κωδικό με &lt;b&gt;δέκα ή περισσότερους τυχαίους χαρακτήρες &lt;/b&gt;, ή &lt;b&gt;οχτώ ή παραπάνω λέξεις &lt;/b&gt;.</translation>
-    </message>
-    <message>
-        <source>Encrypt wallet</source>
-        <translation>Κρυπτογράφηση πορτοφολιού</translation>
     </message>
     <message>
         <source>Unlock wallet</source>
@@ -238,7 +210,7 @@
         <translation>Φόρτωση ευρετηρίου μπλοκ στον σκληρο δισκο...</translation>
     </message>
     <message>
-        <source>Send coins to a RNGCoin address</source>
+        <source>Send coins to a Rngcoin address</source>
         <translation>Στείλε νομίσματα σε μια διεύθυνση rngcoin</translation>
     </message>
     <message>
@@ -262,8 +234,8 @@
         <translation>&amp;Επιβεβαίωση μηνύματος</translation>
     </message>
     <message>
-        <source>RNGCoin</source>
-        <translation>RNGCoin</translation>
+        <source>Rngcoin</source>
+        <translation>Rngcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -290,12 +262,12 @@
         <translation>Κρυπτογραφήστε τα ιδιωτικά κλειδιά που ανήκουν στο πορτοφόλι σας </translation>
     </message>
     <message>
-        <source>Sign messages with your RNGCoin addresses to prove you own them</source>
+        <source>Sign messages with your Rngcoin addresses to prove you own them</source>
         <translation>Υπογράψτε ένα μήνυμα για να βεβαιώσετε πως είστε ο κάτοχος αυτής της διεύθυνσης</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified RNGCoin addresses</source>
-        <translation>Υπογράψτε ένα μήνυμα για ν' αποδείξετε πως ανήκει μια συγκεκριμένη διεύθυνση RNGCoin</translation>
+        <source>Verify messages to ensure they were signed with specified Rngcoin addresses</source>
+        <translation>Υπογράψτε ένα μήνυμα για ν' αποδείξετε πως ανήκει μια συγκεκριμένη διεύθυνση Rngcoin</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -736,16 +708,16 @@
         <translation>&amp;Ξόδεμα μη επικυρωμένων ρέστων</translation>
     </message>
     <message>
-        <source>Automatically open the RNGCoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Αυτόματο άνοιγμα των θυρών RNGCoin στον δρομολογητή. Λειτουργεί μόνο αν ο δρομολογητής σας υποστηρίζει τη λειτουργία UPnP.</translation>
+        <source>Automatically open the Rngcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Αυτόματο άνοιγμα των θυρών Rngcoin στον δρομολογητή. Λειτουργεί μόνο αν ο δρομολογητής σας υποστηρίζει τη λειτουργία UPnP.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
         <translation>Απόδοση θυρών με χρήστη &amp;UPnP</translation>
     </message>
     <message>
-        <source>Connect to the RNGCoin network through a SOCKS5 proxy.</source>
-        <translation>Σύνδεση στο RNGCoin δίκτυο μέσω διαμεσολαβητή SOCKS5 (π.χ. για σύνδεση μέσω Tor)</translation>
+        <source>Connect to the Rngcoin network through a SOCKS5 proxy.</source>
+        <translation>Σύνδεση στο Rngcoin δίκτυο μέσω διαμεσολαβητή SOCKS5 (π.χ. για σύνδεση μέσω Tor)</translation>
     </message>
     <message>
         <source>&amp;Connect through SOCKS5 proxy (default proxy):</source>
@@ -840,8 +812,8 @@
         <translation>Φόρμα</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the RNGCoin network after a connection is established, but this process has not completed yet.</source>
-        <translation>Οι πληροφορίες που εμφανίζονται μπορεί να είναι ξεπερασμένες. Το πορτοφόλι σας συγχρονίζεται αυτόματα με το δίκτυο RNGCoin μετά από μια σύνδεση, αλλά αυτή η διαδικασία δεν έχει ακόμη ολοκληρωθεί. </translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Rngcoin network after a connection is established, but this process has not completed yet.</source>
+        <translation>Οι πληροφορίες που εμφανίζονται μπορεί να είναι ξεπερασμένες. Το πορτοφόλι σας συγχρονίζεται αυτόματα με το δίκτυο Rngcoin μετά από μια σύνδεση, αλλά αυτή η διαδικασία δεν έχει ακόμη ολοκληρωθεί. </translation>
     </message>
     <message>
         <source>Watch-only:</source>
@@ -921,8 +893,8 @@
         <translation>Ποσό</translation>
     </message>
     <message>
-        <source>Enter a RNGCoin address (e.g. %1)</source>
-        <translation>Εισάγετε μια διεύθυνση RNGCoin (π.χ. %1)</translation>
+        <source>Enter a Rngcoin address or name (e.g. %1)</source>
+        <translation>Εισάγετε μια διεύθυνση Rngcoin (π.χ. %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -1389,8 +1361,8 @@
         <translation>Αυτή είναι μια απλή πληρωμή.</translation>
     </message>
     <message>
-        <source>The RNGCoin address to send the payment to</source>
-        <translation>Η διεύθυνση RNGCoin που θα σταλεί η πληρωμή</translation>
+        <source>The Rngcoin address to send the payment to</source>
+        <translation>Η διεύθυνση Rngcoin που θα σταλεί η πληρωμή</translation>
     </message>
     <message>
         <source>Alt+A</source>
@@ -1446,8 +1418,8 @@
         <translation>&amp;Υπογραφή Μηνύματος</translation>
     </message>
     <message>
-        <source>The RNGCoin address to sign the message with</source>
-        <translation>Διεύθυνση RNGCoin που θα σταλεί το μήνυμα</translation>
+        <source>The Rngcoin address to sign the message with</source>
+        <translation>Διεύθυνση Rngcoin που θα σταλεί το μήνυμα</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -1478,8 +1450,8 @@
         <translation>Αντέγραφη της επιλεγμενης διεύθυνσης στο πρόχειρο του συστηματος</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this RNGCoin address</source>
-        <translation>Υπογράψτε ένα μήνυμα για ν' αποδείξετε πως σας ανήκει μια συγκεκριμένη διεύθυνση RNGCoin</translation>
+        <source>Sign the message to prove you own this Rngcoin address</source>
+        <translation>Υπογράψτε ένα μήνυμα για ν' αποδείξετε πως σας ανήκει μια συγκεκριμένη διεύθυνση Rngcoin</translation>
     </message>
     <message>
         <source>Sign &amp;Message</source>
@@ -1498,12 +1470,12 @@
         <translation>&amp;Επιβεβαίωση μηνύματος</translation>
     </message>
     <message>
-        <source>The RNGCoin address the message was signed with</source>
-        <translation>Διεύθυνση RNGCoin η οποία το μήνυμα έχει υπογραφεί</translation>
+        <source>The Rngcoin address the message was signed with</source>
+        <translation>Διεύθυνση Rngcoin η οποία το μήνυμα έχει υπογραφεί</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified RNGCoin address</source>
-        <translation>Υπογράψτε ένα μήνυμα για ν' αποδείξετε πως υπογραφθηκε απο μια συγκεκριμένη διεύθυνση RNGCoin</translation>
+        <source>Verify the message to ensure it was signed with the specified Rngcoin address</source>
+        <translation>Υπογράψτε ένα μήνυμα για ν' αποδείξετε πως υπογραφθηκε απο μια συγκεκριμένη διεύθυνση Rngcoin</translation>
     </message>
     <message>
         <source>Verify &amp;Message</source>
@@ -1652,10 +1624,6 @@
         <translation>Επεξεργασία ετικέτας</translation>
     </message>
     <message>
-        <source>Comma separated file (*.csv)</source>
-        <translation>Αρχείο οριοθετημένο με κόμματα (*.csv)</translation>
-    </message>
-    <message>
         <source>Date</source>
         <translation>Ημερομήνια</translation>
     </message>
@@ -1715,8 +1683,8 @@
         <translation>Εκτέλεση στο παρασκήνιο κι αποδοχή εντολών</translation>
     </message>
     <message>
-        <source>RNGCoin Core</source>
-        <translation>RNGCoin Core</translation>
+        <source>Rngcoin Core</source>
+        <translation>Rngcoin Core</translation>
     </message>
     <message>
         <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>

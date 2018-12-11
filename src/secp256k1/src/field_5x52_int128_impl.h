@@ -1,7 +1,7 @@
 /**********************************************************************
  * Copyright (c) 2013, 2014 Pieter Wuille                             *
- * Distributed under the MIT software license, see the accompanying   *
- * file COPYING or http://www.opensource.org/licenses/mit-license.php.*
+ * Distributed under the GPL3 software license, see the accompanying   *
+ * file COPYING or http://www.gnu.org/licenses/gpl.html.*
  **********************************************************************/
 
 #ifndef _SECP256K1_FIELD_INNER5X52_IMPL_H_

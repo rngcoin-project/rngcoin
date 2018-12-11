@@ -8,6 +8,8 @@
 #include "tinyformat.h"
 #include "utilstrencodings.h"
 
+using namespace std;
+
 const char* GetOpName(opcodetype opcode)
 {
     switch (opcode)
@@ -175,63 +177,108 @@ unsigned int CScript::GetSigOpCount(bool fAccurate) const
     return n;
 }
 
-unsigned int CScript::GetSigOpCount(const CScript& scriptSig) const
+unsigned int CScript::GetSigOpCount(const CScript& scriptSig, int nVersion) const
 {
-    if (!IsPayToScriptHash())
+    if (!IsPayToScriptHash(nVersion))
         return GetSigOpCount(true);
 
     // This is a pay-to-script-hash scriptPubKey;
     // get the last item that the scriptSig
     // pushes onto the stack:
     const_iterator pc = scriptSig.begin();
-    std::vector<unsigned char> vData;
+    vector<unsigned char> data;
     while (pc < scriptSig.end())
     {
         opcodetype opcode;
-        if (!scriptSig.GetOp(pc, opcode, vData))
+        if (!scriptSig.GetOp(pc, opcode, data))
             return 0;
         if (opcode > OP_16)
             return 0;
     }
 
     /// ... and return its opcount:
-    CScript subscript(vData.begin(), vData.end());
+    CScript subscript(data.begin(), data.end());
     return subscript.GetSigOpCount(true);
 }
 
-bool CScript::IsPayToScriptHash() const
+static bool IsPayToScriptHashInner(const CScript& scriptPubKey)
 {
     // Extra-fast test for pay-to-script-hash CScripts:
-    return (this->size() == 23 &&
-            (*this)[0] == OP_HASH160 &&
-            (*this)[1] == 0x14 &&
-            (*this)[22] == OP_EQUAL);
+    return (scriptPubKey.size() == 23 &&
+            scriptPubKey[0] == OP_HASH160 &&
+            scriptPubKey[1] == 0x14 &&
+            scriptPubKey[22] == OP_EQUAL);
 }
 
-bool CScript::IsPayToWitnessScriptHash() const
+bool CScript::IsPayToScriptHash(int nVersion) const
+{
+    bool ret = IsPayToScriptHashInner(*this);
+
+    // rngcoin: remove name (if any) and try again
+    if (!ret && nVersion == NAMECOIN_TX_VERSION)
+    {
+        CScript scriptRemainder;
+        if (!RemoveNameScriptPrefix(*this, scriptRemainder))
+            return false;
+        ret = IsPayToScriptHashInner(scriptRemainder);
+    }
+    return ret;
+}
+
+static bool IsPayToWitnessScriptHashInner(const CScript& scriptPubKey)
 {
     // Extra-fast test for pay-to-witness-script-hash CScripts:
-    return (this->size() == 34 &&
-            (*this)[0] == OP_0 &&
-            (*this)[1] == 0x20);
+    return (scriptPubKey.size() == 34 &&
+            scriptPubKey[0] == OP_0 &&
+            scriptPubKey[1] == 0x20);
+}
+
+bool CScript::IsPayToWitnessScriptHash(int nVersion) const
+{
+    bool ret = IsPayToWitnessScriptHashInner(*this);
+
+    // rngcoin: remove name (if any) and try again
+    if (!ret && nVersion == NAMECOIN_TX_VERSION)
+    {
+        CScript scriptRemainder;
+        if (!RemoveNameScriptPrefix(*this, scriptRemainder))
+            return false;
+        ret = IsPayToWitnessScriptHashInner(scriptRemainder);
+    }
+    return ret;
 }
 
 // A witness program is any valid CScript that consists of a 1-byte push opcode
 // followed by a data push between 2 and 40 bytes.
-bool CScript::IsWitnessProgram(int& version, std::vector<unsigned char>& program) const
+bool IsWitnessProgramInner(const CScript& script, int& version, std::vector<unsigned char>& program)
 {
-    if (this->size() < 4 || this->size() > 42) {
+    if (script.size() < 4 || script.size() > 42) {
         return false;
     }
-    if ((*this)[0] != OP_0 && ((*this)[0] < OP_1 || (*this)[0] > OP_16)) {
+    if (script[0] != OP_0 && (script[0] < OP_1 || script[0] > OP_16)) {
         return false;
     }
-    if ((size_t)((*this)[1] + 2) == this->size()) {
-        version = DecodeOP_N((opcodetype)(*this)[0]);
-        program = std::vector<unsigned char>(this->begin() + 2, this->end());
+    if ((size_t)(script[1] + 2) == script.size()) {
+        version = script.DecodeOP_N((opcodetype)script[0]);
+        program = std::vector<unsigned char>(script.begin() + 2, script.end());
         return true;
     }
     return false;
+}
+
+bool CScript::IsWitnessProgram(int& version, std::vector<unsigned char>& program, int txVersion) const
+{
+    bool ret = IsWitnessProgramInner(*this, version, program);
+
+    // rngcoin: remove name (if any) and try again
+    if (!ret && txVersion == NAMECOIN_TX_VERSION)
+    {
+        CScript scriptRemainder;
+        if (!RemoveNameScriptPrefix(*this, scriptRemainder))
+            return false;
+        ret = IsWitnessProgramInner(scriptRemainder, version, program);
+    }
+    return ret;
 }
 
 bool CScript::IsPushOnly(const_iterator pc) const
@@ -268,15 +315,153 @@ std::string CScriptWitness::ToString() const
     return ret + ")";
 }
 
-bool CScript::HasValidOps() const
+// namecoin stuff
+
+bool checkNameValues(NameTxInfo& ret)
 {
-    CScript::const_iterator it = begin();
-    while (it < end()) {
-        opcodetype opcode;
-        std::vector<unsigned char> item;
-        if (!GetOp(it, opcode, item) || opcode > MAX_OPCODE || item.size() > MAX_SCRIPT_ELEMENT_SIZE) {
+    ret.err_msg = "";
+    if (ret.name.size() > MAX_NAME_LENGTH)
+        ret.err_msg.append("name is too long.\n");
+
+    if (ret.value.size() > MAX_VALUE_LENGTH)
+        ret.err_msg.append("value is too long.\n");
+
+    if (ret.op == OP_NAME_NEW && ret.nRentalDays < 1)
+        ret.err_msg.append("rental days must be greater than 0.\n");
+
+    if (ret.op == OP_NAME_UPDATE && ret.nRentalDays < 0)
+        ret.err_msg.append("rental days must be greater or equal 0.\n");
+
+    if (ret.nRentalDays > MAX_RENTAL_DAYS)
+        ret.err_msg.append("rental days value is too large.\n");
+
+    if (ret.err_msg != "")
+        return false;
+    return true;
+}
+
+// read name script and extract name, value and rentalDays
+// returns true/false is script is correct/incorrect
+bool DecodeNameScript(const CScript& script, NameTxInfo& ret, CScript::const_iterator& pc)
+{
+    // script structure:
+    // (name_new | name_update) << OP_DROP << name << days << OP_2DROP << val1 << val2 << .. << valn << OP_DROP2 << OP_DROP2 << ..<< (OP_DROP2 | OP_DROP) << paytoscripthash
+    // or
+    // name_delete << OP_DROP << name << OP_DROP << paytoscripthash
+
+    // NOTE: script structure is strict - it must not contain anything else in the midle of it to be a valid name script. It can, however, contain anything else after the correct structure have been read.
+
+    // read op
+    ret.err_msg = "failed to read op";
+    opcodetype opcode;
+    if (!script.GetOp(pc, opcode))
+        return false;
+    if (opcode < OP_1 || opcode > OP_16)
+        return false;
+    ret.op = opcode - OP_1 + 1;
+
+    if (ret.op != OP_NAME_NEW && ret.op != OP_NAME_UPDATE && ret.op != OP_NAME_DELETE)
+        return false;
+
+    ret.err_msg = "failed to read OP_DROP after op_type";
+    if (!script.GetOp(pc, opcode))
+        return false;
+    if (opcode != OP_DROP)
+        return false;
+
+    vector<unsigned char> vch;
+
+    // read name
+    ret.err_msg = "failed to read name";
+    if (!script.GetOp(pc, opcode, vch))
+        return false;
+    if ((opcode == OP_DROP || opcode == OP_2DROP) || !(opcode >= 0 && opcode <= OP_PUSHDATA4))
+        return false;
+    ret.name = vch;
+
+    // if name_delete - read OP_DROP after name and exit.
+    if (ret.op == OP_NAME_DELETE)
+    {
+        ret.err_msg = "failed to read OP2_DROP in name_delete";
+        if (!script.GetOp(pc, opcode))
             return false;
-        }
+        if (opcode != OP_DROP)
+            return false;
+        ret.err_msg = "";
+
+        return true;
     }
+
+    // read rental days
+    ret.err_msg = "failed to read rental days";
+    if (!script.GetOp(pc, opcode, vch))
+        return false;
+    if ((opcode == OP_DROP || opcode == OP_2DROP) || !(opcode >= 0 && opcode <= OP_PUSHDATA4))
+        return false;
+    ret.nRentalDays = CScriptNum(vch, false).getint();
+
+    // read OP_2DROP after name and rentalDays
+    ret.err_msg = "failed to read delimeter d in: name << rental << d << value";
+    if (!script.GetOp(pc, opcode))
+        return false;
+    if (opcode != OP_2DROP)
+        return false;
+
+    // read value
+    ret.err_msg = "failed to read value";
+    int valueSize = 0;
+    for (;;)
+    {
+        if (!script.GetOp(pc, opcode, vch))
+            return false;
+        if (opcode == OP_DROP || opcode == OP_2DROP)
+            break;
+        if (!(opcode >= 0 && opcode <= OP_PUSHDATA4))
+            return false;
+        ret.value.insert(ret.value.end(), vch.begin(), vch.end());
+        valueSize++;
+    }
+    pc--;
+
+    // read next delimiter and move the pc after it
+    ret.err_msg = "failed to read correct number of DROP operations after value";
+    int delimiterSize = 0;
+    while (opcode == OP_DROP || opcode == OP_2DROP)
+    {
+        if (!script.GetOp(pc, opcode))
+            break;
+        if (opcode == OP_2DROP)
+            delimiterSize += 2;
+        if (opcode == OP_DROP)
+            delimiterSize += 1;
+    }
+    pc--;
+
+    if (valueSize != delimiterSize)
+        return false;
+
+
+    ret.err_msg = "";     //sucess! we have read name script structure without errors!
+    if (!checkNameValues(ret))
+        return false;
+
+    return true;
+}
+
+bool DecodeNameScript(const CScript& script, NameTxInfo& ret)
+{
+    CScript::const_iterator pc = script.begin();
+    return DecodeNameScript(script, ret, pc);
+}
+
+bool RemoveNameScriptPrefix(const CScript& scriptIn, CScript& scriptOut)
+{
+    NameTxInfo nti;
+    CScript::const_iterator pc = scriptIn.begin();
+
+    if (!DecodeNameScript(scriptIn, nti, pc))
+        return false;
+
+    scriptOut = CScript(pc, scriptIn.end());
     return true;
 }

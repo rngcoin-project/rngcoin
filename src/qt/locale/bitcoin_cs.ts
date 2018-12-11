@@ -62,11 +62,11 @@
         <translation>Přijímací adresy</translation>
     </message>
     <message>
-        <source>These are your RNGCoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <source>These are your Rngcoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
         <translation>Tohle jsou tvé rngcoinové adresy pro posílání plateb. Před odesláním mincí si vždy zkontroluj částku a cílovou adresu.</translation>
     </message>
     <message>
-        <source>These are your RNGCoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <source>These are your Rngcoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
         <translation>Tohle jsou tvé rngcoinové adresy pro příjem plateb. Nezapomeň si pro každou transakci vždy vygenerovat novou adresu.</translation>
     </message>
     <message>
@@ -338,7 +338,7 @@
         <translation>Vytvářím nový index bloků na disku...</translation>
     </message>
     <message>
-        <source>Send coins to a RNGCoin address</source>
+        <source>Send coins to a Rngcoin address</source>
         <translation>Pošli mince na rngcoinovou adresu</translation>
     </message>
     <message>
@@ -362,8 +362,8 @@
         <translation>&amp;Ověř zprávu...</translation>
     </message>
     <message>
-        <source>RNGCoin</source>
-        <translation>RNGCoin</translation>
+        <source>Rngcoin</source>
+        <translation>Rngcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -390,11 +390,11 @@
         <translation>Zašifruj soukromé klíče ve své peněžence</translation>
     </message>
     <message>
-        <source>Sign messages with your RNGCoin addresses to prove you own them</source>
+        <source>Sign messages with your Rngcoin addresses to prove you own them</source>
         <translation>Podepiš zprávy svými rngcoinovými adresami, čímž prokážeš, že jsi jejich vlastníkem</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified RNGCoin addresses</source>
+        <source>Verify messages to ensure they were signed with specified Rngcoin addresses</source>
         <translation>Ověř zprávy, aby ses ujistil, že byly podepsány danými rngcoinovými adresami</translation>
     </message>
     <message>
@@ -434,7 +434,7 @@
         <translation>Ar&amp;gumenty příkazové řádky</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to RNGCoin network</source>
+        <source>%n active connection(s) to Rngcoin network</source>
         <translation><numerusform>%n aktivní spojení do rngcoinové sítě</numerusform><numerusform>%n aktivní spojení do rngcoinové sítě</numerusform><numerusform>%n aktivních spojení do rngcoinové sítě</numerusform></translation>
     </message>
     <message>
@@ -478,8 +478,8 @@
         <translation>Aktuální</translation>
     </message>
     <message>
-        <source>Show the %1 help message to get a list with possible RNGCoin command-line options</source>
-        <translation>Seznam argumentů RNGCoinu pro příkazovou řádku získáš v nápovědě %1</translation>
+        <source>Show the %1 help message to get a list with possible Rngcoin command-line options</source>
+        <translation>Seznam argumentů Rngcoinu pro příkazovou řádku získáš v nápovědě %1</translation>
     </message>
     <message>
         <source>%1 client</source>
@@ -548,8 +548,8 @@
         <translation>Peněženka je &lt;b&gt;zašifrovaná&lt;/b&gt; a momentálně &lt;b&gt;zamčená&lt;/b&gt;</translation>
     </message>
     <message>
-        <source>A fatal error occurred. RNGCoin can no longer continue safely and will quit.</source>
-        <translation>Stala se fatální chyba. RNGCoin nemůže bezpečně pokračovat v činnosti, a proto skončí.</translation>
+        <source>A fatal error occurred. Rngcoin can no longer continue safely and will quit.</source>
+        <translation>Stala se fatální chyba. Rngcoin nemůže bezpečně pokračovat v činnosti, a proto skončí.</translation>
     </message>
 </context>
 <context>
@@ -684,7 +684,7 @@
     </message>
     <message>
         <source>This label turns red if any recipient receives an amount smaller than the current dust threshold.</source>
-        <translation>Popisek zčervená, pokud má některý příjemce obdržet částku menší, než je aktuální práh pro prach.</translation>
+        <translation>Popisek zčervená, pokud má některý příjrnge obdržet částku menší, než je aktuální práh pro prach.</translation>
     </message>
     <message>
         <source>Can vary +/- %1 satoshi(s) per input.</source>
@@ -742,7 +742,7 @@
         <translation>Uprav odesílací adresu</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid RNGCoin address.</source>
+        <source>The entered address "%1" is not a valid Rngcoin address.</source>
         <translation>Zadaná adresa „%1“ není platná rngcoinová adresa.</translation>
     </message>
     <message>
@@ -851,7 +851,7 @@
         <translation>Tohle je poprvé, co spouštíš %1, takže si můžeš zvolit, kam bude ukládat svá data.</translation>
     </message>
     <message>
-        <source>%1 will download and store a copy of the RNGCoin block chain. At least %2GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <source>%1 will download and store a copy of the Rngcoin block chain. At least %2GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
         <translation>%1 bude stahovat kopii řetězce bloků. Proto bude potřeba do tohoto adresáře uložit nejméně %2 GB dat – toto číslo bude navíc v průběhu času růst. Tvá peněženka bude rovněž uložena v tomto adresáři.</translation>
     </message>
     <message>
@@ -1048,7 +1048,7 @@
         <translation>&amp;Utrácet i ještě nepotvrzené drobné</translation>
     </message>
     <message>
-        <source>Automatically open the RNGCoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <source>Automatically open the Rngcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
         <translation>Automaticky otevře potřebný port na routeru. Tohle funguje jen za předpokladu, že tvůj router podporuje UPnP a že je UPnP povolené.</translation>
     </message>
     <message>
@@ -1056,7 +1056,7 @@
         <translation>Namapovat port přes &amp;UPnP</translation>
     </message>
     <message>
-        <source>Connect to the RNGCoin network through a SOCKS5 proxy.</source>
+        <source>Connect to the Rngcoin network through a SOCKS5 proxy.</source>
         <translation>Připojí se do rngcoinové sítě přes SOCKS5 proxy.</translation>
     </message>
     <message>
@@ -1096,7 +1096,7 @@
         <translation>Tor</translation>
     </message>
     <message>
-        <source>Connect to the RNGCoin network through a separate SOCKS5 proxy for Tor hidden services.</source>
+        <source>Connect to the Rngcoin network through a separate SOCKS5 proxy for Tor hidden services.</source>
         <translation>Připojí se do rngcoinové sítě přes SOCKS5 proxy vyhrazenou pro skryté služby v Tor síti.</translation>
     </message>
     <message>
@@ -1195,7 +1195,7 @@
         <translation>Formulář</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the RNGCoin network after a connection is established, but this process has not completed yet.</source>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Rngcoin network after a connection is established, but this process has not completed yet.</source>
         <translation>Zobrazené informace nemusí být aktuální. Tvá peněženka se automaticky sesynchronizuje s rngcoinovou sítí, jakmile se s ní spojí. Zatím ale ještě není synchronizace dokončena.</translation>
     </message>
     <message>
@@ -1286,7 +1286,7 @@
         <translation>Neplatná platební adresa %1</translation>
     </message>
     <message>
-        <source>URI cannot be parsed! This can be caused by an invalid RNGCoin address or malformed URI parameters.</source>
+        <source>URI cannot be parsed! This can be caused by an invalid Rngcoin address or malformed URI parameters.</source>
         <translation>Nepodařilo se analyzovat URI! Důvodem může být neplatná rngcoinová adresa nebo poškozené parametry URI.</translation>
     </message>
     <message>
@@ -1380,7 +1380,7 @@
         <translation>Částka</translation>
     </message>
     <message>
-        <source>Enter a RNGCoin address (e.g. %1)</source>
+        <source>Enter a Rngcoin address or name (e.g. %1)</source>
         <translation>Zadej rngcoinovou adresu (např. %1)</translation>
     </message>
     <message>
@@ -1804,7 +1804,7 @@
         <translation>&amp;Recyklovat již existující adresy (nedoporučeno)</translation>
     </message>
     <message>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the RNGCoin network.</source>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Rngcoin network.</source>
         <translation>Volitelná zpráva, která se připojí k platebnímu požadavku a která se zobrazí, když se požadavek otevře. Poznámka: tahle zpráva se neposílá s platbou po rngcoinové síti.</translation>
     </message>
     <message>
@@ -2066,11 +2066,11 @@
     </message>
     <message>
         <source>Send to multiple recipients at once</source>
-        <translation>Pošli více příjemcům naráz</translation>
+        <translation>Pošli více příjrngům naráz</translation>
     </message>
     <message>
         <source>Add &amp;Recipient</source>
-        <translation>Při&amp;dej příjemce</translation>
+        <translation>Při&amp;dej příjrnge</translation>
     </message>
     <message>
         <source>Clear all fields of the form.</source>
@@ -2154,7 +2154,7 @@
     </message>
     <message>
         <source>The recipient address is not valid. Please recheck.</source>
-        <translation>Adresa příjemce je neplatná – překontroluj ji prosím.</translation>
+        <translation>Adresa příjrnge je neplatná – překontroluj ji prosím.</translation>
     </message>
     <message>
         <source>The amount to pay must be larger than 0.</source>
@@ -2201,7 +2201,7 @@
         <translation><numerusform>Potvrzování by podle odhadu mělo začít během %n bloku.</numerusform><numerusform>Potvrzování by podle odhadu mělo začít během %n bloků.</numerusform><numerusform>Potvrzování by podle odhadu mělo začít během %n bloků.</numerusform></translation>
     </message>
     <message>
-        <source>Warning: Invalid RNGCoin address</source>
+        <source>Warning: Invalid Rngcoin address</source>
         <translation>Upozornění: Neplatná rngcoinová adresa</translation>
     </message>
     <message>
@@ -2244,8 +2244,8 @@
         <translation>Tohle je normální platba.</translation>
     </message>
     <message>
-        <source>The RNGCoin address to send the payment to</source>
-        <translation>RNGCoinová adresa příjemce</translation>
+        <source>The Rngcoin address to send the payment to</source>
+        <translation>Rngcoinová adresa příjrnge</translation>
     </message>
     <message>
         <source>Alt+A</source>
@@ -2265,7 +2265,7 @@
     </message>
     <message>
         <source>The fee will be deducted from the amount being sent. The recipient will receive less rngcoins than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
-        <translation>Poplatek se odečte od posílané částky. Příjemce tak dostane méně rngcoinů, než zadáš do pole Částka. Pokud vybereš více příjemců, tak se poplatek rovnoměrně rozloží.</translation>
+        <translation>Poplatek se odečte od posílané částky. Příjrnge tak dostane méně rngcoinů, než zadáš do pole Částka. Pokud vybereš více příjrngů, tak se poplatek rovnoměrně rozloží.</translation>
     </message>
     <message>
         <source>S&amp;ubtract fee from amount</source>
@@ -2288,7 +2288,7 @@
         <translation>Zadej označení této adresy; obojí se ti pak uloží do adresáře</translation>
     </message>
     <message>
-        <source>A message that was attached to the rngcoin: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the RNGCoin network.</source>
+        <source>A message that was attached to the rngcoin: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Rngcoin network.</source>
         <translation>Zpráva, která byla připojena k rngcoin: URI a která se ti pro přehled uloží k transakci. Poznámka: Tahle zpráva se neposílá s platbou po rngcoinové síti.</translation>
     </message>
     <message>
@@ -2337,8 +2337,8 @@
         <translation>Podepsáním zprávy/smlouvy svými adresami můžeš prokázat, že jsi na ně schopen přijmout rngcoiny. Buď opatrný a nepodepisuj nic vágního nebo náhodného; například při phishingových útocích můžeš být lákán, abys něco takového podepsal. Podepisuj pouze naprosto úplná a detailní prohlášení, se kterými souhlasíš.</translation>
     </message>
     <message>
-        <source>The RNGCoin address to sign the message with</source>
-        <translation>RNGCoinová adresa, kterou se zpráva podepíše</translation>
+        <source>The Rngcoin address to sign the message with</source>
+        <translation>Rngcoinová adresa, kterou se zpráva podepíše</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -2369,7 +2369,7 @@
         <translation>Zkopíruj tento podpis do schránky</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this RNGCoin address</source>
+        <source>Sign the message to prove you own this Rngcoin address</source>
         <translation>Podepiš zprávu, čímž prokážeš, že jsi vlastníkem této rngcoinové adresy</translation>
     </message>
     <message>
@@ -2390,14 +2390,14 @@
     </message>
     <message>
         <source>Enter the receiver's address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
-        <translation>K ověření podpisu zprávy zadej adresu příjemce, zprávu (ověř si, že správně kopíruješ zalomení řádků, mezery, tabulátory apod.) a podpis. Dávej pozor na to, abys nezkopíroval do podpisu víc, než co je v samotné podepsané zprávě, abys nebyl napálen man-in-the-middle útokem. Poznamenejme však, že takto lze pouze prokázat, že podepisující je schopný na dané adrese přijmout platbu, ale není možnéprokázat, že odeslal jakoukoli transakci!</translation>
+        <translation>K ověření podpisu zprávy zadej adresu příjrnge, zprávu (ověř si, že správně kopíruješ zalomení řádků, mezery, tabulátory apod.) a podpis. Dávej pozor na to, abys nezkopíroval do podpisu víc, než co je v samotné podepsané zprávě, abys nebyl napálen man-in-the-middle útokem. Poznamenejme však, že takto lze pouze prokázat, že podepisující je schopný na dané adrese přijmout platbu, ale není možnéprokázat, že odeslal jakoukoli transakci!</translation>
     </message>
     <message>
-        <source>The RNGCoin address the message was signed with</source>
-        <translation>RNGCoinová adresa, kterou je zpráva podepsána</translation>
+        <source>The Rngcoin address the message was signed with</source>
+        <translation>Rngcoinová adresa, kterou je zpráva podepsána</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified RNGCoin address</source>
+        <source>Verify the message to ensure it was signed with the specified Rngcoin address</source>
         <translation>Ověř zprávu, aby ses ujistil, že byla podepsána danou rngcoinovou adresou</translation>
     </message>
     <message>
@@ -3058,8 +3058,8 @@
         <translation>Nemohu spustit HTTP server. Detaily viz v debug.log.</translation>
     </message>
     <message>
-        <source>RNGCoin Core</source>
-        <translation>RNGCoin Core</translation>
+        <source>Rngcoin Core</source>
+        <translation>Rngcoin Core</translation>
     </message>
     <message>
         <source>The %s developers</source>
@@ -3867,7 +3867,7 @@
     </message>
     <message>
         <source>Transaction must have at least one recipient</source>
-        <translation>Transakce musí mít alespoň jednoho příjemce</translation>
+        <translation>Transakce musí mít alespoň jednoho příjrnge</translation>
     </message>
     <message>
         <source>Unknown network specified in -onlynet: '%s'</source>

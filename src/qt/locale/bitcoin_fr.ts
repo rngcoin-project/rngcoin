@@ -62,12 +62,12 @@
         <translation>Adresses de réception</translation>
     </message>
     <message>
-        <source>These are your RNGCoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Voici vos adresses RNGCoin pour envoyer des paiements. Vérifiez toujours le montant et l'adresse du destinataire avant d'envoyer des pièces.</translation>
+        <source>These are your Rngcoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Voici vos adresses Rngcoin pour envoyer des paiements. Vérifiez toujours le montant et l'adresse du destinataire avant d'envoyer des pièces.</translation>
     </message>
     <message>
-        <source>These are your RNGCoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Voici vos adresses RNGCoin pour recevoir des paiements. Il est recommandé d'utiliser une nouvelle adresse de réception pour chaque transaction.</translation>
+        <source>These are your Rngcoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Voici vos adresses Rngcoin pour recevoir des paiements. Il est recommandé d'utiliser une nouvelle adresse de réception pour chaque transaction.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -338,8 +338,8 @@
         <translation>Réindexation des blocs sur le disque...</translation>
     </message>
     <message>
-        <source>Send coins to a RNGCoin address</source>
-        <translation>Envoyer des pièces à une adresse RNGCoin</translation>
+        <source>Send coins to a Rngcoin address</source>
+        <translation>Envoyer des pièces à une adresse Rngcoin</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -362,8 +362,8 @@
         <translation>&amp;Vérifier un message...</translation>
     </message>
     <message>
-        <source>RNGCoin</source>
-        <translation>RNGCoin</translation>
+        <source>Rngcoin</source>
+        <translation>Rngcoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -390,12 +390,12 @@
         <translation>Chiffrer les clés privées qui appartiennent à votre porte-monnaie</translation>
     </message>
     <message>
-        <source>Sign messages with your RNGCoin addresses to prove you own them</source>
-        <translation>Signer les messages avec vos adresses RNGCoin pour prouver que vous les détenez</translation>
+        <source>Sign messages with your Rngcoin addresses to prove you own them</source>
+        <translation>Signer les messages avec vos adresses Rngcoin pour prouver que vous les détenez</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified RNGCoin addresses</source>
-        <translation>Vérifier les messages pour s'assurer qu'ils ont été signés avec les adresses RNGCoin spécifiées</translation>
+        <source>Verify messages to ensure they were signed with specified Rngcoin addresses</source>
+        <translation>Vérifier les messages pour s'assurer qu'ils ont été signés avec les adresses Rngcoin spécifiées</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -434,8 +434,8 @@
         <translation>Options de ligne de &amp;commande</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to RNGCoin network</source>
-        <translation><numerusform>%n connexion active avec le réseau RNGCoin</numerusform><numerusform>%n connexions actives avec le réseau RNGCoin</numerusform></translation>
+        <source>%n active connection(s) to Rngcoin network</source>
+        <translation><numerusform>%n connexion active avec le réseau Rngcoin</numerusform><numerusform>%n connexions actives avec le réseau Rngcoin</numerusform></translation>
     </message>
     <message>
         <source>Indexing blocks on disk...</source>
@@ -478,8 +478,8 @@
         <translation>À jour</translation>
     </message>
     <message>
-        <source>Show the %1 help message to get a list with possible RNGCoin command-line options</source>
-        <translation>Afficher le message d'aide de %1 pour obtenir la liste des options de ligne de commande RNGCoin possibles.</translation>
+        <source>Show the %1 help message to get a list with possible Rngcoin command-line options</source>
+        <translation>Afficher le message d'aide de %1 pour obtenir la liste des options de ligne de commande Rngcoin possibles.</translation>
     </message>
     <message>
         <source>%1 client</source>
@@ -548,8 +548,8 @@
         <translation>Le porte-monnaie est &lt;b&gt;chiffré&lt;/b&gt; et actuellement &lt;b&gt;verrouillé&lt;/b&gt;</translation>
     </message>
     <message>
-        <source>A fatal error occurred. RNGCoin can no longer continue safely and will quit.</source>
-        <translation>Une erreur fatale est survenue. RNGCoin ne peut plus continuer en toute sécurité et va s'arrêter.</translation>
+        <source>A fatal error occurred. Rngcoin can no longer continue safely and will quit.</source>
+        <translation>Une erreur fatale est survenue. Rngcoin ne peut plus continuer en toute sécurité et va s'arrêter.</translation>
     </message>
 </context>
 <context>
@@ -742,8 +742,8 @@
         <translation>Modifier l’adresse d'envoi</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid RNGCoin address.</source>
-        <translation>L'adresse saisie « %1 » n'est pas une adresse RNGCoin valide.</translation>
+        <source>The entered address "%1" is not a valid Rngcoin address.</source>
+        <translation>L'adresse saisie « %1 » n'est pas une adresse Rngcoin valide.</translation>
     </message>
     <message>
         <source>The entered address "%1" is already in the address book.</source>
@@ -851,8 +851,8 @@
         <translation>Puisque c'est la première fois que le logiciel est lancé, vous pouvez choisir où %1 stockera ses données.</translation>
     </message>
     <message>
-        <source>%1 will download and store a copy of the RNGCoin block chain. At least %2GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-        <translation>%1 téléchargera et stockera une copie de la chaîne de blocs de RNGCoin. Au moins %2 Go de données seront stockés dans ce répertoire et sa taille augmentera avec le temps. Le porte-monnaie sera également stocké dans ce répertoire.</translation>
+        <source>%1 will download and store a copy of the Rngcoin block chain. At least %2GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
+        <translation>%1 téléchargera et stockera une copie de la chaîne de blocs de Rngcoin. Au moins %2 Go de données seront stockés dans ce répertoire et sa taille augmentera avec le temps. Le porte-monnaie sera également stocké dans ce répertoire.</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
@@ -887,7 +887,7 @@
     </message>
     <message>
         <source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the rngcoin network, as detailed below.</source>
-        <translation>Les transactions récentes ne sont peut-être pas encore visibles et par conséquent le solde de votre porte-monnaie est peut-être erroné. Cette information sera juste quand votre porte-monnaie aura fini de se synchroniser avec le réseau RNGCoin, comme décrit ci-dessous.</translation>
+        <translation>Les transactions récentes ne sont peut-être pas encore visibles, et par conséquent, le solde de votre porte-monnaie est peut-être erroné. Cette information sera juste une fois que votre porte-monnaie aura fini de se synchroniser avec le réseau Rngcoin, comme décrit ci-dessous. </translation>
     </message>
     <message>
         <source>Attempting to spend rngcoins that are affected by not-yet-displayed transactions will not be accepted by the network.</source>
@@ -1009,7 +1009,7 @@
     </message>
     <message>
         <source>Active command-line options that override above options:</source>
-        <translation>Options de ligne de commande actives qui remplacent les options ci-dessus :</translation>
+        <translation>Options actives de ligne de commande qui annulent les options ci-dessus :</translation>
     </message>
     <message>
         <source>Reset all client options to default.</source>
@@ -1048,16 +1048,16 @@
         <translation>&amp;Dépenser la monnaie non confirmée</translation>
     </message>
     <message>
-        <source>Automatically open the RNGCoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Ouvrir automatiquement le port du client RNGCoin sur le routeur. Cela ne fonctionne que si votre routeur prend en charge l'UPnP et si la fonction est activée.</translation>
+        <source>Automatically open the Rngcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Ouvrir automatiquement le port du client Rngcoin sur le routeur. Cela ne fonctionne que si votre routeur prend en charge l'UPnP et si la fonction est activée.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
         <translation>Mapper le port avec l'&amp;UPnP</translation>
     </message>
     <message>
-        <source>Connect to the RNGCoin network through a SOCKS5 proxy.</source>
-        <translation>Se connecter au réseau RNGCoin par un mandataire SOCKS5.</translation>
+        <source>Connect to the Rngcoin network through a SOCKS5 proxy.</source>
+        <translation>Se connecter au réseau Rngcoin par un mandataire SOCKS5.</translation>
     </message>
     <message>
         <source>&amp;Connect through SOCKS5 proxy (default proxy):</source>
@@ -1081,7 +1081,7 @@
     </message>
     <message>
         <source>Shows, if the supplied default SOCKS5 proxy is used to reach peers via this network type.</source>
-        <translation>Indique si le mandataire SOCKS5 par défaut fourni est utilisé pour atteindre des pairs par ce type de réseau.</translation>
+        <translation>S'affiche, si le mandataire SOCKS5 par défaut fourni est utilisé pour atteindre les pairs par ce type de réseau.</translation>
     </message>
     <message>
         <source>IPv4</source>
@@ -1096,8 +1096,8 @@
         <translation>Tor</translation>
     </message>
     <message>
-        <source>Connect to the RNGCoin network through a separate SOCKS5 proxy for Tor hidden services.</source>
-        <translation>Se connecter au réseau RNGCoin au travers d'un mandataire SOCKS5 séparé pour les services cachés de Tor.</translation>
+        <source>Connect to the Rngcoin network through a separate SOCKS5 proxy for Tor hidden services.</source>
+        <translation>Se connecter au réseau Rngcoin au travers d'un mandataire SOCKS5 séparé pour les services cachés de Tor.</translation>
     </message>
     <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services:</source>
@@ -1195,8 +1195,8 @@
         <translation>Formulaire</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the RNGCoin network after a connection is established, but this process has not completed yet.</source>
-        <translation>Les informations affichées peuvent être obsolètes. Votre porte-monnaie est automatiquement synchronisé avec le réseau RNGCoin lorsque la connexion s'établit, or ce processus n'est pas encore terminé.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Rngcoin network after a connection is established, but this process has not completed yet.</source>
+        <translation>Les informations affichées peuvent être obsolètes. Votre porte-monnaie est automatiquement synchronisé avec le réseau Rngcoin lorsque la connexion s'établit, or ce processus n'est pas encore terminé.</translation>
     </message>
     <message>
         <source>Watch-only:</source>
@@ -1286,8 +1286,8 @@
         <translation>Adresse de paiement invalide %1</translation>
     </message>
     <message>
-        <source>URI cannot be parsed! This can be caused by an invalid RNGCoin address or malformed URI parameters.</source>
-        <translation>L'URI ne peut pas être analysée ! Cela peut être causé par une adresse RNGCoin invalide ou par des paramètres d'URI mal formés.</translation>
+        <source>URI cannot be parsed! This can be caused by an invalid Rngcoin address or malformed URI parameters.</source>
+        <translation>L'URI ne peut pas être analysée ! Cela peut être causé par une adresse Rngcoin invalide ou par des paramètres d'URI mal formés.</translation>
     </message>
     <message>
         <source>Payment request file handling</source>
@@ -1380,8 +1380,8 @@
         <translation>Montant</translation>
     </message>
     <message>
-        <source>Enter a RNGCoin address (e.g. %1)</source>
-        <translation>Saisir une adresse RNGCoin (p. ex. %1)</translation>
+        <source>Enter a Rngcoin address or name (e.g. %1)</source>
+        <translation>Saisir une adresse Rngcoin (p. ex. %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -1804,8 +1804,8 @@
         <translation>Ré&amp;utiliser une adresse de réception existante (non recommandé)</translation>
     </message>
     <message>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the RNGCoin network.</source>
-        <translation>Un message facultatif à joindre à la demande de paiement et qui sera affiché à l'ouverture de celle-ci. Note : le message ne sera pas envoyé avec le paiement par le réseau RNGCoin.</translation>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Rngcoin network.</source>
+        <translation>Un message facultatif à joindre à la demande de paiement et qui sera affiché à l'ouverture de celle-ci. Note : le message ne sera pas envoyé avec le paiement par le réseau Rngcoin.</translation>
     </message>
     <message>
         <source>An optional label to associate with the new receiving address.</source>
@@ -2201,8 +2201,8 @@
         <translation><numerusform>Il est estimé que la confirmation commencera dans %n bloc.</numerusform><numerusform>Il est estimé que la confirmation commencera dans %n blocs.</numerusform></translation>
     </message>
     <message>
-        <source>Warning: Invalid RNGCoin address</source>
-        <translation>Avertissement : adresse RNGCoin invalide</translation>
+        <source>Warning: Invalid Rngcoin address</source>
+        <translation>Avertissement : adresse Rngcoin invalide</translation>
     </message>
     <message>
         <source>Warning: Unknown change address</source>
@@ -2244,8 +2244,8 @@
         <translation>Ceci est un paiement normal.</translation>
     </message>
     <message>
-        <source>The RNGCoin address to send the payment to</source>
-        <translation>L'adresse RNGCoin à laquelle envoyer le paiement</translation>
+        <source>The Rngcoin address to send the payment to</source>
+        <translation>L'adresse Rngcoin à laquelle envoyer le paiement</translation>
     </message>
     <message>
         <source>Alt+A</source>
@@ -2288,8 +2288,8 @@
         <translation>Saisir une étiquette pour cette adresse afin de l'ajouter à la liste d'adresses utilisées</translation>
     </message>
     <message>
-        <source>A message that was attached to the rngcoin: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the RNGCoin network.</source>
-        <translation>Un message qui était joint à l'URI rngcoin: et qui sera stocké avec la transaction pour référence. Note : ce message ne sera pas envoyé par le réseau RNGCoin.</translation>
+        <source>A message that was attached to the rngcoin: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Rngcoin network.</source>
+        <translation>Un message qui était joint à l'URI rngcoin: et qui sera stocké avec la transaction pour référence. Note : ce message ne sera pas envoyé par le réseau Rngcoin.</translation>
     </message>
     <message>
         <source>Pay To:</source>
@@ -2337,8 +2337,8 @@
         <translation>Vous pouvez signer des messages ou des accords avec vos adresses pour prouver que vous pouvez recevoir des rngcoins à ces dernières. Faites attention de ne rien signer de vague ou au hasard, car des attaques d'hameçonnage pourraient essayer de vous faire signer avec votre identité afin de l'usurper. Ne signez que des déclarations entièrement détaillées et avec lesquelles vous êtes d'accord.</translation>
     </message>
     <message>
-        <source>The RNGCoin address to sign the message with</source>
-        <translation>L'adresse RNGCoin avec laquelle signer le message</translation>
+        <source>The Rngcoin address to sign the message with</source>
+        <translation>L'adresse Rngcoin avec laquelle signer le message</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -2369,8 +2369,8 @@
         <translation>Copier la signature actuelle dans le presse-papiers</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this RNGCoin address</source>
-        <translation>Signer le message afin de prouver que vous détenez cette adresse RNGCoin</translation>
+        <source>Sign the message to prove you own this Rngcoin address</source>
+        <translation>Signer le message afin de prouver que vous détenez cette adresse Rngcoin</translation>
     </message>
     <message>
         <source>Sign &amp;Message</source>
@@ -2393,12 +2393,12 @@
         <translation>Saisir ci-dessous l'adresse du destinataire, le message (s'assurer de copier fidèlement les retours à la ligne, les espaces, les tabulations, etc.) et la signature pour vérifier le message. Faire attention à ne pas déduire davantage de la signature que ce qui est contenu dans le message signé même, pour éviter d'être trompé par une attaque d'homme du milieu. Prendre en compte que cela ne fait que prouver que le signataire reçoit l'adresse et ne peut pas prouver la provenance d'une transaction !</translation>
     </message>
     <message>
-        <source>The RNGCoin address the message was signed with</source>
-        <translation>L'adresse RNGCoin avec laquelle le message a été signé</translation>
+        <source>The Rngcoin address the message was signed with</source>
+        <translation>L'adresse Rngcoin avec laquelle le message a été signé</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified RNGCoin address</source>
-        <translation>Vérifier le message pour s'assurer qu'il a été signé avec l'adresse RNGCoin spécifiée</translation>
+        <source>Verify the message to ensure it was signed with the specified Rngcoin address</source>
+        <translation>Vérifier le message pour s'assurer qu'il a été signé avec l'adresse Rngcoin spécifiée</translation>
     </message>
     <message>
         <source>Verify &amp;Message</source>
@@ -3058,8 +3058,8 @@
         <translation>Impossible de démarrer le serveur HTTP. Voir le journal de débogage pour plus de détails.</translation>
     </message>
     <message>
-        <source>RNGCoin Core</source>
-        <translation>RNGCoin Core</translation>
+        <source>Rngcoin Core</source>
+        <translation>Rngcoin Core</translation>
     </message>
     <message>
         <source>The %s developers</source>
@@ -3623,7 +3623,7 @@
     </message>
     <message>
         <source>Whether to operate in a blocks only mode (default: %u)</source>
-        <translation>Fonctionner ou non en mode blocs seulement (par défaut : %u)</translation>
+        <translation>Faut-il fonctionner en mode blocs seulement (par défaut : %u)</translation>
     </message>
     <message>
         <source>Zapping all transactions from wallet...</source>
@@ -3643,7 +3643,7 @@
     </message>
     <message>
         <source>Allow DNS lookups for -addnode, -seednode and -connect</source>
-        <translation>Autoriser les consultations DNS pour -addnode, -seednode et -connect</translation>
+        <translation>Autoriser les recherches DNS pour -addnode, -seednode et -connect</translation>
     </message>
     <message>
         <source>Loading addresses...</source>
@@ -3691,7 +3691,7 @@
     </message>
     <message>
         <source>Query for peer addresses via DNS lookup, if low on addresses (default: 1 unless -connect/-noconnect)</source>
-        <translation>Requête d'adresses de paires par consultation DNS, si il y a peu d'adresses (par défaut : 1 sauf si -connect/-noconnect)</translation>
+        <translation>Requête d'adresses de paires par recherche DNS, si il y a peu d'adresses (par défaut : 1 sauf si -connect/-noconnect)</translation>
     </message>
     <message>
         <source>Sets the serialization of raw transaction or block hex returned in non-verbose mode, non-segwit(0) or segwit(1) (default: %d)</source>
@@ -3751,7 +3751,7 @@
     </message>
     <message>
         <source>Always query for peer addresses via DNS lookup (default: %u)</source>
-        <translation>Toujours demander les adresses des pairs par consultation DNS (par défaut : %u)</translation>
+        <translation>Toujours demander les adresses des pairs par recherche DNS (par défaut : %u)</translation>
     </message>
     <message>
         <source>How many blocks to check at startup (default: %u, 0 = all)</source>
@@ -3807,7 +3807,7 @@
     </message>
     <message>
         <source>Send transactions with full-RBF opt-in enabled (default: %u)</source>
-        <translation>Envoyer les transactions avec « full-RBF opt-in » activé (par défaut : %u)</translation>
+        <translation>Envoyer des transactions avec « RBF opt-in » complet activé (par défaut : %u)</translation>
     </message>
     <message>
         <source>Set key pool size to &lt;n&gt; (default: %u)</source>

@@ -67,11 +67,11 @@ AddressBookPage::AddressBookPage(const PlatformStyle *platformStyle, Mode _mode,
     switch(tab)
     {
     case SendingTab:
-        ui->labelExplanation->setText(tr("These are your RNGCoin addresses for sending payments. Always check the amount and the receiving address before sending coins."));
+        ui->labelExplanation->setText(tr("These are your Rngcoin addresses for sending payments. Always check the amount and the receiving address before sending coins."));
         ui->deleteAddress->setVisible(true);
         break;
     case ReceivingTab:
-        ui->labelExplanation->setText(tr("These are your RNGCoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction."));
+        ui->labelExplanation->setText(tr("These are your Rngcoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction."));
         ui->deleteAddress->setVisible(false);
         break;
     }
@@ -254,7 +254,7 @@ void AddressBookPage::done(int retval)
     // Figure out which address was selected, and return it
     QModelIndexList indexes = table->selectionModel()->selectedRows(AddressTableModel::Address);
 
-    for (const QModelIndex& index : indexes) {
+    Q_FOREACH (const QModelIndex& index, indexes) {
         QVariant address = table->model()->data(index);
         returnValue = address.toString();
     }
@@ -273,7 +273,7 @@ void AddressBookPage::on_exportButton_clicked()
     // CSV is currently the only supported format
     QString filename = GUIUtil::getSaveFileName(this,
         tr("Export Address List"), QString(),
-        tr("Comma separated file (*.csv)"), nullptr);
+        tr("Comma separated file (*.csv)"), NULL);
 
     if (filename.isNull())
         return;

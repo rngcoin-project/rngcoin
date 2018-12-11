@@ -7,19 +7,21 @@
 #define BITCOIN_POLICY_POLICY_H
 
 #include "consensus/consensus.h"
-#include "feerate.h"
 #include "script/interpreter.h"
 #include "script/standard.h"
 
 #include <string>
 
 class CCoinsViewCache;
-class CTxOut;
 
+/** Default for -blockmaxsize, which controls the maximum size of block the mining code will create **/
+static const unsigned int DEFAULT_BLOCK_MAX_SIZE = 750000;
+/** Default for -blockprioritysize, maximum space for zero/low-fee transactions **/
+static const unsigned int DEFAULT_BLOCK_PRIORITY_SIZE = 0;
 /** Default for -blockmaxweight, which controls the range of block weights the mining code will create **/
-static const unsigned int DEFAULT_BLOCK_MAX_WEIGHT = MAX_BLOCK_WEIGHT - 4000;
+static const unsigned int DEFAULT_BLOCK_MAX_WEIGHT = 3000000;
 /** Default for -blockmintxfee, which sets the minimum feerate for a transaction in blocks created by mining code **/
-static const unsigned int DEFAULT_BLOCK_MIN_TX_FEE = 1000;
+static const unsigned int DEFAULT_BLOCK_MIN_TX_FEE = MIN_TX_FEE / 10;
 /** The maximum weight for transactions we're willing to relay/mine */
 static const unsigned int MAX_STANDARD_TX_WEIGHT = 400000;
 /** TxComment 1 byte price */
@@ -31,7 +33,7 @@ static const unsigned int MAX_STANDARD_TX_SIGOPS_COST = MAX_BLOCK_SIGOPS_COST/5;
 /** Default for -maxmempool, maximum megabytes of mempool memory usage */
 static const unsigned int DEFAULT_MAX_MEMPOOL_SIZE = 300;
 /** Default for -incrementalrelayfee, which sets the minimum feerate increase for mempool limiting or BIP 125 replacement **/
-static const unsigned int DEFAULT_INCREMENTAL_RELAY_FEE = 1000;
+static const unsigned int DEFAULT_INCREMENTAL_RELAY_FEE = MIN_TX_FEE / 10;
 /** Default for -bytespersigop */
 static const unsigned int DEFAULT_BYTES_PER_SIGOP = 20;
 /** The maximum number of witness stack items in a standard P2WSH script */
@@ -40,12 +42,12 @@ static const unsigned int MAX_STANDARD_P2WSH_STACK_ITEMS = 100;
 static const unsigned int MAX_STANDARD_P2WSH_STACK_ITEM_SIZE = 80;
 /** The maximum size of a standard witnessScript */
 static const unsigned int MAX_STANDARD_P2WSH_SCRIPT_SIZE = 3600;
-/** Min feerate for defining dust. Historically this has been based on the
+/** Min feerate for defining dust. Historically this has been the same as the
  * minRelayTxFee, however changing the dust limit changes which transactions are
  * standard and should be done with care and ideally rarely. It makes sense to
  * only increase the dust limit after prior releases were already not creating
  * outputs below the new threshold */
-static const unsigned int DUST_RELAY_TX_FEE = 300000;
+static const unsigned int DUST_RELAY_TX_FEE = MIN_TX_FEE / 10;
 /**
  * Standard script verification flags that standard transactions will comply
  * with. However scripts violating these flags may still be present in valid
@@ -57,13 +59,13 @@ static const unsigned int STANDARD_SCRIPT_VERIFY_FLAGS = MANDATORY_SCRIPT_VERIFY
                                                          SCRIPT_VERIFY_MINIMALDATA |
                                                          SCRIPT_VERIFY_NULLDUMMY |
                                                          SCRIPT_VERIFY_DISCOURAGE_UPGRADABLE_NOPS |
-                                                         SCRIPT_VERIFY_CLEANSTACK |
+                                                         SCRIPT_VERIFY_CLEANSTACK |  // rngcoin: disabled before V7 fork
                                                          SCRIPT_VERIFY_MINIMALIF |
                                                          SCRIPT_VERIFY_NULLFAIL |
                                                          SCRIPT_VERIFY_CHECKLOCKTIMEVERIFY |
                                                          SCRIPT_VERIFY_CHECKSEQUENCEVERIFY |
                                                          SCRIPT_VERIFY_LOW_S |
-                                                         SCRIPT_VERIFY_WITNESS |
+                                                         SCRIPT_VERIFY_WITNESS |     // rngcoin: disabled before V7 fork
                                                          SCRIPT_VERIFY_DISCOURAGE_UPGRADABLE_WITNESS_PROGRAM |
                                                          SCRIPT_VERIFY_WITNESS_PUBKEYTYPE;
 
@@ -73,10 +75,6 @@ static const unsigned int STANDARD_NOT_MANDATORY_VERIFY_FLAGS = STANDARD_SCRIPT_
 /** Used as the flags parameter to sequence and nLocktime checks in non-consensus code. */
 static const unsigned int STANDARD_LOCKTIME_VERIFY_FLAGS = LOCKTIME_VERIFY_SEQUENCE |
                                                            LOCKTIME_MEDIAN_TIME_PAST;
-
-CAmount GetDustThreshold(const CTxOut& txout, const CFeeRate& dustRelayFee);
-
-bool IsDust(const CTxOut& txout, const CFeeRate& dustRelayFee);
 
 bool IsStandard(const CScript& scriptPubKey, txnouttype& whichType, const bool witnessEnabled = false);
     /**
